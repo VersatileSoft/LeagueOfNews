@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Surrender_20
+namespace Surrender_20.Core.Interface
 {
     public interface INewsfeedService
     {

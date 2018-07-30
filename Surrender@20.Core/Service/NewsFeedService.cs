@@ -1,13 +1,11 @@
 ﻿using HtmlAgilityPack;
+using Surrender_20.Core.Interface;
 using Surrender_20.Model;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Web;
 
-namespace Surrender_20
+namespace Surrender_20.Core.Service
 {
     public class NewsfeedService : INewsfeedService
     {
