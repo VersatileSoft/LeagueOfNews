@@ -7,9 +7,9 @@
     xmlns:appmodel="using:Windows.ApplicationModel"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    DataContext="{Binding Path=MainPageViewModel, Source={StaticResource ViewModelLocator}}"
     mc:Ignorable="d"
-    Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}"
-    DataContext="{Binding Path=MainPageViewModel, Source={StaticResource ViewModelLocator}}">
+    Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
 
     <Page.Transitions>
         <TransitionCollection>
@@ -24,7 +24,7 @@
                 <ColumnDefinition/>
                 <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
             </Grid.ColumnDefinitions>
-            <TextBlock Text="{x:Bind VM.Title}" 
+            <TextBlock Text="{x:Bind appmodel:Package.Current.DisplayName}" 
                        Grid.Column="1" 
                        Style="{StaticResource CaptionTextBlockStyle}" 
                        Margin="10,8,0,0"/>
@@ -39,11 +39,18 @@
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
                 <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage" Tapped="HomePage_Tapped"/>
+                
                 <NavigationViewItem Content="PBE">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:InvokeCommandAction Command="{Binding MenuItemCommand}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
                 </NavigationViewItem>
+                
                 <NavigationViewItem Content="Releases" x:Name="ReleasesPage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
@@ -75,7 +82,7 @@
                                Style="{StaticResource TitleTextBlockStyle}"
                                FontSize="28"
                                VerticalAlignment="Center"
-                               Text="Welcome to Surrender@20!"/>
+                               Text="{x:Bind VM.Title}"/>
                     <!--CommandBar maybe-->
                 </Grid>
             </NavigationView.Header>
