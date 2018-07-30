@@ -13,8 +13,52 @@
     </Page.Transitions>
     
     <Grid>
-        <TextBlock Text="NewsfeedListPage" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Center"/>
+        <ProgressRing IsActive="True"
+                      Width="150"
+                      Height="150"
+                      VerticalAlignment="Center" 
+                      HorizontalAlignment="Center"
+                      Visibility="Visible"/>
+
+        <ListView ItemsSource="{Binding Newsfeeds}">
+
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Viewbox>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30*"/>
+                                <ColumnDefinition Width="70*"/>
+                            </Grid.ColumnDefinitions>
+
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="20"/>
+                                <RowDefinition Height="60"/>
+                            </Grid.RowDefinitions>
+
+                            <Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
+                                   Grid.Column="0"
+                                   Grid.Row="0"
+                                   Grid.RowSpan="3"/>
+
+                            <TextBlock Text="{Binding Title}"
+                                   Grid.Column="1"
+                                   Grid.Row="0"/>
+
+                            <TextBlock Text="{Binding Date}"
+                                   Grid.Column="1"
+                                   Grid.Row="1"/>
+
+                            <TextBlock Text="{Binding Description}"
+                                                MaxLines="3"
+                                                Grid.Column="1"
+                                                Grid.Row="2"/>
+                        </Grid>
+                    </Viewbox>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </Grid>
 </Page>

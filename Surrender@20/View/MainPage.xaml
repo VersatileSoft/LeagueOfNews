@@ -8,12 +8,6 @@
     xmlns:appmodel="using:Windows.ApplicationModel"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
-    <Page.Transitions>
-        <TransitionCollection>
-            <EntranceThemeTransition/>
-        </TransitionCollection>
-    </Page.Transitions>
-
     <Grid>
         <Grid x:Name="AppTitleBar" VerticalAlignment="Top" Background="{ThemeResource SystemControlChromeMediumAcrylicWindowMediumBrush}">
             <Grid.ColumnDefinitions>
@@ -29,7 +23,8 @@
 
         <NavigationView x:Name="NavView"     
                         Margin="0,30,0,0"
-                        IsSettingsVisible="True">
+                        IsSettingsVisible="True"
+                        IsBackButtonVisible="Collapsed">
 
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
