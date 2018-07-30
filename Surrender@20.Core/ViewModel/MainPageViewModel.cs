@@ -8,18 +8,6 @@ namespace Surrender_20.Core.ViewModel
     [AddINotifyPropertyChangedInterface]
     public class MainPageViewModel
     {
-        public string Title { get; set; } = "Weź coś zrób";
-
-        public DelegateCommand MenuItemTapped { get; set; }
-
-        public void InitCommands()
-        {
-            MenuItemTapped = new DelegateCommand(MenuItemTapped);
-        }
-
-        private void MenuItemTapped()
-        {
-            //do something when clicked
-        }
-    }  
+        public string Title { get; set; } = "Home";
+    }
 }

@@ -7,6 +7,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    DataContext="{Binding Path=NewsfeedItemViewModel, Source={StaticResource ViewModelLocator}}"
     mc:Ignorable="d">
     <Page.Transitions>
         <TransitionCollection>
@@ -39,7 +40,7 @@
         <ScrollViewer x:Name="ListView" Visibility="Visible" Margin="20,00,20,0">
             <StackPanel>
                 <ParallaxView>
-                    <Image Source="{Binding ContentDescription}" 
+                    <Image Source="{Binding NewsImage}" 
                            VerticalAlignment="Top" 
                            HorizontalAlignment="Center"/>
                 </ParallaxView>
