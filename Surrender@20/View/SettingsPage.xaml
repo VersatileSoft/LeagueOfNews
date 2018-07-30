@@ -5,6 +5,8 @@
     xmlns:local="using:Surrender_20.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
     <Page.Transitions>
         <TransitionCollection>
@@ -13,8 +15,32 @@
     </Page.Transitions>
     
     <Grid>
-        <TextBlock Text="SettingsPage" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Center"/>
+        <Pivot>
+            <PivotItem Header="Settings">
+                <Grid>
+                    
+                </Grid>
+            </PivotItem>
+
+            <PivotItem Header="About">
+                <StackPanel Margin="10,0,0,0">
+                    <PersonPicture DisplayName="Marek Kida"
+                                   ProfilePicture="ms-appx:///Assets/LargeTile.scale-400.png"
+                                   Margin="0,20,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"/>
+                    <PersonPicture DisplayName="Michał Woźniak"
+                                   ProfilePicture="ms-appx:///Assets/LargeTile.scale-400.png"
+                                   Margin="0,20,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"/>
+                    <PersonPicture DisplayName="Kacper Tryniecki"
+                                   ProfilePicture="ms-appx:///Assets/LargeTile.scale-400.png"
+                                   Margin="0,20,0,0"
+                                   HorizontalAlignment="Left"
+                                   VerticalAlignment="Top"/>
+                </StackPanel>
+            </PivotItem>
+        </Pivot>
     </Grid>
 </Page>

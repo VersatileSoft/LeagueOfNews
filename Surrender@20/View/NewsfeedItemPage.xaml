@@ -5,6 +5,8 @@
     xmlns:local="using:Surrender_20.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
     <Page.Transitions>
         <TransitionCollection>
@@ -12,32 +14,40 @@
         </TransitionCollection>
     </Page.Transitions>
 
+    <Page.Resources>
+        <ResourceDictionary>
+            <!--<conv:UriToImageSource x:Key="UriToImageSource"/>-->
+        </ResourceDictionary>
+    </Page.Resources>
+    
     <Grid>
-        <Grid VerticalAlignment="Top" 
-              HorizontalAlignment="Stretch" 
-              Height="50" 
-              Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}">
+        <ProgressRing IsActive="True"
+                      Width="100"
+                      Height="100"
+                      VerticalAlignment="Center" 
+                      HorizontalAlignment="Center"
+                      Visibility="Visible"/>
+        
+        <ParallaxView Source="{x:Bind ListView}" VerticalShift="200">
+            <Image x:Name="BackgroundImage" 
+                   Source="{Binding Path=Data.Image}"
+                   Stretch="UniformToFill"
+                   HorizontalAlignment="Center"
+                   Opacity="1"/>
+        </ParallaxView>
 
-            <TextBlock Text="{Binding Title}"
-                       TextWrapping="Wrap"
-                       TextAlignment="Center"
-                       VerticalAlignment="Center"/>
-        </Grid>
-        <ScrollViewer Margin="20,0,20,50">
+        <ScrollViewer x:Name="ListView" Visibility="Visible" Margin="20,00,20,0">
             <StackPanel>
                 <ParallaxView>
-                    <Image Source="ms-appx:///Assets/SplashScreen.scale-400.png" 
-                           Margin="0,50,0,0" 
+                    <Image Source="{Binding ContentDescription}" 
                            VerticalAlignment="Top" 
                            HorizontalAlignment="Center"/>
                 </ParallaxView>
 
-                <TextBlock Text="{Binding ContentDescription}" 
-                           VerticalAlignment="Top"
-                           Margin="0,20,0,0"/>
+                <ContentControl Content="{Binding ContentDescription}"/>
             </StackPanel>
         </ScrollViewer>
-        <CommandBar VerticalAlignment="Bottom" DefaultLabelPosition="Right" Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
+        <CommandBar VerticalAlignment="Bottom" DefaultLabelPosition="Right" Margin="-24,0,-24,0" Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}">
             <AppBarButton Icon="Share" Label="Share"/>
         </CommandBar>
     </Grid>

@@ -1,4 +1,5 @@
-﻿using Windows.ApplicationModel.Core;
+﻿using Surrender_20.View;
+using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -53,6 +54,17 @@ namespace Surrender_20
             else
             {
                 AppTitleBar.Visibility = Visibility.Collapsed;
+            }
+        }
+
+        // Do wyjebki
+        private void HomePage_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            if (NavView.Content != null)
+            {
+                ((Frame)NavView.Content).Navigate(typeof(NewsfeedItemPage));
+
+                TitlePageTextBlock.Text = "Home";
             }
         }
     }
