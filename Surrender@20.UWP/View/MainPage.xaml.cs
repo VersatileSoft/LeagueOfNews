@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Surrender_20.Core.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -24,9 +25,13 @@ namespace Surrender_20
     /// </summary>
     public sealed partial class MainPage : Page
     {
+        public MainPageViewModel VM { get; set; }
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            VM = DataContext as MainPageViewModel;
 
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;

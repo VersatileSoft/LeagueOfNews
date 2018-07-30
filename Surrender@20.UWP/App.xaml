@@ -5,6 +5,6 @@
     xmlns:local="using:Surrender_20.Core">
 
     <Application.Resources>
-        <local:ViewModelLocator xmlns:local="clr-namespace:AutofacWP8DependencyInjectionDemo" x:Key="ViewModelLocator"/>
+        <local:ViewModelLocator x:Key="ViewModelLocator"/>
     </Application.Resources>
 </Application>

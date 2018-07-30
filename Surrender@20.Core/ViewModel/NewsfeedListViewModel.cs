@@ -1,10 +1,12 @@
-﻿using System;
+﻿using PropertyChanged;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Surrender@20.Core.ViewModel
+namespace Surrender_20.Core.ViewModel
 {
-    class NewsfeedListViewModel
+    [AddINotifyPropertyChangedInterface]
+    public class NewsfeedListViewModel
     {
     }
 }
