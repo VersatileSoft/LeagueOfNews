@@ -1,7 +1,5 @@
 ﻿using PropertyChanged;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModel
 {
@@ -10,11 +8,11 @@ namespace Surrender_20.Core.ViewModel
     {
         public string Title { get; set; } = "Weź coś zrób";
 
-        public DelegateCommand MenuItemTapped { get; set; }
+        public ICommand MenuItemTappedCommand { get; private set; }
 
         public void InitCommands()
         {
-            MenuItemTapped = new DelegateCommand(MenuItemTapped);
+            //MenuItemTappedCommand = new Command(MenuItemTapped);
         }
 
         private void MenuItemTapped()
