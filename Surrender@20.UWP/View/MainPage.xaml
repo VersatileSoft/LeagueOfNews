@@ -10,7 +10,6 @@
     DataContext="{Binding Path=MainPageViewModel, Source={StaticResource ViewModelLocator}}"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
-
     <Page.Transitions>
         <TransitionCollection>
             <EntranceThemeTransition/>
@@ -29,8 +28,7 @@
                        Style="{StaticResource CaptionTextBlockStyle}" 
                        Margin="10,8,0,0"/>
         </Grid>
-
-        
+       
         <NavigationView x:Name="NavView"     
                         Margin="0,30,0,0"
                         IsSettingsVisible="True"
@@ -38,36 +36,68 @@
 
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
-                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage" Tapped="HomePage_Tapped"/>
+                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage" Tapped="HomePage_Tapped">
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:InvokeCommandAction Command="{Binding VM.HomeCommand}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </NavigationViewItem>
                 
                 <NavigationViewItem Content="PBE">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
+
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{Binding VM.MenuItemCommand}"/>
+                            <core:InvokeCommandAction Command="{Binding VM.PBECommand}"/>
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </NavigationViewItem>
-                
+
                 <NavigationViewItem Content="Releases" x:Name="ReleasesPage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
+                    
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:InvokeCommandAction Command="{Binding VM.ReleasesCommand}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
                 </NavigationViewItem>
+                
                 <NavigationViewItem Content="Red Posts" x:Name="RedPostsPage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEC7A;"/>
                     </NavigationViewItem.Icon>
+                    
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:InvokeCommandAction Command="{Binding VM.RedPostsCommand}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
                 </NavigationViewItem>
 
-                <NavigationViewItem Icon="Contact" Content="Rotations" x:Name="RotationsPage"/>
+                <NavigationViewItem Icon="Contact" Content="Rotations" x:Name="RotationsPage">
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                        <core:InvokeCommandAction Command="{Binding VM.RotationsCommand}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
+                </NavigationViewItem>
 
                 <NavigationViewItem Content="E-Sports" x:Name="EsportsPage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
+
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:InvokeCommandAction Command="{Binding VM.EsportsCommand}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
 

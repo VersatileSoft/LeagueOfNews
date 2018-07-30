@@ -1,7 +1,4 @@
 ﻿using PropertyChanged;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModel
@@ -9,18 +6,13 @@ namespace Surrender_20.Core.ViewModel
     [AddINotifyPropertyChangedInterface]
     public class MainPageViewModel
     {     
-        public string Title { get; set; } = "Weź coś zrób";
+        public string Title { get; set; } = "Home";
 
-        public ICommand MenuItemTappedCommand { get; private set; }
-
-        public void InitCommands()
-        {
-            //MenuItemTappedCommand = new Command(MenuItemTapped);
-        }
-
-        private void MenuItemTapped()
-        {
-            //do something when clicked
-        }
+        public ICommand HomeCommand { get; private set; }
+        public ICommand PBECommand { get; private set; }
+        public ICommand ReleasesCommand { get; private set; }
+        public ICommand RedPostsCommand { get; private set; }
+        public ICommand RotationsCommand { get; private set; }
+        public ICommand EsportsCommand { get; private set; }
     }  
 }
