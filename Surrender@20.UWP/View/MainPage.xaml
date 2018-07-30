@@ -44,6 +44,11 @@
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
+                    <i:Interaction.Behaviors>
+                        <core:EventTriggerBehavior EventName="Tapped">
+                            <core:InvokeCommandAction Command="{Binding VM.MenuItemTappedCommand}"/>
+                        </core:EventTriggerBehavior>
+                    </i:Interaction.Behaviors>
                 </NavigationViewItem>
                 
                 <NavigationViewItem Content="Releases" x:Name="ReleasesPage">
