@@ -1,4 +1,13 @@
+<<<<<<< HEAD:Surrender@20/View/MainPage.xaml.cs
 ﻿using Surrender_20.View;
+=======
+﻿using Surrender_20.Core.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
+>>>>>>> feature/packages:Surrender@20.UWP/View/MainPage.xaml.cs
 using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -8,9 +17,13 @@ namespace Surrender_20
 {
     public sealed partial class MainPage : Page
     {
+        public MainPageViewModel VM { get; set; }
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            VM = DataContext as MainPageViewModel;
 
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
