@@ -1,8 +1,14 @@
-﻿using System;
+﻿using Autofac.Core;
+using Prism.Mvvm;
+using Prism.Windows.AppModel;
+using Prism.Windows.Mvvm;
+using Prism.Windows.Navigation;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
 using Windows.Foundation;
@@ -20,7 +26,7 @@ namespace Surrender_20
     /// <summary>
     /// Provides application-specific behavior to supplement the default Application class.
     /// </summary>
-    sealed partial class App : Application
+    public sealed partial class App : Application
     {
         /// <summary>
         /// Initializes the singleton application object.  This is the first line of authored code
@@ -32,6 +38,7 @@ namespace Surrender_20
             this.Suspending += OnSuspending;
         }
 
+        #region Auto-generated
         /// <summary>
         /// Invoked when the application is launched normally by the end user.  Other entry points
         /// will be used such as when the application is launched to open a specific file.
@@ -96,5 +103,6 @@ namespace Surrender_20
             //TODO: Save application state and stop any background activity
             deferral.Complete();
         }
+        #endregion Auto-generated
     }
 }
