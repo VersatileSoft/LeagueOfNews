@@ -23,23 +23,51 @@
             </PivotItem>
 
             <PivotItem Header="About">
-                <StackPanel Margin="10,0,0,0">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30*"/>
+                        <ColumnDefinition Width="70*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="15*"/>
+                        <RowDefinition Height="50*"/>
+                    </Grid.RowDefinitions>
+
+                        
                     <PersonPicture DisplayName="Marek Kida"
-                                   ProfilePicture="ms-appx:///Assets/LargeTile.scale-400.png"
-                                   Margin="0,20,0,0"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"/>
-                    <PersonPicture DisplayName="Michał Woźniak"
-                                   ProfilePicture="ms-appx:///Assets/LargeTile.scale-400.png"
-                                   Margin="0,20,0,0"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"/>
-                    <PersonPicture DisplayName="Kacper Tryniecki"
-                                   ProfilePicture="ms-appx:///Assets/LargeTile.scale-400.png"
-                                   Margin="0,20,0,0"
-                                   HorizontalAlignment="Left"
-                                   VerticalAlignment="Top"/>
-                </StackPanel>
+                                   ProfilePicture="ms-appx:///Assets/Images/SettingsPageAssets/mymaster.jpg"
+                                   Grid.Row="0"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                        
+                    <PersonPicture DisplayName="Michał Woźniak"                                      
+                                   ProfilePicture="ms-appx:///Assets/Images/SettingsPageAssets/wozniak.jpg"                                                                             
+                                   Grid.Row="1"      
+                                   HorizontalAlignment="Center"                             
+                                   VerticalAlignment="Center"/>
+                        
+                    <PersonPicture DisplayName="Kacper Tryniecki"         
+                                   ProfilePicture="ms-appx:///Assets/Images/SettingsPageAssets/ja.jpg"                                                                                                           
+                                   Grid.Row="2"                                       
+                                   HorizontalAlignment="Center"    
+                                   VerticalAlignment="Center"/>
+
+                    <TextBlock Text="Marek Kida"
+                               VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="0"/>
+
+                    <TextBlock Text="Michał Woźniak"
+                               VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="1"/>
+
+                    <TextBlock Text="Kacper Tryniecki"
+                               VerticalAlignment="Center"
+                               Grid.Column="1" Grid.Row="2"/>
+
+                </Grid>
             </PivotItem>
         </Pivot>
     </Grid>
