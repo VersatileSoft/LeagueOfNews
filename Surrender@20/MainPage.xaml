@@ -5,10 +5,79 @@
     xmlns:local="using:Surrender_20"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:appmodel="using:Windows.ApplicationModel"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
+    <Page.Transitions>
+        <TransitionCollection>
+            <EntranceThemeTransition/>
+        </TransitionCollection>
+    </Page.Transitions>
 
     <Grid>
+        <Grid x:Name="AppTitleBar" VerticalAlignment="Top" Background="{ThemeResource SystemControlChromeMediumAcrylicWindowMediumBrush}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
+                <ColumnDefinition/>
+                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="{x:Bind appmodel:Package.Current.DisplayName}" 
+                       Grid.Column="1" 
+                       Style="{StaticResource CaptionTextBlockStyle}" 
+                       Margin="10,8,0,0"/>
+        </Grid>
 
+        <NavigationView x:Name="NavView"     
+                        Margin="0,30,0,0"
+                        IsSettingsVisible="True">
+
+            <NavigationView.MenuItems>
+                <NavigationViewItemHeader Content="Pages"/>
+                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage"/>
+                <NavigationViewItem Content="PBE" x:Name="MagicPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph=""/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Releases" x:Name="ReleasesPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph=""/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+                <NavigationViewItem Content="Red Posts" x:Name="RedPostsPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph="&#xEC7A;"/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+
+                <NavigationViewItem Icon="Contact" Content="Rotations" x:Name="RotationsPage"/>
+
+                <NavigationViewItem Content="E-Sports" x:Name="EsportsPage">
+                    <NavigationViewItem.Icon>
+                        <FontIcon Glyph=""/>
+                    </NavigationViewItem.Icon>
+                </NavigationViewItem>
+            </NavigationView.MenuItems>
+
+            <NavigationView.Header>
+                <Grid Margin="24,10,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+
+                    <TextBlock x:Name="TitlePageTextBlock"
+                               Style="{StaticResource TitleTextBlockStyle}"
+                               FontSize="28"
+                               VerticalAlignment="Center"
+                               Text="Welcome to Surrender@20!"/>
+                    <!--CommandBar maybe-->
+                </Grid>
+            </NavigationView.Header>
+
+            <Frame x:Name="DefaultFrame" Margin="24,0,24,0">
+                <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Frame>
+        </NavigationView>
     </Grid>
 </Page>
