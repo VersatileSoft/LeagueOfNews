@@ -6,6 +6,8 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:appmodel="using:Windows.ApplicationModel"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
     <Grid>
@@ -21,6 +23,7 @@
                        Margin="10,8,0,0"/>
         </Grid>
 
+        
         <NavigationView x:Name="NavView"     
                         Margin="0,30,0,0"
                         IsSettingsVisible="True"
@@ -28,8 +31,8 @@
 
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
-                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage"/>
-                <NavigationViewItem Content="PBE" x:Name="MagicPage">
+                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage" Tapped="HomePage_Tapped"/>
+                <NavigationViewItem Content="PBE">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
@@ -69,7 +72,6 @@
                     <!--CommandBar maybe-->
                 </Grid>
             </NavigationView.Header>
-
             <Frame x:Name="DefaultFrame" Margin="24,0,24,0">
                 <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Frame>
