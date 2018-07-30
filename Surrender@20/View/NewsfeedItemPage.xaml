@@ -11,10 +11,34 @@
             <EntranceThemeTransition/>
         </TransitionCollection>
     </Page.Transitions>
-    
+
     <Grid>
-        <TextBlock Text="NewsfeedItemPage" 
-                   VerticalAlignment="Center" 
-                   HorizontalAlignment="Center"/>
+        <Grid VerticalAlignment="Top" 
+              HorizontalAlignment="Stretch" 
+              Height="50" 
+              Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}">
+
+            <TextBlock Text="{Binding Title}"
+                       TextWrapping="Wrap"
+                       TextAlignment="Center"
+                       VerticalAlignment="Center"/>
+        </Grid>
+        <ScrollViewer Margin="20,0,20,50">
+            <StackPanel>
+                <ParallaxView>
+                    <Image Source="ms-appx:///Assets/SplashScreen.scale-400.png" 
+                           Margin="0,50,0,0" 
+                           VerticalAlignment="Top" 
+                           HorizontalAlignment="Center"/>
+                </ParallaxView>
+
+                <TextBlock Text="{Binding ContentDescription}" 
+                           VerticalAlignment="Top"
+                           Margin="0,20,0,0"/>
+            </StackPanel>
+        </ScrollViewer>
+        <CommandBar VerticalAlignment="Bottom" DefaultLabelPosition="Right" Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
+            <AppBarButton Icon="Share" Label="Share"/>
+        </CommandBar>
     </Grid>
 </Page>
