@@ -2,6 +2,7 @@
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
+using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModels
@@ -10,6 +11,8 @@ namespace Surrender_20.Core.ViewModels
     public class MainPageViewModel : MvxViewModel
     {     
         public string Title { get; set; } = "Home";
+        private readonly IMvxNavigationService _navigationService;
+
 
         public ICommand HomeCommand { get; private set; }
         public ICommand PBECommand { get; private set; }
@@ -28,8 +31,25 @@ namespace Surrender_20.Core.ViewModels
             RedPostsCommand = new MvxCommand(Placeholder);
             RotationsCommand = new MvxCommand(Placeholder);
             EsportsCommand = new MvxCommand(Placeholder);
+
+            _navigationService = navigationService;
         }
 
-        void Placeholder() { }
+        public override void ViewAppearing()
+        {
+            base.ViewAppearing();
+
+            MvxNotifyTask.Create(async () => await this.InitializeViewModels());
+        }
+
+        private async Task InitializeViewModels()
+        {
+            await _navigationService.Navigate<NewsfeedListViewModel>();
+        }
+
+        void Placeholder()
+        {
+
+        }
     }  
 }

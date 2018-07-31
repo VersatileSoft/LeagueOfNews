@@ -1,16 +1,12 @@
-﻿using System;
-
-using Android.App;
-using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using Android.OS;
+﻿using Android.App;
+using MvvmCross.Forms.Platforms.Android.Core;
+using MvvmCross.Forms.Platforms.Android.Views;
+using Surrender_20.Core;
 
 namespace Surrender_20.Forms.Droid
 {
-    [Activity(Label = "Surrender_20.Forms", Icon = "@mipmap/icon", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : MvxFormsAppCompatActivity<MvxFormsAndroidSetup<Core.App, FormsUI.App>, Core.App, FormsUI.App>
+    [Activity(Label = "Surrender_20.Forms", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = true)]
+    public class MainActivity : MvxFormsAppCompatActivity<MvxFormsAndroidSetup<CoreApp, FormsUI.App>, CoreApp, FormsUI.App>
     {
     }
 }

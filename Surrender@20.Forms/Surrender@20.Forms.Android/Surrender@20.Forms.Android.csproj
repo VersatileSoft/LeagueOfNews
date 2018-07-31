@@ -42,6 +42,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
+    <Reference Include="Mono.Android.Export" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -97,6 +98,10 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Surrender%4020.Core\Surrender%4020.Core.csproj">
+      <Project>{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}</Project>
+      <Name>Surrender%4020.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Surrender%4020.Forms\Surrender%4020.Forms.csproj">
       <Project>{d2f5605c-8569-4a30-b614-982dc34edc92}</Project>
       <Name>Surrender%4020.Forms</Name>
