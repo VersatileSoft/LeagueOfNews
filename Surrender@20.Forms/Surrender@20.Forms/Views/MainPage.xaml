@@ -2,9 +2,11 @@
 <MasterDetailPage
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    x:Class="ShotCounter.Views.MainPage"
-    Detail="{Binding DetailPage}"
-    IsGestureEnabled="True">
+    xmlns:local="clr-namespace:Surrender_20.Forms.Views"
+    x:Class="Surrender_20.Forms.Views.MainPage"
+    NavigationPage.HasNavigationBar="True">
+    <!--BindingContext="{Binding Path=MainPageViewModel, Source={StaticResource ViewModelLocator}}"-->
+
 
     <MasterDetailPage.Master>
         <!-- Hamburger Menu Secret Sauce... Add an Icon!!!! Make sure it's in your resources for your Platform Project -->
@@ -24,5 +26,15 @@
             </x:Arguments>
         </NavigationPage>
     </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+
+        <NavigationPage>
+            <x:Arguments>
+                <local:HomeView />
+            </x:Arguments>
+        </NavigationPage>
+    </MasterDetailPage.Detail>
+    
 
 </MasterDetailPage>

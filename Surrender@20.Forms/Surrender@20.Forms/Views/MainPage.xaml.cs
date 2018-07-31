@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Surrender@20.Forms.Views
+namespace Surrender_20.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainPage : MasterDetailPage
@@ -16,9 +16,6 @@ namespace Surrender@20.Forms.Views
         public MainPage()
         {
             InitializeComponent();
-
-            BindingContext = new MainPageViewModel();
-
         }
     }
 }
