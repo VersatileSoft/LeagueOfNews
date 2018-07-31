@@ -39,11 +39,12 @@ namespace Surrender_20.Core.ViewModels
         {
             base.ViewAppearing();
 
-            MvxNotifyTask.Create(async () => await this.InitializeViewModels());
+          //  MvxNotifyTask.Create(async () => await this.InitializeViewModels());
         }
 
         private async Task InitializeViewModels()
         {
+            await _navigationService.Navigate<MenuViewModel>();
             await _navigationService.Navigate<NewsfeedListViewModel>();
         }
 

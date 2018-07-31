@@ -12,5 +12,10 @@ namespace Surrender_20.Forms.Views
         {
             InitializeComponent();
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
     }
 }
