@@ -36,10 +36,10 @@
 
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
-                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage" Tapped="HomePage_Tapped">
+                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage">
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{Binding VM.HomeCommand}"/>
+                            <core:InvokeCommandAction Command="{x:Bind VM.HomeCommand}"/>
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </NavigationViewItem>
@@ -51,7 +51,7 @@
 
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{Binding VM.PBECommand}"/>
+                            <core:InvokeCommandAction Command="{x:Bind VM.PBECommand}"/>
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </NavigationViewItem>
@@ -63,7 +63,7 @@
                     
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{Binding VM.ReleasesCommand}"/>
+                            <core:InvokeCommandAction Command="{x:Bind VM.ReleasesCommand}"/>
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </NavigationViewItem>
@@ -75,7 +75,7 @@
                     
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{Binding VM.RedPostsCommand}"/>
+                            <core:InvokeCommandAction Command="{x:Bind VM.RedPostsCommand}"/>
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </NavigationViewItem>
@@ -83,7 +83,7 @@
                 <NavigationViewItem Icon="Contact" Content="Rotations" x:Name="RotationsPage">
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
-                        <core:InvokeCommandAction Command="{Binding VM.RotationsCommand}"/>
+                            <core:InvokeCommandAction Command="{x:Bind VM.RotationsCommand}"/>
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </NavigationViewItem>
@@ -95,25 +95,24 @@
 
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{Binding VM.EsportsCommand}"/>
+                            <core:InvokeCommandAction Command="{x:Bind VM.EsportsCommand}"/>
                         </core:EventTriggerBehavior>
                     </i:Interaction.Behaviors>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
 
             <NavigationView.Header>
-                <Grid Margin="24,10,0,0">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>
-
-                    <TextBlock x:Name="TitlePageTextBlock"
-                               Style="{StaticResource TitleTextBlockStyle}"
-                               FontSize="28"
-                               VerticalAlignment="Center"
-                               Text="{x:Bind VM.Title}"/>
-                    <!--CommandBar maybe-->
+                <Grid Margin="24,0,0,0">
+                    <CommandBar Background="Transparent">
+                        
+                        <CommandBar.PrimaryCommands>
+                            <AppBarButton Icon="Like" Label="Donate"/>
+                        </CommandBar.PrimaryCommands>
+                        
+                        <CommandBar.Content>
+                            <TextBlock Text="{x:Bind VM.Title}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                        </CommandBar.Content>
+                    </CommandBar>
                 </Grid>
             </NavigationView.Header>
             <Frame x:Name="DefaultFrame" Margin="24,0,24,0">

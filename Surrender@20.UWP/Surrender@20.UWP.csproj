@@ -116,7 +116,8 @@
     <None Include="Surrender@20_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Assets\Background.png" />
+    <Content Include="Assets\Images\NewsfeedAssets\BackgroundLight.png" />
+    <Content Include="Assets\Images\NewsfeedAssets\BackgroundDark.png" />
     <Content Include="Assets\Images\SettingsPageAssets\ja.jpg" />
     <Content Include="Assets\Images\SettingsPageAssets\mymaster.jpg" />
     <Content Include="Assets\Images\SettingsPageAssets\wozniak.jpg" />
@@ -175,6 +176,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Styles\Styles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

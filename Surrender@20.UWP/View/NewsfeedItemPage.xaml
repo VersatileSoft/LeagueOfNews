@@ -15,37 +15,33 @@
         </TransitionCollection>
     </Page.Transitions>
 
-    <Page.Resources>
+    <UserControl.Resources>
         <ResourceDictionary>
-            <!--<conv:UriToImageSource x:Key="UriToImageSource"/>-->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Page.Resources>
-    
+    </UserControl.Resources>
+
     <Grid>
-        <ProgressRing IsActive="True"
-                      Width="100"
-                      Height="100"
-                      VerticalAlignment="Center" 
-                      HorizontalAlignment="Center"
+        <ProgressRing Style="{StaticResource LoadingRing}"
                       Visibility="Visible"/>
         
         <ParallaxView Source="{x:Bind ListView}" VerticalShift="200">
             <Image x:Name="BackgroundImage" 
-                   Source="{Binding Path=Data.Image}"
-                   Stretch="UniformToFill"
-                   HorizontalAlignment="Center"
-                   Opacity="1"/>
+                   Style="{StaticResource BackgroudParallaxImage}"/>
         </ParallaxView>
 
-        <ScrollViewer x:Name="ListView" Visibility="Visible" Margin="20,00,20,0">
-            <StackPanel>
+        <ScrollViewer x:Name="ListView" Visibility="Visible" >
+            <StackPanel Margin="20,00,20,0">
                 <ParallaxView>
                     <Image Source="{Binding NewsImage}" 
                            VerticalAlignment="Top" 
                            HorizontalAlignment="Center"/>
                 </ParallaxView>
 
-                <ContentControl Content="{Binding ContentDescription}"/>
+                <ContentControl Content="{Binding ContentDescription}"
+                                Margin="0,10,0,0"/>
             </StackPanel>
         </ScrollViewer>
         <CommandBar VerticalAlignment="Bottom" DefaultLabelPosition="Right" Margin="-24,0,-24,0" Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}">

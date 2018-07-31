@@ -13,16 +13,28 @@
             <EntranceThemeTransition/>
         </TransitionCollection>
     </Page.Transitions>
-    
+
+    <UserControl.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </UserControl.Resources>
+
     <Grid>
-        <ProgressRing IsActive="True"
-                      Width="150"
-                      Height="150"
-                      VerticalAlignment="Center" 
-                      HorizontalAlignment="Center"
+        <ProgressRing Style="{StaticResource LoadingRing}"
                       Visibility="Visible"/>
 
-        <ListView ItemsSource="{Binding Newsfeeds}">
+        <ParallaxView Source="{x:Bind ListView}" 
+                      VerticalShift="200">
+            <Image x:Name="BackgroundImage" 
+                   Style="{StaticResource BackgroudParallaxImage}"/>
+        </ParallaxView>
+
+        <ListView x:Name="ListView" 
+                  Visibility="Visible" 
+                  ItemsSource="{Binding Newsfeeds}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Viewbox>
@@ -52,9 +64,9 @@
                                    Grid.Row="1"/>
 
                             <TextBlock Text="{Binding Description}"
-                                                MaxLines="3"
-                                                Grid.Column="1"
-                                                Grid.Row="2"/>
+                                       MaxLines="3"
+                                       Grid.Column="1"
+                                       Grid.Row="2"/>
                         </Grid>
                     </Viewbox>
                 </DataTemplate>

@@ -68,8 +68,6 @@ namespace Surrender_20
             if (NavView.Content != null)
             {
                 ((Frame)NavView.Content).Navigate(typeof(NewsfeedItemPage));
-
-                TitlePageTextBlock.Text = "Home";
             }
         }
     }
