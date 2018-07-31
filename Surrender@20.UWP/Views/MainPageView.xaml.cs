@@ -1,8 +1,6 @@
-using Surrender_20.View;
 using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.Core.ViewModels;
 
@@ -59,15 +57,6 @@ namespace Surrender_20
             {
                 AppTitleBar.Visibility = Visibility.Collapsed;
             }
-        }
-
-        // Do wyjebki
-        private void HomePage_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-            if (NavView.Content != null)
-            {
-                ((Frame)NavView.Content).Navigate(typeof(NewsfeedItemView));
-            }
-        }
+        }       
     }
 }

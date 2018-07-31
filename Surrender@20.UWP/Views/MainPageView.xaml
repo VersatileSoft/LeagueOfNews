@@ -29,7 +29,8 @@
                        Margin="10,8,0,0"/>
         </Grid>
        
-        <NavigationView x:Name="NavView"     
+        <NavigationView x:Name="NavView"
+                        OpenPaneLength="200"
                         Margin="0,30,0,0"
                         IsSettingsVisible="True"
                         IsBackButtonVisible="Collapsed">
@@ -85,7 +86,7 @@
                     -->
                 </NavigationViewItem>
 
-                <NavigationViewItem Icon="Contact" Content="Rotations" x:Name="RotationsPage">
+                <NavigationViewItem Icon="People" Content="Rotations" x:Name="RotationsPage">
                     <!--
                     <i:Interaction.Behaviors>
                         <core:EventTriggerBehavior EventName="Tapped">
@@ -110,15 +111,14 @@
             </NavigationView.MenuItems>
 
             <NavigationView.Header>
-                <Grid Margin="24,0,0,0">
-                    <CommandBar Background="Transparent">
-                        
+                <Grid Margin="24,10,10,0">
+                    <CommandBar DefaultLabelPosition="Right" Background="Transparent">
                         <CommandBar.PrimaryCommands>
-                            <AppBarButton Icon="Like" Label="Donate"/>
+                            <AppBarButton Icon="Refresh" Label="Refresh"/>
                         </CommandBar.PrimaryCommands>
                         
                         <CommandBar.Content>
-                            <TextBlock Text="{x:Bind VM.Title}" VerticalAlignment="Center" HorizontalAlignment="Left"/>
+                            <TextBlock Text="{x:Bind VM.Title}" Margin="12,14"/>
                         </CommandBar.Content>
                     </CommandBar>
                 </Grid>
