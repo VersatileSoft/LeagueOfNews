@@ -1,6 +1,8 @@
 ﻿using Autofac;
+using ReactiveUI.Autofac;
 using Surrender_20.Core.ViewModel;
 using System;
+using System.Reflection;
 
 namespace Surrender_20.Core
 {
@@ -16,7 +18,9 @@ namespace Surrender_20.Core
             containerBuilder.RegisterType<NewsfeedItemViewModel>();
             containerBuilder.RegisterType<SettingsViewModel>();
 
-            _container = containerBuilder.Build();
+            containerBuilder.RegisterForReactiveUI(Assembly.GetExecutingAssembly());
+
+            RxAppAutofacExtension.UseAutofacDependencyResolver(containerBuilder.Build());
         }
 
         public MainPageViewModel MainPageViewModel => _container.Resolve<MainPageViewModel>();
