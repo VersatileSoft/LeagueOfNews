@@ -2,19 +2,17 @@
 using Xamarin.Forms;
 using Surrender_20.Forms.Views;
 using Xamarin.Forms.Xaml;
+using MvvmCross.Forms.Core;
 
 [assembly: XamlCompilation (XamlCompilationOptions.Compile)]
 namespace Surrender_20.Forms
 {
-	public partial class App : Application
+	public partial class App : MvxFormsApplication
 	{
 		
 		public App ()
 		{
 			InitializeComponent();
-
-
-			MainPage = new MainPage();
 		}
 
 		protected override void OnStart ()

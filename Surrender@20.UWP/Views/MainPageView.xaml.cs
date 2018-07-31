@@ -1,21 +1,20 @@
 using Surrender_20.View;
-using Surrender_20.Core.ViewModel;
 using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using MvvmCross.Platforms.Uap.Views;
+using Surrender_20.Core.ViewModels;
 
 namespace Surrender_20
 {
-    public sealed partial class MainPage : Page
+    public sealed partial class MainPageView : MvxWindowsPage
     {
-        public MainPageViewModel VM { get; set; }
+        public MainPageViewModel VM => ViewModel as MainPageViewModel;
 
-        public MainPage()
+        public MainPageView()
         {
             this.InitializeComponent();
-
-            VM = DataContext as MainPageViewModel;
 
             // Hide default title bar.
             var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -67,7 +66,7 @@ namespace Surrender_20
         {
             if (NavView.Content != null)
             {
-                ((Frame)NavView.Content).Navigate(typeof(NewsfeedItemPage));
+                ((Frame)NavView.Content).Navigate(typeof(NewsfeedItemView));
             }
         }
     }

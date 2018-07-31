@@ -1,12 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<MasterDetailPage
+<m:MvxContentPage
+    xmlns:m="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:Surrender_20.Forms.Views"
     x:Class="Surrender_20.Forms.Views.MainPage"
     NavigationPage.HasNavigationBar="True">
-    <!--BindingContext="{Binding Path=MainPageViewModel, Source={StaticResource ViewModelLocator}}"-->
-
 
     <MasterDetailPage.Master>
         <!-- Hamburger Menu Secret Sauce... Add an Icon!!!! Make sure it's in your resources for your Platform Project -->
@@ -37,4 +36,4 @@
     </MasterDetailPage.Detail>
     
 
-</MasterDetailPage>
+</m:MvxContentPage>
