@@ -1,11 +1,17 @@
-﻿using MvvmCross.ViewModels;
+﻿using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using PropertyChanged;
 
 namespace Surrender_20.Core.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
-    public class NewsfeedItemViewModel : MvxViewModel
+    public class NewsfeedItemViewModel : BaseViewModel<string>
     {
         public string Title { get; set; } = "Weź coś zrób";
+
+        public NewsfeedItemViewModel(IMvxNavigationService navigationService) :
+            base(navigationService)
+        {
+
+        }
     }
 }

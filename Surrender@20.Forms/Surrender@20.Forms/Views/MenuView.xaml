@@ -9,15 +9,15 @@
     Title="{Binding Title}">
     <views:MvxContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-            <Label Text="{Binding Title}"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-
-
+            <Button Text="Home" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" Command="{Binding HomeCommand}"/>
+            <Button Text="PBE" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" Command="{Binding PBECommand}"/>
+            <Button Text="Releases" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" Command="{Binding ReleasesCommand}" />
+            <Button Text="Red Posts" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" Command="{Binding RedPostsCommand}"/>
+            <Button Text="People" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" Command="{Binding RotationsCommand}"/>
+            <Button Text="E-Sports" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" Command="{Binding EsportsCommand}"/>
+            <BoxView HeightRequest="3" Color="Gray" HorizontalOptions="FillAndExpand"/>
+            <Button Text="Settings" BackgroundColor="White" BorderWidth="1" BorderColor="Gray"/>
+            <Button Text="Help" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" />
         </StackLayout>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

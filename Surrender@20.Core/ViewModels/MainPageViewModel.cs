@@ -7,32 +7,14 @@ using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
-    public class MainPageViewModel : MvxViewModel
+    public class MainPageViewModel : BaseViewModel<string>
     {     
         public string Title { get; set; } = "Home";
-        private readonly IMvxNavigationService _navigationService;
 
-
-        public ICommand HomeCommand { get; private set; }
-        public ICommand PBECommand { get; private set; }
-        public ICommand ReleasesCommand { get; private set; }
-        public ICommand RedPostsCommand { get; private set; }
-        public ICommand RotationsCommand { get; private set; }
-        public ICommand EsportsCommand { get; private set; }
-
-        public MainPageViewModel(IMvxNavigationService navigationService)
+        public MainPageViewModel(IMvxNavigationService navigationService) : 
+            base(navigationService)
         {
-            PBECommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("Wklep url, lol"));
 
-            HomeCommand = new MvxCommand(Placeholder);
-            PBECommand = new MvxCommand(Placeholder);
-            ReleasesCommand = new MvxCommand(Placeholder);
-            RedPostsCommand = new MvxCommand(Placeholder);
-            RotationsCommand = new MvxCommand(Placeholder);
-            EsportsCommand = new MvxCommand(Placeholder);
-
-            _navigationService = navigationService;
         }
 
         public override void ViewAppearing()
@@ -47,11 +29,6 @@ namespace Surrender_20.Core.ViewModels
             await _navigationService.Navigate<MenuViewModel>();
             await _navigationService.Navigate<NewsfeedListViewModel>();
             
-        }
-
-        void Placeholder()
-        {
-
-        }
+        }        
     }  
 }
