@@ -3,7 +3,7 @@ using PropertyChanged;
 using MvvmCross.Commands;
 using System.Windows.Input;
 using MvvmCross.Navigation;
-using static System.Net.Mime.MediaTypeNames;
+
 
 namespace Surrender_20.Core.ViewModels
 {
@@ -21,19 +21,14 @@ namespace Surrender_20.Core.ViewModels
         public MenuViewModel(IMvxNavigationService navigationService) :
             base(navigationService)
         {
-            
 
+            //TODO change value IsPresented in MainPageViewModel when command execute 
             HomeCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
-            PBECommand = new MvxCommand(() => navigationService.Navigate<PBEViewModel, string>("nie wiem czy zrobić BaseViewModel bez generyka, w sumie nie chce mi się xD"));
-            ReleasesCommand = new MvxCommand(Placeholder);
-            RedPostsCommand = new MvxCommand(Placeholder);
-            RotationsCommand = new MvxCommand(Placeholder);
-            EsportsCommand = new MvxCommand(Placeholder);
-        }
-
-        void Placeholder()
-        {
-
+            PBECommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
+            ReleasesCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
+            RedPostsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
+            RotationsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
+            EsportsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
         }
     }
 }

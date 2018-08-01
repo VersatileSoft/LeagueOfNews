@@ -13,9 +13,9 @@ using Xamarin.Forms.Xaml;
 namespace Surrender_20.Forms.Views
 {
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = true)]
-    public partial class PBEView : MvxContentPage<PBEViewModel>
-{
-		public PBEView ()
+    public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
+    {
+		public NewsfeedListView()
 		{
 			InitializeComponent ();
 		}

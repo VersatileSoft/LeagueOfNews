@@ -6,8 +6,11 @@
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:Surrender_20.Core.ViewModels;assembly=Surrender_20.Core"
     x:Class="Surrender_20.Forms.Views.MenuView"
-    Title="{Binding Title}">
+    Title="{Binding Title}"
+                      NavigationPage.HasNavigationBar = "True">
+
     <views:MvxContentPage.Content>
+      
         <StackLayout>
             <Button Text="Home" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" Command="{Binding HomeCommand}"/>
             <Button Text="PBE" BackgroundColor="White" BorderWidth="1" BorderColor="Gray" Command="{Binding PBECommand}"/>

@@ -10,6 +10,7 @@ namespace Surrender_20.Core.ViewModels
     public class MainPageViewModel : BaseViewModel<string>
     {     
         public string Title { get; set; } = "Home";
+        public bool IsPresented { get; private set; } = true;
 
         public MainPageViewModel(IMvxNavigationService navigationService) : 
             base(navigationService)

@@ -7,5 +7,8 @@
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:Surrender_20.Core.ViewModels"
     x:Class="Surrender_20.Forms.Views.MainPage"
-    Icon="hamburger.png">
+    Icon="hamburger.png"
+    IsPresented="{Binding IsPresented}"
+    Title="{Binding Title}">
+
 </views:MvxMasterDetailPage>
