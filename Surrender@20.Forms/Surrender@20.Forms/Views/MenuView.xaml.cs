@@ -12,12 +12,18 @@ using Xamarin.Forms.Xaml;
 
 namespace Surrender_20.Forms.Views
 {
-    [MvxMasterDetailPagePresentation(MasterDetailPosition.Master)]
+    [MvxMasterDetailPagePresentation(MasterDetailPosition.Master, WrapInNavigationPage = true, Title = "Master")]
     public partial class MenuView : MvxContentPage<MenuViewModel>
     {
 		public MenuView ()
 		{
 			InitializeComponent ();
-		}
+
+            if (Parent is MasterDetailPage md)
+            {
+                md.MasterBehavior = MasterBehavior.Popover;
+                md.IsPresented = true;
+            }
+        }
 	}
 }
