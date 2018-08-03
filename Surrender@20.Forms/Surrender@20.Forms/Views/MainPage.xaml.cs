@@ -5,7 +5,7 @@ using Xamarin.Forms.Xaml;
 
 namespace Surrender_20.Forms.Views
 {
-    [MvxTabbedPagePresentation(TabbedPosition.Root)]
+    [MvxTabbedPagePresentation(TabbedPosition.Root, WrapInNavigationPage = false)]
     public partial class MainPage : MvxTabbedPage<MainPageViewModel>
     {
         public MainPage()
@@ -13,6 +13,12 @@ namespace Surrender_20.Forms.Views
             InitializeComponent();
 
             
+        }
+
+        protected override void OnAppearing()
+        {
+            ViewModel.Os = "Android";
+            base.OnAppearing();
         }
     }
 }
