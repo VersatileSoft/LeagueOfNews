@@ -17,101 +17,49 @@
     </m:MvxWindowsPage.Transitions>
     
     <Grid>
-        <Grid x:Name="AppTitleBar" VerticalAlignment="Top" Background="{ThemeResource SystemControlChromeMediumAcrylicWindowMediumBrush}">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition x:Name="LeftPaddingColumn" Width="0"/>
-                <ColumnDefinition/>
-                <ColumnDefinition x:Name="RightPaddingColumn" Width="0"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Text="{x:Bind appmodel:Package.Current.DisplayName}" 
-                       Grid.Column="1" 
-                       Style="{StaticResource CaptionTextBlockStyle}" 
-                       Margin="10,8,0,0"/>
-        </Grid>
-       
+        <Grid x:Name="DragArea" Margin="50,0,0,0" VerticalAlignment="Top" Height="45"/>
+
         <NavigationView x:Name="NavView"
                         OpenPaneLength="200"
-                        Margin="0,30,0,0"
                         IsSettingsVisible="True"
-                        IsBackButtonVisible="Collapsed">
+                        IsBackButtonVisible="Collapsed"
+                        SelectionChanged="NavView_ItemSelected"
+                        PaneTitle="{x:Bind appmodel:Package.Current.DisplayName}">
 
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
-                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage">
-                    <!--
-                    <i:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{x:Bind VM.HomeCommand}"/>
-                        </core:EventTriggerBehavior>
-                    </i:Interaction.Behaviors>
-                    -->
-                </NavigationViewItem>
-                
+
+                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage"/>
+
                 <NavigationViewItem Content="PBE">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
-                    <!--
-                    <i:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{x:Bind VM.PBECommand}"/>
-                        </core:EventTriggerBehavior>
-                    </i:Interaction.Behaviors>
-                    -->
                 </NavigationViewItem>
 
                 <NavigationViewItem Content="Releases" x:Name="ReleasesPage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
-                    <!--
-                    <i:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{x:Bind VM.ReleasesCommand}"/>
-                        </core:EventTriggerBehavior>
-                    </i:Interaction.Behaviors>
-                    -->
                 </NavigationViewItem>
                 
                 <NavigationViewItem Content="Red Posts" x:Name="RedPostsPage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEC7A;"/>
                     </NavigationViewItem.Icon>
-                    <!--
-                    <i:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{x:Bind VM.RedPostsCommand}"/>
-                        </core:EventTriggerBehavior>
-                    </i:Interaction.Behaviors>
-                    -->
                 </NavigationViewItem>
 
-                <NavigationViewItem Icon="People" Content="Rotations" x:Name="RotationsPage">
-                    <!--
-                    <i:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{x:Bind VM.RotationsCommand}"/>
-                        </core:EventTriggerBehavior>
-                    </i:Interaction.Behaviors>
-                    -->
-                </NavigationViewItem>
+                <NavigationViewItem Icon="People" Content="Rotations" x:Name="RotationsPage"/>
 
                 <NavigationViewItem Content="E-Sports" x:Name="EsportsPage">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
-                    <!--
-                    <i:Interaction.Behaviors>
-                        <core:EventTriggerBehavior EventName="Tapped">
-                            <core:InvokeCommandAction Command="{x:Bind VM.EsportsCommand}"/>
-                        </core:EventTriggerBehavior>
-                    </i:Interaction.Behaviors>
-                    -->
                 </NavigationViewItem>
             </NavigationView.MenuItems>
 
             <NavigationView.Header>
-                <Grid Margin="24,10,10,0">
+                <Grid Margin="20,40,20,0">
                     <CommandBar DefaultLabelPosition="Right" Background="Transparent">
                         <CommandBar.PrimaryCommands>
                             <AppBarButton Icon="Refresh" Label="Refresh"/>
@@ -123,7 +71,7 @@
                     </CommandBar>
                 </Grid>
             </NavigationView.Header>
-            <Frame x:Name="DefaultFrame" Margin="24,0,24,0">
+            <Frame x:Name="ContentFrame" Margin="20,0,20,0">
                 <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Frame>
         </NavigationView>

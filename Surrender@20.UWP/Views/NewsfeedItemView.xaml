@@ -44,7 +44,7 @@
                                 Margin="0,10,0,0"/>
             </StackPanel>
         </ScrollViewer>
-        <CommandBar VerticalAlignment="Bottom" DefaultLabelPosition="Right" Margin="-24,0,-24,0" Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}">
+        <CommandBar VerticalAlignment="Bottom" DefaultLabelPosition="Right" Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}">
             <AppBarButton Icon="Share" Label="Share"/>
         </CommandBar>
     </Grid>

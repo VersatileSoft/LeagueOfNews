@@ -1,8 +1,11 @@
-using Windows.ApplicationModel.Core;
+﻿using Windows.ApplicationModel.Core;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
 using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.Core.ViewModels;
+using Windows.UI;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Media.Animation;
 
 namespace Surrender_20
 {
@@ -14,49 +17,48 @@ namespace Surrender_20
         {
             this.InitializeComponent();
 
-            // Hide default title bar.
-            var coreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            coreTitleBar.ExtendViewIntoTitleBar = true;
-            UpdateTitleBarLayout(coreTitleBar);
-
-            Window.Current.SetTitleBar(AppTitleBar);
+            var CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            CoreTitleBar.ExtendViewIntoTitleBar = true;
+            Window.Current.SetTitleBar(DragArea);
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
-            titleBar.ButtonBackgroundColor = Windows.UI.Colors.Transparent;
-            // Register a handler for when the size of the overlaid caption control changes.
-            // For example, when the app moves to a screen with a different DPI.
-            coreTitleBar.LayoutMetricsChanged += CoreTitleBar_LayoutMetricsChanged;
-
-            // Register a handler for when the title bar visibility changes.
-            // For example, when the title bar is invoked in full screen mode.
-            coreTitleBar.IsVisibleChanged += CoreTitleBar_IsVisibleChanged;
+            titleBar.ButtonBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
 
-        private void CoreTitleBar_LayoutMetricsChanged(CoreApplicationViewTitleBar sender, object args)
+        private void NavView_ItemSelected(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
-            UpdateTitleBarLayout(sender);
-        }
+            NavigationViewItem item = args.SelectedItem as NavigationViewItem;
 
-        private void UpdateTitleBarLayout(CoreApplicationViewTitleBar coreTitleBar)
-        {
-            // Get the size of the caption controls area and back button 
-            // (returned in logical pixels), and move your content around as necessary.
-            LeftPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayLeftInset);
-            RightPaddingColumn.Width = new GridLength(coreTitleBar.SystemOverlayRightInset);
-
-            // Update title bar control size as needed to account for system size changes.
-            AppTitleBar.Height = coreTitleBar.Height;
-        }
-
-        private void CoreTitleBar_IsVisibleChanged(CoreApplicationViewTitleBar sender, object args)
-        {
-            if (sender.IsVisible)
+            if (item.Name == "LevelPage")
             {
-                AppTitleBar.Visibility = Visibility.Visible;
+                ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
+                //TitlePageTextBlock.Text = "Statystyki postaci";
             }
-            else
+            else if (item.Name == "MagicPage")
             {
-                AppTitleBar.Visibility = Visibility.Collapsed;
+                ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
+                //TitlePageTextBlock.Text = "Siła czarów i run";
             }
-        }       
+            else if (item.Name == "SkillsPage")
+            {
+                ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
+                //TitlePageTextBlock.Text = "Umiejętności";
+            }
+            else if (item.Name == "ItemsListPage")
+            {
+                ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
+                //TitlePageTextBlock.Text = "Lista przedmiotów";
+            }
+            else if (item.Name == "TutorialsPage")
+            {
+                ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
+                //TitlePageTextBlock.Text = "Poradniki Youtube";
+            }
+            else if (item.Content.Equals("Settings"))
+            {
+                ContentFrame.Navigate(typeof(SettingsViewModel), null, new DrillInNavigationTransitionInfo());
+                //TitlePageTextBlock.Text = "Informacje";
+            }
+        }
     }
 }
