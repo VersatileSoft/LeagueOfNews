@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 
 namespace Surrender_20.Forms.Views
 {
-    [MvxMasterDetailPagePresentation(MasterDetailPosition.Master, WrapInNavigationPage = true, Title = "Master")]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab)]
     public partial class MenuView : MvxContentPage<MenuViewModel>
     {
 		public MenuView ()

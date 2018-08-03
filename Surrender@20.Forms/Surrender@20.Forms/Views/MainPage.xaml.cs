@@ -5,12 +5,14 @@ using Xamarin.Forms.Xaml;
 
 namespace Surrender_20.Forms.Views
 {
-    [MvxMasterDetailPagePresentation(MasterDetailPosition.Root, WrapInNavigationPage = false, Title = "Root")]
-    public partial class MainPage : MvxMasterDetailPage<MainPageViewModel>
+    [MvxTabbedPagePresentation(TabbedPosition.Root)]
+    public partial class MainPage : MvxTabbedPage<MainPageViewModel>
     {
         public MainPage()
         {
             InitializeComponent();
+
+            
         }
     }
 }

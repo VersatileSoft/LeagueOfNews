@@ -27,8 +27,13 @@ namespace Surrender_20.Core.ViewModels
 
         private async Task InitializeViewModels()
         {
-            await _navigationService.Navigate<MenuViewModel>();
-            await _navigationService.Navigate<NewsfeedListViewModel>();
+            await _navigationService.Navigate<NewsfeedListViewModel, string>("Home");
+            await _navigationService.Navigate<NewsfeedListViewModel, string>("PBE");
+            await _navigationService.Navigate<NewsfeedListViewModel, string>("Releases");
+            await _navigationService.Navigate<NewsfeedListViewModel, string>("Red Posts");
+            await _navigationService.Navigate<NewsfeedListViewModel, string>("People");
+            await _navigationService.Navigate<NewsfeedListViewModel, string>("E-Sports");
+            await _navigationService.Navigate<NewsfeedListViewModel, string>("Settings");
             
         }        
     }  

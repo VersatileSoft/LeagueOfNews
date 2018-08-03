@@ -10,6 +10,8 @@ namespace Surrender_20.Core.ViewModels
         [DoNotSetChanged] //TODO check if private access does not do that by default
         private string _url { get; set; }
 
+        public string Title { get; set; }
+
         public NewsfeedListViewModel(IMvxNavigationService navigationService) :
            base(navigationService)
         {
@@ -18,7 +20,7 @@ namespace Surrender_20.Core.ViewModels
 
         public override void Prepare(string parameter)
         {
-            _url = parameter;
+            Title = parameter;
         }
     }
 }

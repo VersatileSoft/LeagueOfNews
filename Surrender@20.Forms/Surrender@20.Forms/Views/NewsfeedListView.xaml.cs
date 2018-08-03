@@ -12,7 +12,7 @@ using Xamarin.Forms.Xaml;
 
 namespace Surrender_20.Forms.Views
 {
-    [MvxMasterDetailPagePresentation(Title = "Detail")]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab)]
     public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
     {
 		public NewsfeedListView()
