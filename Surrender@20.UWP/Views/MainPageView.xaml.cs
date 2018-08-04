@@ -6,6 +6,7 @@ using Surrender_20.Core.ViewModels;
 using Windows.UI;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Media.Animation;
+using Surrender_20.View;
 
 namespace Surrender_20
 {
@@ -25,31 +26,36 @@ namespace Surrender_20
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
 
-        private void NavView_ItemSelected(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
+        /*private void NavView_ItemSelected(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
         {
             NavigationViewItem item = args.SelectedItem as NavigationViewItem;
 
-            if (item.Name == "LevelPage")
+            if (item.Content.Equals("Home"))
             {
-                ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
+                ContentFrame.Navigate(typeof(NewsfeedListView), null, new DrillInNavigationTransitionInfo());
                 //TitlePageTextBlock.Text = "Statystyki postaci";
             }
-            else if (item.Name == "MagicPage")
+            else if (item.Content.Equals("PBE"))
             {
                 ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
                 //TitlePageTextBlock.Text = "Siła czarów i run";
             }
-            else if (item.Name == "SkillsPage")
+            else if (item.Content.Equals("Releases"))
             {
                 ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
                 //TitlePageTextBlock.Text = "Umiejętności";
             }
-            else if (item.Name == "ItemsListPage")
+            else if (item.Content.Equals("Red Posts"))
             {
                 ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
                 //TitlePageTextBlock.Text = "Lista przedmiotów";
             }
-            else if (item.Name == "TutorialsPage")
+            else if (item.Content.Equals("Rotations"))
+            {
+                ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
+                //TitlePageTextBlock.Text = "Poradniki Youtube";
+            }
+            else if (item.Content.Equals("E-Sports"))
             {
                 ContentFrame.Navigate(typeof(NewsfeedListViewModel), null, new DrillInNavigationTransitionInfo());
                 //TitlePageTextBlock.Text = "Poradniki Youtube";
@@ -59,6 +65,6 @@ namespace Surrender_20
                 ContentFrame.Navigate(typeof(SettingsViewModel), null, new DrillInNavigationTransitionInfo());
                 //TitlePageTextBlock.Text = "Informacje";
             }
-        }
+        }*/
     }
 }

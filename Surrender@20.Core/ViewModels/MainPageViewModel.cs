@@ -26,6 +26,7 @@ namespace Surrender_20.Core.ViewModels
         public ICommand EsportsCommand { get; private set; }
 
 
+        public ICommand NavViewCommand { get; private set; }
 
         public MainPageViewModel(IMvxNavigationService navigationService) :
             base(navigationService)
@@ -43,6 +44,13 @@ namespace Surrender_20.Core.ViewModels
                 RotationsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "E-Sports", "url" } })));
                 EsportsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Settings", "url" } })));
             }
+                HomeCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("Home"));
+                PBECommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("PBE"));
+                ReleasesCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("Red Posts"));
+                RedPostsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
+                RotationsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
+                EsportsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
+            }   
         }
 
         public override void ViewAppearing()

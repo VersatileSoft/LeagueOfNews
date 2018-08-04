@@ -17,19 +17,23 @@
     </m:MvxWindowsPage.Transitions>
     
     <Grid>
-        <Grid x:Name="DragArea" Margin="50,0,0,0" VerticalAlignment="Top" Height="45"/>
+        <Grid x:Name="DragArea" Background="Transparent" HorizontalAlignment="Stretch" Height="40" VerticalAlignment="Top" Margin="50,0,0,0" Canvas.ZIndex="5"/>
 
         <NavigationView x:Name="NavView"
                         OpenPaneLength="200"
                         IsSettingsVisible="True"
                         IsBackButtonVisible="Collapsed"
-                        SelectionChanged="NavView_ItemSelected"
                         PaneTitle="{x:Bind appmodel:Package.Current.DisplayName}">
+            <i:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="SelectionChanged">
+                    <core:InvokeCommandAction Command="{Binding NavViewCommand}" CommandParameter="{x:Bind NavView}"/>
+                </core:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
 
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
 
-                <NavigationViewItem Icon="Home" Content="Home" x:Name="HomePage"/>
+                <NavigationViewItem Icon="Home" Content="Home"/>
 
                 <NavigationViewItem Content="PBE">
                     <NavigationViewItem.Icon>
@@ -37,21 +41,21 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Content="Releases" x:Name="ReleasesPage">
+                <NavigationViewItem Content="Releases">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
                 
-                <NavigationViewItem Content="Red Posts" x:Name="RedPostsPage">
+                <NavigationViewItem Content="Red Posts">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEC7A;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Icon="People" Content="Rotations" x:Name="RotationsPage"/>
+                <NavigationViewItem Icon="People" Content="Rotations"/>
 
-                <NavigationViewItem Content="E-Sports" x:Name="EsportsPage">
+                <NavigationViewItem Content="E-Sports">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
