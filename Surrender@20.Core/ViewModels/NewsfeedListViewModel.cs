@@ -1,11 +1,12 @@
 ﻿using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
+using System.Linq;
 
 namespace Surrender_20.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class NewsfeedListViewModel : BaseViewModel<string>
+    public class NewsfeedListViewModel : BaseViewModel
     {
         [DoNotSetChanged] //TODO check if private access does not do that by default
         private string _url { get; set; }
@@ -18,9 +19,10 @@ namespace Surrender_20.Core.ViewModels
 
         }
 
-        public override void Prepare(string parameter)
+        public override void Prepare(MvxBundle parameter)
         {
-            Title = parameter;
+            Title = parameter.Data.Keys.ToList()[0];
+            _url = parameter.Data.Values.ToList()[0];
         }
     }
 }

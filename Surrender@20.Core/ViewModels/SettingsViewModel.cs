@@ -1,10 +1,18 @@
-﻿using MvvmCross.ViewModels;
+﻿using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using PropertyChanged;
 
 namespace Surrender_20.Core.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
-    public class SettingsViewModel : MvxViewModel
+
+    public class SettingsViewModel : BaseViewModel
     {
+
+        public SettingsViewModel(IMvxNavigationService navigationService) :
+           base(navigationService)
+        {
+
+        }
+
     }
 }

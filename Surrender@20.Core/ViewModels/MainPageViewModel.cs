@@ -2,12 +2,13 @@
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModels
 {
-    public class MainPageViewModel : BaseViewModel<string>
+    public class MainPageViewModel : BaseViewModel
     {
         public string Title { get; set; } = "Home";
         private string _os;
@@ -24,18 +25,24 @@ namespace Surrender_20.Core.ViewModels
         public ICommand RotationsCommand { get; private set; }
         public ICommand EsportsCommand { get; private set; }
 
+
+
         public MainPageViewModel(IMvxNavigationService navigationService) :
             base(navigationService)
         {
+
+
             if (Os != "Android")
             {
-                HomeCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("Home"));
-                PBECommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("PBE"));
-                ReleasesCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("Red Posts"));
-                RedPostsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
-                RotationsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
-                EsportsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
-            }            
+                HomeCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Home", "url" } })));
+
+
+                PBECommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "PBE", "url" } })));
+                ReleasesCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Red Posts", "url" } })));
+                RedPostsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "People", "url" } })));
+                RotationsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "E-Sports", "url" } })));
+                EsportsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Settings", "url" } })));
+            }
         }
 
         public override void ViewAppearing()
@@ -48,12 +55,12 @@ namespace Surrender_20.Core.ViewModels
 
         private async Task InitializeViewModels()
         {
-            await _navigationService.Navigate<NewsfeedListViewModel, string>("Home");
-            await _navigationService.Navigate<NewsfeedListViewModel, string>("PBE");
-            await _navigationService.Navigate<NewsfeedListViewModel, string>("Red Posts");
-            await _navigationService.Navigate<NewsfeedListViewModel, string>("People");
-            await _navigationService.Navigate<NewsfeedListViewModel, string>("E-Sports");
-            await _navigationService.Navigate<NewsfeedListViewModel, string>("Settings");
+            await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Home", "url" } }));
+            await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "PBE", "url" } }));
+            await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Red Posts", "url" } }));
+            await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "People", "url" } }));
+            await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "E-Sports", "url" } }));
+            await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Settings", "url" } }));
         }
     }
 }

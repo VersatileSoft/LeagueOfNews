@@ -8,7 +8,7 @@ using System.Text;
 namespace Surrender_20.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class BaseViewModel<TParameter> : MvxViewModel, IMvxViewModel<TParameter>
+    public class BaseViewModel : MvxViewModel<MvxBundle>
     {
         protected IMvxNavigationService _navigationService;
 
@@ -17,9 +17,9 @@ namespace Surrender_20.Core.ViewModels
             _navigationService = navigationService;
         }
 
-        public virtual void Prepare(TParameter parameter)
+        public override void Prepare(MvxBundle parameter)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

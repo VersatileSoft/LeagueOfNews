@@ -4,7 +4,7 @@ using PropertyChanged;
 
 namespace Surrender_20.Core.ViewModels
 {
-    public class NewsfeedItemViewModel : BaseViewModel<string>
+    public class NewsfeedItemViewModel : BaseViewModel
     {
         public string Title { get; set; } = "Weź coś zrób";
 
