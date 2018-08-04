@@ -24,6 +24,8 @@ namespace Surrender_20.Core.ViewModels
         public ICommand RotationsCommand { get; private set; }
         public ICommand EsportsCommand { get; private set; }
 
+        public ICommand NavViewCommand { get; private set; }
+
         public MainPageViewModel(IMvxNavigationService navigationService) :
             base(navigationService)
         {
@@ -35,7 +37,7 @@ namespace Surrender_20.Core.ViewModels
                 RedPostsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
                 RotationsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
                 EsportsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
-            }            
+            }   
         }
 
         public override void ViewAppearing()
