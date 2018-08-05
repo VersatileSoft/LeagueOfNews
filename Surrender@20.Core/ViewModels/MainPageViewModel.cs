@@ -1,7 +1,6 @@
 ﻿using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using PropertyChanged;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -25,32 +24,20 @@ namespace Surrender_20.Core.ViewModels
         public ICommand RotationsCommand { get; private set; }
         public ICommand EsportsCommand { get; private set; }
 
-
         public ICommand NavViewCommand { get; private set; }
 
         public MainPageViewModel(IMvxNavigationService navigationService) :
             base(navigationService)
         {
-
-
             if (Os != "Android")
             {
                 HomeCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Home", "url" } })));
-
-
                 PBECommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "PBE", "url" } })));
                 ReleasesCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Red Posts", "url" } })));
                 RedPostsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "People", "url" } })));
                 RotationsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "E-Sports", "url" } })));
                 EsportsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Settings", "url" } })));
-            }
-                HomeCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("Home"));
-                PBECommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("PBE"));
-                ReleasesCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>("Red Posts"));
-                RedPostsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
-                RotationsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
-                EsportsCommand = new MvxCommand(() => navigationService.Navigate<NewsfeedListViewModel, string>(""));
-            }   
+            }            
         }
 
         public override void ViewAppearing()

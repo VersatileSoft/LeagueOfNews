@@ -64,7 +64,7 @@
 
             <NavigationView.Header>
                 <Grid Margin="20,40,20,0">
-                    <CommandBar DefaultLabelPosition="Right" Background="Transparent">
+                    <CommandBar DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed" Background="Transparent">
                         <CommandBar.PrimaryCommands>
                             <AppBarButton Icon="Refresh" Label="Refresh"/>
                         </CommandBar.PrimaryCommands>

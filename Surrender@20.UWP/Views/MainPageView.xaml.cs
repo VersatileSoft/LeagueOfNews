@@ -4,9 +4,6 @@ using Windows.UI.Xaml;
 using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.Core.ViewModels;
 using Windows.UI;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Media.Animation;
-using Surrender_20.View;
 
 namespace Surrender_20
 {
