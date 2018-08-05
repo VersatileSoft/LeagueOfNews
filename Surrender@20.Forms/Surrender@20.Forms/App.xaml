@@ -3,7 +3,60 @@
                        xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        x:Class="Surrender_20.Forms.App">
-	<Application.Resources>
+    <m:MvxFormsApplication.Resources>
+        <ResourceDictionary>
+            <Style x:Key="MenuImage" TargetType="Image">
+                <Setter Property="Grid.Column" Value="1"/>
+                <Setter Property="Margin" Value="10"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+            </Style>
 
-	</Application.Resources>
+            <Style x:Key="MenuLabel" TargetType="Label">
+                <Setter Property="Grid.Column" Value="2"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style x:Key="ReportButton" TargetType="Button">
+                <Setter Property="WidthRequest" Value="130"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+            <Style x:Key="PlayerButton" TargetType="Image">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+            <Style x:Key="PlayerStackLayout" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="BackgroundColor" Value="#f7f7f7"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="Padding" Value="20,10,20,10"/>
+            </Style>
+
+            <Style x:Key="RDCLogo" TargetType="Image">
+                <Setter Property="Source" Value="Images/RDCLogo.png"/>
+                <Setter Property="WidthRequest" Value="150"/>
+                <Setter Property="HeightRequest" Value="150"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,20,0,20"/>
+            </Style>
+
+            <Style x:Key="ContactButton" TargetType="Button">
+                <Setter Property="WidthRequest" Value="130"/>
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Margin" Value="0,0,0,20"/>
+            </Style>
+
+            <Style x:Key="ContactLabel" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Start"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+            </Style>
+        </ResourceDictionary>
+    </m:MvxFormsApplication.Resources>
 </m:MvxFormsApplication>
