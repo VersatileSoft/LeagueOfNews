@@ -6,8 +6,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Surrender_20.Core.ViewModels
-{
-    [AddINotifyPropertyChangedInterface]
+{ 
+    //TODO remove, we don't really need that class
     public class BaseViewModel : MvxViewModel<MvxBundle>
     {
         protected IMvxNavigationService _navigationService;

@@ -7,12 +7,10 @@ namespace Surrender_20.Core.ViewModels
 
     public class SettingsViewModel : BaseViewModel
     {
-
         public SettingsViewModel(IMvxNavigationService navigationService) :
            base(navigationService)
         {
 
         }
-
     }
 }

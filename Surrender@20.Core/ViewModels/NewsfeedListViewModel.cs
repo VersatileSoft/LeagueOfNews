@@ -5,32 +5,37 @@ using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Surrender_20.Core.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
-    public class NewsfeedListViewModel : BaseViewModel
+    public class NewsfeedListViewModel : MvxViewModel<NewsfeedNavigationParameter>
     {
-        [DoNotSetChanged] //TODO check if private access does not do that by default
-        private string _url { get; set; }
-        public string Title { get; set; }
+        private string _url;
         private INewsfeedService _newsfeedService;
 
         public List<Newsfeed> Newsfeeds { get; set; }
-        public bool IsLoading { get; set; } = false;
+        public string Title { get; set; }
+        public bool IsLoading { get; set; }
 
-        public NewsfeedListViewModel(IMvxNavigationService navigationService, INewsfeedService newsfeedService) :
-           base(navigationService)
+        public NewsfeedListViewModel(IMvxNavigationService navigationService, INewsfeedService newsfeedService)
         {
             _newsfeedService = newsfeedService;
         }
 
-        public override void Prepare(MvxBundle parameter)
+        public override void Prepare(NewsfeedNavigationParameter parameter)
         {
-            Title = parameter.Data.Keys.ToList()[0];
-            _url = parameter.Data.Values.ToList()[0];
+            Title = parameter.Title;
+            _url = parameter.URL;
+        }
 
-            Newsfeeds =_newsfeedService.LoadNewsfeeds(_url);
+        public async override Task Initialize()
+        {
+            await base.Initialize();
+
+            IsLoading = true;
+            Newsfeeds = _newsfeedService.LoadNewsfeeds(_url);
+            IsLoading = false;
         }
     }
 }
