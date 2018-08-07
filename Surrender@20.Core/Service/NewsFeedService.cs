@@ -10,11 +10,11 @@ namespace Surrender_20.Core.Service
     public class NewsfeedService : INewsfeedService
     {
 
-        public List<Newsfeed> LoadNewsfeeds()
+        public List<Newsfeed> LoadNewsfeeds(string url)
         {
             List<Newsfeed> Newsfeeds = new List<Newsfeed>();
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument document = web.Load("http://feeds.feedburner.com/surrenderat20/CqWw?format=html");
+            HtmlDocument document = web.Load(url);
             List<HtmlNode> nodes = document.DocumentNode.SelectNodes("//li[@class='regularitem']").ToList();
 
             foreach (HtmlNode node in nodes)

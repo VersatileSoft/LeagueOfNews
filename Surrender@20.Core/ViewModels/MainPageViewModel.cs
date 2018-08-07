@@ -50,7 +50,7 @@ namespace Surrender_20.Core.ViewModels
 
         private async Task InitializeViewModels()
         {
-            await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Home", "url" } }));
+            await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Home", "http://feeds.feedburner.com/surrenderat20/CqWw?format=html" } }));
             await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "PBE", "url" } }));
             await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "Red Posts", "url" } }));
             await _navigationService.Navigate<NewsfeedListViewModel, MvxBundle>(new MvxBundle(new Dictionary<string, string> { { "People", "url" } }));

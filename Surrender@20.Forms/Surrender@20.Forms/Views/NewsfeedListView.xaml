@@ -60,7 +60,13 @@
                                                 Grid.Column="1"
                                                 Grid.Row="0"/>-->
 
-                                <Label Text="{Binding Date}"
+                                <Label Text="{Binding Title}"
+                                       TextColor="Gray"
+                                       Style="{DynamicResource ListItemTextStyle}"
+                                       Grid.Column="1"
+                                       Grid.Row="1"/>
+
+                                <Label Text="{Binding Time}"
                                        TextColor="Gray"
                                        Style="{DynamicResource ListItemTextStyle}"
                                        Grid.Column="1"
