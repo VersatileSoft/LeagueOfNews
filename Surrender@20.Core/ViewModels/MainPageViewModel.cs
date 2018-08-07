@@ -2,6 +2,7 @@
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
+using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -9,12 +10,7 @@ using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModels
 {
-    [DoNotNotify]
-    public class NewsfeedNavigationParameter
-    {
-        public string Title { get; set; }
-        public string URL { get; set; }
-    }
+    
 
     public class MainPageViewModel : BaseViewModel
     {
@@ -35,24 +31,12 @@ namespace Surrender_20.Core.ViewModels
         {
             if (OS != "Android")
             {
-                //FIXME simplfy with new function + struct/parameter class
-                HomeCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "Home", URL = "url" } ));
-
-                PBECommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "PBE", URL = "url" } ));
-
-                ReleasesCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "Red Posts", URL = "url" }));
-
-                RedPostsCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "People", URL = "url" } ));
-
-                RotationsCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "E-Sports", URL = "url" }));
-
-                EsportsCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "Settings", URL = "url" } ));
+                HomeCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
+                PBECommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
+                ReleasesCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
+                RedPostsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
+                RotationsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
+                EsportsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
             }            
         }
 
@@ -66,34 +50,16 @@ namespace Surrender_20.Core.ViewModels
 
         private async Task InitializeViewModels()
         {
-            await NavigateToList(new NewsfeedNavigationParameter {
-                Title = "Home",
-                URL = "http://feeds.feedburner.com/surrenderat20/CqWw?format=html" }); //TODO shall we save URL somewhere else?
-
-            await NavigateToList(new NewsfeedNavigationParameter {
-                Title = "PBE",
-                URL = "url" });
-
-            await NavigateToList(new NewsfeedNavigationParameter { 
-                Title = "Red Posts",
-                URL = "url" });
-
-            await NavigateToList(new NewsfeedNavigationParameter { 
-                Title = "People",
-                URL = "url" });
-
-            await NavigateToList(new NewsfeedNavigationParameter {
-                Title = "E-Sports",
-                URL = "url" });
-
-            await NavigateToList(new NewsfeedNavigationParameter {
-                Title = "Settings",
-                URL = "url" });
+            await NavigateToList(Setting.Home);
+            await NavigateToList(Setting.PBE); 
+            await NavigateToList(Setting.RedPosts); 
+            await NavigateToList(Setting.People); 
+            await NavigateToList(Setting.ESports); 
         }
 
-        private async Task NavigateToList(NewsfeedNavigationParameter Parameter)
+        private async Task NavigateToList(Setting setting)
         {
-            await _navigationService.Navigate<NewsfeedListViewModel, NewsfeedNavigationParameter>(Parameter);
+            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(setting);
         }
     }
 }
