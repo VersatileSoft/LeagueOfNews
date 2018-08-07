@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.Core.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class NewsfeedListViewModel : MvxViewModel<Setting>
     {
         private string _url;
@@ -19,7 +20,7 @@ namespace Surrender_20.Core.ViewModels
         public string Title { get; set; }
         public bool IsLoading { get; set; }
 
-        public NewsfeedListViewModel(IMvxNavigationService navigationService, INewsfeedService newsfeedService, ISettingsService settingsService)
+        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService)
         {
             _newsfeedService = newsfeedService;
             _settingsService = settingsService;
@@ -36,7 +37,7 @@ namespace Surrender_20.Core.ViewModels
             await base.Initialize();
 
             IsLoading = true;
-            Newsfeeds = _newsfeedService.LoadNewsfeeds(_url);
+            Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url);
             IsLoading = false;
         }
     }

@@ -15,6 +15,7 @@ namespace Surrender_20.Core.Interface
     {
         Home,
         PBE,
+        Releases,
         RedPosts,
         People,
         ESports

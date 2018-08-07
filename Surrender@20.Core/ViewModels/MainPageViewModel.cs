@@ -10,10 +10,11 @@ using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModels
 {
-    
-
-    public class MainPageViewModel : BaseViewModel
+    [AddINotifyPropertyChangedInterface]
+    public class MainPageViewModel : MvxViewModel
     {
+
+        private IMvxNavigationService _navigationService;
         public string Title { get; set; } = "Home";
         public string OS { get; set; } //TODO move to service and implement on every platfrom in diffrent way
 
@@ -26,18 +27,19 @@ namespace Surrender_20.Core.ViewModels
 
         public ICommand NavViewCommand { get; private set; }
 
-        public MainPageViewModel(IMvxNavigationService navigationService) :
-            base(navigationService)
+        public MainPageViewModel(IMvxNavigationService navigationService)
         {
+            _navigationService = navigationService;
+
             if (OS != "Android")
             {
                 HomeCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
-                PBECommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
-                ReleasesCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
-                RedPostsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
-                RotationsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
-                EsportsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
-            }            
+                PBECommand = new MvxAsyncCommand(() => NavigateToList(Setting.PBE));
+                ReleasesCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Releases));
+                RedPostsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.RedPosts));
+                RotationsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.People));
+                EsportsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.ESports));
+            }
         }
 
         public override void ViewAppearing()
@@ -51,10 +53,11 @@ namespace Surrender_20.Core.ViewModels
         private async Task InitializeViewModels()
         {
             await NavigateToList(Setting.Home);
-            await NavigateToList(Setting.PBE); 
-            await NavigateToList(Setting.RedPosts); 
-            await NavigateToList(Setting.People); 
-            await NavigateToList(Setting.ESports); 
+            await NavigateToList(Setting.PBE);
+            await NavigateToList(Setting.Releases);
+            await NavigateToList(Setting.RedPosts);
+            await NavigateToList(Setting.People);
+            await NavigateToList(Setting.ESports);
         }
 
         private async Task NavigateToList(Setting setting)

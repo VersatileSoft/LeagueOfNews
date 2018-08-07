@@ -5,10 +5,9 @@ using PropertyChanged;
 namespace Surrender_20.Core.ViewModels
 {
 
-    public class SettingsViewModel : BaseViewModel
+    public class SettingsViewModel : MvxViewModel
     {
-        public SettingsViewModel(IMvxNavigationService navigationService) :
-           base(navigationService)
+        public SettingsViewModel()
         {
 
         }

@@ -11,8 +11,6 @@ namespace Surrender_20.Forms.Views
         public MainPage()
         {
             InitializeComponent();
-
-            
         }
 
         protected override void OnAppearing()
