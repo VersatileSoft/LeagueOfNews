@@ -12,22 +12,22 @@ namespace Surrender_20.Core.Service
 
         public List<Newsfeed> LoadNewsfeeds(string url)
         {
-            List<Newsfeed> Newsfeeds = new List<Newsfeed>();
+            List<Newsfeed> newsfeeds = new List<Newsfeed>();
             HtmlWeb web = new HtmlWeb();
             HtmlDocument document = web.Load(url);
-            List<HtmlNode> nodes = document.DocumentNode.SelectNodes("//li[@class='regularitem']").ToList();
 
+            var nodes = document.DocumentNode.SelectNodes("//li[@class='regularitem']");
             foreach (HtmlNode node in nodes)
             {
-                Newsfeeds.Add(new Newsfeed()
+                newsfeeds.Add(new Newsfeed()
                 {
-                    Title = HttpUtility.HtmlDecode(node.SelectNodes("./h4[@class='itemtitle']").First().InnerText),
-                    Time = HttpUtility.HtmlDecode(node.SelectNodes("./h5[@class='itemposttime']").First().InnerText),
-                    Content = node.SelectNodes("./div[@class='itemcontent']").First()
+                    Title = HttpUtility.HtmlDecode(node.SelectSingleNode("./h4[@class='itemtitle']").InnerText),
+                    Time = HttpUtility.HtmlDecode(node.SelectSingleNode("./h5[@class='itemposttime']").InnerText),
+                    Content = node.SelectSingleNode("./div[@class='itemcontent']")
                 });
             }
 
-            return Newsfeeds;
+            return newsfeeds;
         }
     }
 }
