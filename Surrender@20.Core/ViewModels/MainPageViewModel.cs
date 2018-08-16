@@ -31,10 +31,10 @@ namespace Surrender_20.Core.ViewModels
 
         public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMvxLog log)
         {
+            _navigationService = navigationService;
             _operatingSystemService = operatingSystemService;
-            log.Trace(operatingSystemService.GetSystemType().ToString());
 
-            if (operatingSystemService.GetSystemType() != SystemType.Android)
+            if (operatingSystemService.GetSystemType() != SystemType.Android) //TODO remove "if", we use NavView on UWP
             {
                 HomeCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
                 PBECommand = new MvxAsyncCommand(() => NavigateToList(Setting.PBE));
@@ -42,6 +42,10 @@ namespace Surrender_20.Core.ViewModels
                 RedPostsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.RedPosts));
                 RotationsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.People));
                 EsportsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.ESports));
+            }
+            else
+            {
+                NavViewCommand = new MvxAsyncCommand<string>((Parameter) => NavigateToDetail(Parameter));
             }
         }
 
@@ -57,15 +61,29 @@ namespace Surrender_20.Core.ViewModels
         {
             await NavigateToList(Setting.Home);
             await NavigateToList(Setting.PBE);
-            await NavigateToList(Setting.Releases);
-            await NavigateToList(Setting.RedPosts);
-            await NavigateToList(Setting.People);
-            await NavigateToList(Setting.ESports);
+            //await NavigateToList(Setting.Releases);
+            //await NavigateToList(Setting.RedPosts);
+            //await NavigateToList(Setting.People);
+            //await NavigateToList(Setting.ESports);
         }
 
         private async Task NavigateToList(Setting setting)
         {
             await _navigationService.Navigate<NewsfeedListViewModel, Setting>(setting);
+        }
+
+        private async Task NavigateToDetail(string Parameter)
+        {
+            switch (Parameter)
+            {
+                case "Home": await NavigateToList(Setting.Home); break;
+                case "PBE": await NavigateToList(Setting.PBE); break;
+                case "Releases": await NavigateToList(Setting.Releases); break;
+                case "Red Posts": await NavigateToList(Setting.RedPosts); break;
+                //case "Rotations": await NavigateToList(Setting.Rotations); break; //People???
+                case "E-Sports": await NavigateToList(Setting.ESports); break;
+                default: break;
+            }
         }
     }
 }

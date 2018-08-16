@@ -26,7 +26,7 @@
                         PaneTitle="{x:Bind appmodel:Package.Current.DisplayName}">
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
-                    <core:InvokeCommandAction Command="{Binding NavViewCommand}" CommandParameter="{x:Bind NavView}"/>
+                    <core:InvokeCommandAction Command="{x:Bind VM.NavViewCommand}" CommandParameter="{x:Bind NavView.SelectedItem}"/>
                 </core:EventTriggerBehavior>
             </i:Interaction.Behaviors>
 
