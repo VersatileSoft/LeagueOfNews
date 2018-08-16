@@ -4,6 +4,7 @@ using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -16,7 +17,7 @@ namespace Surrender_20.Core.ViewModels
         private INewsfeedService _newsfeedService;
         private ISettingsService _settingsService;
 
-        public List<Newsfeed> Newsfeeds { get; set; }
+        public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
         public string Title { get; set; }
         public bool IsLoading { get; set; }
 

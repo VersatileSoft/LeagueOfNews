@@ -11,5 +11,6 @@ namespace Surrender_20.Model
         public string Title { get; set; }
         public string ShortDescription { get; set; } //Overlaps with Content?
         public string ThumbnailURL { get; set; }
+        public string Image { get; set; }
     }
 }

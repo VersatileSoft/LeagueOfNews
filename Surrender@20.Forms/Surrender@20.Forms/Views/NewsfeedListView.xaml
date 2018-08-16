@@ -6,16 +6,15 @@
                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Core.ViewModels;assembly=Surrender_20.Core"
                       xmlns:util="clr-namespace:Surrender_20.Forms.Views.Utils"
+                      xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       x:Class="Surrender_20.Forms.Views.NewsfeedListView"
                       Title="{Binding Title}">
-    <!--<views:MvxContentPage.Resources>
+   <views:MvxContentPage.Resources>
         <ResourceDictionary>
-            -->
-    <!--<conv:UriToImageSource x:Key="UriToImageSource"/>-->
+            <conv:UriToImageSource x:Key="UriToImageSource"/>
     <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
-    <!--
         </ResourceDictionary>
-    </views:MvxContentPage.Resources>-->
+    </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
         <Grid>
@@ -45,9 +44,9 @@
                                         <RowDefinition Height="20"/>
                                         <RowDefinition Height="60"/>
                                     </Grid.RowDefinitions>
-                                    <!--Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"-->
+                                    
                                     <Image 
-                                        Source="xamarin_logo.png"
+                                        Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
                                         Aspect="AspectFill"  
                                         Grid.Column="0"
                                         Grid.Row="0"
@@ -66,9 +65,9 @@
                                         Grid.Column="1"
                                         Grid.Row="1"/>
 
-                                    <!--<Label Text="{Binding SimplifiedDescription}"
+                                    <Label Text="{Binding ShortDescription}"
                                                 Grid.Column="1"
-                                                Grid.Row="2"/>-->
+                                                Grid.Row="2"/>
                                 </Grid>
 
                                 <!--<Label Text="{Binding Title}"
