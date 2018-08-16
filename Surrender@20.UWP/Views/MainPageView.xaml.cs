@@ -7,6 +7,7 @@ using Windows.UI;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Controls;
+using System.Reflection;
 
 namespace Surrender_20
 {
@@ -48,20 +49,6 @@ namespace Surrender_20
             }
 
             base.OnNavigatingFrom(e);
-        }
-
-        private void SelectionChanged(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
-        {
-            switch (((NavigationViewItem)args.SelectedItem).Content)
-            {
-                case "Home": VM.HomeCommand.Execute(null); break;
-                case "PBE": VM.PBECommand.Execute(null); break;
-                //case "Releases": VM.ReleasesCommand.Execute(null); break;
-                //case "Red Posts": VM.RedPostsCommand.Execute(null); break;
-                //case "Rotations": VM.RotationsCommand.Execute(null) break; //People???
-                //case "E-Sports": VM.EsportsCommand.Execute(null); break;
-                default: break;
-            }
         }
 
         /*private void NavView_ItemSelected(NavigationView sender, NavigationViewSelectionChangedEventArgs args)

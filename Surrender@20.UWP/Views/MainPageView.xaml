@@ -7,9 +7,14 @@
     xmlns:appmodel="using:Windows.ApplicationModel"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:conv="using:Surrender_20.Converters"
     x:Class="Surrender_20.MainPageView"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
+    <m:MvxWindowsPage.Resources>
+        <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>
+    </m:MvxWindowsPage.Resources>
+    
     <m:MvxWindowsPage.Transitions>
         <TransitionCollection>
             <EntranceThemeTransition/>
@@ -19,17 +24,21 @@
     <Grid>
         <Grid x:Name="DragArea" Background="Transparent" HorizontalAlignment="Stretch" Height="40" VerticalAlignment="Top" Margin="50,0,0,0" Canvas.ZIndex="5"/>
 
-        <NavigationView x:Name="NavView"
+        <NavigationView x:Name="NavigationBar"
                         OpenPaneLength="200"
                         IsSettingsVisible="True"
                         IsBackButtonVisible="Collapsed"
-                        SelectionChanged="SelectionChanged"
                         PaneTitle="{x:Bind appmodel:Package.Current.DisplayName}">
+            <i:Interaction.Behaviors>
+                <core:EventTriggerBehavior EventName="SelectionChanged">
+                    <core:InvokeCommandAction Command="{Binding NavCommand}" InputConverter="{StaticResource SelectedItemToString}" />
+                </core:EventTriggerBehavior>
+            </i:Interaction.Behaviors>
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
 
                 <NavigationViewItem Icon="Home" Content="Home"/>
-
+                
                 <NavigationViewItem Content="PBE">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>

@@ -29,10 +29,26 @@ namespace Surrender_20.Core.ViewModels
         public ICommand RotationsCommand { get; private set; }
         public ICommand EsportsCommand { get; private set; }
 
+        public ICommand NavCommand { get; private set; }
+
         public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMvxLog log)
         {
             _navigationService = navigationService;
             _operatingSystemService = operatingSystemService;
+
+            NavCommand = new MvxCommand<string>((Parameter) => 
+            {
+                switch (Parameter)
+                {
+                    case "Home": HomeCommand.Execute(null); break;
+                    case "PBE": PBECommand.Execute(null); break;
+                    //case "Releases": VM.ReleasesCommand.Execute(null); break;
+                    //case "Red Posts": VM.RedPostsCommand.Execute(null); break;
+                    //case "Rotations": VM.RotationsCommand.Execute(null) break;
+                    //case "E-Sports": VM.EsportsCommand.Execute(null); break;
+                    default: break;
+                }
+            });
 
             HomeCommand = new MvxAsyncCommand(() => NavigateTo(Setting.Home));
             PBECommand = new MvxAsyncCommand(() => NavigateTo(Setting.PBE));
