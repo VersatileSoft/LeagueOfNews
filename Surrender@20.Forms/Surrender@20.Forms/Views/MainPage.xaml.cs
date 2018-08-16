@@ -15,7 +15,6 @@ namespace Surrender_20.Forms.Views
 
         protected override void OnAppearing()
         {
-            ViewModel.OS = "Android";
             base.OnAppearing();
         }
     }

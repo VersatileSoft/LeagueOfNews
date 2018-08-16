@@ -22,11 +22,11 @@ namespace Surrender_20.Forms.Droid
 
     sealed public class AndroidSetup : MvxFormsAndroidSetup<CoreApp, App>
     {
-        protected override void InitializeFirstChance()
+        protected override void InitializeLastChance()
         {
-            base.InitializeFirstChance();
-
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService());
+
+            base.InitializeLastChance();
         }
     }
 }
