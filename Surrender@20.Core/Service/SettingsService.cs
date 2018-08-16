@@ -28,7 +28,6 @@ namespace Surrender_20.Core.Service
             this[Setting.RedPosts] = new NewsfeedNavigationParameter { Title = "Red Posts", URL = "http://feeds.feedburner.com/surrenderat20/" };
             this[Setting.People] = new NewsfeedNavigationParameter { Title = "People", URL = "http://feeds.feedburner.com/surrenderat20/" };
             this[Setting.ESports] = new NewsfeedNavigationParameter { Title = "E-Sports", URL = "http://feeds.feedburner.com/surrenderat20/" };
-
         }
 
         public NewsfeedNavigationParameter this[Setting PropertyName]

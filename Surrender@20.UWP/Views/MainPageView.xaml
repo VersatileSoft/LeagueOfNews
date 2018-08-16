@@ -23,13 +23,8 @@
                         OpenPaneLength="200"
                         IsSettingsVisible="True"
                         IsBackButtonVisible="Collapsed"
+                        SelectionChanged="SelectionChanged"
                         PaneTitle="{x:Bind appmodel:Package.Current.DisplayName}">
-            <i:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="SelectionChanged">
-                    <core:InvokeCommandAction Command="{x:Bind VM.NavViewCommand}" CommandParameter="{x:Bind NavView.SelectedItem}"/>
-                </core:EventTriggerBehavior>
-            </i:Interaction.Behaviors>
-
             <NavigationView.MenuItems>
                 <NavigationViewItemHeader Content="Pages"/>
 

@@ -1,5 +1,6 @@
 ﻿using MvvmCross;
 using MvvmCross.IoC;
+using MvvmCross.Navigation;
 using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.Core;
@@ -27,7 +28,7 @@ namespace Surrender_20
         protected override void InitializeFirstChance()
         {
             base.InitializeFirstChance();
-
+            
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService());
         }
     }
