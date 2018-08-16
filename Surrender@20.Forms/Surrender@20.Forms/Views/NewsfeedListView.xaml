@@ -44,7 +44,7 @@
                                         <RowDefinition Height="20"/>
                                         <RowDefinition Height="60"/>
                                     </Grid.RowDefinitions>
-                                    
+
                                     <Image 
                                         Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
                                         Aspect="AspectFill"  
@@ -69,14 +69,6 @@
                                                 Grid.Column="1"
                                                 Grid.Row="2"/>
                                 </Grid>
-
-                                <!--<Label Text="{Binding Title}"
-                                   TextColor="Black"
-                                   Style="{DynamicResource ListItemTextStyle}"/>
-
-                                <Label Text="{Binding Time}"
-                                   TextColor="Gray"
-                                   Style="{DynamicResource ListItemTextStyle}"/>-->
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -12,11 +12,5 @@ namespace Surrender_20.Forms.Views
         {
             InitializeComponent();
         }
-
-        protected override void OnAppearing()
-        {
-            ViewModel.OS = "Android";
-            base.OnAppearing();
-        }
     }
 }
