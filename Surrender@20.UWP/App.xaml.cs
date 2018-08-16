@@ -1,4 +1,5 @@
 ﻿using MvvmCross;
+using MvvmCross.IoC;
 using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.Core;
@@ -18,8 +19,18 @@ namespace Surrender_20
         public App()
         {
             InitializeComponent();
-            Mvx.RegisterSingleton<IOperatingSystemService>(new OperatingSystemService());
         }
     }
-    public abstract class UWPApplication : MvxApplication<MvxWindowsSetup<CoreApp>, CoreApp> { }
+
+    sealed public class UWPSetup : MvxWindowsSetup<CoreApp>
+    {
+        protected override void InitializeFirstChance()
+        {
+            base.InitializeFirstChance();
+
+            Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService());
+        }
+    }
+
+    public abstract class UWPApplication : MvxApplication<UWPSetup, CoreApp> { }
 }

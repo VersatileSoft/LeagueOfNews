@@ -16,7 +16,6 @@ namespace Surrender_20.Forms
 		public App ()
 		{
 			InitializeComponent();
-            Mvx.LazyConstructAndRegisterSingleton<IOperatingSystemService, OperatingSystemService>();
         }
 
 		protected override void OnStart ()

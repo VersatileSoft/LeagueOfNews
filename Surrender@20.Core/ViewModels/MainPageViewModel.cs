@@ -1,10 +1,12 @@
 ﻿using MvvmCross.Commands;
+using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -15,6 +17,7 @@ namespace Surrender_20.Core.ViewModels
     {
         private IOperatingSystemService _operatingSystemService;
         private IMvxNavigationService _navigationService;
+
         public string Title { get; set; } = "Home";
 
         public ICommand HomeCommand { get; private set; }
@@ -26,9 +29,10 @@ namespace Surrender_20.Core.ViewModels
 
         public ICommand NavViewCommand { get; private set; }
 
-        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService)
+        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMvxLog log)
         {
             _operatingSystemService = operatingSystemService;
+            log.Trace(operatingSystemService.GetSystemType().ToString());
 
             if (operatingSystemService.GetSystemType() != SystemType.Android)
             {
@@ -46,7 +50,7 @@ namespace Surrender_20.Core.ViewModels
             base.ViewAppearing();
 
             if (_operatingSystemService.GetSystemType() == SystemType.Android)
-                await this.InitializeViewModels();
+                await InitializeViewModels();
         }
 
         private async Task InitializeViewModels()
