@@ -1,10 +1,12 @@
 ﻿using MvvmCross.Commands;
+using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -13,10 +15,10 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class MainPageViewModel : MvxViewModel
     {
-
+        private IOperatingSystemService _operatingSystemService;
         private IMvxNavigationService _navigationService;
+
         public string Title { get; set; } = "Home";
-        public string OS { get; set; } //TODO move to service and implement on every platfrom in diffrent way
 
         public ICommand HomeCommand { get; private set; }
         public ICommand PBECommand { get; private set; }
@@ -27,11 +29,12 @@ namespace Surrender_20.Core.ViewModels
 
         public ICommand NavViewCommand { get; private set; }
 
-        public MainPageViewModel(IMvxNavigationService navigationService)
+        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMvxLog log)
         {
-            _navigationService = navigationService;
+            _operatingSystemService = operatingSystemService;
+            log.Trace(operatingSystemService.GetSystemType().ToString());
 
-            if (OS != "Android")
+            if (operatingSystemService.GetSystemType() != SystemType.Android)
             {
                 HomeCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
                 PBECommand = new MvxAsyncCommand(() => NavigateToList(Setting.PBE));
@@ -42,12 +45,12 @@ namespace Surrender_20.Core.ViewModels
             }
         }
 
-        public override void ViewAppearing()
+        public async override void ViewAppearing()
         {
             base.ViewAppearing();
 
-            if (OS == "Android")
-                MvxNotifyTask.Create(async () => await this.InitializeViewModels());
+            if (_operatingSystemService.GetSystemType() == SystemType.Android)
+                await InitializeViewModels();
         }
 
         private async Task InitializeViewModels()

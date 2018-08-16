@@ -13,7 +13,7 @@ namespace Surrender_20.Core.Interface
 
     public enum Setting
     {
-        Home,
+        Home, //TODO Add URL (e.g. HomeURL)
         PBE,
         Releases,
         RedPosts,
