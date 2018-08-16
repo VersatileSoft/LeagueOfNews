@@ -3,6 +3,7 @@ using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 
 namespace Surrender_20.Core.Service
@@ -10,11 +11,11 @@ namespace Surrender_20.Core.Service
     public class NewsfeedService : INewsfeedService
     {
 
-        public List<Newsfeed> LoadNewsfeeds(string url)
+        public async Task<List<Newsfeed>> LoadNewsfeedsAsync(string url)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             HtmlWeb web = new HtmlWeb();
-            HtmlDocument document = web.Load(url);
+            HtmlDocument document = await web.LoadFromWebAsync(url);
 
             var nodes = document.DocumentNode.SelectNodes("//li[@class='regularitem']");
             foreach (HtmlNode node in nodes)

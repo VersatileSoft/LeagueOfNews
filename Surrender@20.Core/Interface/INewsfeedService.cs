@@ -9,6 +9,6 @@ namespace Surrender_20.Core.Interface
 {
     public interface INewsfeedService
     {
-        List<Newsfeed> LoadNewsfeeds(string url);
+        Task<List<Newsfeed>> LoadNewsfeedsAsync(string url);
     }
 }

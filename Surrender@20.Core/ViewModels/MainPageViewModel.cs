@@ -10,17 +10,12 @@ using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModels
 {
-    [DoNotNotify]
-    public class NewsfeedNavigationParameter
+    [AddINotifyPropertyChangedInterface]
+    public class MainPageViewModel : MvxViewModel
     {
-        public string Title { get; set; }
-        public string URL { get; set; }
-    }
-
-    public class MainPageViewModel : BaseViewModel
-    {
+        private IOperatingSystemService _operatingSystemService;
+        private IMvxNavigationService _navigationService;
         public string Title { get; set; } = "Home";
-        public string OS { get; set; } //TODO move to service and implement on every platfrom in diffrent way
 
         public ICommand HomeCommand { get; private set; }
         public ICommand PBECommand { get; private set; }
@@ -31,70 +26,42 @@ namespace Surrender_20.Core.ViewModels
 
         public ICommand NavViewCommand { get; private set; }
 
-        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService) :
-            base(navigationService)
+        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService)
         {
+            _operatingSystemService = operatingSystemService;
+
             if (operatingSystemService.GetSystemType() != SystemType.Android)
             {
-                //FIXME simplfy with new function + struct/parameter class
-                HomeCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "Home", URL = "url" } ));
-
-                PBECommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "PBE", URL = "url" } ));
-
-                ReleasesCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "Red Posts", URL = "url" }));
-
-                RedPostsCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "People", URL = "url" } ));
-
-                RotationsCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "E-Sports", URL = "url" }));
-
-                EsportsCommand = new MvxAsyncCommand(() => NavigateToList(
-                    new NewsfeedNavigationParameter { Title = "Settings", URL = "url" } ));
-            }            
+                HomeCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Home));
+                PBECommand = new MvxAsyncCommand(() => NavigateToList(Setting.PBE));
+                ReleasesCommand = new MvxAsyncCommand(() => NavigateToList(Setting.Releases));
+                RedPostsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.RedPosts));
+                RotationsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.People));
+                EsportsCommand = new MvxAsyncCommand(() => NavigateToList(Setting.ESports));
+            }
         }
 
-        public override void ViewAppearing()
+        public async override void ViewAppearing()
         {
             base.ViewAppearing();
 
-            if (OS == "Android")
-                MvxNotifyTask.Create(async () => await this.InitializeViewModels());
+            if (_operatingSystemService.GetSystemType() == SystemType.Android)
+                await this.InitializeViewModels();
         }
 
         private async Task InitializeViewModels()
         {
-            await NavigateToList(new NewsfeedNavigationParameter {
-                Title = "Home",
-                URL = "http://feeds.feedburner.com/surrenderat20/CqWw?format=html" }); //TODO shall we save URL somewhere else?
-
-            await NavigateToList(new NewsfeedNavigationParameter {
-                Title = "PBE",
-                URL = "url" });
-
-            await NavigateToList(new NewsfeedNavigationParameter { 
-                Title = "Red Posts",
-                URL = "url" });
-
-            await NavigateToList(new NewsfeedNavigationParameter { 
-                Title = "People",
-                URL = "url" });
-
-            await NavigateToList(new NewsfeedNavigationParameter {
-                Title = "E-Sports",
-                URL = "url" });
-
-            await NavigateToList(new NewsfeedNavigationParameter {
-                Title = "Settings",
-                URL = "url" });
+            await NavigateToList(Setting.Home);
+            await NavigateToList(Setting.PBE);
+            await NavigateToList(Setting.Releases);
+            await NavigateToList(Setting.RedPosts);
+            await NavigateToList(Setting.People);
+            await NavigateToList(Setting.ESports);
         }
 
-        private async Task NavigateToList(NewsfeedNavigationParameter Parameter)
+        private async Task NavigateToList(Setting setting)
         {
-            await _navigationService.Navigate<NewsfeedListViewModel, NewsfeedNavigationParameter>(Parameter);
+            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(setting);
         }
     }
 }

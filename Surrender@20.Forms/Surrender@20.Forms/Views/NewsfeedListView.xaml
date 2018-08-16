@@ -5,82 +5,85 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Core.ViewModels;assembly=Surrender_20.Core"
+                      xmlns:util="clr-namespace:Surrender_20.Forms.Views.Utils"
                       x:Class="Surrender_20.Forms.Views.NewsfeedListView"
                       Title="{Binding Title}">
-    <views:MvxContentPage.Resources>
+    <!--<views:MvxContentPage.Resources>
         <ResourceDictionary>
-            <!--<conv:UriToImageSource x:Key="UriToImageSource"/>-->
-            <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
+            -->
+    <!--<conv:UriToImageSource x:Key="UriToImageSource"/>-->
+    <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
+    <!--
         </ResourceDictionary>
-    </views:MvxContentPage.Resources>
+    </views:MvxContentPage.Resources>-->
 
     <views:MvxContentPage.Content>
         <Grid>
-            <ActivityIndicator VerticalOptions="Center" 
-                               HorizontalOptions="Center"
-                               IsRunning="True"
-                               IsVisible="{Binding IsLoading}"/>
-            <ListView ItemsSource="{Binding Newsfeeds}"
-                      IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}"
-                      CachingStrategy="RecycleElement"
-                      HasUnevenRows="True"
-                      SeparatorVisibility="Default"
-                      SeparatorColor="Gray">
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsLoading}" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
 
-                <ListView.Behaviors>
-                    <!--<b:EventToCommandBehavior EventName="ItemTapped"
-                                          Command="{Binding ItemTappedCommand}"
-                                          EventArgsParameterPath="Item"/>-->
-                </ListView.Behaviors>
-                <ListView.ItemTemplate>
+            <views:MvxListView
+                ItemsSource="{Binding Newsfeeds}"
+                HasUnevenRows="True">
+
+                <views:MvxListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="30*"/>
-                                    <ColumnDefinition Width="70*"/>
-                                </Grid.ColumnDefinitions>
+                            <StackLayout>
 
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="60"/>
-                                </Grid.RowDefinitions>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="70*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                <Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
-                                       Aspect="AspectFill"  
-                                       Grid.Column="0"
-                                       Grid.Row="0"
-                                       Grid.RowSpan="3"/>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="20"/>
+                                        <RowDefinition Height="60"/>
+                                    </Grid.RowDefinitions>
+                                    <!--Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"-->
+                                    <Image 
+                                        Source="xamarin_logo.png"
+                                        Aspect="AspectFill"  
+                                        Grid.Column="0"
+                                        Grid.Row="0"
+                                        Grid.RowSpan="3"/>
 
-                                <!--<util:ExtendedLabel Text="{Binding Title}"
+                                    <util:ExtendedLabel Text="{Binding Title}"
                                                 Style="{DynamicResource ListItemTextStyle}"
                                                 LineBreakMode="TailTruncation"
-                                                MaxLines="1"
+                                                MaxLines="2"
                                                 Grid.Column="1"
-                                                Grid.Row="0"/>-->
+                                                Grid.Row="0"/>
 
-                                <Label Text="{Binding Title}"
-                                       TextColor="Gray"
-                                       Style="{DynamicResource ListItemTextStyle}"
-                                       Grid.Column="1"
-                                       Grid.Row="1"/>
+                                    <Label Text="{Binding Time}"
+                                        TextColor="Black"
+                                        Style="{DynamicResource ListItemTextStyle}"                                        
+                                        Grid.Column="1"
+                                        Grid.Row="1"/>
 
-                                <Label Text="{Binding Time}"
-                                       TextColor="Gray"
-                                       Style="{DynamicResource ListItemTextStyle}"
-                                       Grid.Column="1"
-                                       Grid.Row="1"/>
-
-                                <!--<util:ExtendedLabel Text="{Binding SimplifiedDescription}"
-                                                MaxLines="3"
+                                    <!--<Label Text="{Binding SimplifiedDescription}"
                                                 Grid.Column="1"
                                                 Grid.Row="2"/>-->
-                            </Grid>
+                                </Grid>
+
+                                <!--<Label Text="{Binding Title}"
+                                   TextColor="Black"
+                                   Style="{DynamicResource ListItemTextStyle}"/>
+
+                                <Label Text="{Binding Time}"
+                                   TextColor="Gray"
+                                   Style="{DynamicResource ListItemTextStyle}"/>-->
+                            </StackLayout>
                         </ViewCell>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+
+                </views:MvxListView.ItemTemplate>
+            </views:MvxListView>
         </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

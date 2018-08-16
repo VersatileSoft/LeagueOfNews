@@ -11,7 +11,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surrender@20.Core.Tests", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surrender@20.Forms.Android", "Surrender@20.Forms\Surrender@20.Forms.Android\Surrender@20.Forms.Android.csproj", "{47BAF33B-374E-4379-B9B0-FAE6230ADED0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surrender@20.Forms", "Surrender@20.Forms\Surrender@20.Forms\Surrender@20.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surrender@20.Forms", "Surrender@20.Forms\Surrender@20.Forms\Surrender@20.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F3660E82-E2AA-4DE2-BB13-DE1B8E7B3591}"
+	ProjectSection(SolutionItems) = preProject
+		NavigationGraph.dgml = NavigationGraph.dgml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
