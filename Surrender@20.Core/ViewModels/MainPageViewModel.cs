@@ -2,6 +2,7 @@
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
+using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -30,10 +31,10 @@ namespace Surrender_20.Core.ViewModels
 
         public ICommand NavViewCommand { get; private set; }
 
-        public MainPageViewModel(IMvxNavigationService navigationService) :
+        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService) :
             base(navigationService)
         {
-            if (OS != "Android")
+            if (operatingSystemService.GetSystemType() != SystemType.Android)
             {
                 //FIXME simplfy with new function + struct/parameter class
                 HomeCommand = new MvxAsyncCommand(() => NavigateToList(

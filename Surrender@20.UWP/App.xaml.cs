@@ -1,6 +1,9 @@
-﻿using MvvmCross.Platforms.Uap.Core;
+﻿using MvvmCross;
+using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.Core;
+using Surrender_20.Core.Interface;
+using Surrender_20.Services;
 using System;
 using Windows.ApplicationModel;
 using Windows.ApplicationModel.Activation;
@@ -15,8 +18,8 @@ namespace Surrender_20
         public App()
         {
             InitializeComponent();
+            Mvx.RegisterSingleton<IOperatingSystemService>(new OperatingSystemService());
         }
     }
-
     public abstract class UWPApplication : MvxApplication<MvxWindowsSetup<CoreApp>, CoreApp> { }
 }
