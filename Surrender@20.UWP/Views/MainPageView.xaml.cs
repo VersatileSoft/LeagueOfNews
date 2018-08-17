@@ -6,8 +6,6 @@ using Surrender_20.Core.ViewModels;
 using Windows.UI;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
-using Windows.UI.Xaml.Controls;
-using System.Reflection;
 
 namespace Surrender_20
 {
@@ -36,7 +34,7 @@ namespace Surrender_20
             switch (e.NavigationMode)
             {
                 case NavigationMode.New:
-                    ContentFrame.Navigate(e.SourcePageType, e.Parameter, new DrillInNavigationTransitionInfo());
+                    ContentFrame.Navigate(e.SourcePageType, e.Parameter, new EntranceNavigationTransitionInfo());
                     break;
                 case NavigationMode.Forward:
                     ContentFrame.GoForward(); //Navigate?

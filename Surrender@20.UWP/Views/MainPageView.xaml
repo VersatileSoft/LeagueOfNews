@@ -27,11 +27,11 @@
         <NavigationView x:Name="NavigationBar"
                         OpenPaneLength="200"
                         IsSettingsVisible="True"
-                        IsBackButtonVisible="Collapsed"
+                        IsBackButtonVisible="Visible"
                         PaneTitle="{x:Bind appmodel:Package.Current.DisplayName}">
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
-                    <core:InvokeCommandAction Command="{Binding NavCommand}" InputConverter="{StaticResource SelectedItemToString}" />
+                    <core:InvokeCommandAction Command="{Binding NavCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
                 </core:EventTriggerBehavior>
             </i:Interaction.Behaviors>
             <NavigationView.MenuItems>
@@ -70,11 +70,17 @@
                 <Grid Margin="20,40,20,0">
                     <CommandBar DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed" Background="Transparent">
                         <CommandBar.PrimaryCommands>
-                            <AppBarButton Icon="Refresh" Label="Refresh"/>
+                            <AppBarButton Icon="Refresh" Label="Refresh">
+                                <i:Interaction.Behaviors>
+                                    <core:EventTriggerBehavior EventName="Click">
+                                        <core:InvokeCommandAction Command="{Binding RefreshCommand}"/>
+                                    </core:EventTriggerBehavior>
+                                </i:Interaction.Behaviors>
+                            </AppBarButton>
                         </CommandBar.PrimaryCommands>
                         
                         <CommandBar.Content>
-                            <TextBlock Text="{x:Bind VM.Title}" Margin="12,14"/>
+                            <TextBlock Text="{Binding Title}" Margin="12,14"/>
                         </CommandBar.Content>
                     </CommandBar>
                 </Grid>

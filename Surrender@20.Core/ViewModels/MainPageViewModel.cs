@@ -4,11 +4,6 @@ using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
-using Surrender_20.Core.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -20,7 +15,7 @@ namespace Surrender_20.Core.ViewModels
         private IOperatingSystemService _operatingSystemService;
         private IMvxNavigationService _navigationService;
 
-        public string Title { get; set; } = "Home";
+        public string Title { get; set; }
 
         public ICommand HomeCommand { get; private set; }
         public ICommand PBECommand { get; private set; }
@@ -30,6 +25,7 @@ namespace Surrender_20.Core.ViewModels
         public ICommand EsportsCommand { get; private set; }
 
         public ICommand NavCommand { get; private set; }
+        public ICommand RefreshCommand { get; private set; } //halp
 
         public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMvxLog log)
         {
@@ -38,14 +34,14 @@ namespace Surrender_20.Core.ViewModels
 
             NavCommand = new MvxCommand<string>((Parameter) => 
             {
-                switch (Parameter)
+                switch (Parameter) //maybe da sie jakoś inaczej (lepiej?) zrobić to Title
                 {
-                    case "Home": HomeCommand.Execute(null); break;
-                    case "PBE": PBECommand.Execute(null); break;
-                    //case "Releases": VM.ReleasesCommand.Execute(null); break;
-                    //case "Red Posts": VM.RedPostsCommand.Execute(null); break;
-                    //case "Rotations": VM.RotationsCommand.Execute(null) break;
-                    //case "E-Sports": VM.EsportsCommand.Execute(null); break;
+                    case "Home": HomeCommand.Execute(null); Title = "Home"; break;
+                    case "PBE": PBECommand.Execute(null); Title = "Public Beta Environment"; break;
+                    case "Releases": ReleasesCommand.Execute(null); Title = "Releases"; break;
+                    case "Red Posts": RedPostsCommand.Execute(null); Title = "Red Posts"; break;
+                    case "Rotations": RotationsCommand.Execute(null); Title = "Rotations"; break;
+                    case "E-Sports": EsportsCommand.Execute(null); Title = "E-Sports"; break;
                     default: break;
                 }
             });
@@ -55,7 +51,7 @@ namespace Surrender_20.Core.ViewModels
             ReleasesCommand = new MvxAsyncCommand(() => NavigateTo(Setting.Releases));
             RedPostsCommand = new MvxAsyncCommand(() => NavigateTo(Setting.RedPosts));
             RotationsCommand = new MvxAsyncCommand(() => NavigateTo(Setting.People));
-            EsportsCommand = new MvxAsyncCommand(() => NavigateTo(Setting.ESports));
+            EsportsCommand = new MvxAsyncCommand(() => NavigateTo(Setting.ESports));          
         }
 
         public async override void ViewAppearing()

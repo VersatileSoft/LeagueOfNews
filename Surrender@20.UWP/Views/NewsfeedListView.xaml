@@ -6,72 +6,56 @@
     xmlns:local="using:Surrender_20.View"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:i="using:Microsoft.Xaml.Interactivity"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
     mc:Ignorable="d">
-    <m:MvxWindowsPage.Transitions>
-        <TransitionCollection>
-            <EntranceThemeTransition/>
-        </TransitionCollection>
-    </m:MvxWindowsPage.Transitions>
-
-    <UserControl.Resources>
+    <m:MvxWindowsPage.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="ms-appx:///Styles/Styles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="LoadingRing" TargetType="ProgressRing">
+                <Setter Property="Canvas.ZIndex" Value="5"/>
+                <Setter Property="Width" Value="100"/>
+                <Setter Property="Height" Value="100"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+            </Style>
+
+            <AcrylicBrush x:Key="CustomAcrylicBrush" BackgroundSource="Backdrop" Opacity=".9" TintOpacity=".5" TintColor="#FF000000" FallbackColor="#FF008000" />
         </ResourceDictionary>
-    </UserControl.Resources>
+    </m:MvxWindowsPage.Resources>
 
     <Grid>
         <ProgressRing Style="{StaticResource LoadingRing}"
-                      Visibility="Visible"/>
+                      IsActive="{Binding IsLoading}"/>
 
-        <ParallaxView Source="{x:Bind ListView}" 
-                      VerticalShift="200">
-            <Image x:Name="BackgroundImage" 
-                   Style="{StaticResource BackgroudParallaxImage}"/>
-        </ParallaxView>
-
-        <ListView x:Name="ListView" 
-                  Visibility="Visible" 
+        <GridView HorizontalAlignment="Center"
+                  Padding="50,0,50,0"
+                  SelectionMode="Single"
                   ItemsSource="{Binding Newsfeeds}">
-            <ListView.ItemTemplate>
+            <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Viewbox>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="30*"/>
-                                <ColumnDefinition Width="70*"/>
-                            </Grid.ColumnDefinitions>
+                    <Viewbox Margin="5">
+                        <Grid Height="250">
+                            <Image Source="{Binding Image}" Stretch="Fill"/>
 
-                            <Grid.RowDefinitions>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="20"/>
-                                <RowDefinition Height="60"/>
-                            </Grid.RowDefinitions>
+                            <StackPanel Background="{ThemeResource CustomAcrylicBrush}">
+                                <TextBlock Text="{Binding Title}"
+                                           Style="{ThemeResource BaseTextBlockStyle}" 
+                                           HorizontalAlignment="Center"
+                                           Margin="0,4,0,0"/>
 
-                            <Image Source="{Binding Image}"
-                                   Grid.Column="0"
-                                   Grid.Row="0"
-                                   Grid.RowSpan="3"/>
+                                <TextBlock Text="{Binding Time}"
+                                           Style="{ThemeResource CaptionTextBlockStyle}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,4,0,0"                                           
+                                           Opacity=".8"/>
 
-                            <TextBlock Text="{Binding Title}"
-                                   Grid.Column="1"
-                                   Grid.Row="0"/>
-
-                            <TextBlock Text="{Binding Date}"
-                                   Grid.Column="1"
-                                   Grid.Row="1"/>
-
-                            <TextBlock Text="{Binding Description}"
-                                       MaxLines="3"
-                                       Grid.Column="1"
-                                       Grid.Row="2"/>
+                                <TextBlock Text="{Binding Description}"
+                                           HorizontalAlignment="Center"
+                                           Margin="0,4,0,0" 
+                                           MaxLines="3"/>
+                            </StackPanel>
                         </Grid>
                     </Viewbox>
                 </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
+            </GridView.ItemTemplate>
+        </GridView>
     </Grid>
 </m:MvxWindowsPage>
