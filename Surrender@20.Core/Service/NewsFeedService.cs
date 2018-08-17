@@ -1,6 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Surrender_20.Core.Interface;
 using Surrender_20.Model;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -11,14 +12,26 @@ namespace Surrender_20.Core.Service
 {
     public class NewsfeedService : INewsfeedService
     {
+        private ObservableCollection<Newsfeed> NewsfeedCache { get; set; }
+        private string LatestNewsfeedUrlCache { get; set; }
 
-        public async Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(string url)
+        public async Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(string URL)
         {
-            ObservableCollection<Newsfeed> newsfeeds = new ObservableCollection<Newsfeed>();
-            HtmlWeb web = new HtmlWeb();
-            HtmlDocument document = await web.LoadFromWebAsync(url);
 
-            var nodes = document.DocumentNode.SelectNodes("//li[@class='regularitem']");
+            if (LatestNewsfeedUrlCache != URL)
+            {
+                LatestNewsfeedUrlCache = URL;
+                var doc = await new HtmlWeb().LoadFromWebAsync(URL);
+                NewsfeedCache = Load(doc);
+            }
+
+            return NewsfeedCache;
+        }
+
+        public ObservableCollection<Newsfeed> Load(HtmlDocument Document)
+        {
+            var newsfeeds = new ObservableCollection<Newsfeed>();
+            var nodes = Document.DocumentNode.SelectNodes("//li[@class='regularitem']");
             foreach (HtmlNode node in nodes)
             {
                 newsfeeds.Add(new Newsfeed()
@@ -30,8 +43,8 @@ namespace Surrender_20.Core.Service
                     ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode("./div[@class='itemcontent']").SelectSingleNode("./div").InnerText)
                 });
             }
-
             return newsfeeds;
         }
+
     }
 }
