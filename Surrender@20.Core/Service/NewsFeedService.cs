@@ -45,6 +45,5 @@ namespace Surrender_20.Core.Service
             }
             return newsfeeds;
         }
-
     }
 }

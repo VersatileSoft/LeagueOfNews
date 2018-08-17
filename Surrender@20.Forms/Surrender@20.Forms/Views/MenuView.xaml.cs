@@ -12,12 +12,12 @@ using Xamarin.Forms.Xaml;
 
 namespace Surrender_20.Forms.Views
 {
-    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = true)]
-    public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
-    {
-		public NewsfeedListView()
+    [MvxMasterDetailPagePresentation(MasterDetailPosition.Master)]
+    public partial class MenuView : MvxContentPage<MenuViewModel>
+	{
+		public MenuView ()
 		{
 			InitializeComponent ();
 		}
-	}
+    }
 }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<views:MvxTabbedPage 
+<views:MvxMasterDetailPage 
     x:TypeArguments="viewModels:MainPageViewModel"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -10,4 +10,4 @@
     x:Class="Surrender_20.Forms.Views.MainPage"
     Title="{Binding Title}">
 
-</views:MvxTabbedPage>
+</views:MvxMasterDetailPage>

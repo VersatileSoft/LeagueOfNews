@@ -32,6 +32,8 @@ namespace Surrender_20.Core.ViewModels
             _navigationService = navigationService;
             _operatingSystemService = operatingSystemService;
 
+            Title = "Home";
+
             NavCommand = new MvxCommand<string>((Parameter) => 
             {
                 switch (Parameter) //maybe da sie jakoś inaczej (lepiej?) zrobić to Title
@@ -54,19 +56,19 @@ namespace Surrender_20.Core.ViewModels
             EsportsCommand = new MvxAsyncCommand(() => NavigateTo(Setting.ESports));          
         }
 
-        public async override void ViewAppearing()
+        public override void ViewAppearing()
         {
             base.ViewAppearing();
+            
+             if (_operatingSystemService.GetSystemType() == SystemType.Android)
+                  MvxNotifyTask.Create(async () => await this.InitializeViewModels());
+           
+        }
 
-            if (_operatingSystemService.GetSystemType() == SystemType.Android)
-            {
-                await NavigateTo(Setting.Home);
-                await NavigateTo(Setting.PBE);
-                //await NavigateTo(Setting.Releases);
-                //await NavigateTo(Setting.RedPosts);
-                //await NavigateTo(Setting.People);
-                //await NavigateTo(Setting.ESports);
-            }
+        private async Task InitializeViewModels()
+        {
+            await _navigationService.Navigate<MenuViewModel>();
+            await NavigateTo(Setting.Home);
         }
 
         private async Task NavigateTo(Setting setting)
