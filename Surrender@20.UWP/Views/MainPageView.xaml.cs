@@ -6,6 +6,9 @@ using Surrender_20.Core.ViewModels;
 using Windows.UI;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
+using System.Net.NetworkInformation;
+using Windows.UI.Popups;
+using System;
 
 namespace Surrender_20
 {
@@ -16,6 +19,7 @@ namespace Surrender_20
         public MainPageView()
         {
             InitializeComponent();
+            CheckInternetConnection();
 
             var CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             CoreTitleBar.ExtendViewIntoTitleBar = true;
@@ -47,6 +51,23 @@ namespace Surrender_20
             }
 
             base.OnNavigatingFrom(e);
+        }
+
+        private async void CheckInternetConnection() //ViewModel?
+        {
+            bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
+
+            if (isInternetConnected == false)
+            {
+                var dialog = new MessageDialog("This application requires an internet connection.", "No internet connection.");
+                dialog.Commands.Add(new UICommand("Exit", handler));
+                await dialog.ShowAsync();
+            }
+        }
+
+        private void handler(IUICommand command)
+        {
+            Application.Current.Exit();
         }
 
         /*private void NavView_ItemSelected(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
