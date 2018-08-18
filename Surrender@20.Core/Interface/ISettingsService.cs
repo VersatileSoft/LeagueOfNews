@@ -8,12 +8,12 @@ namespace Surrender_20.Core.Interface
 
     public interface ISettingsService
     {
-        NewsfeedNavigationParameter this[Setting PropertyName] { get; set; }
+        NewsfeedNavigationParameter this[Setting PropertyName] { get; set; } //Should return object, cast later in code
     }
 
     public enum Setting
     {
-        Home, //TODO Add URL (e.g. HomeURL)
+        Home,
         PBE,
         Releases,
         RedPosts,

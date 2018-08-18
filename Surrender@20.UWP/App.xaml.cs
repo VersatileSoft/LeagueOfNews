@@ -23,7 +23,7 @@ namespace Surrender_20
         }
     }
 
-    sealed public class UWPSetup : MvxWindowsSetup<CoreApp>
+    sealed public class UWPSetup : MvxWindowsSetup<UWPCoreApp>
     {
         protected override void InitializeFirstChance()
         {
@@ -33,5 +33,5 @@ namespace Surrender_20
         }
     }
 
-    public abstract class UWPApplication : MvxApplication<UWPSetup, CoreApp> { }
+    public abstract class UWPApplication : MvxApplication<UWPSetup, UWPCoreApp> { }
 }

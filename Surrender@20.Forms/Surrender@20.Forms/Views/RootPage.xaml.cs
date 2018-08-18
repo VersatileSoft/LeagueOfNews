@@ -1,14 +1,13 @@
 ﻿using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using Surrender_20.Core.ViewModels;
-using Xamarin.Forms.Xaml;
+using Surrender_20.Forms.ViewModels;
 
 namespace Surrender_20.Forms.Views
 {
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Root, WrapInNavigationPage = false)]
-    public partial class MainPage : MvxMasterDetailPage<MainPageViewModel>
+    public partial class RootPage : MvxMasterDetailPage<RootViewModel>
     {
-        public MainPage()
+        public RootPage()
         {
             InitializeComponent();
         }
