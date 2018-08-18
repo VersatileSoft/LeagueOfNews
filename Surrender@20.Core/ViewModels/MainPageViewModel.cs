@@ -20,7 +20,7 @@ namespace Surrender_20.Core.ViewModels
         public ICommand NavCommand { get; private set; } //TODO rename to NavigateCommand
         public ICommand RefreshCommand { get; private set; } //halp
 
-        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMvxLog log)
+        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService)
         {
             _navigationService = navigationService;
             _operatingSystemService = operatingSystemService;
