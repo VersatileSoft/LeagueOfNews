@@ -28,11 +28,11 @@ namespace Surrender_20.Forms.Droid
     {
         protected override void InitializeLastChance()
         {
-            Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService());
-            Mvx.IoCProvider.RegisterSingleton(typeof(IMasterDetailService), new MasterDetailService());
+            Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService()); //TODO move to InitializeFirstChance
+            Mvx.IoCProvider.RegisterSingleton(typeof(IMasterDetailService), new MasterDetailService());       //TODO same /\
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<RootViewModel>>();
 
-            base.InitializeLastChance();
+            base.InitializeLastChance(); //TODO remove (check if work)
         }
     }
 }

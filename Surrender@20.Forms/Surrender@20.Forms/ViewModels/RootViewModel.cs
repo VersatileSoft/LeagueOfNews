@@ -25,7 +25,7 @@ namespace Surrender_20.Forms.ViewModels
             MvxNotifyTask.Create(() => InitializeViewModels());
         }
 
-        private async Task InitializeViewModels()
+        private async Task InitializeViewModels() //TODo move to ViewAppearing
         {
             await _navigationService.Navigate<MasterViewModel>();
             await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Home);

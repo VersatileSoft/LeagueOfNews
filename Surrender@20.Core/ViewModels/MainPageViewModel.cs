@@ -18,7 +18,7 @@ namespace Surrender_20.Core.ViewModels
         public string Title { get; set; }
 
         public ICommand NavCommand { get; private set; } //TODO rename to NavigateCommand
-        public ICommand RefreshCommand { get; private set; } //halp
+        public ICommand RefreshCommand { get; private set; } //TODO add command that forces RSS service to update
 
         public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService)
         {
