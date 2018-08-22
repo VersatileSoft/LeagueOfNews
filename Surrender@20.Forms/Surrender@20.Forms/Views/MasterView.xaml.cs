@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Surrender_20.Core.ViewModels;
+using Surrender_20.Forms.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,9 +14,9 @@ using Xamarin.Forms.Xaml;
 namespace Surrender_20.Forms.Views
 {
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Master)]
-    public partial class MenuView : MvxContentPage<MenuViewModel>
+    public partial class MasterView : MvxContentPage<MasterViewModel>
 	{
-		public MenuView ()
+		public MasterView ()
 		{
 			InitializeComponent ();
 		}

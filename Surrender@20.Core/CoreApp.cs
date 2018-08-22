@@ -8,12 +8,12 @@ namespace Surrender_20.Core
     {
         public override void Initialize()
         {
+            base.Initialize();
+
             CreatableTypes()
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-
-            RegisterAppStart<MainPageViewModel>();
         }
     }
 }
