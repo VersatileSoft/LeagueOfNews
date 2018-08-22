@@ -1,21 +1,14 @@
 ﻿using MvvmCross;
 using MvvmCross.IoC;
-using MvvmCross.Navigation;
 using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.ViewModels;
 using Surrender_20.Core;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
-using Surrender_20.Services;
-using System;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Surrender_20.UWP.Services;
 
-namespace Surrender_20
+namespace Surrender_20.UWP
 {
     sealed partial class App : UWPApplication
     {

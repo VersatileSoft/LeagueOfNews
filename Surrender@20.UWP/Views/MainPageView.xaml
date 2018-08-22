@@ -7,8 +7,8 @@
     xmlns:appmodel="using:Windows.ApplicationModel"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:conv="using:Surrender_20.Converters"
-    x:Class="Surrender_20.MainPageView"
+    xmlns:conv="using:Surrender_20.UWP.Converters"
+    x:Class="Surrender_20.UWP.View.MainPageView"
     mc:Ignorable="d"
     Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
     <m:MvxWindowsPage.Resources>

@@ -7,8 +7,8 @@
     <ProjectGuid>{96378F75-EE82-4E75-9189-EE9D60868CA7}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Surrender_20</RootNamespace>
-    <AssemblyName>Surrender@20</AssemblyName>
+    <RootNamespace>Surrender_20.UWP</RootNamespace>
+    <AssemblyName>Surrender%4020.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17134.0</TargetPlatformVersion>

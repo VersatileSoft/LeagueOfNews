@@ -10,7 +10,7 @@ using System.Net.NetworkInformation;
 using Windows.UI.Popups;
 using System;
 
-namespace Surrender_20
+namespace Surrender_20.UWP.View
 {
     public sealed partial class MainPageView : MvxWindowsPage
     {

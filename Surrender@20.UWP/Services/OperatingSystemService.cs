@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Surrender_20.Services
+namespace Surrender_20.UWP.Services
 {
     public class OperatingSystemService : IOperatingSystemService
     {

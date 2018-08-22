@@ -1,6 +1,6 @@
 ﻿<m:UWPApplication
-    xmlns:m="using:Surrender_20"
-    x:Class="Surrender_20.App"
+    xmlns:m="using:Surrender_20.UWP"
+    x:Class="Surrender_20.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 

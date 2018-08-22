@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
-namespace Surrender_20.Converters
+namespace Surrender_20.UWP.Converters
 {
     public class SelectedItemToStringConverter : IValueConverter
     {
