@@ -28,7 +28,7 @@ namespace Surrender_20.Forms.ViewModels
         private async Task InitializeViewModels()
         {
             await _navigationService.Navigate<MasterViewModel>();
-            await NavigateTo(Setting.Home);
+            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Home);
         }
 
         private void OnMasterPageSelect(object sender, MasterPageSelectArgs e)

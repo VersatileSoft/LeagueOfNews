@@ -12,12 +12,12 @@
             
             <Image Source="logo.jpg"/>
 
-            <Button Text="Home" Command="{Binding NavCommand}" CommandParameter="Home"/>
-            <Button Text="PBE" Command="{Binding NavCommand}" CommandParameter="PBE"/>
-            <Button Text="Releases" Command="{Binding NavCommand}" CommandParameter="Releases"/>
-            <Button Text="Red Posts" Command="{Binding NavCommand}" CommandParameter="Red Posts"/>
-            <Button Text="Rotations" Command="{Binding NavCommand}" CommandParameter="Rotations"/>
-            <Button Text="E-Sports" Command="{Binding NavCommand}" CommandParameter="E-Sports"/>
+            <Button Text="Home" Command="{Binding NavigateCommand}" CommandParameter="Home"/>
+            <Button Text="PBE" Command="{Binding NavigateCommand}" CommandParameter="PBE"/>
+            <Button Text="Releases" Command="{Binding NavigateCommand}" CommandParameter="Releases"/>
+            <Button Text="Red Posts" Command="{Binding NavigateCommand}" CommandParameter="Red Posts"/>
+            <Button Text="Rotations" Command="{Binding NavigateCommand}" CommandParameter="Rotations"/>
+            <Button Text="E-Sports" Command="{Binding NavigateCommand}" CommandParameter="E-Sports"/>
 
         </StackLayout>
     </views:MvxContentPage.Content>

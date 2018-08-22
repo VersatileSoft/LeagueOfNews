@@ -3,8 +3,10 @@ using MvvmCross.IoC;
 using MvvmCross.Navigation;
 using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
+using MvvmCross.ViewModels;
 using Surrender_20.Core;
 using Surrender_20.Core.Interface;
+using Surrender_20.Core.ViewModels;
 using Surrender_20.Services;
 using System;
 using Windows.ApplicationModel;
@@ -23,15 +25,18 @@ namespace Surrender_20
         }
     }
 
-    sealed public class UWPSetup : MvxWindowsSetup<UWPCoreApp>
+    sealed public class UWPSetup : MvxWindowsSetup<CoreApp>
     {
         protected override void InitializeFirstChance()
         {
-            base.InitializeFirstChance();
-            
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService());
+        }
+
+        protected override void InitializeLastChance()
+        {
+            Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<MainPageViewModel>>();
         }
     }
 
-    public abstract class UWPApplication : MvxApplication<UWPSetup, UWPCoreApp> { }
+    public abstract class UWPApplication : MvxApplication<UWPSetup, CoreApp> { }
 }
