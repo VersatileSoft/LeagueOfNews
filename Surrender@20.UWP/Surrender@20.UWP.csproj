@@ -101,6 +101,9 @@
     <Compile Include="Views\MainPageView.xaml.cs">
       <DependentUpon>MainPageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MessageBoxes\ConnectionDialog.xaml.cs">
+      <DependentUpon>ConnectionDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewsfeedItemView.xaml.cs">
       <DependentUpon>NewsfeedItemView.xaml</DependentUpon>
     </Compile>
@@ -186,6 +189,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
+    <Page Include="Views\MessageBoxes\ConnectionDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NewsfeedItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -204,7 +211,7 @@
       <Version>3.1.4</Version>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.8.6</Version>
+      <Version>1.8.7</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.1.7</Version>

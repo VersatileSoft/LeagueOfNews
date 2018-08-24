@@ -7,8 +7,8 @@ using Windows.UI;
 using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
 using System.Net.NetworkInformation;
-using Windows.UI.Popups;
 using System;
+using Surrender_20.UWP.Views.MessageBoxes;
 
 namespace Surrender_20.UWP.View
 {
@@ -59,15 +59,10 @@ namespace Surrender_20.UWP.View
 
             if (isInternetConnected == false)
             {
-                var dialog = new MessageDialog("This application requires an internet connection.", "No internet connection.");
-                dialog.Commands.Add(new UICommand("Exit", DialogButton));
-                await dialog.ShowAsync();
+                ConnectionDialog Dialog = new ConnectionDialog();
+                
+                await Dialog.ShowAsync();
             }
-        }
-
-        private void DialogButton(IUICommand command)
-        {
-            Application.Current.Exit();
         }
 
         /*private void NavView_ItemSelected(NavigationView sender, NavigationViewSelectionChangedEventArgs args)
