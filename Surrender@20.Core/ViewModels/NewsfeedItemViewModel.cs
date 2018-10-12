@@ -2,6 +2,7 @@
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Model;
+using System.Web;
 
 namespace Surrender_20.Core.ViewModels
 {
@@ -21,9 +22,7 @@ namespace Surrender_20.Core.ViewModels
         {
             Content = newsfeed;
 
-            TextContent = Content.Content.InnerText;
-
-            
+            TextContent = Content.Content.InnerHtml;
         }
     }
 }

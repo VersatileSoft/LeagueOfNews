@@ -33,10 +33,16 @@
                         <Label Text="{Binding Content.Title}" 
                                FontAttributes="Bold"          
                                WidthRequest="1000"/>
-                        <Label Text="{Binding TextContent}"/>
+                        <!--<Label Text="{Binding TextContent}"/>-->
 
-                        <!--<views:MvxContentView Content="{Binding TextContent}"/>-->
-                        
+                        <WebView HeightRequest="10000" WidthRequest="80">
+                            <WebView.Source>
+                                <HtmlWebViewSource Html="{Binding TextContent}"/>
+                            </WebView.Source>
+                        </WebView>
+
+                        <!--<views:MvxContentView Content="{Binding TextContent}" />-->
+
                     </StackLayout>
                 </StackLayout>
             </Grid>
