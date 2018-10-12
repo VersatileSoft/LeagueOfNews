@@ -8,7 +8,8 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:i="using:Microsoft.Xaml.Interactivity"
     xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    mc:Ignorable="d">
+    mc:Ignorable="d"
+    >
     <m:MvxWindowsPage.Transitions>
         <TransitionCollection>
             <EntranceThemeTransition/>
@@ -24,28 +25,20 @@
     </UserControl.Resources>
 
     <Grid>
-        <ProgressRing Style="{StaticResource LoadingRing}"
-                      Visibility="Visible"/>
-        
-        <ParallaxView Source="{x:Bind ListView}" VerticalShift="200">
-            <Image x:Name="BackgroundImage" 
-                   Style="{StaticResource BackgroudParallaxImage}"/>
-        </ParallaxView>
 
         <ScrollViewer x:Name="ListView" Visibility="Visible" >
             <StackPanel Margin="20,00,20,0">
                 <ParallaxView>
-                    <Image Source="{Binding NewsImage}" 
+                    <Image Source="{Binding Content.Image}" 
                            VerticalAlignment="Top" 
                            HorizontalAlignment="Center"/>
                 </ParallaxView>
 
-                <ContentControl Content="{Binding ContentDescription}"
+                <TextBlock Text="{Binding TextContent}" TextWrapping="Wrap"
                                 Margin="0,10,0,0"/>
+                
+
             </StackPanel>
         </ScrollViewer>
-        <CommandBar VerticalAlignment="Bottom" DefaultLabelPosition="Right" Background="{ThemeResource SystemControlChromeLowAcrylicElementBrush}">
-            <AppBarButton Icon="Share" Label="Share"/>
-        </CommandBar>
     </Grid>
 </m:MvxWindowsPage>

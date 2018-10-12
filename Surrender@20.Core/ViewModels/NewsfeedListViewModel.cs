@@ -1,4 +1,5 @@
-﻿using MvvmCross.Navigation;
+﻿using MvvmCross.Commands;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
@@ -7,6 +8,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace Surrender_20.Core.ViewModels
 {
@@ -16,15 +18,28 @@ namespace Surrender_20.Core.ViewModels
         private string _url;
         private INewsfeedService _newsfeedService;
         private ISettingsService _settingsService;
+        private IMvxNavigationService _navigationService;
 
         public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
         public string Title { get; set; }
         public bool IsLoading { get; set; }
+        public ICommand ItemSelected { get; set; }
 
-        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService)
+        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService)
         {
             _newsfeedService = newsfeedService;
             _settingsService = settingsService;
+            _navigationService = navigationService;
+
+            ItemSelected = new MvxAsyncCommand<Newsfeed>((Newsfeed) =>
+            {
+                return NavigateTo(Newsfeed);
+            });
+        }
+
+        protected async Task NavigateTo(Newsfeed newsfeed)
+        {
+            await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);
         }
 
         public override void Prepare(Setting parameter)

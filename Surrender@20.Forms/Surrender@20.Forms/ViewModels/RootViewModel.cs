@@ -12,23 +12,20 @@ namespace Surrender_20.Forms.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class RootViewModel : MainPageViewModel
     {
-        public RootViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMasterDetailService masterDetailServce) 
+        public RootViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMasterDetailService masterDetailService) 
             : base(navigationService, operatingSystemService)
         {
-            masterDetailServce.OnMasterPageSelect += OnMasterPageSelect;
+            masterDetailService.OnMasterPageSelect += OnMasterPageSelect;
         }
 
         public override void ViewAppearing()
         {
             base.ViewAppearing();
 
-            MvxNotifyTask.Create(() => InitializeViewModels());
-        }
-
-        private async Task InitializeViewModels() //TODo move to ViewAppearing
-        {
-            await _navigationService.Navigate<MasterViewModel>();
-            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Home);
+            MvxNotifyTask.Create(async ()  => {
+                await _navigationService.Navigate<MasterViewModel>();
+                await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Home);
+            });
         }
 
         private void OnMasterPageSelect(object sender, MasterPageSelectArgs e)

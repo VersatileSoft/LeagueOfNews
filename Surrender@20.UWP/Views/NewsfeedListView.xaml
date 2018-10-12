@@ -28,7 +28,9 @@
         <GridView HorizontalAlignment="Center"
                   Padding="50,0,50,0"
                   SelectionMode="Single"
-                  ItemsSource="{Binding Newsfeeds}">
+                  ItemsSource="{Binding Newsfeeds}"
+                  Tapped="GridView_Tapped"
+                  >
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Viewbox Margin="5">

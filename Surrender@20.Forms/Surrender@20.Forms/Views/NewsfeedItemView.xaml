@@ -5,38 +5,41 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Core.ViewModels;assembly=Surrender_20.Core"
+                      xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       x:Class="Surrender_20.Forms.Views.NewsfeedItemView"
-                      Title="{Binding Path=Data.Title}">
-   
-    <!--<views:MvxContentPage.Resources>
-        <ResourceDictionary>
-            --><!--<conv:UriToImageSource x:Key="UriToImageSource"/>--><!--
-        </ResourceDictionary>
-    </views:MvxContentPage.Resources>-->
+                      Title="{Binding Path=Content.Title}">
 
-    <!--<views:MvxContentPage.Content>
+    <views:MvxContentPage.Resources>
+        <ResourceDictionary>
+            <conv:UriToImageSource x:Key="UriToImageSource"/>
+            <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
+        </ResourceDictionary>
+    </views:MvxContentPage.Resources>
+
+    <views:MvxContentPage.Content>
+        
         <ScrollView>
             <Grid>
-                <ActivityIndicator VerticalOptions="Center" 
-                                   HorizontalOptions="Center"
-                                   IsRunning="True"
-                                   IsVisible="False"/>
 
                 <StackLayout IsVisible="True">
 
-                    <Image Source="{Binding Path=Data.Image, Converter={StaticResource UriToImageSource}}" 
+                    <Image Source="{Binding Path=Content.Image, Converter={StaticResource UriToImageSource}}" 
                            Aspect="AspectFill"  
                            HeightRequest="270"
                            HorizontalOptions="FillAndExpand"
                            VerticalOptions="Start"/>
+                    
                     <StackLayout Margin="20,10,20,10">
-                        <Label Text="{Binding Data.Title}" 
+                        <Label Text="{Binding Content.Title}" 
                                FontAttributes="Bold"          
                                WidthRequest="1000"/>
-                        <ContentView Content="{Binding ContentDescription}"/>
+                        <Label Text="{Binding TextContent}"/>
+
+                        <!--<views:MvxContentView Content="{Binding TextContent}"/>-->
+                        
                     </StackLayout>
                 </StackLayout>
             </Grid>
         </ScrollView>
-    </views:MvxContentPage.Content>-->
+    </views:MvxContentPage.Content>
 </views:MvxContentPage>

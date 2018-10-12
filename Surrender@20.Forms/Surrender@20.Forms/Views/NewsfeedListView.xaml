@@ -26,7 +26,16 @@
 
             <views:MvxListView
                 ItemsSource="{Binding Newsfeeds}"
-                HasUnevenRows="True">
+                HasUnevenRows="True"
+                ItemSelected="MvxListView_ItemSelected">
+
+                <!--TODO Change event to Behavior-->
+
+                <!--<views:MvxListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped"
+                                          Command="{Binding ItemTappedCommand}"
+                                          EventArgsParameterPath="Item" />
+                </views:MvxListView.Behaviors>-->
 
                 <views:MvxListView.ItemTemplate>
                     <DataTemplate>
