@@ -24,6 +24,7 @@ namespace Surrender_20.Core.ViewModels
         public string Title { get; set; }
         public bool IsLoading { get; set; }
         public ICommand ItemSelected { get; set; }
+        public ICommand LoadMore { get; set; }
 
         public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService)
         {
@@ -34,6 +35,14 @@ namespace Surrender_20.Core.ViewModels
             ItemSelected = new MvxAsyncCommand<Newsfeed>((Newsfeed) =>
             {
                 return NavigateTo(Newsfeed);
+            });
+
+            LoadMore = new MvxAsyncCommand(async() =>
+            {
+                foreach(var item in await _newsfeedService.LoadMoreNewsfeeds())
+                {
+                    Newsfeeds.Add(item);
+                }
             });
         }
 
