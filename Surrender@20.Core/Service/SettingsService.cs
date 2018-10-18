@@ -22,7 +22,7 @@ namespace Surrender_20.Core.Service
         {
             settings = new Dictionary<Setting, NewsfeedNavigationParameter>();
 
-            this[Setting.Home] = new NewsfeedNavigationParameter { Title = "Home", URL = "http://feeds.feedburner.com/surrenderat20/home?format=html" };
+            this[Setting.Home] = new NewsfeedNavigationParameter { Title = "Home", URL = "https://www.surrenderat20.net/?m=1" };
             this[Setting.PBE] = new NewsfeedNavigationParameter { Title = "PBE", URL = "http://feeds.feedburner.com/surrenderat20/pbe?format=html" };
             this[Setting.Releases] = new NewsfeedNavigationParameter { Title = "Releases", URL = "http://feeds.feedburner.com/surrenderat20/releases?format=html" };
             this[Setting.RedPosts] = new NewsfeedNavigationParameter { Title = "Red Posts", URL = "http://feeds.feedburner.com/surrenderat20/red_posts?format=html" };

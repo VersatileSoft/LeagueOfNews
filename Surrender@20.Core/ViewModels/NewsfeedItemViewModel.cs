@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
+using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System.Web;
 
@@ -9,20 +10,22 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class NewsfeedItemViewModel : MvxViewModel<Newsfeed>
     {
-        public Newsfeed Content { get; set; }
-        public string TextContent { get; set; }
-        public string Title => Content.Title;
+        public Newsfeed Newsfeed { get; set; }
+        public string Content { get; set; }
+        public bool IsLoading { get; set; }
+        private INewsfeedPageService _newsfeedPageParser;
 
-        public NewsfeedItemViewModel()
+        public NewsfeedItemViewModel(INewsfeedPageService newsfeedPageParser)
         {
-
+            _newsfeedPageParser = newsfeedPageParser;
         }
 
-        public override void Prepare(Newsfeed newsfeed)
+        public async override void Prepare(Newsfeed newsfeed)
         {
-            Content = newsfeed;
-
-            TextContent = Content.Content.InnerHtml;
+            Newsfeed = newsfeed;
+            IsLoading = true;
+            Content = await _newsfeedPageParser.ParseNewsfeed(Newsfeed.UrlToNewsfeed);
+            IsLoading = false;
         }
     }
 }

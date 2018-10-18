@@ -7,7 +7,7 @@
                       xmlns:viewModels="clr-namespace:Surrender_20.Core.ViewModels;assembly=Surrender_20.Core"
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       x:Class="Surrender_20.Forms.Views.NewsfeedItemView"
-                      Title="{Binding Path=Content.Title}">
+                      Title="{Binding Path=Newsfeed.Title}">
 
     <views:MvxContentPage.Resources>
         <ResourceDictionary>
@@ -17,35 +17,22 @@
     </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
-        
-        <ScrollView>
-            <Grid>
 
-                <StackLayout IsVisible="True">
+        <Grid>
 
-                    <Image Source="{Binding Path=Content.Image, Converter={StaticResource UriToImageSource}}" 
-                           Aspect="AspectFill"  
-                           HeightRequest="270"
-                           HorizontalOptions="FillAndExpand"
-                           VerticalOptions="Start"/>
-                    
-                    <StackLayout Margin="20,10,20,10">
-                        <Label Text="{Binding Content.Title}" 
-                               FontAttributes="Bold"          
-                               WidthRequest="1000"/>
-                        <!--<Label Text="{Binding TextContent}"/>-->
+            <ActivityIndicator 
+                IsRunning="True" 
+                IsVisible="{Binding IsLoading}" 
+                VerticalOptions="Center" 
+                HorizontalOptions="Center"/>
 
-                        <WebView HeightRequest="10000" WidthRequest="80">
-                            <WebView.Source>
-                                <HtmlWebViewSource Html="{Binding TextContent}"/>
-                            </WebView.Source>
-                        </WebView>
-
-                        <!--<views:MvxContentView Content="{Binding TextContent}" />-->
-
-                    </StackLayout>
-                </StackLayout>
-            </Grid>
-        </ScrollView>
+            <ScrollView>
+                <WebView>
+                    <WebView.Source>
+                        <HtmlWebViewSource Html="{Binding Content}"/>
+                    </WebView.Source>
+                </WebView>
+            </ScrollView>
+        </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

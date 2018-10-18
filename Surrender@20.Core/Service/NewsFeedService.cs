@@ -31,17 +31,16 @@ namespace Surrender_20.Core.Service
         public ObservableCollection<Newsfeed> Load(HtmlDocument Document)
         {
             var newsfeeds = new ObservableCollection<Newsfeed>();
-            var nodes = Document.DocumentNode.SelectNodes("//li[@class='regularitem']");
+            var nodes = Document.DocumentNode.SelectNodes("//div[@class='mobile-post-outer']");
             foreach (HtmlNode node in nodes)
             {
-                newsfeeds.Add(new Newsfeed()
-                {
-                    Title = HttpUtility.HtmlDecode(node.SelectSingleNode("./h4[@class='itemtitle']").InnerText),
-                    Time = HttpUtility.HtmlDecode(node.SelectSingleNode("./h5[@class='itemposttime']").InnerText),
-                    Content = node.SelectSingleNode("./div[@class='itemcontent']"),
-                    Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString(),
-                    ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode("./div[@class='itemcontent']").SelectSingleNode("./div").InnerText)
-                });
+                //newsfeeds.Add(new Newsfeed()
+                //{
+                var Title = HttpUtility.HtmlDecode(node.SelectSingleNode("./h3[@class='mobile-index-title entry-title']").InnerText);
+                var UrlToNewsfeed = new Uri(node.SelectSingleNode("./a").Attributes["href"].Value);
+                var Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
+                var ShortDescription = node.SelectSingleNode("./div[@class='post-body']").InnerText;
+               // });
             }
             return newsfeeds;
         }
