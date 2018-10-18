@@ -24,10 +24,11 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"/>
 
-            <views:MvxListView
+            <util:InfiniteListView
                 ItemsSource="{Binding Newsfeeds}"
                 HasUnevenRows="True"
-                ItemSelected="MvxListView_ItemSelected">
+                ItemSelected="MvxListView_ItemSelected"
+                LoadMoreCommand="{Binding LoadMore}">
 
                 <!--TODO Change event to Behavior-->
 
@@ -83,7 +84,7 @@
                     </DataTemplate>
 
                 </views:MvxListView.ItemTemplate>
-            </views:MvxListView>
+            </util:InfiniteListView>
         </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

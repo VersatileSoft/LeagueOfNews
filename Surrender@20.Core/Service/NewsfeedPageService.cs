@@ -10,11 +10,8 @@ namespace Surrender_20.Core.Service
     public class NewsfeedPageService : INewsfeedPageService
     {
         public async Task<string> ParseNewsfeed(Uri Url)
-        {
-
-            var s = Url.Host + "/?m=1" + Url.PathAndQuery;
-  
-            var doc = await new HtmlWeb().LoadFromWebAsync(Url.AbsoluteUri + "?m=1");
+        {         
+            var doc = await new HtmlWeb().LoadFromWebAsync(Url.AbsoluteUri);
             var nodes = doc.DocumentNode.InnerHtml;
             return nodes;
         }
