@@ -23,11 +23,11 @@ namespace Surrender_20.Core.Service
             settings = new Dictionary<Setting, NewsfeedNavigationParameter>();
 
             this[Setting.Home] = new NewsfeedNavigationParameter { Title = "Home", URL = "https://www.surrenderat20.net/?m=1" };
-            this[Setting.PBE] = new NewsfeedNavigationParameter { Title = "PBE", URL = "http://feeds.feedburner.com/surrenderat20/pbe?format=html" };
-            this[Setting.Releases] = new NewsfeedNavigationParameter { Title = "Releases", URL = "http://feeds.feedburner.com/surrenderat20/releases?format=html" };
-            this[Setting.RedPosts] = new NewsfeedNavigationParameter { Title = "Red Posts", URL = "http://feeds.feedburner.com/surrenderat20/red_posts?format=html" };
-            this[Setting.People] = new NewsfeedNavigationParameter { Title = "People", URL = "http://feeds.feedburner.com/surrenderat20/rotations?format=html" };
-            this[Setting.ESports] = new NewsfeedNavigationParameter { Title = "E-Sports", URL = "http://feeds.feedburner.com/surrenderat20/esports?format=html" };
+            this[Setting.PBE] = new NewsfeedNavigationParameter { Title = "PBE", URL = "https://www.surrenderat20.net/search/label/PBE?m=1" };
+            this[Setting.Releases] = new NewsfeedNavigationParameter { Title = "Releases", URL = "https://www.surrenderat20.net/search/label/Releases?m=1" };
+            this[Setting.RedPosts] = new NewsfeedNavigationParameter { Title = "Red Posts", URL = "https://www.surrenderat20.net/search/label/Red%20Posts?m=1" };
+            this[Setting.Rotations] = new NewsfeedNavigationParameter { Title = "Rotations", URL = "https://www.surrenderat20.net/search/label/Rotations?m=1" };
+            this[Setting.ESports] = new NewsfeedNavigationParameter { Title = "E-Sports", URL = "https://www.surrenderat20.net/search/label/Esports?m=1" };
             }
 
         public NewsfeedNavigationParameter this[Setting PropertyName]

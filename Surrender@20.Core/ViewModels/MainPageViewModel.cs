@@ -37,7 +37,7 @@ namespace Surrender_20.Core.ViewModels
                     case "PBE": return NavigateTo(Setting.PBE);
                     case "Releases": return NavigateTo(Setting.Releases);
                     case "Red Posts": return NavigateTo(Setting.RedPosts);
-                    case "Rotations": return NavigateTo(Setting.People);
+                    case "Rotations": return NavigateTo(Setting.Rotations);
                     case "E-Sports": return NavigateTo(Setting.ESports);
                     default: return null;
                 }

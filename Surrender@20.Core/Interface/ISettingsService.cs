@@ -17,7 +17,7 @@ namespace Surrender_20.Core.Interface
         PBE,
         Releases,
         RedPosts,
-        People,
+        Rotations,
         ESports
     }
 }

@@ -11,8 +11,7 @@
 
     <views:MvxContentPage.Resources>
         <ResourceDictionary>
-            <conv:UriToImageSource x:Key="UriToImageSource"/>
-            <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
+            <conv:NegateBoolConverter x:Key="NegateBoolConverter"/>
         </ResourceDictionary>
     </views:MvxContentPage.Resources>
 
@@ -26,7 +25,8 @@
                 VerticalOptions="Center" 
                 HorizontalOptions="Center"/>
 
-            <ScrollView>
+            <ScrollView 
+                IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <WebView>
                     <WebView.Source>
                         <HtmlWebViewSource Html="{Binding Content}"/>

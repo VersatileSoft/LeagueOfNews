@@ -12,8 +12,28 @@ namespace Surrender_20.Core.Service
         public async Task<string> ParseNewsfeed(Uri Url)
         {         
             var doc = await new HtmlWeb().LoadFromWebAsync(Url.AbsoluteUri);
+
+            doc.DocumentNode.SelectSingleNode("//div[@class='blog-pager']").Remove();
+            doc.DocumentNode.SelectSingleNode("//div[@class='mobile footer']").Remove();
+
+            RemoveHrefAttributes(doc);
+
             var nodes = doc.DocumentNode.InnerHtml;
             return nodes;
         }
+
+        private void RemoveHrefAttributes(HtmlDocument html)
+        {
+            var elementsWithHrefAttribute = html.DocumentNode.SelectNodes("//@href");
+
+            if (elementsWithHrefAttribute != null)
+            {
+                foreach (var element in elementsWithHrefAttribute)
+                {
+                    element.Attributes["href"].Remove();
+                }
+            }
+        }
+
     }
 }

@@ -41,7 +41,9 @@ namespace Surrender_20.Core.ViewModels
             {
                 foreach(var item in await _newsfeedService.LoadMoreNewsfeeds())
                 {
+                    IsLoading = true;
                     Newsfeeds.Add(item);
+                    IsLoading = false;
                 }
             });
         }
