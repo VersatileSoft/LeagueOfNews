@@ -14,29 +14,23 @@
     <m:MvxWindowsPage.Resources>
         <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>
     </m:MvxWindowsPage.Resources>
-    
-    <m:MvxWindowsPage.Transitions>
-        <TransitionCollection>
-            <EntranceThemeTransition/>
-        </TransitionCollection>
-    </m:MvxWindowsPage.Transitions>
-    
+
     <Grid>
-        <Grid x:Name="DragArea" Background="Transparent" HorizontalAlignment="Stretch" Height="40" VerticalAlignment="Top" Margin="50,0,0,0" Canvas.ZIndex="5"/>
+        <Grid x:Name="DragArea" Background="Transparent" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="1689" Canvas.ZIndex="5">
+            <TextBlock Text="{x:Bind appmodel:Package.Current.DisplayName}" FontSize="12" Margin="12,8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        </Grid>
 
         <NavigationView x:Name="NavigationBar"
-                        OpenPaneLength="200"
                         IsSettingsVisible="True"
-                        IsBackButtonVisible="Visible"
-                        PaneTitle="{x:Bind appmodel:Package.Current.DisplayName}">
+                        IsBackButtonVisible="Collapsed"
+                        PaneDisplayMode="Top"
+                        SelectionFollowsFocus="Enabled">
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
                     <core:InvokeCommandAction Command="{Binding NavCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
                 </core:EventTriggerBehavior>
             </i:Interaction.Behaviors>
             <NavigationView.MenuItems>
-                <NavigationViewItemHeader Content="Pages"/>
-
                 <NavigationViewItem Icon="Home" Content="Home"/>
                 
                 <NavigationViewItem Content="PBE">
@@ -65,27 +59,8 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
-
-            <NavigationView.Header>
-                <Grid Margin="20,40,20,0">
-                    <CommandBar DefaultLabelPosition="Right" OverflowButtonVisibility="Collapsed" Background="Transparent">
-                        <CommandBar.PrimaryCommands>
-                            <AppBarButton Icon="Refresh" Label="Refresh">
-                                <i:Interaction.Behaviors>
-                                    <core:EventTriggerBehavior EventName="Click">
-                                        <core:InvokeCommandAction Command="{Binding RefreshCommand}"/>
-                                    </core:EventTriggerBehavior>
-                                </i:Interaction.Behaviors>
-                            </AppBarButton>
-                        </CommandBar.PrimaryCommands>
-                        
-                        <CommandBar.Content>
-                            <TextBlock Text="{Binding Title}" Margin="12,14"/>
-                        </CommandBar.Content>
-                    </CommandBar>
-                </Grid>
-            </NavigationView.Header>
-            <Frame x:Name="ContentFrame" Margin="20,0,20,0">
+           
+            <Frame x:Name="ContentFrame" Margin="20,20,20,0">
                 <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Frame>
         </NavigationView>

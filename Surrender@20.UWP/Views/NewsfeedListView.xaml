@@ -17,7 +17,7 @@
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
 
-            <AcrylicBrush x:Key="CustomAcrylicBrush" BackgroundSource="Backdrop" Opacity=".9" TintOpacity=".5" TintColor="#FF000000" FallbackColor="#FF008000" />
+            <AcrylicBrush x:Key="CustomAcrylicBrush" BackgroundSource="Backdrop" Opacity=".98" TintOpacity=".5" TintColor="#FF000000" FallbackColor="#FF008000" />
         </ResourceDictionary>
     </m:MvxWindowsPage.Resources>
 
@@ -25,39 +25,37 @@
         <ProgressRing Style="{StaticResource LoadingRing}"
                       IsActive="{Binding IsLoading}"/>
 
-        <GridView HorizontalAlignment="Center"
-                  Padding="50,0,50,0"
-                  SelectionMode="Single"
+        <GridView SelectionMode="Single"
+                  HorizontalAlignment="Center"
                   ItemsSource="{Binding Newsfeeds}"
-                  Tapped="GridView_Tapped"
-                  >
+                  Tapped="GridView_Tapped">
             <GridView.ItemTemplate>
+
                 <DataTemplate>
-                    <Viewbox Margin="5">
-                        <Grid Height="250">
-                            <Image Source="{Binding Image}" Stretch="Fill"/>
+                    <Grid Width="450" Height="180" >
+                        <Image Source="{Binding Image}" 
+                               Stretch="UniformToFill"/>
 
-                            <StackPanel Background="{ThemeResource CustomAcrylicBrush}">
-                                <TextBlock Text="{Binding Title}"
-                                           Style="{ThemeResource BaseTextBlockStyle}" 
-                                           HorizontalAlignment="Center"
-                                           Margin="0,4,0,0"/>
+                        <!--Height="60" VerticalAlignment="Bottom"-->
+                        <StackPanel Orientation="Vertical"                         
+                                    Background="{StaticResource CustomAcrylicBrush}" 
+                                    Padding="12">
 
-                                <TextBlock Text="{Binding Time}"
-                                           Style="{ThemeResource CaptionTextBlockStyle}"
-                                           HorizontalAlignment="Center"
-                                           Margin="0,4,0,0"                                           
-                                           Opacity=".8"/>
+                            <!--TY GRUBA KURWO NIE ZAJMUJ TYLE MIEJSCA-->
+                            <TextBlock Text="{Binding Title}"/>
 
-                                <TextBlock Text="{Binding Description}"
-                                           HorizontalAlignment="Center"
-                                           Margin="0,4,0,0" 
-                                           MaxLines="3"/>
-                            </StackPanel>
-                        </Grid>
-                    </Viewbox>
+                            <TextBlock Text="[Binding Time]" 
+                                       Style="{ThemeResource CaptionTextBlockStyle}" 
+                                       Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                        </StackPanel>
+                    </Grid>
                 </DataTemplate>
             </GridView.ItemTemplate>
+            <GridView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </GridView.ItemsPanel>
         </GridView>
     </Grid>
 </m:MvxWindowsPage>
