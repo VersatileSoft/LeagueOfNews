@@ -12,23 +12,21 @@
    <views:MvxContentPage.Resources>
         <ResourceDictionary>
             <conv:UriToImageSource x:Key="UriToImageSource"/>
-    <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
+        <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
         </ResourceDictionary>
     </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
         <Grid>
-            <ActivityIndicator 
-                IsRunning="True" 
-                IsVisible="{Binding IsLoading}" 
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"/>
+            <ActivityIndicator IsRunning="True" 
+                               IsVisible="{Binding IsLoading}" 
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"/>
 
-            <util:InfiniteListView
-                ItemsSource="{Binding Newsfeeds}"
-                HasUnevenRows="True"
-                ItemSelected="MvxListView_ItemSelected"
-                LoadMoreCommand="{Binding LoadMore}">
+            <util:InfiniteListView ItemsSource="{Binding Newsfeeds}"
+                                   HasUnevenRows="True"
+                                   ItemSelected="MvxListView_ItemSelected"
+                                   LoadMoreCommand="{Binding LoadMore}">
 
                 <!--TODO Change event to Behavior-->
 
@@ -41,48 +39,43 @@
                 <views:MvxListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="30*"/>
+                                    <ColumnDefinition Width="70*"/>
+                                </Grid.ColumnDefinitions>
 
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30*"/>
-                                        <ColumnDefinition Width="70*"/>
-                                    </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="20"/>
+                                    <RowDefinition Height="60"/>
+                                </Grid.RowDefinitions>
 
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="20"/>
-                                        <RowDefinition Height="60"/>
-                                    </Grid.RowDefinitions>
+                                <Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
+                                       Aspect="AspectFill"  
+                                       Grid.Column="0"
+                                       Grid.Row="0"
+                                       Grid.RowSpan="3"/>
 
-                                    <Image 
-                                        Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
-                                        Aspect="AspectFill"  
-                                        Grid.Column="0"
-                                        Grid.Row="0"
-                                        Grid.RowSpan="3"/>
+                                <util:ExtendedLabel Text="{Binding Title}"
+                                                    Style="{DynamicResource ListItemTextStyle}"
+                                                    LineBreakMode="TailTruncation"
+                                                    MaxLines="2"
+                                                    Grid.Column="1"
+                                                    Grid.Row="0"/>
 
-                                    <util:ExtendedLabel Text="{Binding Title}"
-                                                Style="{DynamicResource ListItemTextStyle}"
-                                                LineBreakMode="TailTruncation"
-                                                MaxLines="2"
-                                                Grid.Column="1"
-                                                Grid.Row="0"/>
+                                <Label Text="{Binding Time}"
+                                       TextColor="Black"
+                                       Style="{DynamicResource ListItemTextStyle}"                                        
+                                       Grid.Column="1"
+                                       Grid.Row="1"/>
 
-                                    <Label Text="{Binding Time}"
-                                        TextColor="Black"
-                                        Style="{DynamicResource ListItemTextStyle}"                                        
-                                        Grid.Column="1"
-                                        Grid.Row="1"/>
-
-                                    <Label Text="{Binding ShortDescription}"
-                                                Grid.Column="1"
-                                                Grid.Row="2"/>
-                                </Grid>
-                            </StackLayout>
+                                <Label Text="{Binding ShortDescription}"
+                                       Grid.Column="1"
+                                       Grid.Row="2"/>
+                            </Grid>
                         </ViewCell>
                     </DataTemplate>
-
                 </views:MvxListView.ItemTemplate>
             </util:InfiniteListView>
         </Grid>

@@ -16,17 +16,13 @@
     </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
-
         <Grid>
+            <ActivityIndicator IsRunning="True" 
+                               IsVisible="{Binding IsLoading}" 
+                               VerticalOptions="Center" 
+                               HorizontalOptions="Center"/>
 
-            <ActivityIndicator 
-                IsRunning="True" 
-                IsVisible="{Binding IsLoading}" 
-                VerticalOptions="Center" 
-                HorizontalOptions="Center"/>
-
-            <ScrollView 
-                IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
+            <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <WebView>
                     <WebView.Source>
                         <HtmlWebViewSource Html="{Binding Content}"/>

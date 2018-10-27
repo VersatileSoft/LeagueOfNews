@@ -18,7 +18,6 @@
             <Button Text="Red Posts" Command="{Binding NavigateCommand}" CommandParameter="Red Posts"/>
             <Button Text="Rotations" Command="{Binding NavigateCommand}" CommandParameter="Rotations"/>
             <Button Text="E-Sports" Command="{Binding NavigateCommand}" CommandParameter="E-Sports"/>
-
         </StackLayout>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>
