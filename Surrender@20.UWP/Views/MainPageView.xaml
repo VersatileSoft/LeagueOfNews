@@ -17,11 +17,16 @@
 
     <Grid>
         <Grid x:Name="DragArea" Background="Transparent" HorizontalAlignment="Left" Height="34" VerticalAlignment="Top" Width="1689" Canvas.ZIndex="5">
-            <TextBlock Text="{x:Bind appmodel:Package.Current.DisplayName}" FontSize="12" Margin="12,8" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Image Source="ms-appx:///Assets/Square44x44Logo.scale-100.png" 
+                   HorizontalAlignment="Left" 
+                   Width="20" 
+                   Height="20" 
+                   Margin="12,0"/>
+            <TextBlock Text="{x:Bind appmodel:Package.Current.DisplayName}" FontSize="12" Margin="44,8" Style="{StaticResource CaptionTextBlockStyle}" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         </Grid>
 
         <NavigationView x:Name="NavigationBar"
-                        IsSettingsVisible="True"
+                        IsSettingsVisible="False"
                         IsBackButtonVisible="Collapsed"
                         PaneDisplayMode="Top"
                         SelectionFollowsFocus="Enabled">
