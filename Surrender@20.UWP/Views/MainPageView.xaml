@@ -10,7 +10,8 @@
     xmlns:conv="using:Surrender_20.UWP.Converters"
     x:Class="Surrender_20.UWP.View.MainPageView"
     mc:Ignorable="d"
-    Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" Tapped="MvxWindowsPage_Tapped">
+    Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" 
+    Tapped="MvxWindowsPage_Tapped">
     <m:MvxWindowsPage.Resources>
         <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>
     </m:MvxWindowsPage.Resources>
@@ -42,7 +43,8 @@
                         IsSettingsVisible="False"
                         IsBackButtonVisible="Collapsed"
                         PaneDisplayMode="Top"
-                        SelectionFollowsFocus="Enabled">
+                        SelectionFollowsFocus="Enabled" 
+                        Loaded="NavigationBar_Loaded">
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
                     <core:InvokeCommandAction Command="{Binding NavCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
@@ -50,7 +52,7 @@
             </i:Interaction.Behaviors>
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="Home"/>
-                
+
                 <NavigationViewItem Content="PBE">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph=""/>
@@ -62,7 +64,7 @@
                         <FontIcon Glyph=""/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
-                
+
                 <NavigationViewItem Content="Red Posts">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEC7A;"/>
@@ -77,7 +79,7 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
-           
+
             <Frame x:Name="ContentFrame">
                 <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png" 
                        HorizontalAlignment="Center" 

@@ -33,7 +33,7 @@ namespace Surrender_20.UWP.View
 
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;  
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -80,6 +80,11 @@ namespace Surrender_20.UWP.View
         private void MvxWindowsPage_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
         {
             ChangeThemeLogo();
+        }
+
+        private void NavigationBar_Loaded(object sender, RoutedEventArgs e)
+        {
+            NavigationBar.SelectedItem = NavigationBar.MenuItems[0];
         }
 
         private void ChangeThemeLogo()
