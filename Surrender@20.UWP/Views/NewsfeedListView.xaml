@@ -27,7 +27,7 @@
 
         <Grid Grid.Column="0">
             <ProgressRing Style="{StaticResource LoadingRing}"
-                          IsActive="{Binding IsLoading}"/>
+                      IsActive="{Binding IsLoading}"/>
 
             <ScrollViewer CanContentRenderOutsideBounds="True">
                 <GridView SelectionMode="Single"                     
@@ -36,45 +36,45 @@
                           Tapped="GridView_Tapped"
                           Margin="0,15,0,0">
                     <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Width="440" Height="175">
+                                <Image Source="{Binding Image}" 
+                                       Stretch="UniformToFill"/>
 
-                    <DataTemplate>
-                        <Grid Width="440" Height="175">
-                            <Image Source="{Binding Image}" 
-                                   Stretch="UniformToFill"/>
+                                <!--Height="60" VerticalAlignment="Bottom"-->
+                                <StackPanel Orientation="Vertical"                         
+                                            Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}" 
+                                            Padding="12">
 
-                            <!--Height="60" VerticalAlignment="Bottom"-->
-                            <StackPanel Orientation="Vertical"                         
-                                        Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}" 
-                                        Padding="12">
+                                    <!--TY GRUBA KURWO NIE ZAJMUJ TYLE MIEJSCA-->
+                                    <TextBlock Text="{Binding Title}" 
+                                               TextWrapping="Wrap"/>
 
-                                <!--TY GRUBA KURWO NIE ZAJMUJ TYLE MIEJSCA-->
-                                <TextBlock Text="{Binding Title}" 
-                                           TextWrapping="Wrap"/>
-                              
-                                <!--Bindowanie czasu dodania postu nie działa - pusty string-->
-                                <TextBlock Text="[Binding Time]" 
-                                           Style="{ThemeResource CaptionTextBlockStyle}" 
-                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                                
-                                <!--TY GRUBA KURWO NIE ZAJMUJ TYLE MIEJSCA-->
-                                <TextBlock Text="{Binding ShortDescription}" 
-                                           Style="{ThemeResource CaptionTextBlockStyle}" 
-                                           Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-                            </StackPanel>
-                        </Grid>
-                    </DataTemplate>
-                </GridView.ItemTemplate>
-                <GridView.ItemsPanel>
-                    <ItemsPanelTemplate>
-                        <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal"/>
-                    </ItemsPanelTemplate>
-                </GridView.ItemsPanel>
-            </GridView>
+                                    <!--Bindowanie czasu dodania postu nie działa - pusty string-->
+                                    <TextBlock Text="[Binding Time]" 
+                                               Style="{ThemeResource CaptionTextBlockStyle}" 
+                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+
+                                    <!--TY GRUBA KURWO NIE ZAJMUJ TYLE MIEJSCA-->
+                                    <TextBlock Text="{Binding ShortDescription}" 
+                                               Style="{ThemeResource CaptionTextBlockStyle}" 
+                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                </StackPanel>
+                            </Grid>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+
+                    <GridView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal"/>
+                        </ItemsPanelTemplate>
+                    </GridView.ItemsPanel>
+                </GridView>
             </ScrollViewer>
         </Grid>
 
         <Grid Grid.Column="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-            <Frame>
+            <Frame x:Name="NewsfeedItemFrame">
                 <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Frame>
         </Grid>
