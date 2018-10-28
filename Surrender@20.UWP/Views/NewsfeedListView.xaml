@@ -16,13 +16,10 @@
                 <Setter Property="VerticalAlignment" Value="Center"/>
                 <Setter Property="HorizontalAlignment" Value="Center"/>
             </Style>
-
-            <AcrylicBrush x:Key="CustomAcrylicBrush" BackgroundSource="Backdrop" Opacity=".98" TintOpacity=".5" TintColor="#FF000000" FallbackColor="#FF008000" />
         </ResourceDictionary>
     </m:MvxWindowsPage.Resources>
 
     <Grid>
-
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="480"/>
             <ColumnDefinition Width="*"/>
@@ -47,7 +44,7 @@
 
                             <!--Height="60" VerticalAlignment="Bottom"-->
                             <StackPanel Orientation="Vertical"                         
-                                        Background="{StaticResource CustomAcrylicBrush}" 
+                                        Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}" 
                                         Padding="12">
 
                                 <!--TY GRUBA KURWO NIE ZAJMUJ TYLE MIEJSCA-->
@@ -76,7 +73,7 @@
 
         <Grid Grid.Column="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <Frame>
-                <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png" HorizontalAlignment="Center" VerticalAlignment="Center"/>
             </Frame>
         </Grid>
     </Grid>

@@ -9,6 +9,7 @@ using Windows.UI.Xaml.Media.Animation;
 using System.Net.NetworkInformation;
 using System;
 using Surrender_20.UWP.Views.MessageBoxes;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Surrender_20.UWP.View
 {
@@ -16,10 +17,14 @@ namespace Surrender_20.UWP.View
     {
         public MainPageViewModel VM => ViewModel as MainPageViewModel;
 
+        private BitmapImage LogoLight, LogoDark;
+
         public MainPageView()
         {
             InitializeComponent();
             CheckInternetConnection();
+            LoadImages();
+            ChangeThemeLogo();
 
             var CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             CoreTitleBar.ExtendViewIntoTitleBar = true;
@@ -62,6 +67,31 @@ namespace Surrender_20.UWP.View
                 ConnectionDialog Dialog = new ConnectionDialog();
                 
                 await Dialog.ShowAsync();
+            }
+        }
+
+        private void LoadImages()
+        {
+            LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.scale-100.png"));
+            LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.scale-100Dark.png"));
+            
+        }
+
+        private void MvxWindowsPage_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
+        {
+            ChangeThemeLogo();
+        }
+
+        private void ChangeThemeLogo()
+        {
+            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+            {
+                LogoImage.Source = LogoLight;
+            }
+
+            else
+            {
+                LogoImage.Source = LogoDark;
             }
         }
 
