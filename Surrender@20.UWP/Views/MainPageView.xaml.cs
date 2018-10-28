@@ -43,7 +43,7 @@ namespace Surrender_20.UWP.View
             switch (e.NavigationMode)
             {
                 case NavigationMode.New:
-                    ContentFrame.Navigate(e.SourcePageType, e.Parameter, new EntranceNavigationTransitionInfo());
+                    ContentFrame.Navigate(e.SourcePageType, e.Parameter, new DrillInNavigationTransitionInfo());
                     break;
                 case NavigationMode.Forward:
                     ContentFrame.GoForward(); //Navigate?

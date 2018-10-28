@@ -131,6 +131,7 @@
   <ItemGroup>
     <Content Include="Assets\Images\NewsfeedAssets\BackgroundLight.png" />
     <Content Include="Assets\Images\NewsfeedAssets\BackgroundDark.png" />
+    <Content Include="Assets\Images\NewsfeedAssets\TestPostImage.jpg" />
     <Content Include="Assets\Images\SettingsPageAssets\ja.jpg" />
     <Content Include="Assets\Images\SettingsPageAssets\mymaster.jpg" />
     <Content Include="Assets\Images\SettingsPageAssets\wozniak.jpg" />

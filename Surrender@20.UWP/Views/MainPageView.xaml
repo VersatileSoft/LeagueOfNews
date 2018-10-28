@@ -79,7 +79,7 @@
             </NavigationView.MenuItems>
            
             <Frame x:Name="ContentFrame">
-                <Image Source="ms-appx:///Assets/LargeTile.scale-400.png" 
+                <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png" 
                        HorizontalAlignment="Center" 
                        VerticalAlignment="Center"/>
             </Frame>
