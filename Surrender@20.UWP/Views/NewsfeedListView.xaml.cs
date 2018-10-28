@@ -1,6 +1,5 @@
 ﻿using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.Core.ViewModels;
-using Surrender_20.Model;
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;

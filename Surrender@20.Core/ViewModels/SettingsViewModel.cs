@@ -1,6 +1,4 @@
-﻿using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
-using PropertyChanged;
+﻿using MvvmCross.ViewModels;
 
 namespace Surrender_20.Core.ViewModels
 {

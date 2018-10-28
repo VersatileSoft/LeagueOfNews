@@ -1,5 +1,4 @@
-﻿using HtmlAgilityPack;
-using PropertyChanged;
+﻿using PropertyChanged;
 using System;
 
 namespace Surrender_20.Model

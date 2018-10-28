@@ -1,11 +1,9 @@
-﻿using MvvmCross.Logging;
-using MvvmCross.Navigation;
+﻿using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Forms.Interfaces;
-using System.Threading.Tasks;
 
 namespace Surrender_20.Forms.ViewModels
 {

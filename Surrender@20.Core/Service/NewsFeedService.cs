@@ -2,9 +2,7 @@
 using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 

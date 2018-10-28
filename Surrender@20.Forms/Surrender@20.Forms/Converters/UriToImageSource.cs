@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Text;
 using Xamarin.Forms;
 
 namespace Surrender_20.Forms.Converters
@@ -15,7 +13,7 @@ namespace Surrender_20.Forms.Converters
 
             if (!(value is Uri))
             {
-                ImageSource src = value as String;
+                ImageSource src = value as string;
                 return src;
             }
             return ImageSource.FromUri((Uri)value);

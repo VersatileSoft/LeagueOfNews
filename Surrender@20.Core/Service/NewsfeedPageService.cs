@@ -1,8 +1,6 @@
 ﻿using HtmlAgilityPack;
 using Surrender_20.Core.Interface;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Surrender_20.Core.Service
