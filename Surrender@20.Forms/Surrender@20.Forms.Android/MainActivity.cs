@@ -13,7 +13,7 @@ using Surrender_20.Forms.ViewModels;
 
 namespace Surrender_20.Forms.Droid
 {
-    [Activity(Label = "Surrender_20.Forms", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = true)]
+    [Activity(Label = "SurrenderAt20", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = true)]
     public class MainActivity : MvxFormsAppCompatActivity<AndroidSetup, CoreApp, App>
     {
         protected override void OnCreate(Bundle bundle)
