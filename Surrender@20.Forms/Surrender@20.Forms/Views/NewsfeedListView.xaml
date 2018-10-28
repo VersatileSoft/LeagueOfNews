@@ -26,6 +26,7 @@
             <util:InfiniteListView ItemsSource="{Binding Newsfeeds}"
                                    HasUnevenRows="True"
                                    ItemSelected="MvxListView_ItemSelected"
+                                   SelectionMode="Single"
                                    LoadMoreCommand="{Binding LoadMore}">
 
                 <!--TODO Change event to Behavior-->
@@ -46,29 +47,26 @@
                                 </Grid.ColumnDefinitions>
 
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="20"/>
-                                    <RowDefinition Height="60"/>
+                                    <RowDefinition Height="5"/>
+                                    <RowDefinition Height="30"/>
+                                    <RowDefinition Height="65"/>
                                 </Grid.RowDefinitions>
 
                                 <Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
                                        Aspect="AspectFill"  
                                        Grid.Column="0"
                                        Grid.Row="0"
-                                       Grid.RowSpan="3"/>
-
-                                <util:ExtendedLabel Text="{Binding Title}"
+                                       Grid.RowSpan="3"
+                                       Margin="10,5,10,5"/>
+                                <!--Text="{Binding Title}"-->
+                                <util:ExtendedLabel Text="[Binding Title]"
                                                     Style="{DynamicResource ListItemTextStyle}"
                                                     LineBreakMode="TailTruncation"
                                                     MaxLines="2"
                                                     Grid.Column="1"
-                                                    Grid.Row="0"/>
-
-                                <Label Text="{Binding Time}"
-                                       TextColor="Black"
-                                       Style="{DynamicResource ListItemTextStyle}"                                        
-                                       Grid.Column="1"
-                                       Grid.Row="1"/>
+                                                    Grid.Row="1"
+                                                    TextColor="#ce9f3d"
+                                                    FontSize="Large"/>
 
                                 <Label Text="{Binding ShortDescription}"
                                        Grid.Column="1"
