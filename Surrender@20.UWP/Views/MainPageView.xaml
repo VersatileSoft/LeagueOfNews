@@ -1,17 +1,17 @@
-﻿<m:MvxWindowsPage
-    xmlns:m="using:MvvmCross.Platforms.Uap.Views"
-    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    xmlns:appmodel="using:Windows.ApplicationModel"
-    xmlns:i="using:Microsoft.Xaml.Interactivity"
-    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-    xmlns:conv="using:Surrender_20.UWP.Converters"
-    x:Class="Surrender_20.UWP.View.MainPageView"
-    mc:Ignorable="d"
-    Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" 
-    Tapped="MvxWindowsPage_Tapped">
+﻿<m:MvxWindowsPage xmlns:m="using:MvvmCross.Platforms.Uap.Views"
+                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:appmodel="using:Windows.ApplicationModel"
+                  xmlns:i="using:Microsoft.Xaml.Interactivity"
+                  xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+                  xmlns:conv="using:Surrender_20.UWP.Converters"
+                  x:Class="Surrender_20.UWP.View.MainPageView"
+                  mc:Ignorable="d"
+                  Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" 
+                  Tapped="MvxWindowsPage_Tapped">
+    
     <m:MvxWindowsPage.Resources>
         <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>
     </m:MvxWindowsPage.Resources>
@@ -45,11 +45,13 @@
                         PaneDisplayMode="Top"
                         SelectionFollowsFocus="Enabled" 
                         Loaded="NavigationBar_Loaded">
+            
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
                     <core:InvokeCommandAction Command="{Binding NavCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
                 </core:EventTriggerBehavior>
             </i:Interaction.Behaviors>
+            
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="Home"/>
 

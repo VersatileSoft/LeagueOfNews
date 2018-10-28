@@ -1,8 +1,11 @@
 ﻿using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Model;
+using System;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
+using Windows.UI.Xaml.Media.Imaging;
 
 namespace Surrender_20.UWP.View
 {
@@ -10,9 +13,13 @@ namespace Surrender_20.UWP.View
     {
         public NewsfeedListViewModel VM => ViewModel as NewsfeedListViewModel;
 
+        private BitmapImage LogoLight, LogoDark;
+
         public NewsfeedListView()
         {
             this.InitializeComponent();
+            LoadImages();
+            ChangeThemeLogo();
         }
 
         private void GridView_Tapped(object sender, TappedRoutedEventArgs e)
@@ -25,5 +32,30 @@ namespace Surrender_20.UWP.View
         {
             RefreshContainer.RequestRefresh(); //idk czy to działa, musze tablet zaktualizować xD
         }*/
+
+        private void LoadImages()
+        {
+            LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"));
+            LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Images/NewsfeedAssets/BackgroundDark.png"));
+
+        }
+
+        private void MvxWindowsPage_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ChangeThemeLogo();
+        }
+
+        private void ChangeThemeLogo()
+        {
+            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
+            {
+                LogoImage.Source = LogoLight;
+            }
+
+            else
+            {
+                LogoImage.Source = LogoDark;
+            }
+        }
     }
 }

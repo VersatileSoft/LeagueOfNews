@@ -58,6 +58,7 @@
                                        Grid.Row="0"
                                        Grid.RowSpan="3"
                                        Margin="10,5,10,5"/>
+                                
                                 <!--Text="{Binding Title}"-->
                                 <util:ExtendedLabel Text="[Binding Title]"
                                                     Style="{DynamicResource ListItemTextStyle}"
