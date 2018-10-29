@@ -5,6 +5,7 @@ using System;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Web;
+using ExtensionMethods;
 
 namespace Surrender_20.Core.Service
 {
@@ -33,14 +34,15 @@ namespace Surrender_20.Core.Service
             var newsfeeds = new ObservableCollection<Newsfeed>();
             NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='blog-pager-older-link']").Attributes["href"].Value;
             var nodes = Document.DocumentNode.SelectNodes("//div[@class='mobile-post-outer']");
+
             foreach (HtmlNode node in nodes)
             {
                 newsfeeds.Add(new Newsfeed()
                 {
-                    Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h3[@class='mobile-index-title entry-title']").InnerText),
+                    Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h3[@class='mobile-index-title entry-title']").InnerText).RemoveEnterFromString(),
                     UrlToNewsfeed = new Uri(node.SelectSingleNode(".//a").Attributes["href"].Value),
                     Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString(),
-                    ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='post-body']").InnerText)
+                    ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='post-body']").InnerText).RemoveEnterFromString()
                 });
             }
             return newsfeeds;
@@ -50,6 +52,19 @@ namespace Surrender_20.Core.Service
         {
             var doc = await new HtmlWeb().LoadFromWebAsync(NextPageUrl);
             return Load(doc);
+        }
+    }
+
+    
+}
+
+namespace ExtensionMethods
+{
+    public static class StringExtensions
+    {
+        public static string RemoveEnterFromString(this string s)
+        {
+            return s.Replace("\n", "");
         }
     }
 }

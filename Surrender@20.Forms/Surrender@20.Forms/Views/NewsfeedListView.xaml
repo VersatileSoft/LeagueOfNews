@@ -60,7 +60,7 @@
                                        Margin="10,5,10,5"/>
                                 
                                 <!--Text="{Binding Title}"-->
-                                <util:ExtendedLabel Text="[Binding Title]"
+                                <util:ExtendedLabel Text="{Binding Title}"
                                                     Style="{DynamicResource ListItemTextStyle}"
                                                     LineBreakMode="TailTruncation"
                                                     MaxLines="2"
