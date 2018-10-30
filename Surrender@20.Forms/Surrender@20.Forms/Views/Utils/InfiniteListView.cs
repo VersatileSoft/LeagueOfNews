@@ -24,7 +24,7 @@ namespace Surrender_20.Forms.Views.Utils
         {
             var items = ItemsSource as IList;
 
-            if (items != null && e.Item == items[items.Count - 1])
+            if (items != null && e.Item == items[items.Count - 5])
             {
                 if (LoadMoreCommand != null && LoadMoreCommand.CanExecute(null))
                     LoadMoreCommand.Execute(null);

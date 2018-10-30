@@ -89,6 +89,7 @@
                     <StackLayout Margin="0,10,0,15">
                         <!--IsRunning="{Binding IsLoading}"-->
                         <ActivityIndicator IsRunning="True" 
+                                           IsVisible="{Binding IsLoadingMore}"
                                            VerticalOptions="Center" 
                                            HorizontalOptions="Center"/>
                     </StackLayout>
