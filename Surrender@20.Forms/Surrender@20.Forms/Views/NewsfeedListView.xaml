@@ -8,6 +8,7 @@
                       xmlns:util="clr-namespace:Surrender_20.Forms.Views.Utils"
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       x:Class="Surrender_20.Forms.Views.NewsfeedListView"
+                      BackgroundColor="#f0f0f0"
                       Title="{Binding Title}">
    <views:MvxContentPage.Resources>
         <ResourceDictionary>
@@ -18,8 +19,7 @@
 
     <views:MvxContentPage.Content>
         <Grid>
-            <ActivityIndicator IsRunning="True" 
-                               IsVisible="{Binding IsLoading}" 
+            <ActivityIndicator IsRunning="{Binding IsLoading}" 
                                VerticalOptions="Center" 
                                HorizontalOptions="Center"/>
 
@@ -28,7 +28,8 @@
                                    SeparatorVisibility="None"
                                    ItemSelected="MvxListView_ItemSelected"
                                    SelectionMode="Single"
-                                   LoadMoreCommand="{Binding LoadMore}">
+                                   LoadMoreCommand="{Binding LoadMore}"
+                                   Margin="0,5,0,0">
 
                 <!--TODO Change event to Behavior-->
 
@@ -42,7 +43,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <Frame CornerRadius="15"
-                                   Margin="10"
+                                   Margin="10,5,10,5"
                                    Padding="5">
                                 <Grid>
                                     <Grid.ColumnDefinitions>
@@ -52,7 +53,7 @@
 
                                     <Grid.RowDefinitions>
                                         <RowDefinition Height="30"/>
-                                        <RowDefinition Height="65"/>
+                                        <RowDefinition Height="70"/>
                                     </Grid.RowDefinitions>
 
                                     <Frame CornerRadius="15"
@@ -73,7 +74,7 @@
                                                         Grid.Column="1"
                                                         Grid.Row="0"
                                                         TextColor="#ce9f3d"
-                                                        FontSize="Large"/>
+                                                        FontSize="Medium"/>
 
                                     <Label Text="{Binding ShortDescription}"
                                            Grid.Column="1"
@@ -85,8 +86,8 @@
                 </views:MvxListView.ItemTemplate>
                 
                 <ListView.Footer>
-                    <StackLayout Margin="0,0,0,10">
-                        <!--IsVisible="{Binding IsLoading}"-->
+                    <StackLayout Margin="0,10,0,15">
+                        <!--IsRunning="{Binding IsLoading}"-->
                         <ActivityIndicator IsRunning="True" 
                                            VerticalOptions="Center" 
                                            HorizontalOptions="Center"/>
