@@ -26,7 +26,7 @@
 
         <Grid Grid.Column="0">
             <ProgressRing Style="{StaticResource LoadingRing}"
-                      IsActive="{Binding IsLoading}"/>
+                          IsActive="{Binding IsLoading}"/>
 
             <ScrollViewer CanContentRenderOutsideBounds="True">
                 <GridView SelectionMode="Single"                     
@@ -34,6 +34,7 @@
                           ItemsSource="{Binding Newsfeeds}"
                           Tapped="GridView_Tapped"
                           Margin="0,15,0,0">
+                    
                     <GridView.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="440" Height="175">
@@ -45,19 +46,15 @@
                                             Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}" 
                                             Padding="12">
 
-                                    <!--TY GRUBA KURWO NIE ZAJMUJ TYLE MIEJSCA-->
+                                    
                                     <TextBlock Text="{Binding Title}" 
                                                TextWrapping="Wrap"/>
 
-                                    <!--Bindowanie czasu dodania postu nie działa - pusty string-->
-                                    <TextBlock Text="[Binding Time]" 
-                                               Style="{ThemeResource CaptionTextBlockStyle}" 
-                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-
-                                    <!--TY GRUBA KURWO NIE ZAJMUJ TYLE MIEJSCA-->
+                                    
                                     <TextBlock Text="{Binding ShortDescription}" 
                                                Style="{ThemeResource CaptionTextBlockStyle}" 
-                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
+                                               Margin="0,25,0,0"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
