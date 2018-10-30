@@ -21,6 +21,7 @@ namespace Surrender_20.Core.ViewModels
         public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
         public string Title { get; set; }
         public bool IsLoading { get; set; }
+        public bool IsLoadingMore { get; set; }
         public ICommand ItemSelected { get; set; }
         public ICommand LoadMore { get; set; }
 
@@ -37,12 +38,12 @@ namespace Surrender_20.Core.ViewModels
 
             LoadMore = new MvxAsyncCommand(async() =>
             {
-                foreach(var item in await _newsfeedService.LoadMoreNewsfeeds())
-                {
-                    IsLoading = true;
+                IsLoadingMore = true;
+                foreach (var item in await _newsfeedService.LoadMoreNewsfeeds())
+                {                   
                     Newsfeeds.Add(item);
-                    IsLoading = false;
                 }
+                IsLoadingMore = false;
             });
         }
 

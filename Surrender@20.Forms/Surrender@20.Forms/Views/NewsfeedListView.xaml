@@ -86,8 +86,8 @@
                 
                 <ListView.Footer>
                     <StackLayout Margin="0,0,0,10">
-                        <!--IsVisible="{Binding IsLoading}"-->
                         <ActivityIndicator IsRunning="True" 
+                                           IsVisible="{Binding IsLoadingMore}"
                                            VerticalOptions="Center" 
                                            HorizontalOptions="Center"/>
                     </StackLayout>
