@@ -16,6 +16,7 @@ namespace Surrender_20.Forms.Views
 			InitializeComponent();
 		}
 
+        // ItemClicked
         private void MvxListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             

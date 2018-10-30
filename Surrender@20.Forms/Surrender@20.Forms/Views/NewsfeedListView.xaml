@@ -23,6 +23,7 @@
                                VerticalOptions="Center" 
                                HorizontalOptions="Center"/>
 
+            <!--ItemClicked="MvxListView_ItemClicked"-->
             <util:InfiniteListView ItemsSource="{Binding Newsfeeds}"
                                    HasUnevenRows="True"
                                    SeparatorVisibility="None"
@@ -87,9 +88,7 @@
                 
                 <ListView.Footer>
                     <StackLayout Margin="0,10,0,15">
-                        <!--IsRunning="{Binding IsLoading}"-->
-                        <ActivityIndicator IsRunning="True" 
-                                           IsVisible="{Binding IsLoadingMore}"
+                        <ActivityIndicator IsRunning="{Binding IsLoadingMore}"
                                            VerticalOptions="Center" 
                                            HorizontalOptions="Center"/>
                     </StackLayout>
