@@ -23,12 +23,12 @@
                                VerticalOptions="Center" 
                                HorizontalOptions="Center"/>
 
-            <!--ItemClicked="MvxListView_ItemClicked"-->
+            <!--ItemClick="MvxListView_ItemClick"-->
             <util:InfiniteListView ItemsSource="{Binding Newsfeeds}"
                                    HasUnevenRows="True"
                                    SeparatorVisibility="None"
-                                   ItemSelected="MvxListView_ItemSelected"
-                                   SelectionMode="Single"
+                                   ItemTapped="MvxListView_ItemTapped"
+                                   SelectionMode="None"
                                    LoadMoreCommand="{Binding LoadMore}"
                                    Margin="0,5,0,0">
 
