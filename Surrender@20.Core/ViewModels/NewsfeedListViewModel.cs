@@ -62,7 +62,7 @@ namespace Surrender_20.Core.ViewModels
             await base.Initialize();
 
             IsLoading = true;
-            Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url);
+           // Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url);
             IsLoading = false;
         }
     }

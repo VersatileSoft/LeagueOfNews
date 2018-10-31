@@ -4,16 +4,9 @@
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-    xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
+    xmlns:viewModels="clr-namespace:Surrender_20.Core.ViewModels;assembly=Surrender@20.Core"
     xmlns:local="clr-namespace:Surrender_20.Forms.Views"
     x:Class="Surrender_20.Forms.Views.RootPage"
-    Title="{Binding Title}">
-
-    <TabbedPage.Children>
-        <local:NewsfeedItemView/>
-        <local:NewsfeedItemView/>
-        <local:NewsfeedItemView/>
-        <local:NewsfeedItemView/>
-    </TabbedPage.Children>
+    Title="LOL">
 
 </views:MvxTabbedPage>

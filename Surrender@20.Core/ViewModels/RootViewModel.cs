@@ -9,7 +9,7 @@ using System.Windows.Input;
 namespace Surrender_20.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class MainPageViewModel : MvxViewModel
+    public class RootViewModel : MvxViewModel
     {
         private IOperatingSystemService _operatingSystemService;
         protected IMvxNavigationService _navigationService;
@@ -19,12 +19,12 @@ namespace Surrender_20.Core.ViewModels
         public ICommand NavCommand { get; private set; } //TODO rename to NavigateCommand
         public ICommand RefreshCommand { get; private set; } //TODO add command that forces RSS service to update
 
-        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService)
+        public RootViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService)
         {
             _navigationService = navigationService;
             _operatingSystemService = operatingSystemService;
 
-            Title = "Home";
+            Title = "Chuj";
 
             NavCommand = new MvxAsyncCommand<string>((Parameter) => 
             {
@@ -41,6 +41,19 @@ namespace Surrender_20.Core.ViewModels
                     default: return null;
                 }
             });          
+        }
+
+        public override void ViewCreated()
+        {
+            MvxNotifyTask.Create(async () =>
+            {
+                await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Home);
+                //await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.PBE);
+                //await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Releases);
+                //await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.RedPosts);
+                //await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Rotations);
+                //await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.ESports);
+            });
         }
 
         protected async Task NavigateTo(Setting setting)

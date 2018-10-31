@@ -27,7 +27,7 @@ namespace Surrender_20.UWP
 
         protected override void InitializeLastChance()
         {
-            Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<MainPageViewModel>>();
+            Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<RootViewModel>>();
         }
     }
 
