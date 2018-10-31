@@ -23,7 +23,7 @@ namespace Surrender_20.UWP.View
 
         private void GridView_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            VM.ItemSelected.Execute(((GridView)sender).SelectedItem);
+            VM.ItemTapped.Execute(((GridView)sender).SelectedItem);
         }
 
         //zlewam pull-to-refresh bo psuje design

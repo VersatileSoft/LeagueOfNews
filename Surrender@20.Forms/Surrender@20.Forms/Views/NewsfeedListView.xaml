@@ -19,18 +19,13 @@
 
     <views:MvxContentPage.Content>
         <Grid>
-            <ActivityIndicator IsRunning="{Binding IsLoading}" 
-                               VerticalOptions="Center" 
-                               HorizontalOptions="Center"/>
+            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
             <!--ItemClick="MvxListView_ItemClick"-->
-            <util:InfiniteListView ItemsSource="{Binding Newsfeeds}"
-                                   HasUnevenRows="True"
-                                   SeparatorVisibility="None"
-                                   ItemTapped="MvxListView_ItemTapped"
-                                   SelectionMode="None"
+            <util:InfiniteListView Style="{StaticResource InfiniteListView}"
+                                   ItemsSource="{Binding Newsfeeds}"
                                    LoadMoreCommand="{Binding LoadMore}"
-                                   Margin="0,5,0,0">
+                                   ItemTapped="MvxListView_ItemTapped">
 
                 <!--TODO Change event to Behavior-->
 
@@ -43,7 +38,7 @@
                 <views:MvxListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame CornerRadius="15"
+                            <Frame Style="{StaticResource Frame}"
                                    Margin="10,5,10,5"
                                    Padding="5">
                                 <Grid>
@@ -53,44 +48,36 @@
                                     </Grid.ColumnDefinitions>
 
                                     <Grid.RowDefinitions>
-                                        <RowDefinition Height="30"/>
-                                        <RowDefinition Height="70"/>
+                                        <RowDefinition Height="36"/>
+                                        <RowDefinition Height="67"/>
                                     </Grid.RowDefinitions>
 
-                                    <Frame CornerRadius="15"
-                                           IsClippedToBounds="True"
+                                    <Frame Style="{StaticResource Frame}"
                                            Grid.Column="0"
                                            Grid.Row="0"
-                                           Grid.RowSpan="3"
-                                           Padding="0">
+                                           Grid.RowSpan="3">
 
                                         <Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
                                                Aspect="AspectFill"/>
                                     </Frame>
 
-                                    <util:ExtendedLabel Text="{Binding Title}"
-                                                        Style="{DynamicResource ListItemTextStyle}"
-                                                        LineBreakMode="TailTruncation"
-                                                        MaxLines="2"
+                                    <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
+                                                        Text="{Binding Title}"           
                                                         Grid.Column="1"
-                                                        Grid.Row="0"
-                                                        TextColor="#ce9f3d"
-                                                        FontSize="Medium"/>
+                                                        Grid.Row="0"/>
 
-                                    <Label Text="{Binding ShortDescription}"
-                                           Grid.Column="1"
-                                           Grid.Row="1"/>
+                                    <Label Style="{StaticResource DescriptionLabel}"
+                                           Text="{Binding ShortDescription}"/>
                                 </Grid>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </views:MvxListView.ItemTemplate>
-                
+
                 <ListView.Footer>
                     <StackLayout Margin="0,10,0,15">
-                        <ActivityIndicator IsRunning="{Binding IsLoadingMore}"
-                                           VerticalOptions="Center" 
-                                           HorizontalOptions="Center"/>
+                        <ActivityIndicator Style="{StaticResource ActivityIndicator}"
+                                           IsRunning="{Binding IsLoadingMore}"/>
                     </StackLayout>
                 </ListView.Footer>
                 

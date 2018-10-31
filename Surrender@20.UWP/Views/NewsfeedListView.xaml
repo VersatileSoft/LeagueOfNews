@@ -19,9 +19,26 @@
     </m:MvxWindowsPage.Resources>
 
     <Grid>
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup>
+                <VisualState>
+                    <VisualState.StateTriggers>
+                        <!--VisualState to be triggered when window width is >=720 effective pixels.-->
+                        <AdaptiveTrigger MinWindowWidth="501"/>
+                    </VisualState.StateTriggers>
+
+                    <VisualState.Setters>
+                        <Setter Target="NewsfeedItemGrid.Visibility" Value="Visible"/>
+                        <Setter Target="ListGridColumn.Width" Value="480"/>
+                        <Setter Target="ItemGridColumn.Width" Value="*"/>
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="480"/>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition x:Name="ListGridColumn" Width="*"/>
+            <ColumnDefinition x:Name="ItemGridColumn" Width="0"/>
         </Grid.ColumnDefinitions>
 
         <Grid Grid.Column="0">
@@ -69,7 +86,9 @@
             </ScrollViewer>
         </Grid>
 
-        <Grid Grid.Column="1" 
+        <Grid x:Name="NewsfeedItemGrid"
+              Visibility="Collapsed"
+              Grid.Column="1" 
               Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <Frame x:Name="NewsfeedItemFrame">
                 <Image x:Name="LogoImage" 
