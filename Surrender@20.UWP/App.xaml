@@ -5,6 +5,44 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <m:UWPApplication.Resources>
-        
+        <!--MainPageView-->
+        <Style x:Key="DragAreaGrid" TargetType="Grid">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Height" Value="34"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="Canvas.ZIndex" Value="5"/>
+        </Style>
+
+        <Style x:Key="AppLogoImage" TargetType="Image">
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Height" Value="20"/>
+            <Setter Property="Margin" Value="12,0"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style x:Key="AppTitleText" TargetType="TextBlock" BasedOn="{StaticResource CaptionTextBlockStyle}">
+            <Setter Property="Text" Value="SurrenderAt20"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Margin" Value="44,8"/>
+            <Setter Property="VerticalAlignment" Value="Top"/>
+            <Setter Property="HorizontalAlignment" Value="Left"/>
+        </Style>
+
+        <Style x:Key="NavigationView" TargetType="NavigationView">
+            <Setter Property="PaneDisplayMode" Value="Top"/>
+            <Setter Property="IsSettingsVisible" Value="False"/>
+            <Setter Property="IsBackButtonVisible" Value="Collapsed"/>
+            <Setter Property="SelectionFollowsFocus" Value="Enabled"/>
+        </Style>
+
+        <!--Others-->
+        <Style x:Key="ProgressRing" TargetType="ProgressRing">
+            <Setter Property="Canvas.ZIndex" Value="5"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Height" Value="100"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
     </m:UWPApplication.Resources>
 </m:UWPApplication>
