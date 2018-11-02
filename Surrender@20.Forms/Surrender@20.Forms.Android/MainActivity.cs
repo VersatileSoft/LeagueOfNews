@@ -18,6 +18,7 @@ namespace Surrender_20.Forms.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            global::Xamarin.Forms.Forms.SetFlags("FastRenderers_Experimental");
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(bundle);

@@ -18,7 +18,7 @@
     </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
-        <Grid>
+        <Grid CompressedLayout.IsHeadless="true">
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
             <!--ItemClick="MvxListView_ItemClick"-->
@@ -37,7 +37,7 @@
 
                 <views:MvxListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell CompressedLayout.IsHeadless="true">
                             <Frame Style="{StaticResource Frame}"
                                    Margin="10,5,10,5"
                                    Padding="5">
@@ -75,7 +75,7 @@
                 </views:MvxListView.ItemTemplate>
 
                 <ListView.Footer>
-                    <StackLayout Margin="0,10,0,15">
+                    <StackLayout CompressedLayout.IsHeadless="true" Margin="0,10,0,15">
                         <ActivityIndicator Style="{StaticResource ActivityIndicator}"
                                            IsRunning="{Binding IsLoadingMore}"/>
                     </StackLayout>

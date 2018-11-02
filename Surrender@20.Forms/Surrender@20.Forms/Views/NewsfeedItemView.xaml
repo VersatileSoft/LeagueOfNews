@@ -16,10 +16,10 @@
     </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
-        <Grid>
+        <Grid CompressedLayout.IsHeadless="true">
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
-            <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
+            <ScrollView CompressedLayout.IsHeadless="true" IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <WebView>
                     <WebView.Source>
                         <HtmlWebViewSource Html="{Binding Content}"/>
