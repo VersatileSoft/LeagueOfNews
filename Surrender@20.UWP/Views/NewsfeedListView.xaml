@@ -12,7 +12,7 @@
                 <VisualState>
                     <VisualState.StateTriggers>
                         <!--VisualState to be triggered when window width is >=720 effective pixels.-->
-                        <AdaptiveTrigger MinWindowWidth="501"/>
+                        <AdaptiveTrigger MinWindowWidth="1000"/>
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
@@ -34,7 +34,7 @@
                           IsActive="{Binding IsLoading}"/>
 
             <ScrollViewer CanContentRenderOutsideBounds="True">
-                <GridView SelectionMode="Single"                     
+                <GridView SelectionMode="Single"
                           HorizontalAlignment="Center"
                           ItemsSource="{Binding Newsfeeds}"
                           Tapped="GridView_Tapped"
@@ -42,24 +42,26 @@
                     
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="440" Height="175">
-                                <Image Source="{Binding Image}" 
+                            <Grid Width="440" Height="185">
+
+                                <Image Source="{Binding Image}"
                                        Stretch="UniformToFill"/>
 
-                                <!--Height="60" VerticalAlignment="Bottom"-->
-                                <StackPanel Orientation="Vertical"                         
-                                            Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}" 
-                                            Padding="12">
+                                <StackPanel Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}"
+                                            Padding="10">
 
+                                    <Image Source="{Binding Image}"
+                                           Stretch="UniformToFill" 
+                                           Height="90"/>
                                     
-                                    <TextBlock Text="{Binding Title}" 
-                                               TextWrapping="Wrap"/>
+                                    <TextBlock Text="{Binding Title}"
+                                               TextWrapping="Wrap"
+                                               Margin="0,5,0,0"/>
 
-                                    
-                                    <TextBlock Text="{Binding ShortDescription}" 
-                                               Style="{ThemeResource CaptionTextBlockStyle}" 
+                                    <TextBlock Text="{Binding ShortDescription}"
+                                               Style="{ThemeResource CaptionTextBlockStyle}"
                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                                               Margin="0,25,0,0"/>
+                                               Margin="0,5,0,0"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -76,12 +78,12 @@
 
         <Grid x:Name="NewsfeedItemGrid"
               Visibility="Collapsed"
-              Grid.Column="1" 
+              Grid.Column="1"
               Background="{ThemeResource SystemControlAcrylicWindowBrush}">
             <Frame x:Name="NewsfeedItemFrame">
-                <Image x:Name="LogoImage" 
-                       Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png" 
-                       HorizontalAlignment="Center" 
+                <Image x:Name="LogoImage"
+                       Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"
+                       HorizontalAlignment="Center"
                        VerticalAlignment="Center"/>
             </Frame>
         </Grid>
