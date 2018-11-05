@@ -25,11 +25,13 @@ namespace Surrender_20.Core.ViewModels
         public ICommand ItemTapped { get; set; }
         public ICommand LoadMore { get; set; }
 
-        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService)
+        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, 
+            IMvxNavigationService navigationService, ITabsInitService tabsInitService)
         {
             _newsfeedService = newsfeedService;
             _settingsService = settingsService;
             _navigationService = navigationService;
+            tabsInitService.TabsLoaded += async (s, e) => await InitTabs();
 
             ItemTapped = new MvxAsyncCommand<Newsfeed>((Newsfeed) =>
             {
@@ -58,10 +60,8 @@ namespace Surrender_20.Core.ViewModels
             _url = _settingsService[parameter].URL;
         }
 
-        public async override Task Initialize()
+        private async Task InitTabs()
         {
-            await base.Initialize();
-
             IsLoading = true;
             Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url);
             IsLoading = false;
