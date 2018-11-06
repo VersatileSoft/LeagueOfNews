@@ -12,12 +12,12 @@ using Surrender_20.Forms.Services;
 
 namespace Surrender_20.Forms.Droid
 {
-    [Activity(Label = "SurrenderAt20", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = true)]
+    [Activity(Label = "SurrenderAt20", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = false)]
     public class MainActivity : MvxFormsAppCompatActivity<AndroidSetup, CoreApp, App>
     {
         protected override void OnCreate(Bundle bundle)
         {
-            global::Xamarin.Forms.Forms.SetFlags("FastRenderers_Experimental");
+            Xamarin.Forms.Forms.SetFlags("FastRenderers_Experimental");
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.OnCreate(bundle);
@@ -29,6 +29,8 @@ namespace Surrender_20.Forms.Droid
         protected override void InitializeLastChance()
         {
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService()); //TODO move to InitializeFirstChance
+
+            Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<RootViewModel>>();
 
             base.InitializeLastChance(); //TODO remove (check if work)
         }

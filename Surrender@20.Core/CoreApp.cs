@@ -14,8 +14,6 @@ namespace Surrender_20.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
-
-            this.RegisterAppStart<RootViewModel>();
         }
     }
 }
