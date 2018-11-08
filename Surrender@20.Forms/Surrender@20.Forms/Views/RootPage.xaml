@@ -7,6 +7,6 @@
     xmlns:viewModels="clr-namespace:Surrender_20.Core.ViewModels;assembly=Surrender@20.Core"
     xmlns:local="clr-namespace:Surrender_20.Forms.Views"
     x:Class="Surrender_20.Forms.Views.RootPage"
-    Title="[Placeholder]">
+    Title="Surrender@20">
 
 </views:MvxTabbedPage>

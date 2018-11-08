@@ -8,7 +8,7 @@ using Xamarin.Forms.Xaml;
 namespace Surrender_20.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxTabbedPagePresentation(TabbedPosition.Tab, NoHistory = false, WrapInNavigationPage = false)]
+    [MvxTabbedPagePresentation(TabbedPosition.Tab, NoHistory = false, WrapInNavigationPage = true)]
     public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
     {
 		public NewsfeedListView()

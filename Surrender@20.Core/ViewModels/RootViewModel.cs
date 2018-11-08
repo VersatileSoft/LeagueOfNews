@@ -16,6 +16,7 @@ namespace Surrender_20.Core.ViewModels
         private IMvxNavigationService _navigationService;
         private IOperatingSystemService _operatingSystemService;
         private ITabsInitService _tabsInitService;
+        private bool _tabsLoaded = false;
 
         public ICommand NavCommand { get; private set; } //TODO rename to NavigateCommand
         public ICommand RefreshCommand { get; private set; } //TODO add command that forces RSS service to update
@@ -48,7 +49,7 @@ namespace Surrender_20.Core.ViewModels
         {
             base.ViewAppearing();
 
-            if (_operatingSystemService.GetSystemType() == SystemType.Android)
+            if (_operatingSystemService.GetSystemType() == SystemType.Android && !_tabsLoaded)
                 MvxNotifyTask.Create(async () => await InitializeViewModels());
         }
 
@@ -61,6 +62,7 @@ namespace Surrender_20.Core.ViewModels
             await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Rotations);
             await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.ESports);
 
+            _tabsLoaded = true;
             _tabsInitService.TabsLoaded.Invoke(this, EventArgs.Empty);
         }
 
