@@ -75,10 +75,10 @@
                 </views:MvxListView.ItemTemplate>
 
                 <ListView.Footer>
-                    <StackLayout CompressedLayout.IsHeadless="true" Margin="0,10,0,15">
+                    <Grid CompressedLayout.IsHeadless="true" HeightRequest="70">
                         <ActivityIndicator Style="{StaticResource ActivityIndicator}"
                                            IsRunning="{Binding IsLoadingMore}"/>
-                    </StackLayout>
+                    </Grid>
                 </ListView.Footer>
                 
             </util:InfiniteListView>
