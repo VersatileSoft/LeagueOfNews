@@ -7,11 +7,8 @@
 
   <ItemGroup>
     <Compile Remove="Interfaces\**" />
-    <Compile Remove="ViewModels\**" />
     <EmbeddedResource Remove="Interfaces\**" />
-    <EmbeddedResource Remove="ViewModels\**" />
     <None Remove="Interfaces\**" />
-    <None Remove="ViewModels\**" />
   </ItemGroup>
 
   <ItemGroup>

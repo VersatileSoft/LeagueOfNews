@@ -32,18 +32,39 @@ namespace Surrender_20.Core.Service
         public ObservableCollection<Newsfeed> Load(HtmlDocument Document)
         {
             var newsfeeds = new ObservableCollection<Newsfeed>();
-            NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='blog-pager-older-link']").Attributes["href"].Value;
-            var nodes = Document.DocumentNode.SelectNodes("//div[@class='mobile-post-outer']");
+            NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;
+            var nodes = Document.DocumentNode.SelectNodes("//div[@class='post-outer']");
 
             foreach (HtmlNode node in nodes)
             {
-                newsfeeds.Add(new Newsfeed()
+
+                Newsfeed newsfeed = new Newsfeed();
+
+                try
                 {
-                    Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h3[@class='mobile-index-title entry-title']").InnerText).RemoveEnterFromString(),
-                    UrlToNewsfeed = new Uri(node.SelectSingleNode(".//a").Attributes["href"].Value),
-                    Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString(),
-                    ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='post-body']").InnerText).RemoveEnterFromString()
-                });
+                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveEnterFromString();
+                    newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value);
+                    newsfeed.Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
+                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText).RemoveEnterFromString();
+                }
+                catch { continue; }
+
+                newsfeeds.Add(newsfeed);
+
+                if (newsfeed.Title == null || newsfeed.UrlToNewsfeed == null || newsfeed.Image == null || newsfeed.ShortDescription == null)
+                {
+                    throw new Exception();
+                }
+
+                //newsfeeds.Add(new Newsfeed()
+                //{
+                //    Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveEnterFromString(),
+                //    UrlToNewsfeed = new Uri(node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value),
+                //    Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString(),
+                //    ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText).RemoveEnterFromString()
+                //});
+
+
             }
             return newsfeeds;
         }
@@ -55,7 +76,7 @@ namespace Surrender_20.Core.Service
         }
     }
 
-    
+
 }
 
 namespace ExtensionMethods
