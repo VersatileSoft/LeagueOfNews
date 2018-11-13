@@ -51,7 +51,7 @@ namespace Surrender_20.Core.ViewModels
 
         protected async Task NavigateTo(Newsfeed newsfeed)
         {
-            await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);
+            await _navigationService.Navigate<NewsfeedItemCoreViewModel, Newsfeed>(newsfeed);
         }
 
         public override void Prepare(Setting parameter)
