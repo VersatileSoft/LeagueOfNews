@@ -10,7 +10,7 @@ namespace Surrender_20.UWP.View
 {
     public sealed partial class NewsfeedListView : MvxWindowsPage
     {
-        public NewsfeedListViewModel VM => ViewModel as NewsfeedListViewModel;
+        public NewsfeedListCoreViewModel VM => ViewModel as NewsfeedListCoreViewModel;
 
         private BitmapImage LogoLight, LogoDark;
 

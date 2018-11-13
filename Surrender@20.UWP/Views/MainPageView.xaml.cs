@@ -10,12 +10,13 @@ using System.Net.NetworkInformation;
 using System;
 using Surrender_20.UWP.Views.MessageBoxes;
 using Windows.UI.Xaml.Media.Imaging;
+using Surrender_20.UWP.ViewModels;
 
 namespace Surrender_20.UWP.View
 {
-    public sealed partial class MainPageView : MvxWindowsPage
+    public sealed partial class MainPageView : MvxWindowsPage<MainPageViewModel>
     {
-        public MainPageViewModel VM => ViewModel as MainPageViewModel;
+       // public MainPageViewModel VM => ViewModel as MainPageViewModel;
 
         private BitmapImage LogoLight, LogoDark;
 
@@ -35,6 +36,8 @@ namespace Surrender_20.UWP.View
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;  
         }
+
+        
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {

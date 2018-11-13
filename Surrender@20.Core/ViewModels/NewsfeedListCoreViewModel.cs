@@ -11,12 +11,12 @@ using System.Windows.Input;
 namespace Surrender_20.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class NewsfeedListViewModel : MvxViewModel<Setting>
+    public abstract class NewsfeedListCoreViewModel : MvxViewModel<Setting>
     {
         private string _url;
-        private INewsfeedService _newsfeedService;
-        private ISettingsService _settingsService;
-        private IMvxNavigationService _navigationService;
+        protected INewsfeedService _newsfeedService;
+        protected ISettingsService _settingsService;
+        protected IMvxNavigationService _navigationService;
 
         public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
         public string Title { get; set; }
@@ -25,13 +25,13 @@ namespace Surrender_20.Core.ViewModels
         public ICommand ItemTapped { get; set; }
         public ICommand LoadMore { get; set; }
 
-        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, 
+        public NewsfeedListCoreViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, 
             IMvxNavigationService navigationService, ITabsInitService tabsInitService)
         {
             _newsfeedService = newsfeedService;
             _settingsService = settingsService;
             _navigationService = navigationService;
-            tabsInitService.TabsLoaded += async (s, e) => await InitTabs();
+            
 
             ItemTapped = new MvxAsyncCommand<Newsfeed>((Newsfeed) =>
             {
@@ -49,10 +49,7 @@ namespace Surrender_20.Core.ViewModels
             });
         }
 
-        protected async Task NavigateTo(Newsfeed newsfeed)
-        {
-            await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);
-        }
+        protected abstract Task NavigateTo(Newsfeed newsfeed);
 
         public override void Prepare(Setting parameter)
         {
@@ -60,7 +57,7 @@ namespace Surrender_20.Core.ViewModels
             _url = _settingsService[parameter].URL;
         }
 
-        private async Task InitTabs()
+        protected async Task InitTabs()
         {
             IsLoading = true;
             Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url);

@@ -1,17 +1,15 @@
 ﻿using HtmlAgilityPack;
 using MvvmCross.ViewModels;
 using PropertyChanged;
+using Surrender_20.Core.Interface;
 using Surrender_20.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
-namespace Surrender_20.Core.Interface
+namespace Surrender_20.Core.ViewModels
 {
-
     [AddINotifyPropertyChangedInterface]
-    public abstract class INewsfeedItemViewModel : MvxViewModel<Newsfeed>
+    public abstract class NewsfeedItemCoreViewModel : MvxViewModel<Newsfeed>
     {
+
         protected HtmlDocument _doc { get; set; }
         public bool IsLoading { get; set; }
 
@@ -24,6 +22,5 @@ namespace Surrender_20.Core.Interface
         }
 
         public abstract void ParseHtml(HtmlNode documentNode);
-
     }
 }

@@ -1,7 +1,7 @@
 ﻿using HtmlAgilityPack;
 using Surrender_20.Core.ViewModels;
 
-namespace Surrender_20.Forms.ViewModels
+namespace Surrender_20.UWP.ViewModels
 { 
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
