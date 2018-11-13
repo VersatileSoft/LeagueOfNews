@@ -9,7 +9,7 @@ namespace Surrender_20.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxTabbedPagePresentation(TabbedPosition.Root, WrapInNavigationPage = true, NoHistory = false)]
-    public partial class RootPage : MvxTabbedPage<RootPageViewModel>
+    public partial class RootPage : MvxTabbedPage<MainPageViewModel>
     {
         public RootPage()
         {
