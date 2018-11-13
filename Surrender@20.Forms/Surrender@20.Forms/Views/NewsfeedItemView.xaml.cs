@@ -8,7 +8,7 @@ namespace Surrender_20.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxContentPagePresentation(WrapInNavigationPage = true, NoHistory = false)]
-    public partial class NewsfeedItemView : MvxContentPage<Core.ViewModels.NewsfeedItemViewModel>
+    public partial class NewsfeedItemView : MvxContentPage<NewsfeedItemViewModel>
     {
 		public NewsfeedItemView ()
 		{

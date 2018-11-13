@@ -15,7 +15,7 @@ namespace Surrender_20.UWP.View
 {
     public sealed partial class MainPageView : MvxWindowsPage
     {
-        public RootViewModel VM => ViewModel as RootViewModel;
+        public MainPageViewModel VM => ViewModel as MainPageViewModel;
 
         private BitmapImage LogoLight, LogoDark;
 

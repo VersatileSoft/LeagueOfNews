@@ -7,7 +7,7 @@ using Surrender_20.Model;
 namespace Surrender_20.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class NewsfeedItemViewModel : MvxViewModel<Newsfeed>
+    public class NewsfeedItemRootViewModel : MvxViewModel<Newsfeed>
     {
         protected HtmlDocument _doc { get; set; }
         public bool IsLoading { get; set; }
