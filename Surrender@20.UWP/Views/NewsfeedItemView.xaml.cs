@@ -5,7 +5,7 @@ namespace Surrender_20.UWP.View
 {
     public sealed partial class NewsfeedItemView : MvxWindowsPage
     {
-        public NewsfeedItemRootViewModel VM => ViewModel as NewsfeedItemRootViewModel;
+        public NewsfeedItemViewModel VM => ViewModel as NewsfeedItemViewModel;
 
         public NewsfeedItemView()
         {

@@ -13,13 +13,11 @@ namespace Surrender_20.Forms.ViewModels
     {
 
         private bool _tabsLoaded = false;
-
-        private ITabsInitService _tabsInitService;
-
+        
         public RootPageViewModel(IMvxNavigationService navigationService, ITabsInitService tabsInitService) 
-            : base(navigationService)
+            : base(navigationService, tabsInitService)
         {
-            _tabsInitService = tabsInitService;
+
         }
 
 

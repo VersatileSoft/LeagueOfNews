@@ -14,14 +14,17 @@ namespace Surrender_20.Core.ViewModels
     {
 
         protected IMvxNavigationService _navigationService;
-        
+        protected ITabsInitService _tabsInitService;
+
+
         public ICommand NavCommand { get; private set; } //TODO rename to NavigateCommand
         public ICommand RefreshCommand { get; private set; } //TODO add command that forces RSS service to update
 
-        public MainPageViewModel(IMvxNavigationService navigationService)
+        public MainPageViewModel(IMvxNavigationService navigationService, ITabsInitService tabsInitService)
         {
             _navigationService = navigationService;
-           
+            _tabsInitService = tabsInitService;
+
             NavCommand = new MvxAsyncCommand<string>((Parameter) =>
             {
 
@@ -41,6 +44,7 @@ namespace Surrender_20.Core.ViewModels
         protected async Task NavigateTo(Setting setting)
         {
             await _navigationService.Navigate<NewsfeedListViewModel, Setting>(setting);
+            _tabsInitService.TabsLoaded.Invoke(this, EventArgs.Empty);
         }
     }
 }

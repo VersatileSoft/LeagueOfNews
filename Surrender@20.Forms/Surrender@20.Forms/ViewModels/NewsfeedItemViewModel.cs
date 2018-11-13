@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace Surrender_20.Forms.ViewModels
 { 
-    public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
+    public class NewsfeedItemViewModel : Core.ViewModels.NewsfeedItemViewModel
     {
 
         public string Content { get; set; }
