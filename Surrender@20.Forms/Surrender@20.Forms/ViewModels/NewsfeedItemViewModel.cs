@@ -1,4 +1,5 @@
-﻿using Surrender_20.Core.Interface;
+﻿using HtmlAgilityPack;
+using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Model;
 using System;
@@ -8,27 +9,15 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 
 namespace Surrender_20.Forms.ViewModels
-{
-    public class NewsfeedItemViewModel : NewsfeedItemRootViewModel
+{ 
+    public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
 
         public string Content { get; set; }
 
-        public override void Prepare(Newsfeed newsfeed)
+        public override void ParseHtml(HtmlNode documentNode)
         {
-
-            base.Prepare(newsfeed);
-
-            Content = ParseHtml();
-
-            IsLoading = false;
-        }
-
-        private string ParseHtml()
-        {
-            //Parse html
-            
-            return _doc.DocumentNode.InnerHtml;
+            Content = documentNode.InnerHtml;
         }
     }
 }
