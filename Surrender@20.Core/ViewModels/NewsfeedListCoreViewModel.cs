@@ -35,7 +35,7 @@ namespace Surrender_20.Core.ViewModels
 
             ItemTapped = new MvxAsyncCommand<Newsfeed>((Newsfeed) =>
             {
-                return NavigateTo(Newsfeed);
+                return NavigateToAsync(Newsfeed);
             });
 
             LoadMore = new MvxAsyncCommand(async() =>
@@ -49,7 +49,7 @@ namespace Surrender_20.Core.ViewModels
             });
         }
 
-        protected abstract Task NavigateTo(Newsfeed newsfeed);
+        protected abstract Task NavigateToAsync(Newsfeed newsfeed);
 
         public override void Prepare(Setting parameter)
         {

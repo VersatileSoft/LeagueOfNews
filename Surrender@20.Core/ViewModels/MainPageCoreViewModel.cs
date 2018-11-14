@@ -16,7 +16,6 @@ namespace Surrender_20.Core.ViewModels
         protected IMvxNavigationService _navigationService;
         protected ITabsInitService _tabsInitService;
         protected IOperatingSystemService _operatingSystemService;
-
         
 
         public ICommand NavCommand { get; private set; } //TODO rename to NavigateCommand

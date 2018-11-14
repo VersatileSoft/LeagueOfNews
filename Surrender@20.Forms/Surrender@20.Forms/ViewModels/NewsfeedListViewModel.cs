@@ -22,7 +22,7 @@ namespace Surrender_20.Forms.ViewModels
             await base.InitTabs();
         }
 
-        protected override async Task NavigateTo(Newsfeed newsfeed)
+        protected override async Task NavigateToAsync(Newsfeed newsfeed)
         {
             await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);
         }
