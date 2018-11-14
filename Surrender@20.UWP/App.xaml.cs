@@ -7,6 +7,7 @@ using Surrender_20.Core;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.UWP.Services;
+using Surrender_20.UWP.ViewModels;
 
 namespace Surrender_20.UWP
 {
