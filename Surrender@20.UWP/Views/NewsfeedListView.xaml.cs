@@ -1,5 +1,5 @@
 ﻿using MvvmCross.Platforms.Uap.Views;
-using Surrender_20.Core.ViewModels;
+using Surrender_20.UWP.ViewModels;
 using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -10,7 +10,7 @@ namespace Surrender_20.UWP.View
 {
     public sealed partial class NewsfeedListView : MvxWindowsPage
     {
-        public NewsfeedListCoreViewModel VM => ViewModel as NewsfeedListCoreViewModel;
+        public NewsfeedListViewModel VM => ViewModel as NewsfeedListViewModel;
 
         private BitmapImage LogoLight, LogoDark;
 

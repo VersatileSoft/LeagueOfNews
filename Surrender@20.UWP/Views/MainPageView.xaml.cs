@@ -14,9 +14,15 @@ using Surrender_20.UWP.ViewModels;
 
 namespace Surrender_20.UWP.View
 {
-    public sealed partial class MainPageView : MvxWindowsPage<MainPageViewModel>
+    public sealed partial class MainPageView : MvxWindowsPage, IMvxWindowsView<MainPageViewModel>
     {
-       // public MainPageViewModel VM => ViewModel as MainPageViewModel;
+        // public MainPageViewModel VM => ViewModel as MainPageViewModel;
+
+        public new MainPageViewModel ViewModel
+        {
+            get { return (MainPageViewModel)base.ViewModel; }
+            set { base.ViewModel = value; }
+        }
 
         private BitmapImage LogoLight, LogoDark;
 
@@ -36,8 +42,6 @@ namespace Surrender_20.UWP.View
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;  
         }
-
-        
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
         {
