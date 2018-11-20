@@ -8,6 +8,8 @@ using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.UWP.Services;
 using Surrender_20.UWP.ViewModels;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Surrender_20.UWP
 {
@@ -29,6 +31,15 @@ namespace Surrender_20.UWP
         protected override void InitializeLastChance()
         {
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<MainPageViewModel>>();
+
+        }
+
+        public override IEnumerable<Assembly> GetViewModelAssemblies()
+        {
+            var list = new List<Assembly>();
+            list.AddRange(base.GetViewModelAssemblies());
+            list.Add(typeof(MainPageViewModel).Assembly);
+            return list.ToArray();
         }
     }
 

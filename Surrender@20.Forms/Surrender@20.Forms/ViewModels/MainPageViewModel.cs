@@ -11,11 +11,12 @@ namespace Surrender_20.Forms.ViewModels
     {
 
         private bool _tabsLoaded = false;
+        public ITabsInitService _tabsInitService;
 
         public MainPageViewModel(IMvxNavigationService navigationService, ITabsInitService tabsInitService, IOperatingSystemService operatingSystemService) 
-            : base(navigationService, tabsInitService, operatingSystemService)
+            : base(navigationService, operatingSystemService)
         {
-
+            _tabsInitService = tabsInitService;
         }
 
         public override void ViewAppearing()

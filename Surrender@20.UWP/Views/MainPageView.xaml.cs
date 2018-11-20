@@ -11,19 +11,14 @@ using System;
 using Surrender_20.UWP.Views.MessageBoxes;
 using Windows.UI.Xaml.Media.Imaging;
 using Surrender_20.UWP.ViewModels;
+using MvvmCross;
+using MvvmCross.ViewModels;
 
 namespace Surrender_20.UWP.View
 {
-    public sealed partial class MainPageView : MvxWindowsPage, IMvxWindowsView<MainPageViewModel>
+    public sealed partial class MainPageView : MvxWindowsPage
     {
-        // public MainPageViewModel VM => ViewModel as MainPageViewModel;
-
-        public new MainPageViewModel ViewModel
-        {
-            get { return (MainPageViewModel)base.ViewModel; }
-            set { base.ViewModel = value; }
-        }
-
+        
         private BitmapImage LogoLight, LogoDark;
 
         public MainPageView()

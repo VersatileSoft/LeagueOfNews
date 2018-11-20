@@ -10,7 +10,6 @@ namespace Surrender_20.UWP.View
 {
     public sealed partial class NewsfeedListView : MvxWindowsPage
     {
-        public NewsfeedListViewModel VM => ViewModel as NewsfeedListViewModel;
 
         private BitmapImage LogoLight, LogoDark;
 
@@ -23,14 +22,8 @@ namespace Surrender_20.UWP.View
 
         private void GridView_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            VM.ItemTapped.Execute(((GridView)sender).SelectedItem);
+            ((NewsfeedListViewModel)ViewModel).ItemTapped.Execute(((GridView)sender).SelectedItem);
         }
-
-        //zlewam pull-to-refresh bo psuje design
-        /*private void RefreshContainer_RefreshRequested(RefreshContainer sender, RefreshRequestedEventArgs args)
-        {
-            RefreshContainer.RequestRefresh(); //idk czy to działa, musze tablet zaktualizować xD
-        }*/
 
         private void LoadImages()
         {

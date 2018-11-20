@@ -15,6 +15,11 @@ namespace Surrender_20.UWP.ViewModels
         {
         }
 
+        public override async Task Initialize()
+        {
+            await InitTabs();
+        }
+
         protected override async Task NavigateToAsync(Newsfeed newsfeed)
         {
             await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);
