@@ -26,7 +26,7 @@ namespace Surrender_20.Core.ViewModels
         public ICommand LoadMore { get; set; }
 
         public NewsfeedListCoreViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, 
-            IMvxNavigationService navigationService, ITabsInitService tabsInitService)
+            IMvxNavigationService navigationService)
         {
             _newsfeedService = newsfeedService;
             _settingsService = settingsService;

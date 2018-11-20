@@ -11,7 +11,8 @@ namespace Surrender_20.UWP.ViewModels
 {
     public class NewsfeedListViewModel : NewsfeedListCoreViewModel
     {
-        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService, ITabsInitService tabsInitService) : base(newsfeedService, settingsService, navigationService, tabsInitService)
+        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService) 
+           :base(newsfeedService, settingsService, navigationService)
         {
         }
 

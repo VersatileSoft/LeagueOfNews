@@ -11,8 +11,9 @@ namespace Surrender_20.Forms.ViewModels
 {
     public class NewsfeedListViewModel : NewsfeedListCoreViewModel
     {
-        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService, ITabsInitService tabsInitService)
-            : base(newsfeedService, settingsService, navigationService, tabsInitService)
+        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, 
+            IMvxNavigationService navigationService, ITabsInitService tabsInitService)
+            : base(newsfeedService, settingsService, navigationService)
         {
             tabsInitService.TabsLoaded += async (s, e) => await InitTabs();
         }
