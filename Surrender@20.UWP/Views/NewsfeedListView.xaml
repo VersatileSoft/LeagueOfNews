@@ -42,26 +42,24 @@
                     
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="440" Height="185">
+                            <Grid Width="440">
 
                                 <Image Source="{Binding Image}"
                                        Stretch="UniformToFill"/>
 
-                                <StackPanel Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}"
-                                            Padding="10">
+                                <StackPanel Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}">
 
                                     <Image Source="{Binding Image}"
-                                           Stretch="UniformToFill" 
-                                           Height="90"/>
+                                           Stretch="UniformToFill"/>
                                     
                                     <TextBlock Text="{Binding Title}"
                                                TextWrapping="Wrap"
-                                               Margin="0,5,0,0"/>
+                                               Margin="10,7,10,10"/>
 
                                     <TextBlock Text="{Binding ShortDescription}"
                                                Style="{ThemeResource CaptionTextBlockStyle}"
                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                                               Margin="0,5,0,0"/>
+                                               Margin="10,0,10,10"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
