@@ -3,11 +3,12 @@ using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Model;
+using System.ComponentModel;
 
 namespace Surrender_20.Core.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
-    public abstract class NewsfeedItemCoreViewModel : MvxViewModel<Newsfeed>
+    
+    public abstract class NewsfeedItemCoreViewModel : MvxViewModel<Newsfeed>, INotifyPropertyChanged
     {
 
         protected HtmlDocument _doc { get; set; }

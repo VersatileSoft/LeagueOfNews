@@ -12,6 +12,13 @@ namespace Surrender_20.Forms.Views
 		public NewsfeedItemView ()
 		{
 			InitializeComponent ();
+
+        
 		}
-	}
+
+        protected override void OnViewModelSet()
+        {
+            var vm = ViewModel;
+        }
+    }
 }

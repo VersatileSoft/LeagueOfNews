@@ -7,9 +7,10 @@ using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using Surrender_20.Core;
 using Surrender_20.Core.Interface;
-using Surrender_20.Core.ViewModels;
 using Surrender_20.Forms.Services;
 using Surrender_20.Forms.ViewModels;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Surrender_20.Forms.Droid
 {
@@ -34,6 +35,14 @@ namespace Surrender_20.Forms.Droid
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<MainPageViewModel>>();
 
             base.InitializeLastChance(); //TODO remove (check if work)
+        }
+
+        public override IEnumerable<Assembly> GetViewModelAssemblies()
+        {
+            var list = new List<Assembly>();
+            list.AddRange(base.GetViewModelAssemblies());
+            list.Add(typeof(NewsfeedItemViewModel).Assembly);
+            return list.ToArray();
         }
     }
 }
