@@ -57,7 +57,7 @@
                                                Margin="10,7,10,10"/>
 
                                     <TextBlock Text="{Binding ShortDescription}"
-                                               Style="{ThemeResource CaptionTextBlockStyle}"
+                                               TextWrapping="Wrap"
                                                Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
                                                Margin="10,0,10,10"/>
                                 </StackPanel>

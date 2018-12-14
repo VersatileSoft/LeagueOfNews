@@ -29,7 +29,6 @@ namespace Surrender_20.UWP.View
         {
             LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"));
             LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Images/NewsfeedAssets/BackgroundDark.png"));
-
         }
 
         private void MvxWindowsPage_Tapped(object sender, TappedRoutedEventArgs e)

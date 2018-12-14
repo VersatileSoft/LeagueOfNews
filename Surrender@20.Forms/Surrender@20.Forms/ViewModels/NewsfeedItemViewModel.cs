@@ -1,12 +1,10 @@
 ﻿using HtmlAgilityPack;
-using PropertyChanged;
 using Surrender_20.Core.ViewModels;
 using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace Surrender_20.Forms.ViewModels
 {
-    
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel, INotifyPropertyChanged
     {
         //private string _content;
@@ -35,17 +33,13 @@ namespace Surrender_20.Forms.ViewModels
             }
         }
 
-
         //public string Content { get; set; }
-
 
         public override void ParseHtml(HtmlNode documentNode)
         {
-            var stack = new StackLayout();
-           
+            StackLayout stack = new StackLayout();
 
-
-            Content = documentNode.InnerHtml;
+            //Content = documentNode.InnerHtml; WYJEBAŁEM BO SIE NIE KOMPILOWAŁO <3 ~Kapi
         }
     }
 }

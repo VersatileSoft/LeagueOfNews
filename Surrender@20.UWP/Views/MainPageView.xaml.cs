@@ -1,24 +1,19 @@
-﻿using Windows.ApplicationModel.Core;
+﻿using MvvmCross.Platforms.Uap.Views;
+using Surrender_20.UWP.Views.MessageBoxes;
+using System;
+using System.Net.NetworkInformation;
+using Windows.ApplicationModel.Core;
+using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
-using MvvmCross.Platforms.Uap.Views;
-using Surrender_20.Core.ViewModels;
-using Windows.UI;
-using Windows.UI.Xaml.Navigation;
 using Windows.UI.Xaml.Media.Animation;
-using System.Net.NetworkInformation;
-using System;
-using Surrender_20.UWP.Views.MessageBoxes;
 using Windows.UI.Xaml.Media.Imaging;
-using Surrender_20.UWP.ViewModels;
-using MvvmCross;
-using MvvmCross.ViewModels;
+using Windows.UI.Xaml.Navigation;
 
 namespace Surrender_20.UWP.View
 {
     public sealed partial class MainPageView : MvxWindowsPage
     {
-        
         private BitmapImage LogoLight, LogoDark;
 
         public MainPageView()
@@ -35,7 +30,7 @@ namespace Surrender_20.UWP.View
 
             var titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;  
+            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
@@ -67,7 +62,7 @@ namespace Surrender_20.UWP.View
             if (isInternetConnected == false)
             {
                 ConnectionDialog Dialog = new ConnectionDialog();
-                
+
                 await Dialog.ShowAsync();
             }
         }
@@ -76,7 +71,6 @@ namespace Surrender_20.UWP.View
         {
             LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.scale-100.png"));
             LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.scale-100Dark.png"));
-            
         }
 
         private void MvxWindowsPage_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
@@ -87,6 +81,23 @@ namespace Surrender_20.UWP.View
         private void NavigationBar_Loaded(object sender, RoutedEventArgs e)
         {
             NavigationBar.SelectedItem = NavigationBar.MenuItems[0];
+        }
+
+        private void MvxWindowsPage_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            switch (UIViewSettings.GetForCurrentView().UserInteractionMode)
+            {
+                case UserInteractionMode.Mouse:
+                    VisualStateManager.GoToState(this, "MouseLayout", true);
+                    DragArea.Visibility = Visibility.Visible;
+                    break;
+
+                case UserInteractionMode.Touch:
+                default:
+                    VisualStateManager.GoToState(this, "TouchLayout", true);
+                    DragArea.Visibility = Visibility.Collapsed;
+                    break;
+            }
         }
 
         private void ChangeThemeLogo()
