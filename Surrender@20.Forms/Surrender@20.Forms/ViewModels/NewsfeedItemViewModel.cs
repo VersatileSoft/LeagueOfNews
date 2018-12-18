@@ -1,45 +1,42 @@
 ﻿using HtmlAgilityPack;
+using LabelHtml.Forms.Plugin.Abstractions;
+using PropertyChanged;
 using Surrender_20.Core.ViewModels;
 using System.ComponentModel;
 using Xamarin.Forms;
 
 namespace Surrender_20.Forms.ViewModels
 {
-    public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel, INotifyPropertyChanged
+    [AddINotifyPropertyChangedInterface]
+    public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
-        //private string _content;
-        //public string Content
-        //{
-        //    get
-        //    {
-        //        return _content;
-        //    }
-        //    set
-        //    {
-        //        SetProperty(ref _content, value);
-        //    }
-        //}
-
-        private View _content;
-        public View Content
-        {
-            get
-            {
-                return _content;
-            }
-            set
-            {
-                SetProperty(ref _content, value);
-            }
-        }
-
-        //public string Content { get; set; }
+        public View Content { get; set; }
 
         public override void ParseHtml(HtmlNode documentNode)
         {
             StackLayout stack = new StackLayout();
 
-            //Content = documentNode.InnerHtml; WYJEBAŁEM BO SIE NIE KOMPILOWAŁO <3 ~Kapi
+            var newsContent =
+                documentNode.SelectSingleNode("//*[contains(@class,'news-content')]");
+
+            var tableOfContents =
+                newsContent.SelectNodes("div[@id='toc']|div[following-sibling::div[@id='toc']][1]");
+
+            if (tableOfContents != null)
+            {
+                foreach (var item in tableOfContents)
+                {
+                    item.Remove();
+                }
+            }
+
+            //TODO add youtube
+            //TODO add gallery view/higher resolution image redirect
+
+            Content = new HtmlLabel
+            {
+                Text = newsContent.InnerHtml
+            };
         }
     }
 }
