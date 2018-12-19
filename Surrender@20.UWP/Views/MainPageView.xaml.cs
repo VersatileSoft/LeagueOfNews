@@ -73,11 +73,6 @@ namespace Surrender_20.UWP.View
             LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.scale-100Dark.png"));
         }
 
-        private void MvxWindowsPage_Tapped(object sender, Windows.UI.Xaml.Input.TappedRoutedEventArgs e)
-        {
-            ChangeThemeLogo();
-        }
-
         private void NavigationBar_Loaded(object sender, RoutedEventArgs e)
         {
             NavigationBar.SelectedItem = NavigationBar.MenuItems[0];
@@ -98,6 +93,11 @@ namespace Surrender_20.UWP.View
                     DragArea.Visibility = Visibility.Collapsed;
                     break;
             }
+        }
+
+        private void MvxWindowsPage_GotFocus(object sender, RoutedEventArgs e)
+        {
+            ChangeThemeLogo();
         }
 
         private void ChangeThemeLogo()

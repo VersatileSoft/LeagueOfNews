@@ -10,7 +10,7 @@
                   x:Class="Surrender_20.UWP.View.MainPageView"
                   mc:Ignorable="d"
                   Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" 
-                  Tapped="MvxWindowsPage_Tapped" SizeChanged="MvxWindowsPage_SizeChanged">
+                  GotFocus="MvxWindowsPage_GotFocus" SizeChanged="MvxWindowsPage_SizeChanged">
     
     <m:MvxWindowsPage.Resources>
         <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>

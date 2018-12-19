@@ -31,7 +31,7 @@ namespace Surrender_20.UWP.View
             LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Images/NewsfeedAssets/BackgroundDark.png"));
         }
 
-        private void MvxWindowsPage_Tapped(object sender, TappedRoutedEventArgs e)
+        private void MvxWindowsPage_GotFocus(object sender, RoutedEventArgs e)
         {
             ChangeThemeLogo();
         }
