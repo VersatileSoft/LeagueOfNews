@@ -14,7 +14,6 @@ namespace Surrender_20.Forms.ViewModels
 
         public override void ParseHtml(HtmlNode documentNode)
         {
-            StackLayout stack = new StackLayout();
 
             var newsContent =
                 documentNode.SelectSingleNode("//*[contains(@class,'news-content')]");

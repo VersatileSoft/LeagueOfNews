@@ -21,7 +21,7 @@
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
             <ScrollView CompressedLayout.IsHeadless="true" IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
-                <util:ExtendedLabel Text="{Binding Content}"/>
+                <ContentView Content="{Binding Content}"/>
             </ScrollView>
         </Grid>
     </views:MvxContentPage.Content>
