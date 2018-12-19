@@ -5,7 +5,7 @@ namespace Surrender_20.Forms.Views.Utils
 
     public class ExtendedLabel : Label
     {
-        public static readonly BindableProperty MaxLinesProperty =
+        public new static readonly BindableProperty MaxLinesProperty =
             BindableProperty.Create("MaxLines", typeof(int), typeof(ExtendedLabel), 1, BindingMode.OneWay,
                 validateValue: IsValidValue,
                 propertyChanged: OnPropertyChanged);
@@ -21,7 +21,7 @@ namespace Surrender_20.Forms.Views.Utils
             ((ExtendedLabel)bindable).MaxLines = (int)newValue;
         }
 
-        public int MaxLines
+        public new int MaxLines
         {
             get { return (int)GetValue(MaxLinesProperty); }
             set { SetValue(MaxLinesProperty, value); }

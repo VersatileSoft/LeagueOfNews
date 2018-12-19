@@ -6,6 +6,7 @@
                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels;assembly=Surrender_20.Forms"
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
+                      xmlns:util="clr-namespace:Surrender_20.Forms.Views.Utils"
                       x:Class="Surrender_20.Forms.Views.NewsfeedItemView"
                       Title="{Binding Path=Newsfeed.Title}">
 
@@ -20,11 +21,7 @@
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
             <ScrollView CompressedLayout.IsHeadless="true" IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
-                <WebView>
-                    <WebView.Source>
-                        <HtmlWebViewSource Html="{Binding Content}"/>
-                    </WebView.Source>
-                </WebView>
+                <util:ExtendedLabel Text="{Binding Content}"/>
             </ScrollView>
         </Grid>
     </views:MvxContentPage.Content>

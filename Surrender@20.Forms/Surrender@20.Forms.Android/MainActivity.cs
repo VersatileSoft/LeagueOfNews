@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.OS;
+using LabelHtml.Forms.Plugin.Droid;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.Forms.Platforms.Android.Views;
