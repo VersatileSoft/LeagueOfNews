@@ -6,9 +6,8 @@
                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels;assembly=Surrender_20.Forms"
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
-                      xmlns:util="clr-namespace:Surrender_20.Forms.Views.Utils"
                       x:Class="Surrender_20.Forms.Views.NewsfeedItemView"
-                      Title="{Binding Path=Newsfeed.Title}">
+                      Title="{Binding Path=Title}">
 
     <views:MvxContentPage.Resources>
         <ResourceDictionary>

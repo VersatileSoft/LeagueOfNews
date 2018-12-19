@@ -7,13 +7,19 @@ using Xamarin.Forms;
 
 namespace Surrender_20.Forms.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
+
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
-        public View Content { get; set; }
+        private View _content;
+        public View Content
+        {
+            get { return _content; }
+            set { SetProperty(ref _content, value); }
+        }
 
         public override void ParseHtml(HtmlNode documentNode)
         {
+            StackLayout stack = new StackLayout();
 
             var newsContent =
                 documentNode.SelectSingleNode("//*[contains(@class,'news-content')]");
