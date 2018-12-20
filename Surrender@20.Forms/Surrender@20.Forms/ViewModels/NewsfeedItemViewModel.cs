@@ -46,7 +46,7 @@ namespace Surrender_20.Forms.ViewModels
                 .SelectSingleNode("//div[contains(@class,'news-content')]");
 
             var tableOfContents = newsContent
-                .SelectNodes("div[@id='toc']|div[following-sibling::div[@id='toc']][1]");
+                .SelectNodes("./div[@id='toc']|div[following-sibling::div[@id='toc']][1]");
 
             ThumbnailSource = newsContent
                 .SelectSingleNode("./div[contains(@class,'separator')][1]/a/img")
@@ -67,6 +67,13 @@ namespace Surrender_20.Forms.ViewModels
                 {
                     switch (item.Name) {
                     case "iframe":
+                        stack.Children.Add(new HtmlLabel
+                        {
+                            Text = cache.ToString()
+                        });
+
+                        cache.Clear();
+
                         stack.Children.Add(new WebView
                         {
                             Source = new HtmlWebViewSource
