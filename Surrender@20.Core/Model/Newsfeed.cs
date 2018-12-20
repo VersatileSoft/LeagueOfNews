@@ -7,7 +7,7 @@ namespace Surrender_20.Model
     public class Newsfeed
     {
         public Uri UrlToNewsfeed { get; set; }
-        public string Time { get; set; }
+        public string Date { get; set; }
         public string Title { get; set; }
         public string ShortDescription { get; set; } //Overlaps with Content?
         public string ThumbnailURL { get; set; }

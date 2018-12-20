@@ -36,7 +36,7 @@ namespace Surrender_20.Forms.ViewModels
             }
 
             //TODO add youtube
-            //TODO add gallery view/higher resolution image redirect
+            //TODO add gallery view/higher resolution image redirect >>>>>>>>>>>>>>>>>>> nugecik z pop up'em jak w radiu? ~Kapi
 
             Content = new HtmlLabel
             {

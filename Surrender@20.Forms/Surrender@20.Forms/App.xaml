@@ -34,6 +34,7 @@
                 <Setter Property="MaxLines" Value="2"/>
                 <Setter Property="TextColor" Value="#ce9f3d"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Large"/>
             </Style>
 
             <Style x:Key="DescriptionLabel" TargetType="Label">

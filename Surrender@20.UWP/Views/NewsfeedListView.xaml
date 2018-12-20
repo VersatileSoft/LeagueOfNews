@@ -4,6 +4,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
                   mc:Ignorable="d" GotFocus="MvxWindowsPage_GotFocus">
 
     <Grid>
@@ -17,7 +18,7 @@
 
                     <VisualState.Setters>
                         <Setter Target="NewsfeedItemGrid.Visibility" Value="Visible"/>
-                        <Setter Target="ListGridColumn.Width" Value="480"/>
+                        <Setter Target="ListGridColumn.Width" Value="450"/>
                         <Setter Target="ItemGridColumn.Width" Value="*"/>
                     </VisualState.Setters>
                 </VisualState>
@@ -34,16 +35,15 @@
                           IsActive="{Binding IsLoading}"/>
 
             <ScrollViewer CanContentRenderOutsideBounds="True">
-                <GridView SelectionMode="Single"
-                          HorizontalAlignment="Center"
-                          ItemsSource="{Binding Newsfeeds}"
+                <GridView ItemsSource="{Binding Newsfeeds}"  
+                          ItemContainerStyle="{ThemeResource GridViewItemRevealBackgroundShowsAboveContentStyle}"
+                          SelectionMode="Single"                                
                           Tapped="GridView_Tapped"
-                          Margin="0,15,0,0">
+                          Margin="15,15,15,0">
 
                     <GridView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="440">
-
+                            <Grid>
                                 <Image Source="{Binding Image}"
                                        Stretch="UniformToFill"/>
 
@@ -53,13 +53,14 @@
                                            Stretch="UniformToFill"/>
 
                                     <TextBlock Text="{Binding Title}"
-                                               TextWrapping="Wrap"
-                                               Margin="10,7,10,10"/>
+                                               Style="{StaticResource TitleText}"/>
+
+                                    <TextBlock Text="{Binding Date}"
+                                               Style="{StaticResource SecondText}"
+                                               FontSize="12"/>
 
                                     <TextBlock Text="{Binding ShortDescription}"
-                                               TextWrapping="Wrap"
-                                               Foreground="{ThemeResource SystemControlPageTextBaseMediumBrush}"
-                                               Margin="10,0,10,10"/>
+                                               Style="{StaticResource SecondText}"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>
@@ -67,7 +68,7 @@
 
                     <GridView.ItemsPanel>
                         <ItemsPanelTemplate>
-                            <ItemsWrapGrid MaximumRowsOrColumns="1" Orientation="Horizontal"/>
+                            <controls:StaggeredPanel/>
                         </ItemsPanelTemplate>
                     </GridView.ItemsPanel>
                 </GridView>

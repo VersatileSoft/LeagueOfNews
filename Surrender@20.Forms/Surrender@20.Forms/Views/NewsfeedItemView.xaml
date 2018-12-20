@@ -19,8 +19,15 @@
         <Grid CompressedLayout.IsHeadless="true">
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
-            <ScrollView CompressedLayout.IsHeadless="true" IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
-                <ContentView Content="{Binding Content}"/>
+            <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
+                <StackLayout>
+                    <!--<Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
+                               Aspect="AspectFill"/>-->
+
+                    <ContentView Content="{Binding Content}"
+                                 Margin="15,10,15,10"/>
+                </StackLayout>
+
             </ScrollView>
         </Grid>
     </views:MvxContentPage.Content>
