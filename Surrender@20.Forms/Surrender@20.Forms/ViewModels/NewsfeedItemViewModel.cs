@@ -74,6 +74,9 @@ namespace Surrender_20.Forms.ViewModels
 
                         cache.Clear();
 
+                        Debug.Write("[Item] " + item.OuterHtml);
+                        Debug.Write("[Cache] " + cache);
+
                         stack.Children.Add(new WebView
                         {
                             Source = new HtmlWebViewSource
@@ -107,8 +110,6 @@ namespace Surrender_20.Forms.ViewModels
                         stack.Children.Add(Image);
                         break;
                     default:
-                        Debug.Write("[Item] " + item.OuterHtml);
-                        Debug.Write("[Cache] " + cache);
                         cache.AppendLine(item.OuterHtml);
                         break;
                     }
