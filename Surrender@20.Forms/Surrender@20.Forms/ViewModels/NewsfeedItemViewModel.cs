@@ -46,7 +46,7 @@ namespace Surrender_20.Forms.ViewModels
                 .SelectSingleNode("//div[contains(@class,'news-content')]");
 
             var tableOfContents = newsContent
-                .SelectNodes("./div[@id='toc']|div[following-sibling::div[@id='toc']][1]");
+                .SelectNodes("./div[@id='toc']|div[following-sibling::h2[@id='toc']][1]");
 
             ThumbnailSource = newsContent
                 .SelectSingleNode("./div[contains(@class,'separator')][1]/a/img")
@@ -63,7 +63,7 @@ namespace Surrender_20.Forms.ViewModels
             if (newsContent != null)
             {
                 var cache = new StringBuilder();
-                foreach (var item in newsContent.Descendants())
+                foreach (var item in newsContent.ChildNodes)
                 {
                     switch (item.Name) {
                     case "iframe":
