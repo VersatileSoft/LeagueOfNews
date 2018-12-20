@@ -65,17 +65,17 @@ namespace Surrender_20.Forms.ViewModels
                 var cache = new StringBuilder();
                 foreach (var item in newsContent.ChildNodes)
                 {
-                    switch (item.Name) {
-                    case "iframe":
+                    if (item.Name == "iframe")
+                    {
                         stack.Children.Add(new HtmlLabel
                         {
                             Text = cache.ToString()
                         });
 
-                        cache.Clear();
-
                         Debug.Write("[Item] " + item.OuterHtml);
                         Debug.Write("[Cache] " + cache);
+
+                        cache.Clear();
 
                         stack.Children.Add(new WebView
                         {
@@ -84,34 +84,43 @@ namespace Surrender_20.Forms.ViewModels
                                 Html = item.OuterHtml
                             }
                         });
-                        break;
-                    case "img":
-                        stack.Children.Add(new HtmlLabel
+                    }
+                    else if (item.Name == "div" && item.HasClass("separator"))
+                    {
+                        foreach (var subitem in item.Descendants())
                         {
-                            Text = cache.ToString()
-                        });
-
-                        cache.Clear();
-
-                        var Image = new Image
-                        {
-                            Source = item.GetAttributeValue("src", "")
-                        };
-
-                        Image.GestureRecognizers.Add(new TapGestureRecognizer
-                        {
-                            Command = new MvxCommand(() =>
+                            if (subitem.Name == "img")
                             {
-                                //TODO navigate to custom MvxCarouselPage
-                                //_navigationService.Navigate()
-                            })
-                        });
+                                stack.Children.Add(new HtmlLabel
+                                {
+                                    Text = cache.ToString()
+                                });
 
-                        stack.Children.Add(Image);
-                        break;
-                    default:
+                                cache.Clear();
+
+                                var Image = new Image
+                                {
+                                    Source = item.GetAttributeValue("src", "")
+                                };
+
+                                Image.GestureRecognizers.Add(new TapGestureRecognizer
+                                {
+                                    Command = new MvxCommand(() =>
+                                    {
+                                        //TODO navigate to custom MvxCarouselPage
+                                        //_navigationService.Navigate()
+                                    })
+                                });
+
+                                stack.Children.Add(Image);
+                                break;
+                            } 
+                        }
                         cache.AppendLine(item.OuterHtml);
-                        break;
+                    }
+                    else
+                    {
+                        cache.AppendLine(item.OuterHtml);
                     }
                 }
 
