@@ -63,17 +63,15 @@ namespace Surrender_20.Forms.ViewModels
             if (newsContent != null)
             {
                 var cache = new StringBuilder();
-                foreach (var item in newsContent.ChildNodes)
+                var arr = newsContent.ChildNodes;
+                for (int i = 0; i < arr.Count; i++)
                 {
-                    if (item.Name == "iframe")
+                    if (arr[i].Name == "iframe")
                     {
                         stack.Children.Add(new HtmlLabel
                         {
                             Text = cache.ToString()
                         });
-
-                        Debug.Write("[Item] " + item.OuterHtml);
-                        Debug.Write("[Cache] " + cache);
 
                         cache.Clear();
 
@@ -81,13 +79,17 @@ namespace Surrender_20.Forms.ViewModels
                         {
                             Source = new HtmlWebViewSource
                             {
-                                Html = item.OuterHtml
+                                Html = arr[i].OuterHtml
                             }
                         });
                     }
-                    else if (item.Name == "div" && item.HasClass("separator"))
+                    else if (arr[i].Name == "div" && (arr[i].HasClass("separator") || i == newsContent.ChildNodes.Count - 5)) //TODO check
                     {
-                        foreach (var subitem in item.Descendants())
+                        Debug.Write("[Item] " + arr[i].OuterHtml);
+                        Debug.Write("[Cache] " + cache);
+
+                        bool foundImg = false;
+                        foreach (var subitem in arr[i].Descendants(5))
                         {
                             if (subitem.Name == "img")
                             {
@@ -100,7 +102,7 @@ namespace Surrender_20.Forms.ViewModels
 
                                 var Image = new Image
                                 {
-                                    Source = item.GetAttributeValue("src", "")
+                                    Source = subitem.GetAttributeValue("src", "")
                                 };
 
                                 Image.GestureRecognizers.Add(new TapGestureRecognizer
@@ -113,14 +115,19 @@ namespace Surrender_20.Forms.ViewModels
                                 });
 
                                 stack.Children.Add(Image);
+                                foundImg = true;
                                 break;
-                            } 
+                            }
                         }
-                        cache.AppendLine(item.OuterHtml);
+
+                        if (!foundImg)
+                        {
+                            cache.AppendLine(arr[i].OuterHtml);
+                        }
                     }
                     else
                     {
-                        cache.AppendLine(item.OuterHtml);
+                        cache.AppendLine(arr[i].OuterHtml);
                     }
                 }
 
