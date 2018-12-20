@@ -105,10 +105,7 @@ namespace Surrender_20.Forms.ViewModels
 
             //TODO add youtube
 
-            Content = new HtmlLabel
-            {
-                Text = newsContent.InnerHtml
-            };
+            Content = stack;
         }
     }
 }
