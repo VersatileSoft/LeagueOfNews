@@ -1,20 +1,32 @@
 ﻿using HtmlAgilityPack;
 using LabelHtml.Forms.Plugin.Abstractions;
+using MvvmCross.Commands;
+using MvvmCross.Forms.Presenters;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.ViewModels;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Text;
 using Xamarin.Forms;
 
 namespace Surrender_20.Forms.ViewModels
 {
-
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
+        private IMvxNavigationService _navigationService;
+
         private View _content;
         public View Content
         {
             get { return _content; }
             set { SetProperty(ref _content, value); }
+        }
+
+        public NewsfeedItemViewModel(IMvxNavigationService navigationService)
+        {
+            this._navigationService = navigationService;
         }
 
         public override void ParseHtml(HtmlNode documentNode)
@@ -35,8 +47,52 @@ namespace Surrender_20.Forms.ViewModels
                 }
             }
 
+            if (newsContent != null)
+            {
+                var cache = new StringBuilder();
+                foreach (var item in newsContent.Descendants())
+                {
+                    if (item.Name != "img")
+                    {
+                        cache.Append(item.OuterHtml);
+                    }
+                    else
+                    {
+                        stack.Children.Add(new HtmlLabel
+                        {
+                            Text = cache.ToString()
+                        });
+
+                        cache.Clear();
+
+                        var Image = new Image
+                        {
+                            Source = item.GetAttributeValue("src", "") 
+                        };
+
+                        Image.GestureRecognizers.Add(new TapGestureRecognizer
+                        {
+                            Command = new MvxCommand(() =>
+                            {
+                                //TODO navigate to custom MvxCarouselPage
+                                //_navigationService.Navigate()
+                            })
+                        });
+
+                        stack.Children.Add(Image);
+                    }
+                }
+
+                if (cache.Length != 0)
+                {
+                    stack.Children.Add(new HtmlLabel
+                    {
+                        Text = cache.ToString()
+                    });
+                }
+            }
+
             //TODO add youtube
-            //TODO add gallery view/higher resolution image redirect >>>>>>>>>>>>>>>>>>> nugecik z pop up'em jak w radiu? ~Kapi
 
             Content = new HtmlLabel
             {
