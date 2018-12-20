@@ -18,10 +18,17 @@ namespace Surrender_20.Forms.ViewModels
         private IMvxNavigationService _navigationService;
 
         private View _content;
+        private ImageSource _thumbnailSource;
+
         public View Content
         {
             get { return _content; }
             set { SetProperty(ref _content, value); }
+        }
+
+        public ImageSource ThumbnailSource {
+            get { return _thumbnailSource; }
+            set { SetProperty(ref _thumbnailSource, value); }
         }
 
         public NewsfeedItemViewModel(IMvxNavigationService navigationService)
@@ -33,11 +40,15 @@ namespace Surrender_20.Forms.ViewModels
         {
             StackLayout stack = new StackLayout();
 
-            var newsContent =
-                documentNode.SelectSingleNode("//*[contains(@class,'news-content')]");
+            var newsContent = documentNode
+                .SelectSingleNode("//div[contains(@class,'news-content')]");
 
-            var tableOfContents =
-                newsContent.SelectNodes("div[@id='toc']|div[following-sibling::div[@id='toc']][1]");
+            var tableOfContents = newsContent
+                .SelectNodes("div[@id='toc']|div[following-sibling::div[@id='toc']][1]");
+
+            ThumbnailSource = newsContent
+                .SelectSingleNode("./div[contains(@class,'separator')][1]/a/img")
+                .GetAttributeValue("src", "");
 
             if (tableOfContents != null)
             {

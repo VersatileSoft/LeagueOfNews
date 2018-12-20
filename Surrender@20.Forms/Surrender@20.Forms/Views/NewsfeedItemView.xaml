@@ -21,8 +21,8 @@
 
             <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <StackLayout>
-                    <!--<Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
-                               Aspect="AspectFill"/>-->
+                    <Image Source="{Binding Path=ThumbnailSource}"
+                           Aspect="AspectFill"/>
 
                     <ContentView Content="{Binding Content}"
                                  Margin="15,10,15,10"/>
