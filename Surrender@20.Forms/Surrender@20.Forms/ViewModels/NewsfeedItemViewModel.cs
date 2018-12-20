@@ -63,12 +63,10 @@ namespace Surrender_20.Forms.ViewModels
                 var cache = new StringBuilder();
                 foreach (var item in newsContent.Descendants())
                 {
-                    if (item.Name != "img")
-                    {
-                        cache.Append(item.OuterHtml);
-                    }
-                    else
-                    {
+                    switch (item.Name) {
+                    case "iframe":
+                        
+                    case "img":
                         stack.Children.Add(new HtmlLabel
                         {
                             Text = cache.ToString()
@@ -78,7 +76,7 @@ namespace Surrender_20.Forms.ViewModels
 
                         var Image = new Image
                         {
-                            Source = item.GetAttributeValue("src", "") 
+                            Source = item.GetAttributeValue("src", "")
                         };
 
                         Image.GestureRecognizers.Add(new TapGestureRecognizer
@@ -91,6 +89,10 @@ namespace Surrender_20.Forms.ViewModels
                         });
 
                         stack.Children.Add(Image);
+                        break;
+                    default:
+                        cache.AppendLine(item.OuterHtml);
+                        break;
                     }
                 }
 
