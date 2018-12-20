@@ -6,8 +6,10 @@ using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
 
@@ -65,7 +67,14 @@ namespace Surrender_20.Forms.ViewModels
                 {
                     switch (item.Name) {
                     case "iframe":
-                        
+                        stack.Children.Add(new WebView
+                        {
+                            Source = new HtmlWebViewSource
+                            {
+                                Html = item.OuterHtml
+                            }
+                        });
+                        break;
                     case "img":
                         stack.Children.Add(new HtmlLabel
                         {
@@ -91,6 +100,8 @@ namespace Surrender_20.Forms.ViewModels
                         stack.Children.Add(Image);
                         break;
                     default:
+                        Debug.Write("[Item] " + item.OuterHtml);
+                        Debug.Write("[Cache] " + cache);
                         cache.AppendLine(item.OuterHtml);
                         break;
                     }
