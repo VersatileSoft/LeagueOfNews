@@ -42,11 +42,13 @@ namespace Surrender_20.Core.Service
 
                 try
                 {
-                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveEnterFromString().TrimString();
-                    newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveEnterFromString().RemoveTooMuchSpacesFromString().TrimString();
+                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString();
+                    newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString();
                     newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value);
                     newsfeed.Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
-                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText).RemoveEnterFromString().RemoveDoubleSpacesFromString().RemoveTripleSpacesFromString().TrimString().RemoveContinueReadingString().RemoveContinueReadingString2().RemoveContinueReadingString3().RemoveContinueReadingString4().RemoveContinueReadingString5().RemoveContinueReadingString6().RemoveContinueReadingString7(); // Długie jak muj penis :-DDDDDD
+                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
+                        .RemoveSpaceFromString()
+                        .RemoveContinueReadingString();
                 }
                 catch { continue; }
 
@@ -84,64 +86,24 @@ namespace ExtensionMethods
                                          //bo jest aktualnie 5:09 i nie myśle a kodowa stonoga mi sie zrobiła wyżej
                                          //~Twój najlepszy kolega Kacper <3
     {
-        public static string RemoveEnterFromString(this string s)
+        public static string RemoveSpaceFromString(this string s)
         {
-            return s.Replace("\n", " ");
-        }
-
-        public static string RemoveTooMuchSpacesFromString(this string s)
-        {
-            return s.Replace("          ", " ");
-        }
-
-        public static string RemoveTripleSpacesFromString(this string s)
-        {
-            return s.Replace("   ", " ");
-        }
-
-        public static string RemoveDoubleSpacesFromString(this string s)
-        {
-            return s.Replace("  ", " ");
-        }
-
-        public static string TrimString(this string s)
-        {
-            return s.Trim();
+            return s.Replace("\n", " ")
+                    .Replace("          ", " ")
+                    .Replace("   ", " ")
+                    .Replace("  ", " ")
+                    .Trim();
         }
 
         public static string RemoveContinueReadingString(this string s)
         {
-            return s.Replace(" Continue reading for more information!", "");
-        }
-
-        public static string RemoveContinueReadingString2(this string s)
-        {
-            return s.Replace(" Continue for more information and previews!", "");
-        }
-
-        public static string RemoveContinueReadingString3(this string s)
-        {
-            return s.Replace(" Continue reading for these champions' regular store prices.", "");
-        }
-
-        public static string RemoveContinueReadingString4(this string s)
-        {
-            return s.Replace(" Continue reading for a better look at this sale's discounted skins!", "");
-        }
-
-        public static string RemoveContinueReadingString5(this string s)
-        {
-            return s.Replace(" Continue reading for more details!", "");
-        }
-
-        public static string RemoveContinueReadingString6(this string s)
-        {
-            return s.Replace(" Continue reading for a spoiler free look at this week's games, including team info, schedules, and VODs!", "");
-        }
-
-        public static string RemoveContinueReadingString7(this string s)
-        {
-            return s.Replace(" Continue reading for more info on the video!", "");
+            return s.Replace(" Continue reading for more information!", "")
+                    .Replace(" Continue for more information and previews!", "")
+                    .Replace(" Continue reading for these champions' regular store prices.", "")
+                    .Replace(" Continue reading for a better look at this sale's discounted skins!", "")
+                    .Replace(" Continue reading for more details!", "")
+                    .Replace(" Continue reading for a spoiler free look at this week's games, including team info, schedules, and VODs!", "")
+                    .Replace(" Continue reading for more info on the video!", "");
         }
     }
 }
