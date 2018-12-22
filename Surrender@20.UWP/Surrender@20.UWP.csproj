@@ -116,11 +116,17 @@
     <Compile Include="Views\MessageBoxes\ConnectionDialog.xaml.cs">
       <DependentUpon>ConnectionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MessageBoxes\SiteChooseDialog.xaml.cs">
+      <DependentUpon>SiteChooseDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewsfeedItemView.xaml.cs">
       <DependentUpon>NewsfeedItemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\NewsfeedListView.xaml.cs">
       <DependentUpon>NewsfeedListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SplashScreen\CustomSpashScreen.xaml.cs">
+      <DependentUpon>CustomSpashScreen.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -203,11 +209,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MessageBoxes\SiteChooseDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NewsfeedItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewsfeedListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SplashScreen\CustomSpashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

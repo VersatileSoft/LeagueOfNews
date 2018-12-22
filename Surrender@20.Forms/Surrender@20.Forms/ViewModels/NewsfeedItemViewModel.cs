@@ -1,14 +1,8 @@
 ﻿using HtmlAgilityPack;
 using LabelHtml.Forms.Plugin.Abstractions;
 using MvvmCross.Commands;
-using MvvmCross.Forms.Presenters;
 using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
-using PropertyChanged;
 using Surrender_20.Core.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
 using System.Text;
 using Xamarin.Forms;
@@ -28,7 +22,8 @@ namespace Surrender_20.Forms.ViewModels
             set { SetProperty(ref _content, value); }
         }
 
-        public ImageSource ThumbnailSource {
+        public ImageSource ThumbnailSource
+        {
             get { return _thumbnailSource; }
             set { SetProperty(ref _thumbnailSource, value); }
         }

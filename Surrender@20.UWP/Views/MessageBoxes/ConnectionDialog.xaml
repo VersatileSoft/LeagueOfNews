@@ -11,7 +11,18 @@
     <Grid>
         <TextBlock Text="This application requires an internet connection.&#x0a;Please check your internet connection and try again." TextWrapping="Wrap"/>
 
-        <Button Content="Check again" VerticalAlignment="Bottom" HorizontalAlignment="Left" Width="150" Style="{StaticResource ButtonRevealStyle}" Click="CheckButton_Click" />
-        <Button Content="Exit" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="150" Style="{StaticResource ButtonRevealStyle}" Click="ExitButton_Click" />
+        <Button Content="Try again" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Left" 
+                Width="150" 
+                Style="{StaticResource ButtonRevealStyle}" 
+                Click="CheckButton_Click"/>
+
+        <Button Content="Exit" 
+                VerticalAlignment="Bottom" 
+                HorizontalAlignment="Right" 
+                Width="150" 
+                Style="{StaticResource ButtonRevealStyle}" 
+                Click="ExitButton_Click"/>
     </Grid>
 </ContentDialog>

@@ -67,7 +67,6 @@ namespace Surrender_20.Core.Service
                 //    ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText).RemoveEnterFromString()
                 //});
 
-
             }
             return newsfeeds;
         }
@@ -82,9 +81,8 @@ namespace Surrender_20.Core.Service
 
 namespace ExtensionMethods
 {
-    public static class StringExtensions //weź kurwa przydaj sie do czegoś Woźniak i zrób z tym porządek
-                                         //bo jest aktualnie 5:09 i nie myśle a kodowa stonoga mi sie zrobiła wyżej
-                                         //~Twój najlepszy kolega Kacper <3
+    public static class StringExtensions
+
     {
         public static string RemoveSpaceFromString(this string s)
         {

@@ -10,10 +10,10 @@
                       x:Class="Surrender_20.Forms.Views.NewsfeedListView"
                       BackgroundColor="#f0f0f0"
                       Title="{Binding Title}">
-   <views:MvxContentPage.Resources>
+    <views:MvxContentPage.Resources>
         <ResourceDictionary>
             <conv:UriToImageSource x:Key="UriToImageSource"/>
-        <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
+            <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
         </ResourceDictionary>
     </views:MvxContentPage.Resources>
 
@@ -80,7 +80,7 @@
                                            IsRunning="{Binding IsLoadingMore}"/>
                     </Grid>
                 </ListView.Footer>
-                
+
             </util:InfiniteListView>
         </Grid>
     </views:MvxContentPage.Content>

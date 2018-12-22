@@ -16,13 +16,17 @@
     </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
-        <Grid CompressedLayout.IsHeadless="true">
+        <Grid>
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
             <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <StackLayout>
-                    <Image Source="{Binding Path=ThumbnailSource}"
-                           Aspect="AspectFill"/>
+                    <Frame BackgroundColor="#002132" Padding="0">
+                        <StackLayout>
+                            <Image Source="{Binding Path=ThumbnailSource}"/>
+                            <Label Text="{Binding Date}" Margin="15,5,0,5" TextColor="White" Style="{StaticResource DescriptionLabel}"/>
+                        </StackLayout>
+                    </Frame>
 
                     <ContentView Content="{Binding Content}"
                                  Margin="15,10,15,10"/>

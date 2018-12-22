@@ -5,7 +5,6 @@ using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.ViewModels;
 using Surrender_20.Core;
 using Surrender_20.Core.Interface;
-using Surrender_20.Core.ViewModels;
 using Surrender_20.UWP.Services;
 using Surrender_20.UWP.ViewModels;
 using System.Collections.Generic;

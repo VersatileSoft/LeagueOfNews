@@ -2,16 +2,13 @@
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Model;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Surrender_20.Forms.ViewModels
 {
     public class NewsfeedListViewModel : NewsfeedListCoreViewModel
     {
-        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, 
+        public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService,
             IMvxNavigationService navigationService, ITabsInitService tabsInitService)
             : base(newsfeedService, settingsService, navigationService)
         {

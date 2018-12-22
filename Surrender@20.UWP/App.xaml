@@ -36,21 +36,22 @@
             <Setter Property="SelectionFollowsFocus" Value="Enabled"/>
         </Style>
 
-        <!--NewsfeedListView-->
+        <!--NewsfeedListView/NewsfeedItemView-->
         <Style x:Key="TitleText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Margin" Value="10,7,10,10"/>
         </Style>
-        
+
         <Style x:Key="SecondText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Margin" Value="10,0,10,10"/>
             <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
         </Style>
-        
+
         <!--Others-->
         <Style x:Key="ProgressRing" TargetType="ProgressRing">
             <Setter Property="Canvas.ZIndex" Value="5"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemBaseHighColor}"/>
             <Setter Property="Width" Value="100"/>
             <Setter Property="Height" Value="100"/>
             <Setter Property="VerticalAlignment" Value="Center"/>

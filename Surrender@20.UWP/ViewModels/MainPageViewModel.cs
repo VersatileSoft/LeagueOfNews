@@ -3,9 +3,6 @@ using MvvmCross.Navigation;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -22,7 +19,7 @@ namespace Surrender_20.UWP.ViewModels
 
 
 
-        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService) 
+        public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService)
             : base(navigationService, operatingSystemService)
         {
 

@@ -25,24 +25,24 @@ namespace Surrender_20.Core.ViewModels
         public ICommand ItemTapped { get; set; }
         public ICommand LoadMore { get; set; }
 
-        public NewsfeedListCoreViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, 
+        public NewsfeedListCoreViewModel(INewsfeedService newsfeedService, ISettingsService settingsService,
             IMvxNavigationService navigationService)
         {
             _newsfeedService = newsfeedService;
             _settingsService = settingsService;
             _navigationService = navigationService;
-            
+
 
             ItemTapped = new MvxAsyncCommand<Newsfeed>((Newsfeed) =>
             {
                 return NavigateToAsync(Newsfeed);
             });
 
-            LoadMore = new MvxAsyncCommand(async() =>
+            LoadMore = new MvxAsyncCommand(async () =>
             {
                 IsLoadingMore = true;
                 foreach (var item in await _newsfeedService.LoadMoreNewsfeeds())
-                {                   
+                {
                     Newsfeeds.Add(item);
                 }
                 IsLoadingMore = false;

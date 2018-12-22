@@ -4,8 +4,8 @@
     {
         Unsupported = -1,
         UWP,
-        Android, 
-        iOS //TFU!!! JEBAĆ
+        Android,
+        iOS
     }
 
     public interface IOperatingSystemService

@@ -1,16 +1,16 @@
-﻿using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml;
+﻿using System;
 using System.Net.NetworkInformation;
-using System;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace Surrender_20.UWP.Views.MessageBoxes
 {
     public sealed partial class ConnectionDialog : ContentDialog
-    {      
+    {
         public ConnectionDialog()
         {
-            this.InitializeComponent();         
-        }      
+            this.InitializeComponent();
+        }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
         {

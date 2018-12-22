@@ -9,12 +9,10 @@ namespace Surrender_20.Forms.Views
     [MvxContentPagePresentation(WrapInNavigationPage = true, NoHistory = false)]
     public partial class NewsfeedItemView : MvxContentPage<NewsfeedItemViewModel>
     {
-		public NewsfeedItemView ()
-		{
-			InitializeComponent ();
-
-        
-		}
+        public NewsfeedItemView()
+        {
+            InitializeComponent();
+        }
 
         protected override void OnViewModelSet()
         {

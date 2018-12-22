@@ -1,9 +1,7 @@
 ﻿using HtmlAgilityPack;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using Surrender_20.Core.Interface;
 using Surrender_20.Model;
-using System.ComponentModel;
 
 namespace Surrender_20.Core.ViewModels
 {

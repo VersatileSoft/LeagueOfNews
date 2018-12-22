@@ -10,7 +10,6 @@ namespace Surrender_20.Forms.Converters
         {
             if (value == null)
                 throw new ArgumentException("Converted value is null");
-            
 
             return !(bool)value;
         }
