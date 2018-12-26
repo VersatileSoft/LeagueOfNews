@@ -41,16 +41,13 @@
                                    Style="{StaticResource TitleText}"/>
 
                         <TextBlock Text="{Binding Date}"
-                                   Style="{StaticResource SecondText}"
-                                   FontSize="12"/>
+                                   Style="{StaticResource DateText}"/>
                     </StackPanel>
                 </Grid>
 
                 <!--Text="{Binding TextContent}"-->
                 <TextBlock Text="{Binding ShortDescription}"
-                           TextWrapping="Wrap"
-                           MaxWidth="600"
-                           Margin="15,10,15,0"/>
+                           Style="{StaticResource ContentText}"/>
             </StackPanel>
         </ScrollViewer>
     </Grid>

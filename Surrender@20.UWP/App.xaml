@@ -42,10 +42,25 @@
             <Setter Property="Margin" Value="10,7,10,10"/>
         </Style>
 
+        <Style x:Key="DateText" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="10,0,10,10"/>
+            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+        </Style>
+
+        <!--NewsfeedListView-->
         <Style x:Key="SecondText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Margin" Value="10,0,10,10"/>
             <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+        </Style>
+
+        <!--NewsfeedItemView-->
+        <Style x:Key="ContentText" TargetType="TextBlock">
+            <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="Margin" Value="15,10,15,0"/>
+            <Setter Property="MaxWidth" Value="600"/>
         </Style>
 
         <!--Others-->

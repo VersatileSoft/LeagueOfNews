@@ -56,8 +56,7 @@
                                                Style="{StaticResource TitleText}"/>
 
                                     <TextBlock Text="{Binding Date}"
-                                               Style="{StaticResource SecondText}"
-                                               FontSize="12"/>
+                                               Style="{StaticResource DateText}"/>
 
                                     <TextBlock Text="{Binding ShortDescription}"
                                                Style="{StaticResource SecondText}"/>
