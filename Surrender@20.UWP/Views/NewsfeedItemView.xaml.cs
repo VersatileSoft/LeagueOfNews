@@ -1,5 +1,4 @@
 ﻿using MvvmCross.Platforms.Uap.Views;
-using Surrender_20.UWP.ViewModels;
 
 namespace Surrender_20.UWP.View
 {

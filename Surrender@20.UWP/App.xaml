@@ -45,15 +45,27 @@
         <Style x:Key="DateText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Margin" Value="10,0,10,10"/>
-            <Setter Property="FontSize" Value="12"/>
+            <Setter Property="FontSize" Value="11"/>
             <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
         </Style>
 
+        <Style x:Key="StackPanel" TargetType="StackPanel">
+            <Setter Property="Spacing" Value="-2"/>
+            <Setter Property="VerticalAlignment" Value="Bottom"/>
+            <Setter Property="Background" Value="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}"/>
+        </Style>
+
         <!--NewsfeedListView-->
-        <Style x:Key="SecondText" TargetType="TextBlock">
+        <Style x:Key="DescriptionText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="Margin" Value="10,0,10,10"/>
             <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
+        </Style>
+
+        <Style x:Key="GridView" TargetType="GridView">
+            <Setter Property="ItemContainerStyle" Value="{ThemeResource GridViewItemRevealBackgroundShowsAboveContentStyle}"/>
+            <Setter Property="SelectionMode" Value="Single"/>
+            <Setter Property="Margin" Value="15,15,15,0"/>
         </Style>
 
         <!--NewsfeedItemView-->
@@ -71,6 +83,10 @@
             <Setter Property="Height" Value="100"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>
+
+        <Style x:Key="ScrollViewer" TargetType="ScrollViewer">
+            <Setter Property="CanContentRenderOutsideBounds" Value="True"/>
         </Style>
     </m:UWPApplication.Resources>
 </m:UWPApplication>

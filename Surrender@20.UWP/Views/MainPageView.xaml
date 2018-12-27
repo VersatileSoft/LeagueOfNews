@@ -8,9 +8,9 @@
                   xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                   xmlns:conv="using:Surrender_20.UWP.Converters"
                   x:Class="Surrender_20.UWP.View.MainPageView"
-                  mc:Ignorable="d"
-                  Background="{ThemeResource SystemControlAcrylicWindowMediumHighBrush}" 
-                  GotFocus="MvxWindowsPage_GotFocus" SizeChanged="MvxWindowsPage_SizeChanged">
+                  mc:Ignorable="d"                 
+                  GotFocus="MvxWindowsPage_GotFocus" SizeChanged="MvxWindowsPage_SizeChanged"
+                  Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
 
     <m:MvxWindowsPage.Resources>
         <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>

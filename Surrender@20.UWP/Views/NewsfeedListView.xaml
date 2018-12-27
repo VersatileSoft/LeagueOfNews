@@ -5,7 +5,8 @@
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-                  mc:Ignorable="d" GotFocus="MvxWindowsPage_GotFocus">
+                  mc:Ignorable="d" GotFocus="MvxWindowsPage_GotFocus"
+                  Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
 
     <Grid>
         <VisualStateManager.VisualStateGroups>
@@ -13,7 +14,7 @@
                 <VisualState>
                     <VisualState.StateTriggers>
                         <!--VisualState to be triggered when window width is >=720 effective pixels.-->
-                        <AdaptiveTrigger MinWindowWidth="1000"/>
+                        <AdaptiveTrigger MinWindowWidth="780"/>
                     </VisualState.StateTriggers>
 
                     <VisualState.Setters>
@@ -34,23 +35,22 @@
             <ProgressRing Style="{StaticResource ProgressRing}"
                           IsActive="{Binding IsLoading}"/>
 
-            <ScrollViewer CanContentRenderOutsideBounds="True">
-                <GridView ItemsSource="{Binding Newsfeeds}"  
-                          ItemContainerStyle="{ThemeResource GridViewItemRevealBackgroundShowsAboveContentStyle}"
-                          SelectionMode="Single"                                
-                          Tapped="GridView_Tapped"
-                          Margin="15,15,15,0">
+            <ScrollViewer Style="{StaticResource ScrollViewer}">
 
+                <GridView Style="{StaticResource GridView}" 
+                          ItemsSource="{Binding Newsfeeds}"                                 
+                          Tapped="GridView_Tapped">
                     <GridView.ItemTemplate>
                         <DataTemplate>
                             <Grid>
                                 <Image Source="{Binding Image}"
-                                       Stretch="UniformToFill"/>
+                                       Stretch="UniformToFill"
+                                       Margin="1"/>
 
-                                <StackPanel Background="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}">
+                                <StackPanel Style="{StaticResource StackPanel}" 
+                                            Padding="1">
 
-                                    <Image Source="{Binding Image}"
-                                           Stretch="UniformToFill"/>
+                                    <Image Source="{Binding Image}"/>
 
                                     <TextBlock Text="{Binding Title}"
                                                Style="{StaticResource TitleText}"/>
@@ -59,7 +59,7 @@
                                                Style="{StaticResource DateText}"/>
 
                                     <TextBlock Text="{Binding ShortDescription}"
-                                               Style="{StaticResource SecondText}"/>
+                                               Style="{StaticResource DescriptionText}"/>
                                 </StackPanel>
                             </Grid>
                         </DataTemplate>

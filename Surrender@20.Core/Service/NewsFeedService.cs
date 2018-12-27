@@ -95,12 +95,15 @@ namespace ExtensionMethods
 
         public static string RemoveContinueReadingString(this string s)
         {
-            return s.Replace(" Continue reading for more information!", "")
+            return s.Replace(" Bundle up and continue reading for more information!", "")
                     .Replace(" Continue for more information and previews!", "")
+                    .Replace(" Continue reading for more information!", "")
                     .Replace(" Continue reading for these champions' regular store prices.", "")
                     .Replace(" Continue reading for a better look at this sale's discounted skins!", "")
                     .Replace(" Continue reading for more details!", "")
                     .Replace(" Continue reading for a spoiler free look at this week's games, including team info, schedules, and VODs!", "")
+                    .Replace(" Continue reading for a full preview of the skin!", "")
+                    .Replace(" Continue reading for a look at the article and new Universe content!", "")
                     .Replace(" Continue reading for more info on the video!", "");
         }
     }

@@ -125,9 +125,6 @@
     <Compile Include="Views\NewsfeedListView.xaml.cs">
       <DependentUpon>NewsfeedListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\SplashScreen\CustomSpashScreen.xaml.cs">
-      <DependentUpon>CustomSpashScreen.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <AppxManifest Include="Package.appxmanifest">
@@ -217,10 +214,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NewsfeedListView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\SplashScreen\CustomSpashScreen.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
