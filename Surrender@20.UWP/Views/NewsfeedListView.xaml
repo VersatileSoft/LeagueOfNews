@@ -47,8 +47,7 @@
                                        Stretch="UniformToFill"
                                        Margin="1"/>
 
-                                <StackPanel Style="{StaticResource StackPanel}" 
-                                            Padding="1">
+                                <StackPanel Style="{StaticResource StackPanel}">
 
                                     <Image Source="{Binding Image}"/>
 

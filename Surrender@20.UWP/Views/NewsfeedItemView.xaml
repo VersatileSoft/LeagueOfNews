@@ -19,7 +19,7 @@
                       VerticalAlignment="Top">
 
                     <ParallaxView Source="{x:Bind ForegroundElement}" 
-                                  VerticalShift="150">
+                                  VerticalShift="60">
 
                         <!--Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"-->
                         <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"

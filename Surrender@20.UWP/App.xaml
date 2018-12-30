@@ -19,6 +19,7 @@
             <Setter Property="Height" Value="20"/>
             <Setter Property="Margin" Value="12,0"/>
             <Setter Property="HorizontalAlignment" Value="Left"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
         </Style>
 
         <Style x:Key="AppTitleText" TargetType="TextBlock" BasedOn="{StaticResource CaptionTextBlockStyle}">
@@ -39,25 +40,41 @@
         <!--NewsfeedListView/NewsfeedItemView-->
         <Style x:Key="TitleText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextAlignment" Value="Left"/>
+            <Setter Property="FontWeight" Value="SemiBold"/>
+            <Setter Property="FontSize" Value="16"/>
             <Setter Property="Margin" Value="10,7,10,10"/>
         </Style>
 
         <Style x:Key="DateText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Margin" Value="10,0,10,10"/>
+            <Setter Property="TextAlignment" Value="Left"/>
             <Setter Property="FontSize" Value="11"/>
+            <Setter Property="Margin" Value="10,0,10,10"/>
             <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
         </Style>
 
         <Style x:Key="StackPanel" TargetType="StackPanel">
             <Setter Property="Spacing" Value="-2"/>
+            <Setter Property="Padding" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
             <Setter Property="Background" Value="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}"/>
         </Style>
 
+        <!--<Style x:Key="DropShadowPanel" TargetType="controls:DropShadowPanel">
+            <Setter Property="ShadowOpacity" Value="1"/>
+            <Setter Property="BlurRadius" Value="6.90"/>
+            <Setter Property="OffsetX" Value="6.90"/>
+            <Setter Property="OffsetY" Value="2"/>
+            <Setter Property="Color" Value="Black"/>
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+        </Style>-->
+
         <!--NewsfeedListView-->
         <Style x:Key="DescriptionText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
+            <Setter Property="TextAlignment" Value="Left"/>
             <Setter Property="Margin" Value="10,0,10,10"/>
             <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
         </Style>

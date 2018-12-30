@@ -21,9 +21,8 @@
 
             <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <StackLayout>
-                    <Frame BackgroundColor="#002132" Padding="0">
+                    <Frame BackgroundColor="#002132" CornerRadius="0" Padding="0">
                         <StackLayout>
-                            <Image Source="{Binding Path=ThumbnailSource}"/>
                             <Label Text="{Binding Date}" Margin="15,5,0,5" TextColor="White" Style="{StaticResource DescriptionLabel}"/>
                         </StackLayout>
                     </Frame>
@@ -31,7 +30,6 @@
                     <ContentView Content="{Binding Content}"
                                  Margin="15,10,15,10"/>
                 </StackLayout>
-
             </ScrollView>
         </Grid>
     </views:MvxContentPage.Content>
