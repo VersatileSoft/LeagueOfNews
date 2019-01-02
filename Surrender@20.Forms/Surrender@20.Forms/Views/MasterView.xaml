@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage x:TypeArguments="viewModels:MasterViewModel"
+                      xmlns="http://xamarin.com/schemas/2014/forms" 
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
+                      x:Class="Surrender_20.Forms.Views.MasterView"
+                      Title="{Binding Title}">
+
+    <views:MvxContentPage.Content>
+        <StackLayout>
+
+            <Image Source="logo.jpg"/>
+
+            <Button Text="Surrender" Command="{Binding NavigateCommand}" CommandParameter="surrender"/>
+            <Button Text="Lol official" Command="{Binding NavigateCommand}" CommandParameter="lol"/>
+        </StackLayout>
+    </views:MvxContentPage.Content>
+</views:MvxContentPage>

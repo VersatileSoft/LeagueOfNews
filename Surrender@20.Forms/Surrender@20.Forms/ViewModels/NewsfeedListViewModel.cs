@@ -17,7 +17,7 @@ namespace Surrender_20.Forms.ViewModels
 
         private new async Task InitTabs()
         {
-            await base.InitTabs();
+            await base.InitTabs(true);
         }
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)

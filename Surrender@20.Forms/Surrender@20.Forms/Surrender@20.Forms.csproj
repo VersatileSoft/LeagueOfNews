@@ -6,12 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="Interfaces\**" />
-    <EmbeddedResource Remove="Interfaces\**" />
-    <None Remove="Interfaces\**" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="MvvmCross" Version="6.2.2" />
     <PackageReference Include="MvvmCross.Forms" Version="6.2.2" />
     <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.1" />
@@ -24,24 +18,29 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\RootPage.xaml.cs">
-      <DependentUpon>RootPage.xaml</DependentUpon>
+    <Compile Update="Views\LolViews\NewsfeedOfficialListView.xaml.cs">
+      <DependentUpon>NewsfeedOfficialListView.xaml</DependentUpon>
     </Compile>
-    <Compile Update="Views\NewsfeedListView.xaml.cs">
-      <DependentUpon>NewsfeedListView</DependentUpon>
+    <Compile Update="Views\SurrenderViews\TabbedRootPage.xaml.cs">
+      <DependentUpon>TabbedRootPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\SurrenderViews\NewsfeedSurrenderListView.xaml.cs">
+      <DependentUpon>NewsfeedSurrenderListView.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Views\RootPage.xaml">
+    <EmbeddedResource Update="Views\MasterView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewsfeedItemView.xaml">
+    <EmbeddedResource Update="Views\RootPageView.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Services\" />
+    <EmbeddedResource Update="Views\SurrenderViews\TabbedRootPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Views\SurrenderViews\NewsfeedItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

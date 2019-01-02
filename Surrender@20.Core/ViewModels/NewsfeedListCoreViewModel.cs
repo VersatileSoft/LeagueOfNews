@@ -55,12 +55,17 @@ namespace Surrender_20.Core.ViewModels
         {
             Title = _settingsService[parameter].Title;
             _url = _settingsService[parameter].URL;
+
+            if(parameter == Setting.Official)
+            {
+                Task.Run(() => InitTabs(false));
+            }
         }
 
-        protected async Task InitTabs()
+        protected async Task InitTabs(bool fromSurrender)
         {
             IsLoading = true;
-            Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url);
+            Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url, fromSurrender);
             IsLoading = false;
         }
     }

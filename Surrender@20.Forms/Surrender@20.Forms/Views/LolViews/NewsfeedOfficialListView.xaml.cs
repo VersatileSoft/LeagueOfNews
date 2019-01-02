@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Surrender_20.Forms.ViewModels;
+using Surrender_20.Forms.ViewModels.OfficialViewModels;
 using Surrender_20.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -8,10 +9,10 @@ using Xamarin.Forms.Xaml;
 namespace Surrender_20.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    [MvxTabbedPagePresentation(TabbedPosition.Tab, NoHistory = false, WrapInNavigationPage = true)]
-    public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
+    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = true)]
+    public partial class NewsfeedOfficialListView : MvxContentPage<NewsfeedOfficialListViewModel>
     {
-        public NewsfeedListView()
+        public NewsfeedOfficialListView()
         {
             InitializeComponent();
         }
