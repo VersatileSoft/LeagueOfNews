@@ -1,7 +1,9 @@
 ﻿using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using PropertyChanged;
+using Surrender_20.Core.Interface;
 using Surrender_20.Forms.Interfaces;
+using System;
 using System.Windows.Input;
 
 namespace Surrender_20.Forms.ViewModels
@@ -17,7 +19,7 @@ namespace Surrender_20.Forms.ViewModels
         {
             NavigateCommand = new MvxCommand<string>((Parameter) =>
             {
-                masterDetailService.MasterPageSelect(Parameter);
+                masterDetailService.MasterPageSelect((Pages)Enum.Parse(typeof(Pages), Parameter));
             });
         }
     }

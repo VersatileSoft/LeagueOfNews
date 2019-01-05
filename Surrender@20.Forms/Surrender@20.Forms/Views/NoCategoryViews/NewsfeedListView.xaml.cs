@@ -10,9 +10,9 @@ namespace Surrender_20.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = true)]
-    public partial class NewsfeedOfficialListView : MvxContentPage<NewsfeedOfficialListViewModel>
+    public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
     {
-        public NewsfeedOfficialListView()
+        public NewsfeedListView()
         {
             InitializeComponent();
         }

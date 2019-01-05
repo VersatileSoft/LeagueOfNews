@@ -19,12 +19,13 @@ namespace Surrender_20.Forms.ViewModels
 
         private IMvxNavigationService _navigationService;
 
+        public event EventHandler HideMaster;
+
         public RootPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMasterDetailService masterDetailService)
         //: base(navigationService, operatingSystemService)
         {
             _navigationService = navigationService;
-            masterDetailService.OnMasterPageSelect += OnMasterPageSelect;
-
+            masterDetailService.OnMasterPageSelect += OnMasterPageSelect;           
         }
 
 
@@ -40,13 +41,14 @@ namespace Surrender_20.Forms.ViewModels
         }
 
         private void OnMasterPageSelect(object sender, MasterPageSelectArgs e)
-        {
+        {           
+            HideMaster.Invoke(this, EventArgs.Empty);
             MvxNotifyTask.Create(async () =>
             {
                 switch (e.Page)
                 {
-                    case "surrender": await _navigationService.Navigate<TabbedRootViewModel>(); break;
-                    case "lol": await _navigationService.Navigate<NewsfeedOfficialListViewModel, Setting>(Setting.Home); break;
+                    case Pages.SurrenderHome : await _navigationService.Navigate<TabbedRootViewModel>(); break;
+                    case Pages.Official: await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.SurrenderHome); break;
                 }
             });        
         }

@@ -16,7 +16,7 @@ namespace Surrender_20.Core.Service
         private string NextPageUrl { get; set; }
 
 
-        public async Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(string URL, bool fromSurrender)
+        public async Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(string URL, Pages page)
         {
 
             if (LatestNewsfeedUrlCache != URL)
@@ -24,11 +24,13 @@ namespace Surrender_20.Core.Service
                 LatestNewsfeedUrlCache = URL;
                 var doc = await new HtmlWeb().LoadFromWebAsync(URL);
 
+                switch (page)
+                {
 
-                if (fromSurrender)
-                    NewsfeedCache = LoadSurrender(doc);
-                else
-                    NewsfeedCache = LoadOfficial(doc);
+                    case Pages.SurrenderHome: NewsfeedCache = LoadSurrender(doc); break;
+                    case Pages.Official: NewsfeedCache = LoadOfficial(doc); break;
+
+                }
             }
 
             return NewsfeedCache;
@@ -37,25 +39,21 @@ namespace Surrender_20.Core.Service
         public ObservableCollection<Newsfeed> LoadOfficial(HtmlDocument Document)
         {
             var newsfeeds = new ObservableCollection<Newsfeed>();
-            NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;
-            var nodes = Document.DocumentNode.SelectNodes("//div[@class='post-outer']");
+            NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
+            var nodes = Document.DocumentNode.SelectNodes("//div[@class='gs-container']");
 
             foreach (HtmlNode node in nodes)
             {
 
                 Newsfeed newsfeed = new Newsfeed();
 
-                try
-                {
-                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString();
-                    newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString();
-                    newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value);
-                    newsfeed.Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
-                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
-                        .RemoveSpaceFromString()
-                        .RemoveContinueReadingString();
-                }
-                catch { continue; }
+                newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText);
+                newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText);
+                newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value);
+                newsfeed.Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
+                newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText);
+
+
 
                 newsfeeds.Add(newsfeed);
 

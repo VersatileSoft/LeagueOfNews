@@ -12,8 +12,8 @@
 
             <Image Source="logo.jpg"/>
 
-            <Button Text="Surrender" Command="{Binding NavigateCommand}" CommandParameter="surrender"/>
-            <Button Text="Lol official" Command="{Binding NavigateCommand}" CommandParameter="lol"/>
+            <Button Text="Surrender" Command="{Binding NavigateCommand}" CommandParameter="SurrenderHome"/>
+            <Button Text="Lol official" Command="{Binding NavigateCommand}" CommandParameter="Official"/>
         </StackLayout>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

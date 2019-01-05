@@ -6,7 +6,7 @@ namespace Surrender_20.Core.Interface
 {
     public interface INewsfeedService
     {
-        Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(string url, bool fromSurrender);
+        Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(string url, Pages page);
         Task<ObservableCollection<Newsfeed>> LoadMoreNewsfeeds();
     }
 }

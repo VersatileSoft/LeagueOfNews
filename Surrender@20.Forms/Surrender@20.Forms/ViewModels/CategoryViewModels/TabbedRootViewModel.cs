@@ -2,7 +2,6 @@
 using MvvmCross.ViewModels;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
-using Surrender_20.Forms.ViewModels.SurrenderViewModels;
 using System;
 using System.Threading.Tasks;
 
@@ -30,12 +29,12 @@ namespace Surrender_20.Forms.ViewModels
 
         private async Task InitializeViewModels()
         {
-            await _navigationService.Navigate<NewsfeedSurrenderListViewModel, Setting>(Setting.Home);
-            await _navigationService.Navigate<NewsfeedSurrenderListViewModel, Setting>(Setting.PBE);
-            await _navigationService.Navigate<NewsfeedSurrenderListViewModel, Setting>(Setting.Releases);
-            await _navigationService.Navigate<NewsfeedSurrenderListViewModel, Setting>(Setting.RedPosts);
-            await _navigationService.Navigate<NewsfeedSurrenderListViewModel, Setting>(Setting.Rotations);
-            await _navigationService.Navigate<NewsfeedSurrenderListViewModel, Setting>(Setting.ESports);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.SurrenderHome);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.PBE);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.Releases);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.RedPosts);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.Rotations);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.ESports);
 
             _tabsLoaded = true;
             _tabsInitService.TabsLoaded.Invoke(this, EventArgs.Empty);

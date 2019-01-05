@@ -6,6 +6,7 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
     x:Class="Surrender_20.Forms.Views.RootPageView"
-    Title="{Binding Title}">
+    Title="{Binding Title}"
+    >
 
 </views:MvxMasterDetailPage>

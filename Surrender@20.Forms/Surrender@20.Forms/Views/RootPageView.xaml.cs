@@ -13,5 +13,15 @@ namespace Surrender_20.Forms.Views
         {
             InitializeComponent();
         }
+
+        protected override void OnViewModelSet()
+        {
+            ViewModel.HideMaster += ViewModel_HideMaster;
+        }
+
+        private void ViewModel_HideMaster(object sender, System.EventArgs e)
+        {
+            IsPresented = false;
+        }
     }
 }

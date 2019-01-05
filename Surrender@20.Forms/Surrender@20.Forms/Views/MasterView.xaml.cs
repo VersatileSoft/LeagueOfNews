@@ -12,6 +12,7 @@ namespace Surrender_20.Forms.Views
         public MasterView()
         {
             InitializeComponent();
+            
         }
     }
 }
