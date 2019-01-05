@@ -35,7 +35,7 @@ namespace Surrender_20.Forms.ViewModels
             MvxNotifyTask.Create(async () =>
             {
                 await _navigationService.Navigate<MasterViewModel>();
-                await _navigationService.Navigate<TabbedRootViewModel>();
+                await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.Official);
             });
         }
 
@@ -47,7 +47,7 @@ namespace Surrender_20.Forms.ViewModels
                 switch (e.Page)
                 {
                     case Pages.SurrenderHome : await _navigationService.Navigate<TabbedRootViewModel>(); break;
-                    case Pages.Official: await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.SurrenderHome); break;
+                    case Pages.Official: await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.Official); break;
                 }
             });        
         }
