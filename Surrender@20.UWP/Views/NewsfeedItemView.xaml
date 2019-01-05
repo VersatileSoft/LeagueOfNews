@@ -7,6 +7,14 @@
                   mc:Ignorable="d"
                   Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
+    <m:MvxWindowsPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/NewsfeedItemStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </m:MvxWindowsPage.Resources>
+
     <Grid>
         <ProgressRing Style="{StaticResource ProgressRing}"
                       IsActive="{Binding IsLoading}"/>

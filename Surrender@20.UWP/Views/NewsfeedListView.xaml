@@ -5,8 +5,17 @@
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+                  xmlns:Surrender_20.Model="using:Surrender_20.Model"
                   mc:Ignorable="d" GotFocus="MvxWindowsPage_GotFocus"
                   Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
+
+    <m:MvxWindowsPage.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/NewsfeedListStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </m:MvxWindowsPage.Resources>
 
     <Grid>
         <VisualStateManager.VisualStateGroups>
@@ -38,26 +47,27 @@
             <ScrollViewer Style="{StaticResource ScrollViewer}">
 
                 <GridView Style="{StaticResource GridView}" 
-                          ItemsSource="{Binding Newsfeeds}"                                 
+                          ItemsSource="{Binding Newsfeeds}" 
+                          ShowsScrollingPlaceholders="True"
                           Tapped="GridView_Tapped">
                     <GridView.ItemTemplate>
-                        <DataTemplate>
+                        <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
                             <Grid>
-                                <Image Source="{Binding Image}"
+                                <Image Source="{x:Bind Image}"
                                        Stretch="UniformToFill"
                                        Margin="1"/>
 
                                 <StackPanel Style="{StaticResource StackPanel}">
 
-                                    <Image Source="{Binding Image}"/>
+                                    <Image Source="{x:Bind Image}"/>
 
-                                    <TextBlock Text="{Binding Title}"
+                                    <TextBlock Text="{x:Bind Title}" x:Phase="1"
                                                Style="{StaticResource TitleText}"/>
 
-                                    <TextBlock Text="{Binding Date}"
+                                    <TextBlock Text="{x:Bind Date}" x:Phase="2"
                                                Style="{StaticResource DateText}"/>
 
-                                    <TextBlock Text="{Binding ShortDescription}"
+                                    <TextBlock Text="{x:Bind ShortDescription}" x:Phase="3"
                                                Style="{StaticResource DescriptionText}"/>
                                 </StackPanel>
                             </Grid>

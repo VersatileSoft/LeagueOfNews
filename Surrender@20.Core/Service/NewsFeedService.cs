@@ -47,8 +47,8 @@ namespace Surrender_20.Core.Service
                     newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value);
                     newsfeed.Image = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
-                        .RemoveSpaceFromString()
-                        .RemoveContinueReadingString();
+                            .RemoveSpaceFromString()
+                            .RemoveContinueReadingString();
                 }
                 catch { continue; }
 

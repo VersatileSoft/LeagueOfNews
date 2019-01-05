@@ -8,21 +8,24 @@
     Title="No internet connection"
     Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}">
 
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/MessageBoxesStyles/ConnectionDialogStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
+
     <Grid>
         <TextBlock Text="This application requires an internet connection.&#x0a;Please check your internet connection and try again." TextWrapping="Wrap"/>
 
-        <Button Content="Try again" 
-                VerticalAlignment="Bottom" 
-                HorizontalAlignment="Left" 
-                Width="150" 
-                Style="{StaticResource ButtonRevealStyle}" 
+        <Button Style="{StaticResource CommonButton}" 
+                Content="Try again" 
                 Click="CheckButton_Click"/>
 
-        <Button Content="Exit" 
-                VerticalAlignment="Bottom" 
+        <Button Style="{StaticResource CommonButton}"
+                Content="Exit" 
                 HorizontalAlignment="Right" 
-                Width="150" 
-                Style="{StaticResource ButtonRevealStyle}" 
                 Click="ExitButton_Click"/>
     </Grid>
 </ContentDialog>

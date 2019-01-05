@@ -13,11 +13,8 @@ namespace Surrender_20.UWP.ViewModels
     public class MainPageViewModel : MainPageCoreViewModel
     {
 
-
         public ICommand NavCommand { get; set; } //TODO rename to NavigateCommand
         public ICommand RefreshCommand { get; set; } //TODO add command that forces RSS service to update
-
-
 
         public MainPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService)
             : base(navigationService, operatingSystemService)
@@ -37,7 +34,6 @@ namespace Surrender_20.UWP.ViewModels
                     default: return null;
                 }
             });
-
         }
 
         protected async Task NavigateTo(Setting setting)

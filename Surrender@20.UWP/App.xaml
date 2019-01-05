@@ -5,38 +5,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
 
     <m:UWPApplication.Resources>
-        <!--MainPageView-->
-        <Style x:Key="DragAreaGrid" TargetType="Grid">
-            <Setter Property="Background" Value="Transparent"/>
-            <Setter Property="Height" Value="34"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Stretch"/>
-            <Setter Property="Canvas.ZIndex" Value="5"/>
-        </Style>
-
-        <Style x:Key="AppLogoImage" TargetType="Image">
-            <Setter Property="Width" Value="25"/>
-            <Setter Property="Height" Value="20"/>
-            <Setter Property="Margin" Value="12,0"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-        </Style>
-
-        <Style x:Key="AppTitleText" TargetType="TextBlock" BasedOn="{StaticResource CaptionTextBlockStyle}">
-            <Setter Property="Text" Value="SurrenderAt20"/>
-            <Setter Property="FontSize" Value="12"/>
-            <Setter Property="Margin" Value="44,8"/>
-            <Setter Property="VerticalAlignment" Value="Top"/>
-            <Setter Property="HorizontalAlignment" Value="Left"/>
-        </Style>
-
-        <Style x:Key="NavigationView" TargetType="NavigationView">
-            <Setter Property="PaneDisplayMode" Value="Top"/>
-            <Setter Property="IsSettingsVisible" Value="False"/>
-            <Setter Property="IsBackButtonVisible" Value="Collapsed"/>
-            <Setter Property="SelectionFollowsFocus" Value="Enabled"/>
-        </Style>
-
         <!--NewsfeedListView/NewsfeedItemView-->
         <Style x:Key="TitleText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
@@ -58,38 +26,11 @@
             <Setter Property="Spacing" Value="-2"/>
             <Setter Property="Padding" Value="1"/>
             <Setter Property="VerticalAlignment" Value="Bottom"/>
-            <Setter Property="Background" Value="{ThemeResource SystemControlChromeHighAcrylicElementMediumBrush}"/>
+            <Setter Property="Background" Value="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}"/>
         </Style>
 
-        <!--<Style x:Key="DropShadowPanel" TargetType="controls:DropShadowPanel">
-            <Setter Property="ShadowOpacity" Value="1"/>
-            <Setter Property="BlurRadius" Value="6.90"/>
-            <Setter Property="OffsetX" Value="6.90"/>
-            <Setter Property="OffsetY" Value="2"/>
-            <Setter Property="Color" Value="Black"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>-->
-
-        <!--NewsfeedListView-->
-        <Style x:Key="DescriptionText" TargetType="TextBlock">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="TextAlignment" Value="Left"/>
-            <Setter Property="Margin" Value="10,0,10,10"/>
-            <Setter Property="Foreground" Value="{ThemeResource SystemControlPageTextBaseMediumBrush}"/>
-        </Style>
-
-        <Style x:Key="GridView" TargetType="GridView">
-            <Setter Property="ItemContainerStyle" Value="{ThemeResource GridViewItemRevealBackgroundShowsAboveContentStyle}"/>
-            <Setter Property="SelectionMode" Value="Single"/>
-            <Setter Property="Margin" Value="15,15,15,0"/>
-        </Style>
-
-        <!--NewsfeedItemView-->
-        <Style x:Key="ContentText" TargetType="TextBlock">
-            <Setter Property="TextWrapping" Value="Wrap"/>
-            <Setter Property="Margin" Value="15,10,15,0"/>
-            <Setter Property="MaxWidth" Value="600"/>
+        <Style x:Key="ScrollViewer" TargetType="ScrollViewer">
+            <Setter Property="CanContentRenderOutsideBounds" Value="True"/>
         </Style>
 
         <!--Others-->
@@ -100,10 +41,6 @@
             <Setter Property="Height" Value="100"/>
             <Setter Property="VerticalAlignment" Value="Center"/>
             <Setter Property="HorizontalAlignment" Value="Center"/>
-        </Style>
-
-        <Style x:Key="ScrollViewer" TargetType="ScrollViewer">
-            <Setter Property="CanContentRenderOutsideBounds" Value="True"/>
         </Style>
     </m:UWPApplication.Resources>
 </m:UWPApplication>
