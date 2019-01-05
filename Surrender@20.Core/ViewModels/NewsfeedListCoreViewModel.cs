@@ -50,7 +50,7 @@ namespace Surrender_20.Core.ViewModels
         }
 
         protected abstract Task NavigateToAsync(Newsfeed newsfeed);
-        
+
         protected async Task LoadNewsfeeds(Pages page, string _url)
         {
             IsLoading = true;

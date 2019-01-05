@@ -31,7 +31,7 @@ namespace Surrender_20.Forms.ViewModels
         public void Prepare(Pages parameter)
         {
             Title = _settingsService[parameter].Title;
-            _url = _settingsService[parameter].URL;               
+            _url = _settingsService[parameter].URL;
         }
     }
 }
