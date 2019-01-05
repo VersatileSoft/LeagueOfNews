@@ -8,7 +8,7 @@ using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Model;
 
-namespace Surrender_20.Forms.ViewModels.OfficialViewModels
+namespace Surrender_20.Forms.ViewModels
 {
     public class NewsfeedListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<Pages>
     {

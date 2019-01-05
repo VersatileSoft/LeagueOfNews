@@ -1,7 +1,6 @@
 ﻿using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Surrender_20.Forms.ViewModels;
-using Surrender_20.Forms.ViewModels.OfficialViewModels;
 using Surrender_20.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

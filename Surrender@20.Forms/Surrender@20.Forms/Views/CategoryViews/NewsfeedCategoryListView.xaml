@@ -7,6 +7,7 @@
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels;assembly=Surrender_20.Forms"
                       xmlns:util="clr-namespace:Surrender_20.Forms.Views.Utils"
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
+                      xmlns:Surrender_20.Model="clr-namespace:Surrender_20.Model;assembly=Surrender@20.Core"
                       x:Class="Surrender_20.Forms.Views.NewsfeedCategoryListView"
                       BackgroundColor="#f0f0f0"
                       Title="{Binding Title}">
@@ -18,7 +19,7 @@
     </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
-        <Grid CompressedLayout.IsHeadless="true">
+        <Grid>
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
             <!--ItemClick="MvxListView_ItemClick"-->
@@ -37,45 +38,33 @@
 
                 <views:MvxListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell CompressedLayout.IsHeadless="true">
+                        <ViewCell>
                             <Frame Style="{StaticResource Frame}"
                                    Margin="10,5,10,5"
                                    Padding="5">
-                                <Grid>
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="30*"/>
-                                        <ColumnDefinition Width="70*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Grid.RowDefinitions>
-                                        <RowDefinition Height="36"/>
-                                        <RowDefinition Height="67"/>
-                                    </Grid.RowDefinitions>
-
-                                    <Frame Style="{StaticResource Frame}"
-                                           Grid.Column="0"
-                                           Grid.Row="0"
-                                           Grid.RowSpan="3">
+                                <StackLayout Spacing="2">
+                                    <Frame Style="{StaticResource Frame}">
 
                                         <Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
                                                Aspect="AspectFill"/>
                                     </Frame>
 
                                     <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
-                                                        Text="{Binding Title}"           
-                                                        Grid.Column="1"
-                                                        Grid.Row="0"/>
+                                                        Text="{Binding Title}"/>
+
+                                    <Label Style="{StaticResource DateLabel}"
+                                           Text="{Binding Date}"/>
 
                                     <Label Style="{StaticResource DescriptionLabel}"
                                            Text="{Binding ShortDescription}"/>
-                                </Grid>
+                                </StackLayout>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </views:MvxListView.ItemTemplate>
 
                 <ListView.Footer>
-                    <Grid CompressedLayout.IsHeadless="true" HeightRequest="70">
+                    <Grid HeightRequest="70">
                         <ActivityIndicator Style="{StaticResource ActivityIndicator}"
                                            IsRunning="{Binding IsLoadingMore}"/>
                     </Grid>

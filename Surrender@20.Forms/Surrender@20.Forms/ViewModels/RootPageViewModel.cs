@@ -4,7 +4,6 @@ using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Forms.Interfaces;
-using Surrender_20.Forms.ViewModels.OfficialViewModels;
 using System;
 using System.Collections.Generic;
 using System.Text;
