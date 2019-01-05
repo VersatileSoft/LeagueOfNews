@@ -98,6 +98,7 @@ namespace ExtensionMethods
             return s.Replace(" Bundle up and continue reading for more information!", "")
                     .Replace(" Continue for more information and previews!", "")
                     .Replace(" Continue reading for more information!", "")
+                    .Replace(" Continue reading for more information:", "")
                     .Replace(" Continue reading for these champions' regular store prices.", "")
                     .Replace(" Continue reading for a better look at this sale's discounted skins!", "")
                     .Replace(" Continue reading for more details!", "")

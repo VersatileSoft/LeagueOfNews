@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content.PM;
 using Android.OS;
 using LabelHtml.Forms.Plugin.Droid;
 using MvvmCross;
@@ -15,7 +16,7 @@ using System.Reflection;
 
 namespace Surrender_20.Forms.Droid
 {
-    [Activity(Label = "SurrenderAt20", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = false)]
+    [Activity(Label = "SurrenderAt20", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : MvxFormsAppCompatActivity<AndroidSetup, CoreApp, App>
     {
         protected override void OnCreate(Bundle bundle)

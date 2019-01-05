@@ -7,6 +7,7 @@
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels;assembly=Surrender_20.Forms"
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       x:Class="Surrender_20.Forms.Views.NewsfeedItemView"
+                      BackgroundColor="#002132"
                       Title="{Binding Path=Title}">
 
     <views:MvxContentPage.Resources>
@@ -17,18 +18,27 @@
 
     <views:MvxContentPage.Content>
         <Grid>
-            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
+            <Grid BackgroundColor="White" 
+                  IsVisible="{Binding IsLoading}">
+                <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
+            </Grid>
 
             <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <StackLayout>
-                    <Frame BackgroundColor="#002132" CornerRadius="0" Padding="0">
+                    <Frame Style="{StaticResource Frame}" 
+                           BackgroundColor="#002132" 
+                           Margin="0">
                         <StackLayout>
-                            <Label Text="{Binding Date}" Margin="15,5,0,5" TextColor="White" Style="{StaticResource DescriptionLabel}"/>
+                            <Label Style="{StaticResource DateLabel}"
+                                   Text="{Binding Date}"
+                                   Margin="15,5,0,5"
+                                   TextColor="White"/>
                         </StackLayout>
                     </Frame>
 
                     <ContentView Content="{Binding Content}"
-                                 Margin="15,10,15,10"/>
+                                 BackgroundColor="White"
+                                 Padding="15,10,15,10"/>
                 </StackLayout>
             </ScrollView>
         </Grid>

@@ -5,6 +5,9 @@
                        x:Class="Surrender_20.Forms.App">
     <m:MvxFormsApplication.Resources>
         <ResourceDictionary>
+            
+            <!--TODO: Optimize styles-->
+            
             <Style x:Key="ActivityIndicator" TargetType="ActivityIndicator">
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
@@ -12,8 +15,9 @@
             </Style>
 
             <Style x:Key="Frame" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="15"/>
+                <Setter Property="CornerRadius" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="-5,-5,-5,2"/>
             </Style>
 
             <Style x:Key="ListView" TargetType="ListView">
@@ -29,7 +33,6 @@
             </Style>
 
             <Style x:Key="TitleExtendedLabel" TargetType="Label">
-                <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
                 <Setter Property="MaxLines" Value="2"/>
                 <Setter Property="TextColor" Value="#ce9f3d"/>
@@ -37,10 +40,12 @@
                 <Setter Property="FontSize" Value="Large"/>
             </Style>
 
-            <Style x:Key="DescriptionLabel" TargetType="Label">
+            <Style x:Key="DateLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="Grid.Column" Value="1"/>
-                <Setter Property="Grid.Row" Value="1"/>
+            </Style>
+
+            <Style x:Key="DescriptionLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
             </Style>
         </ResourceDictionary>
     </m:MvxFormsApplication.Resources>
