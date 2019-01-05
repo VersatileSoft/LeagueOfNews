@@ -11,9 +11,9 @@ using System.Windows.Input;
 namespace Surrender_20.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public abstract class NewsfeedListCoreViewModel : MvxViewModel<Setting>
+    public abstract class NewsfeedListCoreViewModel : MvxViewModel
     {
-        private string _url;
+
         protected INewsfeedService _newsfeedService;
         protected ISettingsService _settingsService;
         protected IMvxNavigationService _navigationService;
@@ -50,17 +50,11 @@ namespace Surrender_20.Core.ViewModels
         }
 
         protected abstract Task NavigateToAsync(Newsfeed newsfeed);
-
-        public override void Prepare(Setting parameter)
-        {
-            Title = _settingsService[parameter].Title;
-            _url = _settingsService[parameter].URL;
-        }
-
-        protected async Task InitTabs()
+        
+        protected async Task LoadNewsfeeds(Pages page, string _url)
         {
             IsLoading = true;
-            Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url);
+            Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url, page);
             IsLoading = false;
         }
     }

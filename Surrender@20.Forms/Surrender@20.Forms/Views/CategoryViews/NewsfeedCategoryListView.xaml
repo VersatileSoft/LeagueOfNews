@@ -1,0 +1,87 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage x:TypeArguments="viewModels:NewsfeedCategoryListViewModel"
+                      xmlns="http://xamarin.com/schemas/2014/forms" 
+                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                      xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+                      xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels;assembly=Surrender_20.Forms"
+                      xmlns:util="clr-namespace:Surrender_20.Forms.Views.Utils"
+                      xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
+                      x:Class="Surrender_20.Forms.Views.NewsfeedCategoryListView"
+                      BackgroundColor="#f0f0f0"
+                      Title="{Binding Title}">
+    <views:MvxContentPage.Resources>
+        <ResourceDictionary>
+            <conv:UriToImageSource x:Key="UriToImageSource"/>
+            <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
+        </ResourceDictionary>
+    </views:MvxContentPage.Resources>
+
+    <views:MvxContentPage.Content>
+        <Grid CompressedLayout.IsHeadless="true">
+            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
+
+            <!--ItemClick="MvxListView_ItemClick"-->
+            <util:InfiniteListView Style="{StaticResource InfiniteListView}"
+                                   ItemsSource="{Binding Newsfeeds}"
+                                   LoadMoreCommand="{Binding LoadMore}"
+                                   ItemTapped="MvxListView_ItemTapped">
+
+                <!--TODO Change event to Behavior-->
+
+                <!--<views:MvxListView.Behaviors>
+                    <b:EventToCommandBehavior EventName="ItemTapped"
+                                          Command="{Binding ItemTappedCommand}"
+                                          EventArgsParameterPath="Item" />
+                </views:MvxListView.Behaviors>-->
+
+                <views:MvxListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell CompressedLayout.IsHeadless="true">
+                            <Frame Style="{StaticResource Frame}"
+                                   Margin="10,5,10,5"
+                                   Padding="5">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="30*"/>
+                                        <ColumnDefinition Width="70*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="36"/>
+                                        <RowDefinition Height="67"/>
+                                    </Grid.RowDefinitions>
+
+                                    <Frame Style="{StaticResource Frame}"
+                                           Grid.Column="0"
+                                           Grid.Row="0"
+                                           Grid.RowSpan="3">
+
+                                        <Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
+                                               Aspect="AspectFill"/>
+                                    </Frame>
+
+                                    <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
+                                                        Text="{Binding Title}"           
+                                                        Grid.Column="1"
+                                                        Grid.Row="0"/>
+
+                                    <Label Style="{StaticResource DescriptionLabel}"
+                                           Text="{Binding ShortDescription}"/>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </views:MvxListView.ItemTemplate>
+
+                <ListView.Footer>
+                    <Grid CompressedLayout.IsHeadless="true" HeightRequest="70">
+                        <ActivityIndicator Style="{StaticResource ActivityIndicator}"
+                                           IsRunning="{Binding IsLoadingMore}"/>
+                    </Grid>
+                </ListView.Footer>
+
+            </util:InfiniteListView>
+        </Grid>
+    </views:MvxContentPage.Content>
+</views:MvxContentPage>

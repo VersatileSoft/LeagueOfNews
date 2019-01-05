@@ -9,6 +9,7 @@ using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using Surrender_20.Core;
 using Surrender_20.Core.Interface;
+using Surrender_20.Forms.Interfaces;
 using Surrender_20.Forms.Services;
 using Surrender_20.Forms.ViewModels;
 using System.Collections.Generic;
@@ -34,8 +35,8 @@ namespace Surrender_20.Forms.Droid
         protected override void InitializeLastChance()
         {
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService()); //TODO move to InitializeFirstChance
-
-            Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<MainPageViewModel>>();
+            Mvx.IoCProvider.RegisterSingleton(typeof(IMasterDetailService), new MasterDetailService());       //TODO same /\
+            Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<RootPageViewModel>>();
 
             base.InitializeLastChance(); //TODO remove (check if work)
         }

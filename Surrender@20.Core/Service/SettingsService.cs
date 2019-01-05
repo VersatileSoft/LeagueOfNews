@@ -13,22 +13,24 @@ namespace Surrender_20.Core.Service
     public class SettingsService : ISettingsService
     {
 
-        private Dictionary<Setting, NewsfeedNavigationParameter> settings;
+        private Dictionary<Pages, NewsfeedNavigationParameter> settings;
 
 
         public SettingsService()
         {
-            settings = new Dictionary<Setting, NewsfeedNavigationParameter>();
+            settings = new Dictionary<Pages, NewsfeedNavigationParameter>();
 
-            this[Setting.Home] = new NewsfeedNavigationParameter { Title = "Home", URL = "https://www.surrenderat20.net/" };
-            this[Setting.PBE] = new NewsfeedNavigationParameter { Title = "PBE", URL = "https://www.surrenderat20.net/search/label/PBE/" };
-            this[Setting.Releases] = new NewsfeedNavigationParameter { Title = "Releases", URL = "https://www.surrenderat20.net/search/label/Releases" };
-            this[Setting.RedPosts] = new NewsfeedNavigationParameter { Title = "Red Posts", URL = "https://www.surrenderat20.net/search/label/Red%20Posts" };
-            this[Setting.Rotations] = new NewsfeedNavigationParameter { Title = "Rotations", URL = "https://www.surrenderat20.net/search/label/Rotations" };
-            this[Setting.ESports] = new NewsfeedNavigationParameter { Title = "E-Sports", URL = "https://www.surrenderat20.net/search/label/Esports" };
+            this[Pages.SurrenderHome] = new NewsfeedNavigationParameter { Title = "Home", URL = "https://www.surrenderat20.net/" };
+            this[Pages.PBE] = new NewsfeedNavigationParameter { Title = "PBE", URL = "https://www.surrenderat20.net/search/label/PBE/" };
+            this[Pages.Releases] = new NewsfeedNavigationParameter { Title = "Releases", URL = "https://www.surrenderat20.net/search/label/Releases" };
+            this[Pages.RedPosts] = new NewsfeedNavigationParameter { Title = "Red Posts", URL = "https://www.surrenderat20.net/search/label/Red%20Posts" };
+            this[Pages.Rotations] = new NewsfeedNavigationParameter { Title = "Rotations", URL = "https://www.surrenderat20.net/search/label/Rotations" };
+            this[Pages.ESports] = new NewsfeedNavigationParameter { Title = "E-Sports", URL = "https://www.surrenderat20.net/search/label/Esports" };
+            this[Pages.Official] = new NewsfeedNavigationParameter { Title = "Official", URL = "https://eune.leagueoflegends.com/pl/news" };
+
         }
 
-        public NewsfeedNavigationParameter this[Setting PropertyName]
+        public NewsfeedNavigationParameter this[Pages PropertyName]
         {
             get
             {

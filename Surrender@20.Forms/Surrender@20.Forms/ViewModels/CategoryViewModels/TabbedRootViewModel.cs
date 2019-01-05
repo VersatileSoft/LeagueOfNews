@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.Forms.ViewModels
 {
-    public class MainPageViewModel : MainPageCoreViewModel
+    public class TabbedRootViewModel : MainPageCoreViewModel
     {
 
         private bool _tabsLoaded = false;
         public ITabsInitService _tabsInitService;
 
-        public MainPageViewModel(IMvxNavigationService navigationService, ITabsInitService tabsInitService, IOperatingSystemService operatingSystemService)
+        public TabbedRootViewModel(IMvxNavigationService navigationService, ITabsInitService tabsInitService, IOperatingSystemService operatingSystemService)
             : base(navigationService, operatingSystemService)
         {
             _tabsInitService = tabsInitService;
@@ -29,12 +29,12 @@ namespace Surrender_20.Forms.ViewModels
 
         private async Task InitializeViewModels()
         {
-            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Home);
-            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.PBE);
-            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Releases);
-            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.RedPosts);
-            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.Rotations);
-            await _navigationService.Navigate<NewsfeedListViewModel, Setting>(Setting.ESports);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.SurrenderHome);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.PBE);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.Releases);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.RedPosts);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.Rotations);
+            await _navigationService.Navigate<NewsfeedCategoryListViewModel, Pages>(Pages.ESports);
 
             _tabsLoaded = true;
             _tabsInitService.TabsLoaded.Invoke(this, EventArgs.Empty);
