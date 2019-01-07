@@ -16,7 +16,7 @@ namespace Surrender_20.Forms.Views
 
         protected override void OnViewModelSet()
         {
-            var vm = ViewModel;
+            NewsfeedItemViewModel vm = ViewModel;
         }
     }
 }

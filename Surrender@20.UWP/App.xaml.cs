@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace Surrender_20.UWP
 {
-    sealed partial class App : UWPApplication
+    internal sealed partial class App : UWPApplication
     {
         public App()
         {
@@ -20,7 +20,7 @@ namespace Surrender_20.UWP
         }
     }
 
-    sealed public class UWPSetup : MvxWindowsSetup<CoreApp>
+    public sealed class UWPSetup : MvxWindowsSetup<CoreApp>
     {
         protected override void InitializeFirstChance()
         {
@@ -34,7 +34,7 @@ namespace Surrender_20.UWP
 
         public override IEnumerable<Assembly> GetViewModelAssemblies()
         {
-            var list = new List<Assembly>();
+            List<Assembly> list = new List<Assembly>();
             list.AddRange(base.GetViewModelAssemblies());
             list.Add(typeof(MainPageViewModel).Assembly);
             return list.ToArray();

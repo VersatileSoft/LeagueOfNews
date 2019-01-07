@@ -11,8 +11,8 @@ namespace Surrender_20.Forms.Views.Utils
 
         public ICommand LoadMoreCommand
         {
-            get { return (ICommand)GetValue(LoadMoreCommandProperty); }
-            set { SetValue(LoadMoreCommandProperty, value); }
+            get => (ICommand)GetValue(LoadMoreCommandProperty);
+            set => SetValue(LoadMoreCommandProperty, value);
         }
 
         public InfiniteListView()
@@ -20,14 +20,15 @@ namespace Surrender_20.Forms.Views.Utils
             ItemAppearing += InfiniteListView_ItemAppearing;
         }
 
-        void InfiniteListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
+        private void InfiniteListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
         {
-            var items = ItemsSource as IList;
 
-            if (items != null && e.Item == items[items.Count - 5])
+            if (ItemsSource is IList items && e.Item == items[items.Count - 5])
             {
                 if (LoadMoreCommand != null && LoadMoreCommand.CanExecute(null))
+                {
                     LoadMoreCommand.Execute(null);
+                }
             }
         }
     }

@@ -5,9 +5,9 @@
                        x:Class="Surrender_20.Forms.App">
     <m:MvxFormsApplication.Resources>
         <ResourceDictionary>
-            
+
             <!--TODO: Optimize styles-->
-            
+
             <Style x:Key="ActivityIndicator" TargetType="ActivityIndicator">
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>

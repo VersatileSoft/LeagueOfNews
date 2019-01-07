@@ -5,8 +5,6 @@ using Surrender_20.Core.Model;
 using Surrender_20.Model;
 using System;
 using System.Collections.ObjectModel;
-using System.IO;
-using System.Net;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -33,7 +31,7 @@ namespace Surrender_20.Core.Service
                 {
                     case Pages.SurrenderHome:
                         doc = await new HtmlWeb().LoadFromWebAsync(URL);
-                        NewsfeedCache = await LoadSurrender(doc); break;
+                        NewsfeedCache = LoadSurrender(doc); break;
                     case Pages.Official:
                         doc = await CookieWebClient.GetPage(URL);
                         NewsfeedCache = await LoadOfficial(doc);
@@ -53,8 +51,8 @@ namespace Surrender_20.Core.Service
             {
 
                 case Pages.SurrenderHome:
-                    var doc = await new HtmlWeb().LoadFromWebAsync(NextPageUrl);
-                    newsfeeds = await LoadSurrender(doc);
+                    HtmlDocument doc = await new HtmlWeb().LoadFromWebAsync(NextPageUrl);
+                    newsfeeds = LoadSurrender(doc);
                     break;
                 case Pages.Official:
                     doc = await CookieWebClient.GetPage(NextPageUrl);
@@ -67,9 +65,9 @@ namespace Surrender_20.Core.Service
 
         public async Task<ObservableCollection<Newsfeed>> LoadOfficial(HtmlDocument Document)
         {
-            var newsfeeds = new ObservableCollection<Newsfeed>();
+            ObservableCollection<Newsfeed> newsfeeds = new ObservableCollection<Newsfeed>();
             NextPageUrl = _officialBaseURL + Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
-            var nodes = Document.DocumentNode.SelectNodes("//div[@class='gs-container']");
+            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='gs-container']");
 
             foreach (HtmlNode node in nodes)
             {
@@ -82,28 +80,30 @@ namespace Surrender_20.Core.Service
                     newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText);
                     newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value);
                     newsfeed.Image = await CookieWebClient.GetImage(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
-                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText);
+                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText)
+                        .RemoveSpaceFromString()
+                        .RemoveContinueReadingString();
                 }
                 catch { continue; }
 
 
                 newsfeeds.Add(newsfeed);
-               
+
                 if (newsfeed.Title == null || newsfeed.UrlToNewsfeed == null || newsfeed.Image == null || newsfeed.ShortDescription == null)
                 {
                     throw new Exception();
                 }
-               
+
 
             }
             return newsfeeds;
         }
 
-        public async Task<ObservableCollection<Newsfeed>> LoadSurrender(HtmlDocument Document)
+        public ObservableCollection<Newsfeed> LoadSurrender(HtmlDocument Document)
         {
-            var newsfeeds = new ObservableCollection<Newsfeed>();
+            ObservableCollection<Newsfeed> newsfeeds = new ObservableCollection<Newsfeed>();
             NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;
-            var nodes = Document.DocumentNode.SelectNodes("//div[@class='post-outer']");
+            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='post-outer']");
 
             foreach (HtmlNode node in nodes)
             {
@@ -132,7 +132,7 @@ namespace Surrender_20.Core.Service
             }
             return newsfeeds;
         }
-    }    
+    }
 }
 
 namespace ExtensionMethods

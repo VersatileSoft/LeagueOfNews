@@ -9,7 +9,9 @@ namespace Surrender_20.Forms.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             if (value == null)
+            {
                 throw new ArgumentException("Converted value is null");
+            }
 
             return !(bool)value;
         }

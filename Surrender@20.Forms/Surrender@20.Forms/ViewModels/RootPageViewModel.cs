@@ -1,14 +1,9 @@
-﻿using MvvmCross.Commands;
-using MvvmCross.Navigation;
+﻿using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Forms.Interfaces;
 using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Input;
 
 namespace Surrender_20.Forms.ViewModels
 {
@@ -16,7 +11,7 @@ namespace Surrender_20.Forms.ViewModels
     public class RootPageViewModel : MvxViewModel
     {
 
-        private IMvxNavigationService _navigationService;
+        private readonly IMvxNavigationService _navigationService;
 
         public event EventHandler HideMaster;
 
@@ -24,7 +19,7 @@ namespace Surrender_20.Forms.ViewModels
         //: base(navigationService, operatingSystemService)
         {
             _navigationService = navigationService;
-            masterDetailService.OnMasterPageSelect += OnMasterPageSelect;           
+            masterDetailService.OnMasterPageSelect += OnMasterPageSelect;
         }
 
 
@@ -40,16 +35,16 @@ namespace Surrender_20.Forms.ViewModels
         }
 
         private void OnMasterPageSelect(object sender, MasterPageSelectArgs e)
-        {           
+        {
             HideMaster.Invoke(this, EventArgs.Empty);
             MvxNotifyTask.Create(async () =>
             {
                 switch (e.Page)
                 {
-                    case Pages.SurrenderHome : await _navigationService.Navigate<TabbedRootViewModel>(); break;
+                    case Pages.SurrenderHome: await _navigationService.Navigate<TabbedRootViewModel>(); break;
                     case Pages.Official: await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.Official); break;
                 }
-            });        
+            });
         }
     }
 }

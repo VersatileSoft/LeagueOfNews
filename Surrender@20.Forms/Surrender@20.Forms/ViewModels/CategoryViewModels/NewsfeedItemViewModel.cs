@@ -11,36 +11,36 @@ namespace Surrender_20.Forms.ViewModels
 {
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
-        private IMvxNavigationService _navigationService;
+        private readonly IMvxNavigationService _navigationService;
 
         private View _content;
         private ImageSource _thumbnailSource;
 
         public View Content
         {
-            get { return _content; }
-            set { SetProperty(ref _content, value); }
+            get => _content;
+            set => SetProperty(ref _content, value);
         }
 
         public ImageSource ThumbnailSource
         {
-            get { return _thumbnailSource; }
-            set { SetProperty(ref _thumbnailSource, value); }
+            get => _thumbnailSource;
+            set => SetProperty(ref _thumbnailSource, value);
         }
 
         public NewsfeedItemViewModel(IMvxNavigationService navigationService)
         {
-            this._navigationService = navigationService;
+            _navigationService = navigationService;
         }
 
         public override void ParseHtml(HtmlNode documentNode)
         {
             StackLayout stack = new StackLayout();
 
-            var newsContent = documentNode
+            HtmlNode newsContent = documentNode
                 .SelectSingleNode("//div[contains(@class,'news-content')]");
 
-            var tableOfContents = newsContent
+            HtmlNodeCollection tableOfContents = newsContent
                 .SelectNodes("./div[@id='toc']|div[following-sibling::h2[@id='toc']][1]");
 
             ThumbnailSource = newsContent
@@ -49,7 +49,7 @@ namespace Surrender_20.Forms.ViewModels
 
             if (tableOfContents != null)
             {
-                foreach (var item in tableOfContents)
+                foreach (HtmlNode item in tableOfContents)
                 {
                     item.Remove();
                 }
@@ -57,8 +57,8 @@ namespace Surrender_20.Forms.ViewModels
 
             if (newsContent != null)
             {
-                var cache = new StringBuilder();
-                var arr = newsContent.ChildNodes;
+                StringBuilder cache = new StringBuilder();
+                HtmlNodeCollection arr = newsContent.ChildNodes;
                 for (int i = 0; i < arr.Count; i++)
                 {
                     if (arr[i].Name == "iframe")
@@ -84,7 +84,7 @@ namespace Surrender_20.Forms.ViewModels
                         Debug.Write("[Cache] " + cache);
 
                         bool foundImg = false;
-                        foreach (var subitem in arr[i].Descendants(5))
+                        foreach (HtmlNode subitem in arr[i].Descendants(5))
                         {
                             if (subitem.Name == "img")
                             {
@@ -95,7 +95,7 @@ namespace Surrender_20.Forms.ViewModels
 
                                 cache.Clear();
 
-                                var Image = new Image
+                                Image Image = new Image
                                 {
                                     Source = subitem.GetAttributeValue("src", "")
                                 };

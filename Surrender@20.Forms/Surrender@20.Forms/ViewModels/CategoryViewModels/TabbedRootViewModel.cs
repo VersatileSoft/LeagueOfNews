@@ -24,7 +24,9 @@ namespace Surrender_20.Forms.ViewModels
             base.ViewAppearing();
 
             if (!_tabsLoaded)
+            {
                 MvxNotifyTask.Create(async () => await InitializeViewModels());
+            }
         }
 
         private async Task InitializeViewModels()
