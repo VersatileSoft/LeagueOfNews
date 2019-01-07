@@ -1,4 +1,5 @@
 ﻿using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Model;
@@ -6,16 +7,18 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.UWP.ViewModels
 {
-    public class NewsfeedListViewModel : NewsfeedListCoreViewModel
+    public class NewsfeedListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<Pages>
     {
         public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService)
            : base(newsfeedService, settingsService, navigationService)
         {
         }
-
-        public override async Task Initialize()
+        
+        public void Prepare(Pages parameter)
         {
-            await InitTabs();
+            Title = _settingsService[parameter].Title;
+
+            Task.Run(() => LoadNewsfeeds(parameter, _settingsService[parameter].URL));
         }
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)

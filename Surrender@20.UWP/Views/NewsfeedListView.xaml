@@ -9,6 +9,8 @@
                   mc:Ignorable="d" GotFocus="MvxWindowsPage_GotFocus"
                   Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
 
+
+
     <m:MvxWindowsPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -53,13 +55,13 @@
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
                             <Grid>
-                                <Image Source="{x:Bind Image}"
+                                <Image Source="{x:Bind (x:String)Image}" 
                                        Stretch="UniformToFill"
                                        Margin="1"/>
 
                                 <StackPanel Style="{StaticResource StackPanel}">
 
-                                    <Image Source="{x:Bind Image}"/>
+                                    <Image Source="{x:Bind (x:String)Image}"/>
 
                                     <TextBlock Text="{x:Bind Title}" x:Phase="1"
                                                Style="{StaticResource TitleText}"/>
