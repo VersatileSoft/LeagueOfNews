@@ -1,5 +1,6 @@
 ﻿using PropertyChanged;
 using System;
+using System.IO;
 
 namespace Surrender_20.Model
 {
@@ -11,6 +12,6 @@ namespace Surrender_20.Model
         public string Title { get; set; }
         public string ShortDescription { get; set; } //Overlaps with Content?
         public string ThumbnailURL { get; set; }
-        public string Image { get; set; }
+        public object Image { get; set; }
     }
 }

@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Surrender_20.Core.Model;
+using System;
 using System.Globalization;
+using System.IO;
 using Xamarin.Forms;
 
 namespace Surrender_20.Forms.Converters
@@ -11,12 +13,17 @@ namespace Surrender_20.Forms.Converters
             if (value == null)
                 throw new ArgumentException("Converted value is null");
 
-            if (!(value is Uri))
+            if (value is Stream)
+            {
+                return ImageSource.FromStream(() => (Stream)value);
+            }
+            else if (!(value is Uri))
             {
                 ImageSource src = value as string;
                 return src;
             }
-            return ImageSource.FromUri((Uri)value);
+            
+            return ImageSource.FromUri((Uri)value);          
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

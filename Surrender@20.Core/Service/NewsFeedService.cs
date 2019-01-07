@@ -1,6 +1,7 @@
 ﻿using ExtensionMethods;
 using HtmlAgilityPack;
 using Surrender_20.Core.Interface;
+using Surrender_20.Core.Model;
 using Surrender_20.Model;
 using System;
 using System.Collections.ObjectModel;
@@ -17,36 +18,57 @@ namespace Surrender_20.Core.Service
         private string LatestNewsfeedUrlCache { get; set; }
         private string NextPageUrl { get; set; }
         private Pages _parsingWay;
+        private string _officialBaseURL;
 
         public async Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(string URL, Pages page)
         {
+
+            _officialBaseURL = "https://" + new Uri(URL).Host;
             _parsingWay = page;
             if (LatestNewsfeedUrlCache != URL)
             {
                 LatestNewsfeedUrlCache = URL;
-
-                var client = new MyWebClient();
-                HtmlDocument doc = client.GetPage(URL);
-
-                //This request will be sent with the cookies obtained from the page
-                doc = client.GetPage(URL);
-
+                HtmlDocument doc;
                 switch (page)
                 {
-
-                    case Pages.SurrenderHome: NewsfeedCache = LoadSurrender(doc); break;
-                    case Pages.Official: NewsfeedCache = LoadOfficial(doc); break;
-
+                    case Pages.SurrenderHome:
+                        doc = await new HtmlWeb().LoadFromWebAsync(URL);
+                        NewsfeedCache = await LoadSurrender(doc); break;
+                    case Pages.Official:
+                        doc = await CookieWebClient.GetPage(URL);
+                        NewsfeedCache = await LoadOfficial(doc);
+                        break;
                 }
             }
 
             return NewsfeedCache;
         }
 
-        public ObservableCollection<Newsfeed> LoadOfficial(HtmlDocument Document)
+        public async Task<ObservableCollection<Newsfeed>> LoadMoreNewsfeeds()
+        {
+
+            ObservableCollection<Newsfeed> newsfeeds = new ObservableCollection<Newsfeed>();
+
+            switch (_parsingWay)
+            {
+
+                case Pages.SurrenderHome:
+                    var doc = await new HtmlWeb().LoadFromWebAsync(NextPageUrl);
+                    newsfeeds = await LoadSurrender(doc);
+                    break;
+                case Pages.Official:
+                    doc = await CookieWebClient.GetPage(NextPageUrl);
+                    newsfeeds = await LoadOfficial(doc);
+                    break;
+            }
+
+            return newsfeeds;
+        }
+
+        public async Task<ObservableCollection<Newsfeed>> LoadOfficial(HtmlDocument Document)
         {
             var newsfeeds = new ObservableCollection<Newsfeed>();
-            NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
+            NextPageUrl = _officialBaseURL + Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
             var nodes = Document.DocumentNode.SelectNodes("//div[@class='gs-container']");
 
             foreach (HtmlNode node in nodes)
@@ -54,25 +76,30 @@ namespace Surrender_20.Core.Service
 
                 Newsfeed newsfeed = new Newsfeed();
 
-                newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText);
-                newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText);
-                newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value);
-                newsfeed.Image = "https://eune.leagueoflegends.com" + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
-                newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText);
-
+                try
+                {
+                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText);
+                    newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText);
+                    newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value);
+                    newsfeed.Image = await CookieWebClient.GetImage(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
+                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText);
+                }
+                catch { continue; }
 
 
                 newsfeeds.Add(newsfeed);
-
+               
                 if (newsfeed.Title == null || newsfeed.UrlToNewsfeed == null || newsfeed.Image == null || newsfeed.ShortDescription == null)
                 {
                     throw new Exception();
                 }
+               
+
             }
             return newsfeeds;
         }
 
-        public ObservableCollection<Newsfeed> LoadSurrender(HtmlDocument Document)
+        public async Task<ObservableCollection<Newsfeed>> LoadSurrender(HtmlDocument Document)
         {
             var newsfeeds = new ObservableCollection<Newsfeed>();
             NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;
@@ -85,6 +112,7 @@ namespace Surrender_20.Core.Service
 
                 try
                 {
+
                     newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString();
                     newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString();
                     newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value);
@@ -104,73 +132,7 @@ namespace Surrender_20.Core.Service
             }
             return newsfeeds;
         }
-
-        public async Task<ObservableCollection<Newsfeed>> LoadMoreNewsfeeds()
-        {
-
-            ObservableCollection<Newsfeed> newsfeeds = new ObservableCollection<Newsfeed>();
-
-            switch (_parsingWay)
-            {
-
-                case Pages.SurrenderHome:
-                    var doc = await new HtmlWeb().LoadFromWebAsync(NextPageUrl);
-                    newsfeeds = LoadSurrender(doc);
-                    break;
-                case Pages.Official:
-
-                    var client = new MyWebClient();
-                    HtmlDocument doc1 = client.GetPage("https://eune.leagueoflegends.com" + NextPageUrl);
-                    doc = client.GetPage("https://eune.leagueoflegends.com" + NextPageUrl);
-                    newsfeeds = LoadOfficial(doc1);
-                    break;
-
-            }
-
-            return newsfeeds;
-        }
-    }
-
-    public class MyWebClient
-    {
-        //The cookies will be here.
-        private CookieContainer _cookies = new CookieContainer();
-
-        //In case you need to clear the cookies
-        public void ClearCookies()
-        {
-            _cookies = new CookieContainer();
-        }
-
-        public HtmlDocument GetPage(string url)
-        {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-
-            request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5";
-
-            IWebProxy prox = request.Proxy;
-
-            prox.Credentials = CredentialCache.DefaultCredentials;
-
-            //This is the important part.
-            request.CookieContainer = _cookies;
-
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            var stream = response.GetResponseStream();
-
-            //When you get the response from the website, the cookies will be stored
-            //automatically in "_cookies".
-
-            using (var reader = new StreamReader(stream))
-            {
-                string html = reader.ReadToEnd();
-                var doc = new HtmlDocument();
-                doc.LoadHtml(html);
-                return doc;
-            }
-        }
-    }
+    }    
 }
 
 namespace ExtensionMethods
