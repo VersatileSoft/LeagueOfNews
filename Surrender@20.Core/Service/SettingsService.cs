@@ -12,9 +12,7 @@ namespace Surrender_20.Core.Service
 
     public class SettingsService : ISettingsService
     {
-
-        private Dictionary<Pages, NewsfeedNavigationParameter> settings;
-
+        private readonly Dictionary<Pages, NewsfeedNavigationParameter> settings;
 
         public SettingsService()
         {
@@ -43,7 +41,7 @@ namespace Surrender_20.Core.Service
                     return null;
                 }
             }
-            set { settings.Add(PropertyName, value); }
+            set => settings.Add(PropertyName, value);
         }
     }
 }

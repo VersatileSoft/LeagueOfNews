@@ -4,6 +4,7 @@ using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Forms.Interfaces;
 using System;
+using System.Threading.Tasks;
 
 namespace Surrender_20.Forms.ViewModels
 {

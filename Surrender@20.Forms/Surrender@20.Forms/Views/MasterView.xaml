@@ -5,14 +5,19 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
                       x:Class="Surrender_20.Forms.Views.MasterView"
-                      Title="{Binding Title}">
+                      BackgroundColor="White"
+                      Title="{Binding Path=Title}">
 
     <views:MvxContentPage.Content>
         <StackLayout>
-            <Image Source="logo.jpg"/>
+            <Frame BackgroundColor="#002132" CornerRadius="0" HeightRequest="150">
+                <Label Text="League Of News" TextColor="White"/>
+            </Frame>
 
-            <Button Text="Surrender" Command="{Binding NavigateCommand}" CommandParameter="SurrenderHome"/>
-            <Button Text="Lol official" Command="{Binding NavigateCommand}" CommandParameter="Official"/>
+            <StackLayout Padding="10">
+                <Button Text="Surrender@20" Command="{Binding NavigateCommand}" CommandParameter="SurrenderHome" TextColor="White" BackgroundColor="#ce9f3d"/>
+                <Button Text="League of Legends Official" Command="{Binding NavigateCommand}" CommandParameter="Official" TextColor="White" BackgroundColor="#ce9f3d"/>
+            </StackLayout>
         </StackLayout>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

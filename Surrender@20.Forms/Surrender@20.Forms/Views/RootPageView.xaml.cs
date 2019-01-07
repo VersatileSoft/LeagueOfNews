@@ -21,7 +21,7 @@ namespace Surrender_20.Forms.Views
 
         private void ViewModel_HideMaster(object sender, System.EventArgs e)
         {
-            IsPresented = false;          
+            IsPresented = false;
         }
     }
 }
