@@ -25,20 +25,20 @@ namespace Surrender_20.UWP.ViewModels
 
                 switch (Parameter)
                 {
-                    case "Home": return NavigateTo(SurrenderTabs.Home);
-                    case "PBE": return NavigateTo(SurrenderTabs.PBE);
-                    case "Red Posts": return NavigateTo(SurrenderTabs.RedPosts);
-                    case "Rotations": return NavigateTo(SurrenderTabs.Rotations);
-                    case "Releases": return NavigateTo(SurrenderTabs.Releases);
-                    case "E-Sports": return NavigateTo(SurrenderTabs.ESports);
+                    case "Home": return NavigateTo(Pages.SurrenderHome);
+                    case "PBE": return NavigateTo(Pages.PBE);
+                    case "Red Posts": return NavigateTo(Pages.RedPosts);
+                    case "Rotations": return NavigateTo(Pages.Rotations);
+                    case "Releases": return NavigateTo(Pages.Releases);
+                    case "E-Sports": return NavigateTo(Pages.ESports);
                     default: return null;
                 }
             });
         }
 
-        protected async Task NavigateTo(SurrenderTabs setting)
+        protected async Task NavigateTo(Pages setting)
         {
-            await _navigationService.Navigate<NewsfeedListViewModel, SurrenderTabs>(setting);
+            await _navigationService.Navigate<NewsfeedListViewModel, Pages>(setting);
         }
     }
 }

@@ -27,17 +27,17 @@ namespace Surrender_20.Forms.ViewModels
         {
             base.ViewAppearing();
 
-            MvxNotifyTask.Create(async () =>
+            Task.Run(async () =>
             {
                 await _navigationService.Navigate<MasterViewModel>();
-                await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.Official);
+                await _navigationService.Navigate<TabbedRootViewModel>();
             });
         }
 
         private void OnMasterPageSelect(object sender, MasterPageSelectArgs e)
         {
             HideMaster.Invoke(this, EventArgs.Empty);
-            MvxNotifyTask.Create(async () =>
+            Task.Run(async () =>
             {
                 switch (e.Page)
                 {
