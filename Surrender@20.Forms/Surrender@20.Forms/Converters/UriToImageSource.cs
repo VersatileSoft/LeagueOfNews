@@ -14,9 +14,9 @@ namespace Surrender_20.Forms.Converters
                 throw new ArgumentException("Converted value is null");
             }
 
-            if (value is Stream)
+            if (value is byte[])
             {
-                return ImageSource.FromStream(() => (Stream)value);
+                return ImageSource.FromStream(() => new MemoryStream((byte[])value)); ;
             }
             else if (!(value is Uri))
             {

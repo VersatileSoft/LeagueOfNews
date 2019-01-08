@@ -1,13 +1,15 @@
 ﻿using HtmlAgilityPack;
+using Surrender_20.Core.Interface;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 
 namespace Surrender_20.Core.Model
 {
-    public class CookieWebClient
+    public class CookieWebClientService : ICookieWebClientService
     {
-        public static async Task<HtmlDocument> GetPage(string url)
+
+        public async Task<HtmlDocument> GetPage(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
@@ -25,7 +27,7 @@ namespace Surrender_20.Core.Model
             }
         }
 
-        public static async Task<Stream> GetImage(string url)
+        public async Task<byte[]> GetImage(string url)
         {
 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
@@ -37,8 +39,11 @@ namespace Surrender_20.Core.Model
             HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync();
             Stream stream = response.GetResponseStream();
 
-            return stream;
+            using (MemoryStream ms = new MemoryStream())
+            {
+                stream.CopyTo(ms);
+                return ms.ToArray();
+            }
         }
-
     }
 }
