@@ -29,21 +29,24 @@ namespace Surrender_20.Core.Model
 
         public async Task<byte[]> GetImage(string url)
         {
-
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
-            request.Method = "GET";
-            request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5";
-            // request.AllowWriteStreamBuffering = true;
-            request.Timeout = 30000;
-
-            HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync();
-            Stream stream = response.GetResponseStream();
-
-            using (MemoryStream ms = new MemoryStream())
+            try
             {
-                stream.CopyTo(ms);
-                return ms.ToArray();
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
+                request.Method = "GET";
+                request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5";
+                // request.AllowWriteStreamBuffering = true;
+                request.Timeout = 30000;
+
+                HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync();
+                Stream stream = response.GetResponseStream();
+
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    stream.CopyTo(ms);
+                    return ms.ToArray();
+                }
             }
+            catch { return null; }
         }
     }
 }

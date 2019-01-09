@@ -22,9 +22,9 @@ namespace Surrender_20.Forms.ViewModels
             Task.Run(() => LoadNewsfeeds(parameter, _settingsService[parameter].URL));
         }
 
-        protected override Task NavigateToAsync(Newsfeed newsfeed)
+        protected override async Task NavigateToAsync(Newsfeed newsfeed)
         {
-            throw new NotImplementedException();
+            await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);
         }
     }
 }

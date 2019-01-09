@@ -25,20 +25,11 @@
 
             <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <StackLayout>
-                    <Frame Style="{StaticResource Frame}" 
-                           BackgroundColor="#002132" 
-                           Margin="0">
-                        <StackLayout>
-                            <Label Style="{StaticResource DateLabel}"
-                                   Text="{Binding Date}"
-                                   Margin="15,5,0,5"
-                                   TextColor="White"/>
-                        </StackLayout>
-                    </Frame>
-
-                    <ContentView Content="{Binding Content}"
-                                 BackgroundColor="White"
-                                 Padding="15,10,15,10"/>
+                    <WebView VerticalOptions="FillAndExpand">
+                        <WebView.Source>
+                            <HtmlWebViewSource Html="{Binding Content}"/>
+                        </WebView.Source>
+                    </WebView>
                 </StackLayout>
             </ScrollView>
         </Grid>

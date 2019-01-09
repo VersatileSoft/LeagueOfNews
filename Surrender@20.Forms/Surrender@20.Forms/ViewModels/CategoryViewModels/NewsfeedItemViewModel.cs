@@ -1,17 +1,40 @@
 ﻿using HtmlAgilityPack;
-using LabelHtml.Forms.Plugin.Abstractions;
-using MvvmCross.Commands;
-using MvvmCross.Navigation;
+using PropertyChanged;
+using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
-using System.Diagnostics;
-using System.Text;
-using Xamarin.Forms;
 
 namespace Surrender_20.Forms.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
-        private readonly IMvxNavigationService _navigationService;
+
+        private string _content;
+        
+        public string Content
+        {
+            get => _content;
+            set => SetProperty(ref _content, value);
+        }
+
+        public NewsfeedItemViewModel(ICookieWebClientService cookieWebClientService) : base(cookieWebClientService)
+        {
+
+        }
+
+        public override void ParseHtml(HtmlNode documentNode)
+        {
+            Content = documentNode.InnerHtml;
+        }
+    }
+}
+
+
+
+
+/*
+ * 
+ * private readonly IMvxNavigationService _navigationService;
 
         private View _content;
         private ImageSource _thumbnailSource;
@@ -139,5 +162,5 @@ namespace Surrender_20.Forms.ViewModels
 
             Content = stack;
         }
-    }
-}
+ * 
+ */
