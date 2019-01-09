@@ -16,10 +16,13 @@ namespace Surrender_20.Forms.ViewModels
 
         public ICommand NavigateCommand { get; set; }
 
+
         public ObservableCollection<MenuListElement> MenuElements { get; set; }
 
         public MasterViewModel(IMasterDetailService masterDetailService)
         {
+
+            MenuElements = new ObservableCollection<MenuListElement>();
 
             MenuElements.Add(new MenuListElement { Name = "SurrenderAt20", Page = Pages.SurrenderHome });
             MenuElements.Add(new MenuListElement { Name = "LOL Official", Page = Pages.Official });
