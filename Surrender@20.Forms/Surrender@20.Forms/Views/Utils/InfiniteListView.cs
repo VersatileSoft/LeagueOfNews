@@ -23,7 +23,7 @@ namespace Surrender_20.Forms.Views.Utils
         private void InfiniteListView_ItemAppearing(object sender, ItemVisibilityEventArgs e)
         {
 
-            if (ItemsSource is IList items && e.Item == items[items.Count - 5])
+            if (ItemsSource is IList items && e.Item == items[items.Count - 2])
             {
                 if (LoadMoreCommand != null && LoadMoreCommand.CanExecute(null))
                 {

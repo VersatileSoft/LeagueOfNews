@@ -5,6 +5,7 @@ using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -53,9 +54,13 @@ namespace Surrender_20.Core.ViewModels
 
         protected async Task LoadNewsfeeds(Pages page, string _url)
         {
-            IsLoading = true;
-            Newsfeeds = await _newsfeedService.LoadNewsfeedsAsync(_url, page);
-            IsLoading = false;
+            new Thread(async () =>
+            {
+                Thread.CurrentThread.IsBackground = true;
+                IsLoading = true;
+                Newsfeeds =  await _newsfeedService.LoadNewsfeedsAsync(_url, page);
+                IsLoading = false;
+            }).Start();           
         }
     }
 }

@@ -27,10 +27,10 @@ namespace Surrender_20.Core.ViewModels
             Date = newsfeed.Date;
             IsLoading = true;
             var doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed.AbsoluteUri);
-            ParseHtml(doc.DocumentNode);
+            ParseHtml(doc.DocumentNode, newsfeed.Page);
             IsLoading = false;
         }
 
-        public abstract void ParseHtml(HtmlNode documentNode);
+        public abstract void ParseHtml(HtmlNode documentNode, Pages page);
     }
 }

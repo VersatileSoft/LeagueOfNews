@@ -2,6 +2,7 @@
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
+using System.Windows.Forms;
 
 namespace Surrender_20.Forms.ViewModels
 {
@@ -22,9 +23,26 @@ namespace Surrender_20.Forms.ViewModels
 
         }
 
-        public override void ParseHtml(HtmlNode documentNode)
+        public override void ParseHtml(HtmlNode documentNode, Pages page)
         {
-            Content = documentNode.InnerHtml;
+            
+            if(page == Pages.Official)
+            {
+
+
+                //var i = documentNode.SelectSingleNode(".//div[@id='riotbar-bar']");
+
+                //documentNode.SelectSingleNode("//div[@class='panel-pane pane-lolbar-navigation']").Remove();
+                //    documentNode.SelectSingleNode("//div[@class='panel-pane pane-panels-mini pane-breadcrumb-title']").Remove();
+
+                //    documentNode.SelectSingleNode("./div[@id='riotbar-subbar']").Remove();
+
+                Content = documentNode.InnerHtml;
+            }
+            else
+            {
+                Content = documentNode.InnerHtml;
+            }
         }
     }
 }

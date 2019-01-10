@@ -1,4 +1,5 @@
 ﻿using PropertyChanged;
+using Surrender_20.Core.Interface;
 using System;
 
 namespace Surrender_20.Model
@@ -12,5 +13,6 @@ namespace Surrender_20.Model
         public string ShortDescription { get; set; } //Overlaps with Content?
         public string ThumbnailURL { get; set; }
         public byte[] Image { get; set; }
+        public Pages Page { get; set; }
     }
 }

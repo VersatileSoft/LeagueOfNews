@@ -19,9 +19,9 @@ namespace Surrender_20.Forms.ViewModels
             _tabsInitService = tabsInitService;
         }
 
-        public override void ViewAppearing()
+        public override void ViewAppeared()
         {
-            base.ViewAppearing();
+            base.ViewAppeared();
 
             if (!_tabsLoaded)
             {
