@@ -7,7 +7,7 @@
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels;assembly=Surrender_20.Forms"
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       x:Class="Surrender_20.Forms.Views.NewsfeedItemView"
-                      BackgroundColor="#002132"
+                      BackgroundColor="#001119"
                       Title="{Binding Path=Title}">
 
     <views:MvxContentPage.Resources>

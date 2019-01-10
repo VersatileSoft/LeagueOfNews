@@ -5,12 +5,12 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
                       x:Class="Surrender_20.Forms.Views.MasterView"
-                      BackgroundColor="#002132"
+                      BackgroundColor="#001119"
                       Title="{Binding Path=Title}">
 
     <views:MvxContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#001119" CornerRadius="0" HeightRequest="150">
+            <Frame BackgroundColor="#002132" CornerRadius="0" HeightRequest="150">
                 <Label Text="League Of News" TextColor="White"/>
             </Frame>
 
