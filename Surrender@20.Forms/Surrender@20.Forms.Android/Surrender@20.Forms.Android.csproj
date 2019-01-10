@@ -64,7 +64,7 @@
       <Version>6.2.2</Version>
     </PackageReference>
     <PackageReference Include="System.Threading.Tasks.Extensions">
-      <Version>4.5.1</Version>
+      <Version>4.5.2</Version>
     </PackageReference>
     <PackageReference Include="Xam.Plugin.HtmlLabel">
       <Version>3.0.2.1</Version>
@@ -110,6 +110,7 @@
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
+    <Folder Include="Resources\drawable\HamburgerMenuIcons\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Surrender%4020.Core\Surrender%4020.Core.csproj">
@@ -147,6 +148,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\MenuIcons\rotations_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\surrender.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -9,7 +9,7 @@
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       xmlns:Surrender_20.Model="clr-namespace:Surrender_20.Model;assembly=Surrender@20.Core"
                       x:Class="Surrender_20.Forms.Views.NewsfeedCategoryListView"
-                      BackgroundColor="#f0f0f0"
+                      BackgroundColor="#002132"
                       Title="{Binding Title}">
     <views:MvxContentPage.Resources>
         <ResourceDictionary>
@@ -42,22 +42,28 @@
                             <Frame Style="{StaticResource Frame}"
                                    Margin="10,5,10,5"
                                    Padding="5">
-                                <StackLayout Spacing="2">
-                                    <Frame Style="{StaticResource Frame}">
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="35*"/>
+                                        <ColumnDefinition Width="65*"/>
+                                    </Grid.ColumnDefinitions>
 
-                                        <Image Source="{Binding Path=Image, Converter={StaticResource UriToImageSource}}"
+                                    <Frame Style="{StaticResource Frame}" Margin="-10,-5,0,-5" Grid.Column="0">
+                                        <Image Source="{x:Binding Path=Image, Converter={StaticResource UriToImageSource}}"
                                                Aspect="AspectFill"/>
                                     </Frame>
 
-                                    <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
-                                                        Text="{Binding Title}"/>
+                                    <StackLayout Grid.Column="1" Padding="5,5,5,0">
+                                        <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
+                                                            Text="{x:Binding Title}"/>
 
-                                    <Label Style="{StaticResource DateLabel}"
-                                           Text="{Binding Date}"/>
+                                        <Label Style="{StaticResource DateLabel}"
+                                               Text="{x:Binding Date}"/>
 
-                                    <Label Style="{StaticResource DescriptionLabel}"
-                                           Text="{Binding ShortDescription}"/>
-                                </StackLayout>
+                                        <Label Style="{StaticResource DescriptionLabel}"
+                                               Text="{x:Binding ShortDescription}"/>
+                                    </StackLayout>
+                                </Grid>
                             </Frame>
                         </ViewCell>
                     </DataTemplate>

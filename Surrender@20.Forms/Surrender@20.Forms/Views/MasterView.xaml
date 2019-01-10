@@ -5,27 +5,35 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
                       x:Class="Surrender_20.Forms.Views.MasterView"
-                      BackgroundColor="White"
+                      BackgroundColor="#002132"
                       Title="{Binding Path=Title}">
 
     <views:MvxContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#002132" CornerRadius="0" HeightRequest="150">
+            <Frame BackgroundColor="#001119" CornerRadius="0" HeightRequest="150">
                 <Label Text="League Of News" TextColor="White"/>
             </Frame>
 
             <StackLayout Padding="10">
-                <views:MvxListView ItemsSource="{Binding MenuElements}"
+                <views:MvxListView Style="{StaticResource ListView}"
+                                   ItemsSource="{Binding MenuElements}"
                                    ItemTapped="MvxListView_ItemTapped">
 
                     <views:MvxListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <StackLayout BackgroundColor="#ce9f3d">
+                                <Frame Style="{StaticResource Frame}" 
+                                       Margin="10,5,10,5">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Image Source="{Binding MenuImage}" 
+                                               HeightRequest="50"/>
 
-                                    <Label TextColor="White" 
-                                                        Text="{Binding Name}"/>
-                                </StackLayout>
+                                        <Label Style="{StaticResource TitleExtendedLabel}"
+                                               Text="{Binding Name}"
+                                               TextColor="White" 
+                                               VerticalOptions="CenterAndExpand"/>
+                                    </StackLayout>
+                                </Frame>
                             </ViewCell>
                         </DataTemplate>
                     </views:MvxListView.ItemTemplate>
