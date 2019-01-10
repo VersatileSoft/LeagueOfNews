@@ -15,8 +15,21 @@
             </Frame>
 
             <StackLayout Padding="10">
-                <Button Text="Surrender@20" Command="{Binding NavigateCommand}" CommandParameter="SurrenderHome" TextColor="White" BackgroundColor="#ce9f3d"/>
-                <Button Text="League of Legends Official" Command="{Binding NavigateCommand}" CommandParameter="Official" TextColor="White" BackgroundColor="#ce9f3d"/>
+                <views:MvxListView ItemsSource="{Binding MenuElements}"
+                                   ItemTapped="MvxListView_ItemTapped">
+
+                    <views:MvxListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout BackgroundColor="#ce9f3d">
+
+                                    <Label TextColor="White" 
+                                                        Text="{Binding Name}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </views:MvxListView.ItemTemplate>
+                </views:MvxListView>
             </StackLayout>
         </StackLayout>
     </views:MvxContentPage.Content>

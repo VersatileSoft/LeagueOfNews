@@ -22,10 +22,11 @@ namespace Surrender_20.Forms.ViewModels
         public MasterViewModel(IMasterDetailService masterDetailService)
         {
 
-            MenuElements = new ObservableCollection<MenuListElement>();
-
-            MenuElements.Add(new MenuListElement { Name = "SurrenderAt20", Page = Pages.SurrenderHome });
-            MenuElements.Add(new MenuListElement { Name = "LOL Official", Page = Pages.Official });
+            MenuElements = new ObservableCollection<MenuListElement>
+            {
+                new MenuListElement { Name = "SurrenderAt20", Page = Pages.SurrenderHome },
+                new MenuListElement { Name = "LOL Official", Page = Pages.Official }
+            };
 
             NavigateCommand = new MvxCommand<MenuListElement>((Parameter) =>
             {
