@@ -3,7 +3,6 @@ using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Forms.Interfaces;
-using System;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
@@ -16,16 +15,14 @@ namespace Surrender_20.Forms.ViewModels
 
         public ICommand NavigateCommand { get; set; }
 
-
         public ObservableCollection<MenuListElement> MenuElements { get; set; }
 
         public MasterViewModel(IMasterDetailService masterDetailService)
         {
-
             MenuElements = new ObservableCollection<MenuListElement>
             {
-                new MenuListElement { Name = "SurrenderAt20", Page = Pages.SurrenderHome },
-                new MenuListElement { Name = "LOL Official", Page = Pages.Official }
+                new MenuListElement { Name = "Surrender@20", MenuImage = "surrender.png", Page = Pages.SurrenderHome },
+                new MenuListElement { Name = "League of Legends Official", MenuImage = "surrender.png", Page = Pages.Official }
             };
 
             NavigateCommand = new MvxCommand<MenuListElement>((Parameter) =>
@@ -39,5 +36,6 @@ namespace Surrender_20.Forms.ViewModels
     {
         public Pages Page { get; set; }
         public string Name { get; set; }
+        public string MenuImage { get; set; }
     }
 }

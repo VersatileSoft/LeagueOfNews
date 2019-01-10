@@ -9,7 +9,7 @@
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       xmlns:Surrender_20.Model="clr-namespace:Surrender_20.Model;assembly=Surrender@20.Core"
                       x:Class="Surrender_20.Forms.Views.NewsfeedListView"
-                      BackgroundColor="#f0f0f0"
+                      BackgroundColor="#001119"
                       Title="{Binding Title}">
     <views:MvxContentPage.Resources>
         <ResourceDictionary>
@@ -54,7 +54,7 @@
                                                Aspect="AspectFill"/>
                                     </Frame>
 
-                                    <StackLayout Grid.Column="1" Padding="5,0,0,0">
+                                    <StackLayout Grid.Column="1" Padding="5">
                                         <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
                                                             Text="{x:Binding Title}"/>
 
