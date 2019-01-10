@@ -55,13 +55,13 @@
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
                             <Grid>
-                                <Image Source="{x:Bind (x:String)Image}" 
+                                <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" 
                                        Stretch="UniformToFill"
                                        Margin="1"/>
 
                                 <StackPanel Style="{StaticResource StackPanel}">
 
-                                    <Image Source="{x:Bind (x:String)Image}"/>
+                                    <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}"/>
 
                                     <TextBlock Text="{x:Bind Title}" x:Phase="1"
                                                Style="{StaticResource TitleText}"/>

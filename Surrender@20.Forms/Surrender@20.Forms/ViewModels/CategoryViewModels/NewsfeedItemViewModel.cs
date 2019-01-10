@@ -25,24 +25,8 @@ namespace Surrender_20.Forms.ViewModels
 
         public override void ParseHtml(HtmlNode documentNode, Pages page)
         {
-            
-            if(page == Pages.Official)
-            {
-
-
-                //var i = documentNode.SelectSingleNode(".//div[@id='riotbar-bar']");
-
-                //documentNode.SelectSingleNode("//div[@class='panel-pane pane-lolbar-navigation']").Remove();
-                //    documentNode.SelectSingleNode("//div[@class='panel-pane pane-panels-mini pane-breadcrumb-title']").Remove();
-
-                //    documentNode.SelectSingleNode("./div[@id='riotbar-subbar']").Remove();
-
-                Content = documentNode.InnerHtml;
-            }
-            else
-            {
-                Content = documentNode.InnerHtml;
-            }
+            base.ParseHtml(documentNode, page);
+            Content = documentNode.InnerHtml;
         }
     }
 }

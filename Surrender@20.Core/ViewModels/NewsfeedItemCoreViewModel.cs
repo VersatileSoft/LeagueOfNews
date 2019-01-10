@@ -31,6 +31,28 @@ namespace Surrender_20.Core.ViewModels
             IsLoading = false;
         }
 
-        public abstract void ParseHtml(HtmlNode documentNode, Pages page);
+        public virtual void ParseHtml(HtmlNode documentNode, Pages page)
+        {
+            switch (page)
+            {
+
+                case Pages.Official:
+                    // TODO delete not needed nodes from document node
+
+
+                    //var i = documentNode.SelectSingleNode(".//div[@id='riotbar-bar']");
+
+                    //documentNode.SelectSingleNode("//div[@class='panel-pane pane-lolbar-navigation']").Remove();
+                    //    documentNode.SelectSingleNode("//div[@class='panel-pane pane-panels-mini pane-breadcrumb-title']").Remove();
+
+                    //    documentNode.SelectSingleNode("./div[@id='riotbar-subbar']").Remove();
+                    break;
+
+                case Pages.SurrenderHome:
+                    // TODO delete not needed nodes from document node
+                    break;
+
+            }
+        }
     }
 }
