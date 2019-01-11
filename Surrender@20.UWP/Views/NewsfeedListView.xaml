@@ -55,19 +55,20 @@
                             <Grid>
                                 <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" 
                                        Stretch="UniformToFill"
-                                       Margin="1"/>
+                                       Margin="1"
+                                       x:Phase="1"/>
 
                                 <StackPanel Style="{StaticResource StackPanel}">
 
-                                    <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}"/>
+                                    <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" x:Phase="1"/>
 
-                                    <TextBlock Text="{x:Bind Title}" x:Phase="1"
+                                    <TextBlock Text="{x:Bind Title}" x:Phase="2"
                                                Style="{StaticResource TitleText}"/>
 
-                                    <TextBlock Text="{x:Bind Date}" x:Phase="2"
+                                    <TextBlock Text="{x:Bind Date}" x:Phase="3"
                                                Style="{StaticResource DateText}"/>
 
-                                    <TextBlock Text="{x:Bind ShortDescription}" x:Phase="3"
+                                    <TextBlock Text="{x:Bind ShortDescription}" x:Phase="4"
                                                Style="{StaticResource DescriptionText}"/>
                                 </StackPanel>
                             </Grid>
