@@ -12,7 +12,7 @@ using System.Reflection;
 
 namespace Surrender_20.UWP
 {
-    internal sealed partial class App : UWPApplication
+    public sealed partial class App : UWPApplication
     {
         public App()
         {

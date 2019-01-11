@@ -1,5 +1,5 @@
 ﻿<m:UWPApplication
-    xmlns:m="clr-namespace:Surrender_20.UWP"
+    xmlns:m="using:Surrender_20.UWP"
     x:Class="Surrender_20.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">

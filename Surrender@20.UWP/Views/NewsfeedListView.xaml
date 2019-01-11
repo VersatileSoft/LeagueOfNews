@@ -9,8 +9,6 @@
                   mc:Ignorable="d" GotFocus="MvxWindowsPage_GotFocus"
                   Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
 
-
-
     <m:MvxWindowsPage.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
