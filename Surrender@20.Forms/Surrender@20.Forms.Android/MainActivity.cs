@@ -30,7 +30,7 @@ namespace Surrender_20.Forms.Droid
         }
     }
 
-    sealed public class AndroidSetup : MvxFormsAndroidSetup<CoreApp, App>
+    public sealed class AndroidSetup : MvxFormsAndroidSetup<CoreApp, App>
     {
         protected override void InitializeLastChance()
         {
@@ -43,7 +43,7 @@ namespace Surrender_20.Forms.Droid
 
         public override IEnumerable<Assembly> GetViewModelAssemblies()
         {
-            var list = new List<Assembly>();
+            List<Assembly> list = new List<Assembly>();
             list.AddRange(base.GetViewModelAssemblies());
             list.Add(typeof(NewsfeedItemViewModel).Assembly);
             return list.ToArray();
