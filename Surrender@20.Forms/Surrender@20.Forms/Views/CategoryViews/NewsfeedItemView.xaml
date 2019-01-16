@@ -27,7 +27,7 @@
                 <StackLayout>
                     <WebView VerticalOptions="FillAndExpand">
                         <WebView.Source>
-                            <HtmlWebViewSource Html="{Binding Content}"/>
+                            <HtmlWebViewSource Html="{Binding Content, Mode=TwoWay}"/>
                         </WebView.Source>
                     </WebView>
                 </StackLayout>

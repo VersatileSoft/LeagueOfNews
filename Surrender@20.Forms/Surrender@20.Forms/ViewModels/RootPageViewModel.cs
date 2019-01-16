@@ -38,7 +38,7 @@ namespace Surrender_20.Forms.ViewModels
         private void OnMasterPageSelect(object sender, MasterPageSelectArgs e)
         {
             HideMaster.Invoke(this, EventArgs.Empty);
-            Task.Run(async () =>
+            MvxNotifyTask.Create(async () =>
             {
                 switch (e.Page)
                 {

@@ -1,5 +1,7 @@
-﻿using MvvmCross.IoC;
+﻿using MvvmCross;
+using MvvmCross.IoC;
 using MvvmCross.ViewModels;
+using Surrender_20.Core.ViewModels;
 
 namespace Surrender_20.Core
 {
@@ -13,6 +15,7 @@ namespace Surrender_20.Core
                 .EndingWith("Service")
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
+            
         }
     }
 }

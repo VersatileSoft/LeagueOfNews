@@ -3913,6 +3913,156 @@ namespace Surrender_20.Forms.Droid
 			global::MvvmCross.Droid.Support.V7.AppCompat.Resource.Styleable.ViewStubCompat_android_id = global::Surrender_20.Forms.Droid.Resource.Styleable.ViewStubCompat_android_id;
 			global::MvvmCross.Droid.Support.V7.AppCompat.Resource.Styleable.ViewStubCompat_android_inflatedId = global::Surrender_20.Forms.Droid.Resource.Styleable.ViewStubCompat_android_inflatedId;
 			global::MvvmCross.Droid.Support.V7.AppCompat.Resource.Styleable.ViewStubCompat_android_layout = global::Surrender_20.Forms.Droid.Resource.Styleable.ViewStubCompat_android_layout;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.MvxBind = global::Surrender_20.Forms.Droid.Resource.Attribute.MvxBind;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.MvxDropDownItemTemplate = global::Surrender_20.Forms.Droid.Resource.Attribute.MvxDropDownItemTemplate;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.MvxGroupItemTemplate = global::Surrender_20.Forms.Droid.Resource.Attribute.MvxGroupItemTemplate;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.MvxItemTemplate = global::Surrender_20.Forms.Droid.Resource.Attribute.MvxItemTemplate;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.MvxLang = global::Surrender_20.Forms.Droid.Resource.Attribute.MvxLang;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.MvxTemplate = global::Surrender_20.Forms.Droid.Resource.Attribute.MvxTemplate;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.MvxTemplateSelector = global::Surrender_20.Forms.Droid.Resource.Attribute.MvxTemplateSelector;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fastScrollEnabled = global::Surrender_20.Forms.Droid.Resource.Attribute.fastScrollEnabled;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fastScrollHorizontalThumbDrawable = global::Surrender_20.Forms.Droid.Resource.Attribute.fastScrollHorizontalThumbDrawable;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fastScrollHorizontalTrackDrawable = global::Surrender_20.Forms.Droid.Resource.Attribute.fastScrollHorizontalTrackDrawable;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fastScrollVerticalThumbDrawable = global::Surrender_20.Forms.Droid.Resource.Attribute.fastScrollVerticalThumbDrawable;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fastScrollVerticalTrackDrawable = global::Surrender_20.Forms.Droid.Resource.Attribute.fastScrollVerticalTrackDrawable;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.font = global::Surrender_20.Forms.Droid.Resource.Attribute.font;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fontProviderAuthority = global::Surrender_20.Forms.Droid.Resource.Attribute.fontProviderAuthority;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fontProviderCerts = global::Surrender_20.Forms.Droid.Resource.Attribute.fontProviderCerts;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fontProviderFetchStrategy = global::Surrender_20.Forms.Droid.Resource.Attribute.fontProviderFetchStrategy;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fontProviderFetchTimeout = global::Surrender_20.Forms.Droid.Resource.Attribute.fontProviderFetchTimeout;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fontProviderPackage = global::Surrender_20.Forms.Droid.Resource.Attribute.fontProviderPackage;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fontProviderQuery = global::Surrender_20.Forms.Droid.Resource.Attribute.fontProviderQuery;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fontStyle = global::Surrender_20.Forms.Droid.Resource.Attribute.fontStyle;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.fontWeight = global::Surrender_20.Forms.Droid.Resource.Attribute.fontWeight;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.layoutManager = global::Surrender_20.Forms.Droid.Resource.Attribute.layoutManager;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.reverseLayout = global::Surrender_20.Forms.Droid.Resource.Attribute.reverseLayout;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.spanCount = global::Surrender_20.Forms.Droid.Resource.Attribute.spanCount;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Attribute.stackFromEnd = global::Surrender_20.Forms.Droid.Resource.Attribute.stackFromEnd;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Boolean.abc_action_bar_embed_tabs = global::Surrender_20.Forms.Droid.Resource.Boolean.abc_action_bar_embed_tabs;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Color.notification_action_color_filter = global::Surrender_20.Forms.Droid.Resource.Color.notification_action_color_filter;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Color.notification_icon_bg_color = global::Surrender_20.Forms.Droid.Resource.Color.notification_icon_bg_color;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Color.ripple_material_light = global::Surrender_20.Forms.Droid.Resource.Color.ripple_material_light;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Color.secondary_text_default_material_light = global::Surrender_20.Forms.Droid.Resource.Color.secondary_text_default_material_light;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.compat_button_inset_horizontal_material = global::Surrender_20.Forms.Droid.Resource.Dimension.compat_button_inset_horizontal_material;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.compat_button_inset_vertical_material = global::Surrender_20.Forms.Droid.Resource.Dimension.compat_button_inset_vertical_material;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.compat_button_padding_horizontal_material = global::Surrender_20.Forms.Droid.Resource.Dimension.compat_button_padding_horizontal_material;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.compat_button_padding_vertical_material = global::Surrender_20.Forms.Droid.Resource.Dimension.compat_button_padding_vertical_material;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.compat_control_corner_material = global::Surrender_20.Forms.Droid.Resource.Dimension.compat_control_corner_material;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.fastscroll_default_thickness = global::Surrender_20.Forms.Droid.Resource.Dimension.fastscroll_default_thickness;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.fastscroll_margin = global::Surrender_20.Forms.Droid.Resource.Dimension.fastscroll_margin;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.fastscroll_minimum_range = global::Surrender_20.Forms.Droid.Resource.Dimension.fastscroll_minimum_range;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame = global::Surrender_20.Forms.Droid.Resource.Dimension.item_touch_helper_max_drag_scroll_per_frame;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity = global::Surrender_20.Forms.Droid.Resource.Dimension.item_touch_helper_swipe_escape_max_velocity;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.item_touch_helper_swipe_escape_velocity = global::Surrender_20.Forms.Droid.Resource.Dimension.item_touch_helper_swipe_escape_velocity;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_action_icon_size = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_action_icon_size;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_action_text_size = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_action_text_size;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_big_circle_margin = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_big_circle_margin;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_content_margin_start = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_content_margin_start;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_large_icon_height = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_large_icon_height;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_large_icon_width = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_large_icon_width;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_main_column_padding_top = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_main_column_padding_top;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_media_narrow_margin = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_media_narrow_margin;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_right_icon_size = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_right_icon_size;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_right_side_padding_top = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_right_side_padding_top;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_small_icon_background_padding = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_small_icon_background_padding;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_small_icon_size_as_large = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_small_icon_size_as_large;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_subtext_size = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_subtext_size;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_top_pad = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_top_pad;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Dimension.notification_top_pad_large_text = global::Surrender_20.Forms.Droid.Resource.Dimension.notification_top_pad_large_text;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_action_background = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_action_background;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_bg = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_bg;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_bg_low = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_bg_low;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_bg_low_normal = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_bg_low_normal;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_bg_low_pressed = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_bg_low_pressed;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_bg_normal = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_bg_normal;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_bg_normal_pressed = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_bg_normal_pressed;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_icon_background = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_icon_background;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_template_icon_bg = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_template_icon_bg;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_template_icon_low_bg = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_template_icon_low_bg;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notification_tile_bg = global::Surrender_20.Forms.Droid.Resource.Drawable.notification_tile_bg;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Drawable.notify_panel_notification_icon_bg = global::Surrender_20.Forms.Droid.Resource.Drawable.notify_panel_notification_icon_bg;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.MvvmCrossTagId = global::Surrender_20.Forms.Droid.Resource.Id.MvvmCrossTagId;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.MvxBindingTagUnique = global::Surrender_20.Forms.Droid.Resource.Id.MvxBindingTagUnique;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.action_container = global::Surrender_20.Forms.Droid.Resource.Id.action_container;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.action_divider = global::Surrender_20.Forms.Droid.Resource.Id.action_divider;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.action_image = global::Surrender_20.Forms.Droid.Resource.Id.action_image;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.action_text = global::Surrender_20.Forms.Droid.Resource.Id.action_text;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.actions = global::Surrender_20.Forms.Droid.Resource.Id.actions;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.async = global::Surrender_20.Forms.Droid.Resource.Id.async;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.blocking = global::Surrender_20.Forms.Droid.Resource.Id.blocking;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.chronometer = global::Surrender_20.Forms.Droid.Resource.Id.chronometer;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.forever = global::Surrender_20.Forms.Droid.Resource.Id.forever;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.icon = global::Surrender_20.Forms.Droid.Resource.Id.icon;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.icon_group = global::Surrender_20.Forms.Droid.Resource.Id.icon_group;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.info = global::Surrender_20.Forms.Droid.Resource.Id.info;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.italic = global::Surrender_20.Forms.Droid.Resource.Id.italic;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.item_touch_helper_previous_elevation = global::Surrender_20.Forms.Droid.Resource.Id.item_touch_helper_previous_elevation;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.line1 = global::Surrender_20.Forms.Droid.Resource.Id.line1;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.line3 = global::Surrender_20.Forms.Droid.Resource.Id.line3;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.normal = global::Surrender_20.Forms.Droid.Resource.Id.normal;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.notification_background = global::Surrender_20.Forms.Droid.Resource.Id.notification_background;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.notification_main_column = global::Surrender_20.Forms.Droid.Resource.Id.notification_main_column;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.notification_main_column_container = global::Surrender_20.Forms.Droid.Resource.Id.notification_main_column_container;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.right_icon = global::Surrender_20.Forms.Droid.Resource.Id.right_icon;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.right_side = global::Surrender_20.Forms.Droid.Resource.Id.right_side;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.tag_transition_group = global::Surrender_20.Forms.Droid.Resource.Id.tag_transition_group;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.text = global::Surrender_20.Forms.Droid.Resource.Id.text;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.text2 = global::Surrender_20.Forms.Droid.Resource.Id.text2;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.time = global::Surrender_20.Forms.Droid.Resource.Id.time;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Id.title = global::Surrender_20.Forms.Droid.Resource.Id.title;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Integer.status_bar_notification_info_maxnum = global::Surrender_20.Forms.Droid.Resource.Integer.status_bar_notification_info_maxnum;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Layout.notification_action = global::Surrender_20.Forms.Droid.Resource.Layout.notification_action;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Layout.notification_action_tombstone = global::Surrender_20.Forms.Droid.Resource.Layout.notification_action_tombstone;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Layout.notification_template_custom_big = global::Surrender_20.Forms.Droid.Resource.Layout.notification_template_custom_big;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Layout.notification_template_icon_group = global::Surrender_20.Forms.Droid.Resource.Layout.notification_template_icon_group;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Layout.notification_template_part_chronometer = global::Surrender_20.Forms.Droid.Resource.Layout.notification_template_part_chronometer;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Layout.notification_template_part_time = global::Surrender_20.Forms.Droid.Resource.Layout.notification_template_part_time;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.String.status_bar_notification_info_overflow = global::Surrender_20.Forms.Droid.Resource.String.status_bar_notification_info_overflow;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Style.TextAppearance_Compat_Notification = global::Surrender_20.Forms.Droid.Resource.Style.TextAppearance_Compat_Notification;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Style.TextAppearance_Compat_Notification_Info = global::Surrender_20.Forms.Droid.Resource.Style.TextAppearance_Compat_Notification_Info;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Style.TextAppearance_Compat_Notification_Line2 = global::Surrender_20.Forms.Droid.Resource.Style.TextAppearance_Compat_Notification_Line2;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Style.TextAppearance_Compat_Notification_Time = global::Surrender_20.Forms.Droid.Resource.Style.TextAppearance_Compat_Notification_Time;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Style.TextAppearance_Compat_Notification_Title = global::Surrender_20.Forms.Droid.Resource.Style.TextAppearance_Compat_Notification_Title;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Style.Widget_Compat_NotificationActionContainer = global::Surrender_20.Forms.Droid.Resource.Style.Widget_Compat_NotificationActionContainer;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Style.Widget_Compat_NotificationActionText = global::Surrender_20.Forms.Droid.Resource.Style.Widget_Compat_NotificationActionText;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamily = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamily;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamily_fontProviderAuthority = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamily_fontProviderAuthority;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamily_fontProviderCerts = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamily_fontProviderCerts;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamily_fontProviderFetchStrategy = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamily_fontProviderFetchStrategy;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamily_fontProviderFetchTimeout = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamily_fontProviderFetchTimeout;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamily_fontProviderPackage = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamily_fontProviderPackage;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamily_fontProviderQuery = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamily_fontProviderQuery;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamilyFont = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamilyFont;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamilyFont_android_font = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamilyFont_android_font;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamilyFont_android_fontStyle = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamilyFont_android_fontStyle;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamilyFont_android_fontWeight = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamilyFont_android_fontWeight;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamilyFont_font = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamilyFont_font;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamilyFont_fontStyle = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamilyFont_fontStyle;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.FontFamilyFont_fontWeight = global::Surrender_20.Forms.Droid.Resource.Styleable.FontFamilyFont_fontWeight;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxBinding = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxBinding;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxBinding_MvxBind = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxBinding_MvxBind;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxBinding_MvxLang = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxBinding_MvxLang;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxControl = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxControl;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxControl_MvxTemplate = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxControl_MvxTemplate;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxExpandableListView = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxExpandableListView;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxExpandableListView_MvxGroupItemTemplate;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxListView = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxListView;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxListView_MvxDropDownItemTemplate = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxListView_MvxDropDownItemTemplate;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxListView_MvxItemTemplate = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxListView_MvxItemTemplate;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxRecyclerView = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxRecyclerView;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.MvxRecyclerView_MvxTemplateSelector = global::Surrender_20.Forms.Droid.Resource.Styleable.MvxRecyclerView_MvxTemplateSelector;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_android_descendantFocusability = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_android_descendantFocusability;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_android_orientation = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_android_orientation;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_fastScrollEnabled = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_fastScrollEnabled;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalThumbDrawable;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_fastScrollHorizontalTrackDrawable;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalThumbDrawable;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_fastScrollVerticalTrackDrawable;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_layoutManager = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_layoutManager;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_reverseLayout = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_reverseLayout;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_spanCount = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_spanCount;
+			global::MvvmCross.Droid.Support.V7.RecyclerView.Resource.Styleable.RecyclerView_stackFromEnd = global::Surrender_20.Forms.Droid.Resource.Styleable.RecyclerView_stackFromEnd;
 			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Surrender_20.Forms.Droid.Resource.Attribute.actionBarSize;
 		}
 		
@@ -4023,23 +4173,26 @@ namespace Surrender_20.Forms.Droid
 		public partial class Attribute
 		{
 			
-			// aapt resource value: 0x7f0101eb
-			public const int MvxBind = 2130772459;
-			
-			// aapt resource value: 0x7f0101ef
-			public const int MvxDropDownItemTemplate = 2130772463;
+			// aapt resource value: 0x7f0101ec
+			public const int MvxBind = 2130772460;
 			
 			// aapt resource value: 0x7f0101f0
-			public const int MvxGroupItemTemplate = 2130772464;
+			public const int MvxDropDownItemTemplate = 2130772464;
 			
-			// aapt resource value: 0x7f0101ee
-			public const int MvxItemTemplate = 2130772462;
+			// aapt resource value: 0x7f0101f1
+			public const int MvxGroupItemTemplate = 2130772465;
 			
-			// aapt resource value: 0x7f0101ec
-			public const int MvxLang = 2130772460;
+			// aapt resource value: 0x7f0101ef
+			public const int MvxItemTemplate = 2130772463;
 			
 			// aapt resource value: 0x7f0101ed
-			public const int MvxTemplate = 2130772461;
+			public const int MvxLang = 2130772461;
+			
+			// aapt resource value: 0x7f0101ee
+			public const int MvxTemplate = 2130772462;
+			
+			// aapt resource value: 0x7f0101eb
+			public const int MvxTemplateSelector = 2130772459;
 			
 			// aapt resource value: 0x7f010070
 			public const int actionBarDivider = 2130772080;
@@ -5552,50 +5705,50 @@ namespace Surrender_20.Forms.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f0e005b
-			public const int ListViewHighlighted = 2131624027;
-			
-			// aapt resource value: 0x7f0e005a
-			public const int ListViewSelected = 2131624026;
-			
-			// aapt resource value: 0x7f0e005c
-			public const int abc_background_cache_hint_selector_material_dark = 2131624028;
-			
-			// aapt resource value: 0x7f0e005d
-			public const int abc_background_cache_hint_selector_material_light = 2131624029;
-			
-			// aapt resource value: 0x7f0e005e
-			public const int abc_btn_colored_borderless_text_material = 2131624030;
-			
-			// aapt resource value: 0x7f0e005f
-			public const int abc_btn_colored_text_material = 2131624031;
-			
-			// aapt resource value: 0x7f0e0060
-			public const int abc_color_highlight_material = 2131624032;
+			// aapt resource value: 0x7f0e0062
+			public const int ListViewHighlighted = 2131624034;
 			
 			// aapt resource value: 0x7f0e0061
-			public const int abc_hint_foreground_material_dark = 2131624033;
+			public const int ListViewSelected = 2131624033;
 			
-			// aapt resource value: 0x7f0e0062
-			public const int abc_hint_foreground_material_light = 2131624034;
+			// aapt resource value: 0x7f0e0063
+			public const int abc_background_cache_hint_selector_material_dark = 2131624035;
+			
+			// aapt resource value: 0x7f0e0064
+			public const int abc_background_cache_hint_selector_material_light = 2131624036;
+			
+			// aapt resource value: 0x7f0e0065
+			public const int abc_btn_colored_borderless_text_material = 2131624037;
+			
+			// aapt resource value: 0x7f0e0066
+			public const int abc_btn_colored_text_material = 2131624038;
+			
+			// aapt resource value: 0x7f0e0067
+			public const int abc_color_highlight_material = 2131624039;
+			
+			// aapt resource value: 0x7f0e0068
+			public const int abc_hint_foreground_material_dark = 2131624040;
+			
+			// aapt resource value: 0x7f0e0069
+			public const int abc_hint_foreground_material_light = 2131624041;
 			
 			// aapt resource value: 0x7f0e0004
 			public const int abc_input_method_navigation_guard = 2131623940;
 			
-			// aapt resource value: 0x7f0e0063
-			public const int abc_primary_text_disable_only_material_dark = 2131624035;
+			// aapt resource value: 0x7f0e006a
+			public const int abc_primary_text_disable_only_material_dark = 2131624042;
 			
-			// aapt resource value: 0x7f0e0064
-			public const int abc_primary_text_disable_only_material_light = 2131624036;
+			// aapt resource value: 0x7f0e006b
+			public const int abc_primary_text_disable_only_material_light = 2131624043;
 			
-			// aapt resource value: 0x7f0e0065
-			public const int abc_primary_text_material_dark = 2131624037;
+			// aapt resource value: 0x7f0e006c
+			public const int abc_primary_text_material_dark = 2131624044;
 			
-			// aapt resource value: 0x7f0e0066
-			public const int abc_primary_text_material_light = 2131624038;
+			// aapt resource value: 0x7f0e006d
+			public const int abc_primary_text_material_light = 2131624045;
 			
-			// aapt resource value: 0x7f0e0067
-			public const int abc_search_url_text = 2131624039;
+			// aapt resource value: 0x7f0e006e
+			public const int abc_search_url_text = 2131624046;
 			
 			// aapt resource value: 0x7f0e0005
 			public const int abc_search_url_text_normal = 2131623941;
@@ -5606,29 +5759,29 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0e0007
 			public const int abc_search_url_text_selected = 2131623943;
 			
-			// aapt resource value: 0x7f0e0068
-			public const int abc_secondary_text_material_dark = 2131624040;
-			
-			// aapt resource value: 0x7f0e0069
-			public const int abc_secondary_text_material_light = 2131624041;
-			
-			// aapt resource value: 0x7f0e006a
-			public const int abc_tint_btn_checkable = 2131624042;
-			
-			// aapt resource value: 0x7f0e006b
-			public const int abc_tint_default = 2131624043;
-			
-			// aapt resource value: 0x7f0e006c
-			public const int abc_tint_edittext = 2131624044;
-			
-			// aapt resource value: 0x7f0e006d
-			public const int abc_tint_seek_thumb = 2131624045;
-			
-			// aapt resource value: 0x7f0e006e
-			public const int abc_tint_spinner = 2131624046;
-			
 			// aapt resource value: 0x7f0e006f
-			public const int abc_tint_switch_track = 2131624047;
+			public const int abc_secondary_text_material_dark = 2131624047;
+			
+			// aapt resource value: 0x7f0e0070
+			public const int abc_secondary_text_material_light = 2131624048;
+			
+			// aapt resource value: 0x7f0e0071
+			public const int abc_tint_btn_checkable = 2131624049;
+			
+			// aapt resource value: 0x7f0e0072
+			public const int abc_tint_default = 2131624050;
+			
+			// aapt resource value: 0x7f0e0073
+			public const int abc_tint_edittext = 2131624051;
+			
+			// aapt resource value: 0x7f0e0074
+			public const int abc_tint_seek_thumb = 2131624052;
+			
+			// aapt resource value: 0x7f0e0075
+			public const int abc_tint_spinner = 2131624053;
+			
+			// aapt resource value: 0x7f0e0076
+			public const int abc_tint_switch_track = 2131624054;
 			
 			// aapt resource value: 0x7f0e0008
 			public const int accent_material_dark = 2131623944;
@@ -5647,6 +5800,9 @@ namespace Surrender_20.Forms.Droid
 			
 			// aapt resource value: 0x7f0e000d
 			public const int background_material_light = 2131623949;
+			
+			// aapt resource value: 0x7f0e005f
+			public const int black = 2131624031;
 			
 			// aapt resource value: 0x7f0e000e
 			public const int bright_foreground_disabled_material_dark = 2131623950;
@@ -5693,6 +5849,9 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0e0058
 			public const int colorPrimaryDark = 2131624024;
 			
+			// aapt resource value: 0x7f0e005e
+			public const int dark_gray = 2131624030;
+			
 			// aapt resource value: 0x7f0e0041
 			public const int design_bottom_navigation_shadow_color = 2131624001;
 			
@@ -5702,8 +5861,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0e0043
 			public const int design_default_color_primary_dark = 2131624003;
 			
-			// aapt resource value: 0x7f0e0070
-			public const int design_error = 2131624048;
+			// aapt resource value: 0x7f0e0077
+			public const int design_error = 2131624055;
 			
 			// aapt resource value: 0x7f0e0044
 			public const int design_fab_shadow_end_color = 2131624004;
@@ -5729,8 +5888,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0e004b
 			public const int design_snackbar_background_color = 2131624011;
 			
-			// aapt resource value: 0x7f0e0071
-			public const int design_tint_password_toggle = 2131624049;
+			// aapt resource value: 0x7f0e0078
+			public const int design_tint_password_toggle = 2131624056;
 			
 			// aapt resource value: 0x7f0e0016
 			public const int dim_foreground_disabled_material_dark = 2131623958;
@@ -5756,6 +5915,9 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0e001d
 			public const int foreground_material_light = 2131623965;
 			
+			// aapt resource value: 0x7f0e005d
+			public const int gray = 2131624029;
+			
 			// aapt resource value: 0x7f0e001e
 			public const int highlighted_text_material_dark = 2131623966;
 			
@@ -5764,6 +5926,9 @@ namespace Surrender_20.Forms.Droid
 			
 			// aapt resource value: 0x7f0e0056
 			public const int launcher_background = 2131624022;
+			
+			// aapt resource value: 0x7f0e005b
+			public const int light_gray = 2131624027;
 			
 			// aapt resource value: 0x7f0e0020
 			public const int material_blue_grey_800 = 2131623968;
@@ -5801,71 +5966,74 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0e002b
 			public const int material_grey_900 = 2131623979;
 			
-			// aapt resource value: 0x7f0e0072
-			public const int mtrl_bottom_nav_colored_item_tint = 2131624050;
+			// aapt resource value: 0x7f0e005c
+			public const int med_gray = 2131624028;
 			
-			// aapt resource value: 0x7f0e0073
-			public const int mtrl_bottom_nav_item_tint = 2131624051;
+			// aapt resource value: 0x7f0e0079
+			public const int mtrl_bottom_nav_colored_item_tint = 2131624057;
+			
+			// aapt resource value: 0x7f0e007a
+			public const int mtrl_bottom_nav_item_tint = 2131624058;
 			
 			// aapt resource value: 0x7f0e004c
 			public const int mtrl_btn_bg_color_disabled = 2131624012;
 			
-			// aapt resource value: 0x7f0e0074
-			public const int mtrl_btn_bg_color_selector = 2131624052;
+			// aapt resource value: 0x7f0e007b
+			public const int mtrl_btn_bg_color_selector = 2131624059;
 			
-			// aapt resource value: 0x7f0e0075
-			public const int mtrl_btn_ripple_color = 2131624053;
+			// aapt resource value: 0x7f0e007c
+			public const int mtrl_btn_ripple_color = 2131624060;
 			
-			// aapt resource value: 0x7f0e0076
-			public const int mtrl_btn_stroke_color_selector = 2131624054;
+			// aapt resource value: 0x7f0e007d
+			public const int mtrl_btn_stroke_color_selector = 2131624061;
 			
-			// aapt resource value: 0x7f0e0077
-			public const int mtrl_btn_text_btn_ripple_color = 2131624055;
+			// aapt resource value: 0x7f0e007e
+			public const int mtrl_btn_text_btn_ripple_color = 2131624062;
 			
 			// aapt resource value: 0x7f0e004d
 			public const int mtrl_btn_text_color_disabled = 2131624013;
 			
-			// aapt resource value: 0x7f0e0078
-			public const int mtrl_btn_text_color_selector = 2131624056;
+			// aapt resource value: 0x7f0e007f
+			public const int mtrl_btn_text_color_selector = 2131624063;
 			
 			// aapt resource value: 0x7f0e004e
 			public const int mtrl_btn_transparent_bg_color = 2131624014;
 			
-			// aapt resource value: 0x7f0e0079
-			public const int mtrl_chip_background_color = 2131624057;
+			// aapt resource value: 0x7f0e0080
+			public const int mtrl_chip_background_color = 2131624064;
 			
-			// aapt resource value: 0x7f0e007a
-			public const int mtrl_chip_close_icon_tint = 2131624058;
+			// aapt resource value: 0x7f0e0081
+			public const int mtrl_chip_close_icon_tint = 2131624065;
 			
-			// aapt resource value: 0x7f0e007b
-			public const int mtrl_chip_ripple_color = 2131624059;
+			// aapt resource value: 0x7f0e0082
+			public const int mtrl_chip_ripple_color = 2131624066;
 			
-			// aapt resource value: 0x7f0e007c
-			public const int mtrl_chip_text_color = 2131624060;
+			// aapt resource value: 0x7f0e0083
+			public const int mtrl_chip_text_color = 2131624067;
 			
-			// aapt resource value: 0x7f0e007d
-			public const int mtrl_fab_ripple_color = 2131624061;
+			// aapt resource value: 0x7f0e0084
+			public const int mtrl_fab_ripple_color = 2131624068;
 			
 			// aapt resource value: 0x7f0e004f
 			public const int mtrl_scrim_color = 2131624015;
 			
-			// aapt resource value: 0x7f0e007e
-			public const int mtrl_tabs_colored_ripple_color = 2131624062;
+			// aapt resource value: 0x7f0e0085
+			public const int mtrl_tabs_colored_ripple_color = 2131624069;
 			
-			// aapt resource value: 0x7f0e007f
-			public const int mtrl_tabs_icon_color_selector = 2131624063;
+			// aapt resource value: 0x7f0e0086
+			public const int mtrl_tabs_icon_color_selector = 2131624070;
 			
-			// aapt resource value: 0x7f0e0080
-			public const int mtrl_tabs_icon_color_selector_colored = 2131624064;
+			// aapt resource value: 0x7f0e0087
+			public const int mtrl_tabs_icon_color_selector_colored = 2131624071;
 			
-			// aapt resource value: 0x7f0e0081
-			public const int mtrl_tabs_legacy_text_color_selector = 2131624065;
+			// aapt resource value: 0x7f0e0088
+			public const int mtrl_tabs_legacy_text_color_selector = 2131624072;
 			
-			// aapt resource value: 0x7f0e0082
-			public const int mtrl_tabs_ripple_color = 2131624066;
+			// aapt resource value: 0x7f0e0089
+			public const int mtrl_tabs_ripple_color = 2131624073;
 			
-			// aapt resource value: 0x7f0e0083
-			public const int mtrl_text_btn_text_color_selector = 2131624067;
+			// aapt resource value: 0x7f0e008a
+			public const int mtrl_text_btn_text_color_selector = 2131624074;
 			
 			// aapt resource value: 0x7f0e0050
 			public const int mtrl_textinput_default_box_stroke_color = 2131624016;
@@ -5936,11 +6104,11 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0e003b
 			public const int switch_thumb_disabled_material_light = 2131623995;
 			
-			// aapt resource value: 0x7f0e0084
-			public const int switch_thumb_material_dark = 2131624068;
+			// aapt resource value: 0x7f0e008b
+			public const int switch_thumb_material_dark = 2131624075;
 			
-			// aapt resource value: 0x7f0e0085
-			public const int switch_thumb_material_light = 2131624069;
+			// aapt resource value: 0x7f0e008c
+			public const int switch_thumb_material_light = 2131624076;
 			
 			// aapt resource value: 0x7f0e003c
 			public const int switch_thumb_normal_material_dark = 2131623996;
@@ -5948,11 +6116,17 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0e003d
 			public const int switch_thumb_normal_material_light = 2131623997;
 			
+			// aapt resource value: 0x7f0e0060
+			public const int text_gray = 2131624032;
+			
 			// aapt resource value: 0x7f0e003e
 			public const int tooltip_background_dark = 2131623998;
 			
 			// aapt resource value: 0x7f0e003f
 			public const int tooltip_background_light = 2131623999;
+			
+			// aapt resource value: 0x7f0e005a
+			public const int white = 2131624026;
 			
 			static Color()
 			{
@@ -7652,8 +7826,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0040
 			public const int SYM = 2131361856;
 			
-			// aapt resource value: 0x7f0a00dd
-			public const int action0 = 2131362013;
+			// aapt resource value: 0x7f0a00e8
+			public const int action0 = 2131362024;
 			
 			// aapt resource value: 0x7f0a008f
 			public const int action_bar = 2131361935;
@@ -7676,17 +7850,17 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a006b
 			public const int action_bar_title = 2131361899;
 			
-			// aapt resource value: 0x7f0a00da
-			public const int action_container = 2131362010;
+			// aapt resource value: 0x7f0a00e5
+			public const int action_container = 2131362021;
 			
 			// aapt resource value: 0x7f0a0090
 			public const int action_context_bar = 2131361936;
 			
-			// aapt resource value: 0x7f0a00e1
-			public const int action_divider = 2131362017;
+			// aapt resource value: 0x7f0a00ec
+			public const int action_divider = 2131362028;
 			
-			// aapt resource value: 0x7f0a00db
-			public const int action_image = 2131362011;
+			// aapt resource value: 0x7f0a00e6
+			public const int action_image = 2131362022;
 			
 			// aapt resource value: 0x7f0a0003
 			public const int action_menu_divider = 2131361795;
@@ -7703,11 +7877,11 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a006d
 			public const int action_mode_close_button = 2131361901;
 			
-			// aapt resource value: 0x7f0a00dc
-			public const int action_text = 2131362012;
+			// aapt resource value: 0x7f0a00e7
+			public const int action_text = 2131362023;
 			
-			// aapt resource value: 0x7f0a00ea
-			public const int actions = 2131362026;
+			// aapt resource value: 0x7f0a00f5
+			public const int actions = 2131362037;
 			
 			// aapt resource value: 0x7f0a006e
 			public const int activity_chooser_view_content = 2131361902;
@@ -7723,6 +7897,9 @@ namespace Surrender_20.Forms.Droid
 			
 			// aapt resource value: 0x7f0a0041
 			public const int always = 2131361857;
+			
+			// aapt resource value: 0x7f0a00fa
+			public const int appbar = 2131362042;
 			
 			// aapt resource value: 0x7f0a0067
 			public const int async = 2131361895;
@@ -7742,8 +7919,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0074
 			public const int buttonPanel = 2131361908;
 			
-			// aapt resource value: 0x7f0a00de
-			public const int cancel_action = 2131362014;
+			// aapt resource value: 0x7f0a00e9
+			public const int cancel_action = 2131362025;
 			
 			// aapt resource value: 0x7f0a004e
 			public const int center = 2131361870;
@@ -7757,8 +7934,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0088
 			public const int checkbox = 2131361928;
 			
-			// aapt resource value: 0x7f0a00e6
-			public const int chronometer = 2131362022;
+			// aapt resource value: 0x7f0a00f1
+			public const int chronometer = 2131362033;
 			
 			// aapt resource value: 0x7f0a0063
 			public const int clip_horizontal = 2131361891;
@@ -7769,8 +7946,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0042
 			public const int collapseActionView = 2131361858;
 			
-			// aapt resource value: 0x7f0a00a1
-			public const int container = 2131361953;
+			// aapt resource value: 0x7f0a00a5
+			public const int container = 2131361957;
 			
 			// aapt resource value: 0x7f0a0084
 			public const int content = 2131361924;
@@ -7778,8 +7955,11 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0077
 			public const int contentPanel = 2131361911;
 			
-			// aapt resource value: 0x7f0a00a2
-			public const int coordinator = 2131361954;
+			// aapt resource value: 0x7f0a00a1
+			public const int content_frame = 2131361953;
+			
+			// aapt resource value: 0x7f0a00a6
+			public const int coordinator = 2131361958;
 			
 			// aapt resource value: 0x7f0a007e
 			public const int custom = 2131361918;
@@ -7793,23 +7973,26 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0071
 			public const int default_activity_button = 2131361905;
 			
-			// aapt resource value: 0x7f0a00a4
-			public const int design_bottom_sheet = 2131361956;
-			
-			// aapt resource value: 0x7f0a00a9
-			public const int design_menu_item_action_area = 2131361961;
-			
 			// aapt resource value: 0x7f0a00a8
-			public const int design_menu_item_action_area_stub = 2131361960;
+			public const int design_bottom_sheet = 2131361960;
 			
-			// aapt resource value: 0x7f0a00a7
-			public const int design_menu_item_text = 2131361959;
+			// aapt resource value: 0x7f0a00ad
+			public const int design_menu_item_action_area = 2131361965;
 			
-			// aapt resource value: 0x7f0a00a6
-			public const int design_navigation_view = 2131361958;
+			// aapt resource value: 0x7f0a00ac
+			public const int design_menu_item_action_area_stub = 2131361964;
+			
+			// aapt resource value: 0x7f0a00ab
+			public const int design_menu_item_text = 2131361963;
+			
+			// aapt resource value: 0x7f0a00aa
+			public const int design_navigation_view = 2131361962;
 			
 			// aapt resource value: 0x7f0a0029
 			public const int disableHome = 2131361833;
+			
+			// aapt resource value: 0x7f0a009f
+			public const int drawer_layout = 2131361951;
 			
 			// aapt resource value: 0x7f0a0091
 			public const int edit_query = 2131361937;
@@ -7817,8 +8000,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0039
 			public const int end = 2131361849;
 			
-			// aapt resource value: 0x7f0a00ec
-			public const int end_padder = 2131362028;
+			// aapt resource value: 0x7f0a00f7
+			public const int end_padder = 2131362039;
 			
 			// aapt resource value: 0x7f0a0048
 			public const int enterAlways = 2131361864;
@@ -7868,8 +8051,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0073
 			public const int icon = 2131361907;
 			
-			// aapt resource value: 0x7f0a00eb
-			public const int icon_group = 2131362027;
+			// aapt resource value: 0x7f0a00f6
+			public const int icon_group = 2131362038;
 			
 			// aapt resource value: 0x7f0a0043
 			public const int ifRoom = 2131361859;
@@ -7877,8 +8060,11 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0070
 			public const int image = 2131361904;
 			
-			// aapt resource value: 0x7f0a00e7
-			public const int info = 2131362023;
+			// aapt resource value: 0x7f0a00f2
+			public const int info = 2131362034;
+			
+			// aapt resource value: 0x7f0a00b5
+			public const int innerText = 2131361973;
 			
 			// aapt resource value: 0x7f0a006a
 			public const int italic = 2131361898;
@@ -7889,8 +8075,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0050
 			public const int labeled = 2131361872;
 			
-			// aapt resource value: 0x7f0a00a0
-			public const int largeLabel = 2131361952;
+			// aapt resource value: 0x7f0a00a4
+			public const int largeLabel = 2131361956;
 			
 			// aapt resource value: 0x7f0a0056
 			public const int left = 2131361878;
@@ -7907,11 +8093,14 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0072
 			public const int list_item = 2131361906;
 			
-			// aapt resource value: 0x7f0a00f0
-			public const int masked = 2131362032;
+			// aapt resource value: 0x7f0a00a0
+			public const int main_frame = 2131361952;
 			
-			// aapt resource value: 0x7f0a00e0
-			public const int media_actions = 2131362016;
+			// aapt resource value: 0x7f0a00fc
+			public const int masked = 2131362044;
+			
+			// aapt resource value: 0x7f0a00eb
+			public const int media_actions = 2131362027;
 			
 			// aapt resource value: 0x7f0a009e
 			public const int message = 2131361950;
@@ -7922,143 +8111,143 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a005b
 			public const int mini = 2131361883;
 			
-			// aapt resource value: 0x7f0a00c7
-			public const int mr_art = 2131361991;
-			
-			// aapt resource value: 0x7f0a00b8
-			public const int mr_cast_checkbox = 2131361976;
-			
-			// aapt resource value: 0x7f0a00b1
-			public const int mr_cast_close_button = 2131361969;
-			
-			// aapt resource value: 0x7f0a00ac
-			public const int mr_cast_group_icon = 2131361964;
-			
-			// aapt resource value: 0x7f0a00ad
-			public const int mr_cast_group_name = 2131361965;
-			
-			// aapt resource value: 0x7f0a00ab
-			public const int mr_cast_list = 2131361963;
-			
-			// aapt resource value: 0x7f0a00b0
-			public const int mr_cast_meta = 2131361968;
-			
-			// aapt resource value: 0x7f0a00b2
-			public const int mr_cast_meta_art = 2131361970;
-			
-			// aapt resource value: 0x7f0a00b4
-			public const int mr_cast_meta_subtitle = 2131361972;
-			
-			// aapt resource value: 0x7f0a00b3
-			public const int mr_cast_meta_title = 2131361971;
-			
-			// aapt resource value: 0x7f0a00b6
-			public const int mr_cast_route_icon = 2131361974;
-			
-			// aapt resource value: 0x7f0a00b7
-			public const int mr_cast_route_name = 2131361975;
-			
-			// aapt resource value: 0x7f0a00b5
-			public const int mr_cast_stop_button = 2131361973;
-			
-			// aapt resource value: 0x7f0a00b9
-			public const int mr_cast_volume_layout = 2131361977;
-			
-			// aapt resource value: 0x7f0a00ba
-			public const int mr_cast_volume_slider = 2131361978;
-			
-			// aapt resource value: 0x7f0a00bc
-			public const int mr_chooser_list = 2131361980;
-			
-			// aapt resource value: 0x7f0a00bf
-			public const int mr_chooser_route_desc = 2131361983;
-			
-			// aapt resource value: 0x7f0a00bd
-			public const int mr_chooser_route_icon = 2131361981;
-			
-			// aapt resource value: 0x7f0a00be
-			public const int mr_chooser_route_name = 2131361982;
-			
-			// aapt resource value: 0x7f0a00bb
-			public const int mr_chooser_title = 2131361979;
-			
-			// aapt resource value: 0x7f0a00c4
-			public const int mr_close = 2131361988;
-			
-			// aapt resource value: 0x7f0a00ca
-			public const int mr_control_divider = 2131361994;
-			
-			// aapt resource value: 0x7f0a00d5
-			public const int mr_control_playback_ctrl = 2131362005;
-			
-			// aapt resource value: 0x7f0a00d8
-			public const int mr_control_subtitle = 2131362008;
-			
-			// aapt resource value: 0x7f0a00d7
-			public const int mr_control_title = 2131362007;
-			
-			// aapt resource value: 0x7f0a00d6
-			public const int mr_control_title_container = 2131362006;
-			
-			// aapt resource value: 0x7f0a00c5
-			public const int mr_custom_control = 2131361989;
-			
-			// aapt resource value: 0x7f0a00c6
-			public const int mr_default_control = 2131361990;
-			
-			// aapt resource value: 0x7f0a00c1
-			public const int mr_dialog_area = 2131361985;
-			
-			// aapt resource value: 0x7f0a00d0
-			public const int mr_dialog_header_name = 2131362000;
-			
-			// aapt resource value: 0x7f0a00c0
-			public const int mr_expandable_area = 2131361984;
-			
-			// aapt resource value: 0x7f0a00d9
-			public const int mr_group_expand_collapse = 2131362009;
-			
-			// aapt resource value: 0x7f0a00ae
-			public const int mr_group_volume_route_name = 2131361966;
-			
-			// aapt resource value: 0x7f0a00af
-			public const int mr_group_volume_slider = 2131361967;
-			
-			// aapt resource value: 0x7f0a00c8
-			public const int mr_media_main_control = 2131361992;
+			// aapt resource value: 0x7f0a00d2
+			public const int mr_art = 2131362002;
 			
 			// aapt resource value: 0x7f0a00c3
-			public const int mr_name = 2131361987;
+			public const int mr_cast_checkbox = 2131361987;
 			
-			// aapt resource value: 0x7f0a00d1
-			public const int mr_picker_close_button = 2131362001;
+			// aapt resource value: 0x7f0a00bc
+			public const int mr_cast_close_button = 2131361980;
 			
-			// aapt resource value: 0x7f0a00d2
-			public const int mr_picker_list = 2131362002;
+			// aapt resource value: 0x7f0a00b7
+			public const int mr_cast_group_icon = 2131361975;
 			
-			// aapt resource value: 0x7f0a00d3
-			public const int mr_picker_route_icon = 2131362003;
+			// aapt resource value: 0x7f0a00b8
+			public const int mr_cast_group_name = 2131361976;
 			
-			// aapt resource value: 0x7f0a00d4
-			public const int mr_picker_route_name = 2131362004;
+			// aapt resource value: 0x7f0a00b6
+			public const int mr_cast_list = 2131361974;
 			
-			// aapt resource value: 0x7f0a00c9
-			public const int mr_playback_control = 2131361993;
+			// aapt resource value: 0x7f0a00bb
+			public const int mr_cast_meta = 2131361979;
+			
+			// aapt resource value: 0x7f0a00bd
+			public const int mr_cast_meta_art = 2131361981;
+			
+			// aapt resource value: 0x7f0a00bf
+			public const int mr_cast_meta_subtitle = 2131361983;
+			
+			// aapt resource value: 0x7f0a00be
+			public const int mr_cast_meta_title = 2131361982;
+			
+			// aapt resource value: 0x7f0a00c1
+			public const int mr_cast_route_icon = 2131361985;
 			
 			// aapt resource value: 0x7f0a00c2
-			public const int mr_title_bar = 2131361986;
+			public const int mr_cast_route_name = 2131361986;
 			
-			// aapt resource value: 0x7f0a00cb
-			public const int mr_volume_control = 2131361995;
+			// aapt resource value: 0x7f0a00c0
+			public const int mr_cast_stop_button = 2131361984;
 			
-			// aapt resource value: 0x7f0a00cc
-			public const int mr_volume_group_list = 2131361996;
+			// aapt resource value: 0x7f0a00c4
+			public const int mr_cast_volume_layout = 2131361988;
 			
-			// aapt resource value: 0x7f0a00ce
-			public const int mr_volume_item_icon = 2131361998;
+			// aapt resource value: 0x7f0a00c5
+			public const int mr_cast_volume_slider = 2131361989;
+			
+			// aapt resource value: 0x7f0a00c7
+			public const int mr_chooser_list = 2131361991;
+			
+			// aapt resource value: 0x7f0a00ca
+			public const int mr_chooser_route_desc = 2131361994;
+			
+			// aapt resource value: 0x7f0a00c8
+			public const int mr_chooser_route_icon = 2131361992;
+			
+			// aapt resource value: 0x7f0a00c9
+			public const int mr_chooser_route_name = 2131361993;
+			
+			// aapt resource value: 0x7f0a00c6
+			public const int mr_chooser_title = 2131361990;
 			
 			// aapt resource value: 0x7f0a00cf
-			public const int mr_volume_slider = 2131361999;
+			public const int mr_close = 2131361999;
+			
+			// aapt resource value: 0x7f0a00d5
+			public const int mr_control_divider = 2131362005;
+			
+			// aapt resource value: 0x7f0a00e0
+			public const int mr_control_playback_ctrl = 2131362016;
+			
+			// aapt resource value: 0x7f0a00e3
+			public const int mr_control_subtitle = 2131362019;
+			
+			// aapt resource value: 0x7f0a00e2
+			public const int mr_control_title = 2131362018;
+			
+			// aapt resource value: 0x7f0a00e1
+			public const int mr_control_title_container = 2131362017;
+			
+			// aapt resource value: 0x7f0a00d0
+			public const int mr_custom_control = 2131362000;
+			
+			// aapt resource value: 0x7f0a00d1
+			public const int mr_default_control = 2131362001;
+			
+			// aapt resource value: 0x7f0a00cc
+			public const int mr_dialog_area = 2131361996;
+			
+			// aapt resource value: 0x7f0a00db
+			public const int mr_dialog_header_name = 2131362011;
+			
+			// aapt resource value: 0x7f0a00cb
+			public const int mr_expandable_area = 2131361995;
+			
+			// aapt resource value: 0x7f0a00e4
+			public const int mr_group_expand_collapse = 2131362020;
+			
+			// aapt resource value: 0x7f0a00b9
+			public const int mr_group_volume_route_name = 2131361977;
+			
+			// aapt resource value: 0x7f0a00ba
+			public const int mr_group_volume_slider = 2131361978;
+			
+			// aapt resource value: 0x7f0a00d3
+			public const int mr_media_main_control = 2131362003;
+			
+			// aapt resource value: 0x7f0a00ce
+			public const int mr_name = 2131361998;
+			
+			// aapt resource value: 0x7f0a00dc
+			public const int mr_picker_close_button = 2131362012;
+			
+			// aapt resource value: 0x7f0a00dd
+			public const int mr_picker_list = 2131362013;
+			
+			// aapt resource value: 0x7f0a00de
+			public const int mr_picker_route_icon = 2131362014;
+			
+			// aapt resource value: 0x7f0a00df
+			public const int mr_picker_route_name = 2131362015;
+			
+			// aapt resource value: 0x7f0a00d4
+			public const int mr_playback_control = 2131362004;
+			
+			// aapt resource value: 0x7f0a00cd
+			public const int mr_title_bar = 2131361997;
+			
+			// aapt resource value: 0x7f0a00d6
+			public const int mr_volume_control = 2131362006;
+			
+			// aapt resource value: 0x7f0a00d7
+			public const int mr_volume_group_list = 2131362007;
+			
+			// aapt resource value: 0x7f0a00d9
+			public const int mr_volume_item_icon = 2131362009;
+			
+			// aapt resource value: 0x7f0a00da
+			public const int mr_volume_slider = 2131362010;
 			
 			// aapt resource value: 0x7f0a0014
 			public const int mtrl_child_content_container = 2131361812;
@@ -8069,11 +8258,26 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0031
 			public const int multiply = 2131361841;
 			
-			// aapt resource value: 0x7f0a00a5
-			public const int navigation_header_container = 2131361957;
+			// aapt resource value: 0x7f0a00fe
+			public const int nav_official = 2131362046;
+			
+			// aapt resource value: 0x7f0a00fd
+			public const int nav_surrender = 2131362045;
+			
+			// aapt resource value: 0x7f0a00a2
+			public const int navigation_frame = 2131361954;
+			
+			// aapt resource value: 0x7f0a00a9
+			public const int navigation_header_container = 2131361961;
+			
+			// aapt resource value: 0x7f0a00af
+			public const int navigation_view = 2131361967;
 			
 			// aapt resource value: 0x7f0a0044
 			public const int never = 2131361860;
+			
+			// aapt resource value: 0x7f0a00b4
+			public const int newsfeed_list = 2131361972;
 			
 			// aapt resource value: 0x7f0a002b
 			public const int none = 2131361835;
@@ -8081,14 +8285,14 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0027
 			public const int normal = 2131361831;
 			
-			// aapt resource value: 0x7f0a00e9
-			public const int notification_background = 2131362025;
+			// aapt resource value: 0x7f0a00f4
+			public const int notification_background = 2131362036;
 			
-			// aapt resource value: 0x7f0a00e3
-			public const int notification_main_column = 2131362019;
+			// aapt resource value: 0x7f0a00ee
+			public const int notification_main_column = 2131362030;
 			
-			// aapt resource value: 0x7f0a00e2
-			public const int notification_main_column_container = 2131362018;
+			// aapt resource value: 0x7f0a00ed
+			public const int notification_main_column_container = 2131362029;
 			
 			// aapt resource value: 0x7f0a0062
 			public const int outline = 2131361890;
@@ -8114,14 +8318,17 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0089
 			public const int radio = 2131361929;
 			
+			// aapt resource value: 0x7f0a00b3
+			public const int refresher = 2131361971;
+			
 			// aapt resource value: 0x7f0a0057
 			public const int right = 2131361879;
 			
-			// aapt resource value: 0x7f0a00e8
-			public const int right_icon = 2131362024;
+			// aapt resource value: 0x7f0a00f3
+			public const int right_icon = 2131362035;
 			
-			// aapt resource value: 0x7f0a00e4
-			public const int right_side = 2131362020;
+			// aapt resource value: 0x7f0a00ef
+			public const int right_side = 2131362031;
 			
 			// aapt resource value: 0x7f0a000c
 			public const int save_image_matrix = 2131361804;
@@ -8198,11 +8405,11 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a002e
 			public const int showTitle = 2131361838;
 			
-			// aapt resource value: 0x7f0a00ed
-			public const int sliding_tabs = 2131362029;
+			// aapt resource value: 0x7f0a00f8
+			public const int sliding_tabs = 2131362040;
 			
-			// aapt resource value: 0x7f0a009f
-			public const int smallLabel = 2131361951;
+			// aapt resource value: 0x7f0a00a3
+			public const int smallLabel = 2131361955;
 			
 			// aapt resource value: 0x7f0a0016
 			public const int snackbar_action = 2131361814;
@@ -8234,8 +8441,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0058
 			public const int start = 2131361880;
 			
-			// aapt resource value: 0x7f0a00df
-			public const int status_bar_latest_event_content = 2131362015;
+			// aapt resource value: 0x7f0a00ea
+			public const int status_bar_latest_event_content = 2131362026;
 			
 			// aapt resource value: 0x7f0a005d
 			public const int stretch = 2131361885;
@@ -8273,8 +8480,17 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a005c
 			public const int textStart = 2131361884;
 			
-			// aapt resource value: 0x7f0a00aa
-			public const int text_input_password_toggle = 2131361962;
+			// aapt resource value: 0x7f0a00b0
+			public const int text_container = 2131361968;
+			
+			// aapt resource value: 0x7f0a00ae
+			public const int text_input_password_toggle = 2131361966;
+			
+			// aapt resource value: 0x7f0a00b1
+			public const int text_view_fullname = 2131361969;
+			
+			// aapt resource value: 0x7f0a00b2
+			public const int text_view_username = 2131361970;
 			
 			// aapt resource value: 0x7f0a0018
 			public const int textinput_counter = 2131361816;
@@ -8285,8 +8501,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a001a
 			public const int textinput_helper_text = 2131361818;
 			
-			// aapt resource value: 0x7f0a00e5
-			public const int time = 2131362021;
+			// aapt resource value: 0x7f0a00f0
+			public const int time = 2131362032;
 			
 			// aapt resource value: 0x7f0a0023
 			public const int title = 2131361827;
@@ -8297,8 +8513,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a0080
 			public const int title_template = 2131361920;
 			
-			// aapt resource value: 0x7f0a00ee
-			public const int toolbar = 2131362030;
+			// aapt resource value: 0x7f0a00f9
+			public const int toolbar = 2131362041;
 			
 			// aapt resource value: 0x7f0a0047
 			public const int top = 2131361863;
@@ -8306,8 +8522,8 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a007f
 			public const int topPanel = 2131361919;
 			
-			// aapt resource value: 0x7f0a00a3
-			public const int touch_outside = 2131361955;
+			// aapt resource value: 0x7f0a00a7
+			public const int touch_outside = 2131361959;
 			
 			// aapt resource value: 0x7f0a000f
 			public const int transition_current_scene = 2131361807;
@@ -8339,11 +8555,11 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0a001b
 			public const int view_offset_helper = 2131361819;
 			
-			// aapt resource value: 0x7f0a00ef
-			public const int visible = 2131362031;
+			// aapt resource value: 0x7f0a00fb
+			public const int visible = 2131362043;
 			
-			// aapt resource value: 0x7f0a00cd
-			public const int volume_item_container = 2131361997;
+			// aapt resource value: 0x7f0a00d8
+			public const int volume_item_container = 2131362008;
 			
 			// aapt resource value: 0x7f0a0045
 			public const int withText = 2131361861;
@@ -8550,157 +8766,178 @@ namespace Surrender_20.Forms.Droid
 			public const int abc_tooltip = 2130968603;
 			
 			// aapt resource value: 0x7f04001c
-			public const int design_bottom_navigation_item = 2130968604;
+			public const int activity_main = 2130968604;
 			
 			// aapt resource value: 0x7f04001d
-			public const int design_bottom_sheet_dialog = 2130968605;
+			public const int design_bottom_navigation_item = 2130968605;
 			
 			// aapt resource value: 0x7f04001e
-			public const int design_layout_snackbar = 2130968606;
+			public const int design_bottom_sheet_dialog = 2130968606;
 			
 			// aapt resource value: 0x7f04001f
-			public const int design_layout_snackbar_include = 2130968607;
+			public const int design_layout_snackbar = 2130968607;
 			
 			// aapt resource value: 0x7f040020
-			public const int design_layout_tab_icon = 2130968608;
+			public const int design_layout_snackbar_include = 2130968608;
 			
 			// aapt resource value: 0x7f040021
-			public const int design_layout_tab_text = 2130968609;
+			public const int design_layout_tab_icon = 2130968609;
 			
 			// aapt resource value: 0x7f040022
-			public const int design_menu_item_action_area = 2130968610;
+			public const int design_layout_tab_text = 2130968610;
 			
 			// aapt resource value: 0x7f040023
-			public const int design_navigation_item = 2130968611;
+			public const int design_menu_item_action_area = 2130968611;
 			
 			// aapt resource value: 0x7f040024
-			public const int design_navigation_item_header = 2130968612;
+			public const int design_navigation_item = 2130968612;
 			
 			// aapt resource value: 0x7f040025
-			public const int design_navigation_item_separator = 2130968613;
+			public const int design_navigation_item_header = 2130968613;
 			
 			// aapt resource value: 0x7f040026
-			public const int design_navigation_item_subheader = 2130968614;
+			public const int design_navigation_item_separator = 2130968614;
 			
 			// aapt resource value: 0x7f040027
-			public const int design_navigation_menu = 2130968615;
+			public const int design_navigation_item_subheader = 2130968615;
 			
 			// aapt resource value: 0x7f040028
-			public const int design_navigation_menu_item = 2130968616;
+			public const int design_navigation_menu = 2130968616;
 			
 			// aapt resource value: 0x7f040029
-			public const int design_text_input_password_icon = 2130968617;
+			public const int design_navigation_menu_item = 2130968617;
 			
 			// aapt resource value: 0x7f04002a
-			public const int mr_cast_dialog = 2130968618;
+			public const int design_text_input_password_icon = 2130968618;
 			
 			// aapt resource value: 0x7f04002b
-			public const int mr_cast_group_item = 2130968619;
+			public const int fragment_navigation = 2130968619;
 			
 			// aapt resource value: 0x7f04002c
-			public const int mr_cast_group_volume_item = 2130968620;
+			public const int fragment_navigation_header = 2130968620;
 			
 			// aapt resource value: 0x7f04002d
-			public const int mr_cast_media_metadata = 2130968621;
+			public const int fragment_newsfeed_list = 2130968621;
 			
 			// aapt resource value: 0x7f04002e
-			public const int mr_cast_route_item = 2130968622;
+			public const int listitem_newsfeed = 2130968622;
 			
 			// aapt resource value: 0x7f04002f
-			public const int mr_chooser_dialog = 2130968623;
+			public const int mr_cast_dialog = 2130968623;
 			
 			// aapt resource value: 0x7f040030
-			public const int mr_chooser_list_item = 2130968624;
+			public const int mr_cast_group_item = 2130968624;
 			
 			// aapt resource value: 0x7f040031
-			public const int mr_controller_material_dialog_b = 2130968625;
+			public const int mr_cast_group_volume_item = 2130968625;
 			
 			// aapt resource value: 0x7f040032
-			public const int mr_controller_volume_item = 2130968626;
+			public const int mr_cast_media_metadata = 2130968626;
 			
 			// aapt resource value: 0x7f040033
-			public const int mr_dialog_header_item = 2130968627;
+			public const int mr_cast_route_item = 2130968627;
 			
 			// aapt resource value: 0x7f040034
-			public const int mr_picker_dialog = 2130968628;
+			public const int mr_chooser_dialog = 2130968628;
 			
 			// aapt resource value: 0x7f040035
-			public const int mr_picker_route_item = 2130968629;
+			public const int mr_chooser_list_item = 2130968629;
 			
 			// aapt resource value: 0x7f040036
-			public const int mr_playback_control = 2130968630;
+			public const int mr_controller_material_dialog_b = 2130968630;
 			
 			// aapt resource value: 0x7f040037
-			public const int mr_volume_control = 2130968631;
+			public const int mr_controller_volume_item = 2130968631;
 			
 			// aapt resource value: 0x7f040038
-			public const int mtrl_layout_snackbar = 2130968632;
+			public const int mr_dialog_header_item = 2130968632;
 			
 			// aapt resource value: 0x7f040039
-			public const int mtrl_layout_snackbar_include = 2130968633;
+			public const int mr_picker_dialog = 2130968633;
 			
 			// aapt resource value: 0x7f04003a
-			public const int notification_action = 2130968634;
+			public const int mr_picker_route_item = 2130968634;
 			
 			// aapt resource value: 0x7f04003b
-			public const int notification_action_tombstone = 2130968635;
+			public const int mr_playback_control = 2130968635;
 			
 			// aapt resource value: 0x7f04003c
-			public const int notification_media_action = 2130968636;
+			public const int mr_volume_control = 2130968636;
 			
 			// aapt resource value: 0x7f04003d
-			public const int notification_media_cancel_action = 2130968637;
+			public const int mtrl_layout_snackbar = 2130968637;
 			
 			// aapt resource value: 0x7f04003e
-			public const int notification_template_big_media = 2130968638;
+			public const int mtrl_layout_snackbar_include = 2130968638;
 			
 			// aapt resource value: 0x7f04003f
-			public const int notification_template_big_media_custom = 2130968639;
+			public const int NewsfeedListView = 2130968639;
 			
 			// aapt resource value: 0x7f040040
-			public const int notification_template_big_media_narrow = 2130968640;
+			public const int notification_action = 2130968640;
 			
 			// aapt resource value: 0x7f040041
-			public const int notification_template_big_media_narrow_custom = 2130968641;
+			public const int notification_action_tombstone = 2130968641;
 			
 			// aapt resource value: 0x7f040042
-			public const int notification_template_custom_big = 2130968642;
+			public const int notification_media_action = 2130968642;
 			
 			// aapt resource value: 0x7f040043
-			public const int notification_template_icon_group = 2130968643;
+			public const int notification_media_cancel_action = 2130968643;
 			
 			// aapt resource value: 0x7f040044
-			public const int notification_template_lines_media = 2130968644;
+			public const int notification_template_big_media = 2130968644;
 			
 			// aapt resource value: 0x7f040045
-			public const int notification_template_media = 2130968645;
+			public const int notification_template_big_media_custom = 2130968645;
 			
 			// aapt resource value: 0x7f040046
-			public const int notification_template_media_custom = 2130968646;
+			public const int notification_template_big_media_narrow = 2130968646;
 			
 			// aapt resource value: 0x7f040047
-			public const int notification_template_part_chronometer = 2130968647;
+			public const int notification_template_big_media_narrow_custom = 2130968647;
 			
 			// aapt resource value: 0x7f040048
-			public const int notification_template_part_time = 2130968648;
+			public const int notification_template_custom_big = 2130968648;
 			
 			// aapt resource value: 0x7f040049
-			public const int select_dialog_item_material = 2130968649;
+			public const int notification_template_icon_group = 2130968649;
 			
 			// aapt resource value: 0x7f04004a
-			public const int select_dialog_multichoice_material = 2130968650;
+			public const int notification_template_lines_media = 2130968650;
 			
 			// aapt resource value: 0x7f04004b
-			public const int select_dialog_singlechoice_material = 2130968651;
+			public const int notification_template_media = 2130968651;
 			
 			// aapt resource value: 0x7f04004c
-			public const int support_simple_spinner_dropdown_item = 2130968652;
+			public const int notification_template_media_custom = 2130968652;
 			
 			// aapt resource value: 0x7f04004d
-			public const int Tabbar = 2130968653;
+			public const int notification_template_part_chronometer = 2130968653;
 			
 			// aapt resource value: 0x7f04004e
-			public const int Toolbar = 2130968654;
+			public const int notification_template_part_time = 2130968654;
+			
+			// aapt resource value: 0x7f04004f
+			public const int select_dialog_item_material = 2130968655;
+			
+			// aapt resource value: 0x7f040050
+			public const int select_dialog_multichoice_material = 2130968656;
+			
+			// aapt resource value: 0x7f040051
+			public const int select_dialog_singlechoice_material = 2130968657;
+			
+			// aapt resource value: 0x7f040052
+			public const int support_simple_spinner_dropdown_item = 2130968658;
+			
+			// aapt resource value: 0x7f040053
+			public const int Tabbar = 2130968659;
+			
+			// aapt resource value: 0x7f040054
+			public const int Toolbar = 2130968660;
+			
+			// aapt resource value: 0x7f040055
+			public const int toolbar_actionbar = 2130968661;
 			
 			static Layout()
 			{
@@ -8708,6 +8945,22 @@ namespace Surrender_20.Forms.Droid
 			}
 			
 			private Layout()
+			{
+			}
+		}
+		
+		public partial class Menu
+		{
+			
+			// aapt resource value: 0x7f100000
+			public const int navigation_drawer = 2131755008;
+			
+			static Menu()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Menu()
 			{
 			}
 		}
@@ -8854,6 +9107,9 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0b0032
 			public const int abc_toolbar_collapse_description = 2131427378;
 			
+			// aapt resource value: 0x7f0b0051
+			public const int app_name = 2131427409;
+			
 			// aapt resource value: 0x7f0b0040
 			public const int appbar_scrolling_view_behavior = 2131427392;
 			
@@ -8866,6 +9122,12 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0b0043
 			public const int character_counter_pattern = 2131427395;
 			
+			// aapt resource value: 0x7f0b0053
+			public const int drawer_close = 2131427411;
+			
+			// aapt resource value: 0x7f0b0052
+			public const int drawer_open = 2131427410;
+			
 			// aapt resource value: 0x7f0b004e
 			public const int fab_scroll_shrink_grow_autohide_behavior = 2131427406;
 			
@@ -8874,6 +9136,9 @@ namespace Surrender_20.Forms.Droid
 			
 			// aapt resource value: 0x7f0b0045
 			public const int fab_transformation_sheet_behavior = 2131427397;
+			
+			// aapt resource value: 0x7f0b0050
+			public const int hello = 2131427408;
 			
 			// aapt resource value: 0x7f0b0046
 			public const int hide_bottom_view_on_scroll_behavior = 2131427398;
@@ -9008,8 +9273,17 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0d016d
 			public const int Animation_Design_BottomSheetDialog = 2131558765;
 			
+			// aapt resource value: 0x7f0d0202
+			public const int AppCompatDialogStyle = 2131558914;
+			
+			// aapt resource value: 0x7f0d01ff
+			public const int AppTheme = 2131558911;
+			
+			// aapt resource value: 0x7f0d0200
+			public const int AppTheme_Base = 2131558912;
+			
 			// aapt resource value: 0x7f0d0201
-			public const int AppCompatDialogStyle = 2131558913;
+			public const int AppTheme_Menu = 2131558913;
 			
 			// aapt resource value: 0x7f0d009d
 			public const int Base_AlertDialog_AppCompat = 2131558557;
@@ -9583,12 +9857,6 @@ namespace Surrender_20.Forms.Droid
 			
 			// aapt resource value: 0x7f0d000e
 			public const int CardView_Light = 2131558414;
-			
-			// aapt resource value: 0x7f0d01ff
-			public const int MainTheme = 2131558911;
-			
-			// aapt resource value: 0x7f0d0200
-			public const int MainTheme_Base = 2131558912;
 			
 			// aapt resource value: 0x7f0d007e
 			public const int Platform_AppCompat = 2131558526;
@@ -12628,8 +12896,8 @@ namespace Surrender_20.Forms.Droid
 			public const int MenuView_subMenuArrow = 8;
 			
 			public static int[] MvxBinding = new int[] {
-					2130772459,
-					2130772460};
+					2130772460,
+					2130772461};
 			
 			// aapt resource value: 0
 			public const int MvxBinding_MvxBind = 0;
@@ -12638,26 +12906,32 @@ namespace Surrender_20.Forms.Droid
 			public const int MvxBinding_MvxLang = 1;
 			
 			public static int[] MvxControl = new int[] {
-					2130772461};
+					2130772462};
 			
 			// aapt resource value: 0
 			public const int MvxControl_MvxTemplate = 0;
 			
 			public static int[] MvxExpandableListView = new int[] {
-					2130772464};
+					2130772465};
 			
 			// aapt resource value: 0
 			public const int MvxExpandableListView_MvxGroupItemTemplate = 0;
 			
 			public static int[] MvxListView = new int[] {
-					2130772462,
-					2130772463};
+					2130772463,
+					2130772464};
 			
 			// aapt resource value: 1
 			public const int MvxListView_MvxDropDownItemTemplate = 1;
 			
 			// aapt resource value: 0
 			public const int MvxListView_MvxItemTemplate = 0;
+			
+			public static int[] MvxRecyclerView = new int[] {
+					2130772459};
+			
+			// aapt resource value: 0
+			public const int MvxRecyclerView_MvxTemplateSelector = 0;
 			
 			public static int[] NavigationView = new int[] {
 					16842964,
