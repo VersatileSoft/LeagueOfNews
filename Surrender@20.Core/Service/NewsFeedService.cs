@@ -17,14 +17,17 @@ namespace Surrender_20.Core.Service
         private Pages _parsingWay;
         private string _officialBaseURL;
         private ICookieWebClientService _cookieWebClientService;
+        private ISettingsService _settingsService;
 
-        public NewsfeedService(ICookieWebClientService cookieWebClientService)
+        public NewsfeedService(ICookieWebClientService cookieWebClientService, ISettingsService settingsService)
         {
             _cookieWebClientService = cookieWebClientService;
+            _settingsService = settingsService;
         }
 
-        public async Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(string URL, Pages page)
+        public async Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(Pages page)
         {
+            string URL = _settingsService[page].URL;
             _officialBaseURL = "https://" + new Uri(URL).Host;
             _parsingWay = page;
             if (LatestNewsfeedUrlCache != URL)
@@ -33,7 +36,13 @@ namespace Surrender_20.Core.Service
                 HtmlDocument doc = await _cookieWebClientService.GetPage(URL);
                 switch (page)
                 {
-                    case Pages.SurrenderHome: NewsfeedCache = await LoadSurrender(doc); break;
+                    case Pages.SurrenderHome:
+                    case Pages.ESports:
+                    case Pages.PBE:
+                    case Pages.RedPosts:
+                    case Pages.Rotations:
+                    case Pages.Releases:
+                        NewsfeedCache = await LoadSurrender(doc); break;
                     case Pages.Official: NewsfeedCache = await LoadOfficial(doc); break;
                 }
             }
@@ -66,7 +75,7 @@ namespace Surrender_20.Core.Service
                 {
                     newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText);
                     newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText);
-                    newsfeed.UrlToNewsfeed = new Uri(_officialBaseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value);
+                    newsfeed.UrlToNewsfeed = _officialBaseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value;
                     newsfeed.Image = await _cookieWebClientService.GetImage(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText)
                         .RemoveSpaceFromString()
@@ -100,7 +109,7 @@ namespace Surrender_20.Core.Service
                 {
                     newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString();
                     newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString();
-                    newsfeed.UrlToNewsfeed = new Uri(node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1");
+                    newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
                     newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
                         .RemoveSpaceFromString()

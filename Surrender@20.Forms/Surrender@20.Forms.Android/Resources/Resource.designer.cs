@@ -8863,6 +8863,12 @@ namespace Surrender_20.Forms.Droid
 			// aapt resource value: 0x7f0b0041
 			public const int bottom_sheet_behavior = 2131427393;
 			
+			// aapt resource value: 0x7f0b0051
+			public const int channel_description = 2131427409;
+			
+			// aapt resource value: 0x7f0b0050
+			public const int channel_name = 2131427408;
+			
 			// aapt resource value: 0x7f0b0042
 			public const int character_counter_content_description = 2131427394;
 			

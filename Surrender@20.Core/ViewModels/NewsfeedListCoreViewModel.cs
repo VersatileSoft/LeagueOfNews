@@ -52,13 +52,13 @@ namespace Surrender_20.Core.ViewModels
 
         protected abstract Task NavigateToAsync(Newsfeed newsfeed);
 
-        protected async Task LoadNewsfeeds(Pages page, string _url)
+        protected async Task LoadNewsfeeds(Pages page)
         {
             new Thread(async () =>
             {
                 Thread.CurrentThread.IsBackground = true;
                 IsLoading = true;
-                Newsfeeds =  await _newsfeedService.LoadNewsfeedsAsync(_url, page);
+                Newsfeeds =  await _newsfeedService.LoadNewsfeedsAsync(page);
                 IsLoading = false;
             }).Start();           
         }

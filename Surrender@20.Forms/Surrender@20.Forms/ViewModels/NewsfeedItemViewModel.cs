@@ -18,7 +18,7 @@ namespace Surrender_20.Forms.ViewModels
             set => SetProperty(ref _content, value);
         }
 
-        public NewsfeedItemViewModel(ICookieWebClientService cookieWebClientService) : base(cookieWebClientService)
+        public NewsfeedItemViewModel(ICookieWebClientService cookieWebClientService, INotificationService notificationService) : base(cookieWebClientService, notificationService)
         {
 
         }

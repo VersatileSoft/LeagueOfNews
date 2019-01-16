@@ -18,7 +18,7 @@ namespace Surrender_20.UWP.ViewModels
         {
             Title = _settingsService[parameter].Title;
 
-            Task.Run(() => LoadNewsfeeds(parameter, _settingsService[parameter].URL));
+            Task.Run(() => LoadNewsfeeds(parameter));
         }
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)
