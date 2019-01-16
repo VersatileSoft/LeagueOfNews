@@ -34,8 +34,6 @@ namespace Surrender_20.Core.ViewModels
 
         public async override void Prepare(Newsfeed newsfeed)
         {
-            _notificationService.ShowNewPostNotification(newsfeed);
-
             await LoadPage(newsfeed);
         }
 

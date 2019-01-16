@@ -39,8 +39,8 @@ namespace Surrender_20.Forms.Droid
             ComponentName componentName = new ComponentName(this, javaClass);
 
             JobInfo info = new JobInfo.Builder(123, componentName)
-               .SetMinimumLatency(20000)
-               .SetOverrideDeadline(25000)
+               .SetMinimumLatency(60 * 60 * 1000)
+               .SetOverrideDeadline(2 * 60 * 60 * 1000)
                .SetPersisted(true)
                .Build();
 

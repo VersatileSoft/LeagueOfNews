@@ -8,8 +8,7 @@ using Surrender_20.Forms.Droid.Services;
 using Surrender_20.Forms.Interfaces;
 using Surrender_20.Forms.Services;
 using Surrender_20.Forms.ViewModels;
-using System.Collections.Generic;
-using System.Reflection;
+
 
 namespace Surrender_20.Forms.Droid
 {
@@ -21,17 +20,18 @@ namespace Surrender_20.Forms.Droid
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService()); //TODO move to InitializeFirstChance
             Mvx.IoCProvider.RegisterSingleton(typeof(IMasterDetailService), new MasterDetailService());       //TODO same /\
             Mvx.IoCProvider.RegisterSingleton(typeof(INotificationService), new NotificationService());       //TODO same /\
+            Mvx.IoCProvider.RegisterSingleton(typeof(ISaveDataService), new SaveDataService());       //TODO same /\
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<RootPageViewModel>>();
 
             base.InitializeLastChance(); //TODO remove (check if work)
         }
 
-        public override IEnumerable<Assembly> GetViewModelAssemblies()
-        {
-            List<Assembly> list = new List<Assembly>();
-            list.AddRange(base.GetViewModelAssemblies());
-            list.Add(typeof(NewsfeedItemViewModel).Assembly);
-            return list.ToArray();
-        }
+        //public override IEnumerable<Assembly> GetViewModelAssemblies()
+        //{
+        //    List<Assembly> list = new List<Assembly>();
+        //    list.AddRange(base.GetViewModelAssemblies());
+        //    list.Add(typeof(NewsfeedItemViewModel).Assembly);
+        //    return list.ToArray();
+        //}
     }
 }
