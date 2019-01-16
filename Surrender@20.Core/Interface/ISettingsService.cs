@@ -16,6 +16,7 @@ namespace Surrender_20.Core.Interface
         RedPosts,
         Rotations,
         ESports,
-        Official
+        Official,
+        Settings
     }
 }

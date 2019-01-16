@@ -22,7 +22,8 @@ namespace Surrender_20.Forms.ViewModels
             MenuElements = new ObservableCollection<MenuListElement>
             {
                 new MenuListElement { Name = "Surrender@20", MenuImage = "surrender.png", Page = Pages.SurrenderHome },
-                new MenuListElement { Name = "League of Legends Official", MenuImage = "surrender.png", Page = Pages.Official }
+                new MenuListElement { Name = "League of Legends Official", MenuImage = "surrender.png", Page = Pages.Official },
+                new MenuListElement { Name = "Settings", MenuImage = "surrender.png", Page = Pages.Settings }
             };
 
             NavigateCommand = new MvxCommand<MenuListElement>((Parameter) =>

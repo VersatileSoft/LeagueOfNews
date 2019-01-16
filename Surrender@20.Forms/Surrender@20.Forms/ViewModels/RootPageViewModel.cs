@@ -44,6 +44,7 @@ namespace Surrender_20.Forms.ViewModels
                 {
                     case Pages.SurrenderHome: await _navigationService.Navigate<TabbedRootViewModel>(); break;
                     case Pages.Official: await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.Official); break;
+                    case Pages.Settings: await _navigationService.Navigate<SettingsViewModel>(); break;
                 }
             });
         }
