@@ -17,7 +17,7 @@ namespace Surrender_20.Forms.ViewModels
         public void Prepare(Pages parameter)
         {
             Title = _settingsService[parameter].Title;
-
+            _page = parameter;
             Task.Run(() => LoadNewsfeeds(parameter));
         }
 

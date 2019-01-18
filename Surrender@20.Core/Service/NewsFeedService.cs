@@ -3,6 +3,7 @@ using HtmlAgilityPack;
 using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Web;
@@ -11,60 +12,58 @@ namespace Surrender_20.Core.Service
 {
     public class NewsfeedService : INewsfeedService
     {
-        private ObservableCollection<Newsfeed> NewsfeedCache { get; set; }
+        private IList<Newsfeed> Newsfeeds { get; set; }
         private string LatestNewsfeedUrlCache { get; set; }
         private string NextPageUrl { get; set; }
-        private Pages _parsingWay;
+        private Pages _page;
         private string _officialBaseURL;
-        private ICookieWebClientService _cookieWebClientService;
+        private IWebClientService _cookieWebClientService;
         private ISettingsService _settingsService;
 
-        public NewsfeedService(ICookieWebClientService cookieWebClientService, ISettingsService settingsService)
+        public NewsfeedService(IWebClientService cookieWebClientService, ISettingsService settingsService)
         {
             _cookieWebClientService = cookieWebClientService;
             _settingsService = settingsService;
         }
 
-        public async Task<ObservableCollection<Newsfeed>> LoadNewsfeedsAsync(Pages page)
+        public async Task<IList<Newsfeed>> LoadNewsfeedsAsync(Pages page)
         {
             string URL = _settingsService[page].URL;
             _officialBaseURL = "https://" + new Uri(URL).Host;
-            _parsingWay = page;
-            if (LatestNewsfeedUrlCache != URL)
+            _page = page;
+
+            LatestNewsfeedUrlCache = URL;
+            HtmlDocument doc = await _cookieWebClientService.GetPage(URL, page);
+            switch (page)
             {
-                LatestNewsfeedUrlCache = URL;
-                HtmlDocument doc = await _cookieWebClientService.GetPage(URL);
-                switch (page)
-                {
-                    case Pages.SurrenderHome:
-                    case Pages.ESports:
-                    case Pages.PBE:
-                    case Pages.RedPosts:
-                    case Pages.Rotations:
-                    case Pages.Releases:
-                        NewsfeedCache = await LoadSurrender(doc); break;
-                    case Pages.Official: NewsfeedCache = await LoadOfficial(doc); break;
-                }
+                case Pages.SurrenderHome:
+                case Pages.ESports:
+                case Pages.PBE:
+                case Pages.RedPosts:
+                case Pages.Rotations:
+                case Pages.Releases: Newsfeeds = await LoadSurrender(doc); break;
+                case Pages.Official: Newsfeeds = await LoadOfficial(doc); break;
             }
-            return NewsfeedCache;
+
+            return Newsfeeds;
         }
 
-        public async Task<ObservableCollection<Newsfeed>> LoadMoreNewsfeeds()
+        public async Task<IList<Newsfeed>> LoadMoreNewsfeeds()
         {
-            ObservableCollection<Newsfeed> newsfeeds = new ObservableCollection<Newsfeed>();
-            HtmlDocument doc = await _cookieWebClientService.GetPage(NextPageUrl);
+            List<Newsfeed> newsfeeds = new List<Newsfeed>();
+            HtmlDocument doc = await _cookieWebClientService.GetPage(NextPageUrl, _page);
 
-            switch (_parsingWay)
-            {                
+            switch (_page)
+            {
                 case Pages.SurrenderHome: newsfeeds = await LoadSurrender(doc); break;
                 case Pages.Official: newsfeeds = await LoadOfficial(doc); break;
             }
             return newsfeeds;
         }
 
-        public async Task<ObservableCollection<Newsfeed>> LoadOfficial(HtmlDocument Document)
+        public async Task<List<Newsfeed>> LoadOfficial(HtmlDocument Document)
         {
-            ObservableCollection<Newsfeed> newsfeeds = new ObservableCollection<Newsfeed>();
+            List<Newsfeed> newsfeeds = new List<Newsfeed>();
             NextPageUrl = _officialBaseURL + Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
             HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='gs-container']");
 
@@ -80,7 +79,7 @@ namespace Surrender_20.Core.Service
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText)
                         .RemoveSpaceFromString()
                         .RemoveContinueReadingString();
-                    newsfeed.Page = _parsingWay;
+                    newsfeed.Page = _page;
                 }
                 catch { continue; }
 
@@ -94,9 +93,9 @@ namespace Surrender_20.Core.Service
             return newsfeeds;
         }
 
-        public async Task<ObservableCollection<Newsfeed>> LoadSurrender(HtmlDocument Document)
+        public async Task<List<Newsfeed>> LoadSurrender(HtmlDocument Document)
         {
-            ObservableCollection<Newsfeed> newsfeeds = new ObservableCollection<Newsfeed>();
+            List<Newsfeed> newsfeeds = new List<Newsfeed>();
             NextPageUrl = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;
             HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='post-outer']");
 
@@ -114,7 +113,7 @@ namespace Surrender_20.Core.Service
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
                         .RemoveSpaceFromString()
                         .RemoveContinueReadingString();
-                    newsfeed.Page = _parsingWay;
+                    newsfeed.Page = _page;
                 }
                 catch { continue; }
 

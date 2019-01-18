@@ -6,10 +6,25 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.Core.Model
 {
-    public class CookieWebClientService : ICookieWebClientService
+    public class WebClientService : IWebClientService
     {
 
-        public async Task<HtmlDocument> GetPage(string url)
+        public async Task<HtmlDocument> GetPage(string url, Pages page)
+        {
+            switch (page)
+            {
+                case Pages.SurrenderHome:
+                case Pages.ESports:
+                case Pages.PBE:
+                case Pages.RedPosts:
+                case Pages.Rotations:
+                case Pages.Releases: return await GetPageByWebClient(url);
+                case Pages.Official: return await GetPageByRequest(url);               
+            }
+            return null;
+        }
+
+        private async Task<HtmlDocument> GetPageByRequest(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
@@ -25,6 +40,11 @@ namespace Surrender_20.Core.Model
                 doc.LoadHtml(html);
                 return doc;
             }
+        }
+
+        private async Task<HtmlDocument> GetPageByWebClient(string url)
+        {
+            return await new HtmlWeb().LoadFromWebAsync(url);
         }
 
         public async Task<byte[]> GetImage(string url)

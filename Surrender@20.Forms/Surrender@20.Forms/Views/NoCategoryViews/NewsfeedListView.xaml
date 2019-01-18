@@ -24,6 +24,9 @@
 
             <!--ItemClick="MvxListView_ItemClick"-->
             <util:InfiniteListView Style="{StaticResource InfiniteListView}"
+                                   IsPullToRefreshEnabled="True"
+                                   RefreshCommand="{Binding RefreshItems}"
+                                   IsRefreshing="{Binding IsRefreshing}"
                                    ItemsSource="{Binding Newsfeeds}"
                                    LoadMoreCommand="{Binding LoadMore}"
                                    ItemTapped="MvxListView_ItemTapped">

@@ -9,7 +9,6 @@ namespace Surrender_20.Forms.ViewModels
 {
     public class NewsfeedCategoryListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<Pages>
     {
-        private Pages _parameter;
 
         public NewsfeedCategoryListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService,
             IMvxNavigationService navigationService, ITabsInitService tabsInitService)
@@ -20,7 +19,7 @@ namespace Surrender_20.Forms.ViewModels
 
         private async Task InitTabs()
         {
-            await LoadNewsfeeds(_parameter);
+            await LoadNewsfeeds(_page);
         }
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)
@@ -31,7 +30,7 @@ namespace Surrender_20.Forms.ViewModels
         public void Prepare(Pages parameter)
         {
             Title = _settingsService[parameter].Title;
-            _parameter = parameter;
+            _page = parameter;
         }
     }
 }

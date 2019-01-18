@@ -15,10 +15,10 @@ namespace Surrender_20.Core.ViewModels
         public bool IsLoading { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
-        private ICookieWebClientService _cookieWebClientService;
+        private IWebClientService _cookieWebClientService;
         private INotificationService _notificationService;
 
-        public NewsfeedItemCoreViewModel(ICookieWebClientService cookieWebClientService, INotificationService notificationService)
+        public NewsfeedItemCoreViewModel(IWebClientService cookieWebClientService, INotificationService notificationService)
         {
             _cookieWebClientService = cookieWebClientService;
             _notificationService = notificationService;
@@ -42,7 +42,7 @@ namespace Surrender_20.Core.ViewModels
             Title = newsfeed.Title;
             Date = newsfeed.Date;
             IsLoading = true;
-            var doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed);
+            var doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed, newsfeed.Page);
             ParseHtml(doc.DocumentNode, newsfeed.Page);
             IsLoading = false;
         }

@@ -2,7 +2,6 @@
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
-using System.Windows.Forms;
 
 namespace Surrender_20.Forms.ViewModels
 {
@@ -18,7 +17,7 @@ namespace Surrender_20.Forms.ViewModels
             set => SetProperty(ref _content, value);
         }
 
-        public NewsfeedItemViewModel(ICookieWebClientService cookieWebClientService, INotificationService notificationService) : base(cookieWebClientService, notificationService)
+        public NewsfeedItemViewModel(IWebClientService cookieWebClientService, INotificationService notificationService) : base(cookieWebClientService, notificationService)
         {
 
         }

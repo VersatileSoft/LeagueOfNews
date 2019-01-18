@@ -18,13 +18,18 @@ namespace Surrender_20.Core.ViewModels
         protected INewsfeedService _newsfeedService;
         protected ISettingsService _settingsService;
         protected IMvxNavigationService _navigationService;
+        protected Pages _page;
 
         public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
         public string Title { get; set; }
         public bool IsLoading { get; set; }
+        public bool IsRefreshing { get; set; }
         public bool IsLoadingMore { get; set; }
         public ICommand ItemTapped { get; set; }
         public ICommand LoadMore { get; set; }
+        public ICommand RefreshItems { get; set; }
+
+
 
         public NewsfeedListCoreViewModel(INewsfeedService newsfeedService, ISettingsService settingsService,
             IMvxNavigationService navigationService)
@@ -38,6 +43,13 @@ namespace Surrender_20.Core.ViewModels
             {
                 return NavigateToAsync(Newsfeed);
             });
+
+            RefreshItems = new MvxAsyncCommand(async () =>
+            {
+                Newsfeeds.Clear();
+                await RefreshNewsfeeds(_page);
+            });
+
 
             LoadMore = new MvxAsyncCommand(async () =>
             {
@@ -54,13 +66,16 @@ namespace Surrender_20.Core.ViewModels
 
         protected async Task LoadNewsfeeds(Pages page)
         {
-            new Thread(async () =>
-            {
-                Thread.CurrentThread.IsBackground = true;
-                IsLoading = true;
-                Newsfeeds =  await _newsfeedService.LoadNewsfeedsAsync(page);
-                IsLoading = false;
-            }).Start();           
+            IsLoading = true;
+            Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(page));
+            IsLoading = false;
+        }
+
+        protected async Task RefreshNewsfeeds(Pages page)
+        {
+            IsRefreshing = true;
+            Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(page));
+            IsRefreshing = false;
         }
     }
 }
