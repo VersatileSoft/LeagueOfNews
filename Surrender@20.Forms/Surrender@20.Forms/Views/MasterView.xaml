@@ -10,8 +10,8 @@
 
     <views:MvxContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#002132" CornerRadius="0" HeightRequest="150">
-                <Label Text="League Of News" TextColor="White"/>
+            <Frame BackgroundColor="#002132" CornerRadius="0" Padding="0">
+                <Image Source="HamburgerPicture.png" Aspect="AspectFill"/>
             </Frame>
 
             <StackLayout Padding="10">
@@ -26,7 +26,8 @@
                                        Margin="10,5,10,5">
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="{Binding MenuImage}" 
-                                               HeightRequest="50"/>
+                                               HeightRequest="35"
+                                               Margin="10,10,10,10"/>
 
                                         <Label Style="{StaticResource TitleExtendedLabel}"
                                                Text="{Binding Name}"

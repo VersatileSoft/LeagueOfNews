@@ -15,7 +15,7 @@ using Surrender_20.Forms.Services;
 
 namespace Surrender_20.Forms.Droid
 {
-    [Activity(Label = "SurrenderAt20", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : MvxFormsAppCompatActivity<Setup, CoreApp, App>
     {
 
@@ -33,7 +33,7 @@ namespace Surrender_20.Forms.Droid
             StartJob();
         }
 
-        void StartJob()
+        private void StartJob()
         {
             Class javaClass = Class.FromType(typeof(NotificationJobService));
             ComponentName componentName = new ComponentName(this, javaClass);
@@ -67,20 +67,22 @@ namespace Surrender_20.Forms.Droid
         protected void NavigateToRequestIfPresent(Intent intent)
         {
             // If MvxLaunchData is present, we then know we should navigate to that intent
-            var requestText = intent.GetStringExtra("MvxLaunchData");
+            string requestText = intent.GetStringExtra("MvxLaunchData");
 
             if (requestText == null)
+            {
                 return;
+            }
 
-            var viewDispatcher = Mvx.IoCProvider.Resolve<IMvxViewDispatcher>();
+            IMvxViewDispatcher viewDispatcher = Mvx.IoCProvider.Resolve<IMvxViewDispatcher>();
 
-            var converter = Mvx.IoCProvider.Resolve<IMvxNavigationSerializer>();
-            var request = converter.Serializer.DeserializeObject<MvxViewModelRequest>(requestText);
+            IMvxNavigationSerializer converter = Mvx.IoCProvider.Resolve<IMvxNavigationSerializer>();
+            MvxViewModelRequest request = converter.Serializer.DeserializeObject<MvxViewModelRequest>(requestText);
 
             viewDispatcher.ShowViewModel(request);
         }
 
-        void CreateNotificationChannel()
+        private void CreateNotificationChannel()
         {
             if (Build.VERSION.SdkInt < BuildVersionCodes.O)
             {
@@ -90,14 +92,14 @@ namespace Surrender_20.Forms.Droid
                 return;
             }
 
-            var name = Resources.GetString(Resource.String.channel_name);
-            var description = GetString(Resource.String.channel_description);
-            var channel = new NotificationChannel(CHANNEL_ID, name, NotificationImportance.Default)
+            string name = Resources.GetString(Resource.String.channel_name);
+            string description = GetString(Resource.String.channel_description);
+            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationImportance.Default)
             {
                 Description = description
             };
 
-            var notificationManager = (NotificationManager)GetSystemService(NotificationService);
+            NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
             notificationManager.CreateNotificationChannel(channel);
         }
     }
