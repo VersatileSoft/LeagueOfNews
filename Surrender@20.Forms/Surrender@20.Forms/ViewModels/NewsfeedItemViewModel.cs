@@ -10,7 +10,7 @@ namespace Surrender_20.Forms.ViewModels
     {
 
         private string _content;
-        
+
         public string Content
         {
             get => _content;
@@ -29,9 +29,6 @@ namespace Surrender_20.Forms.ViewModels
         }
     }
 }
-
-
-
 
 /*
  * 

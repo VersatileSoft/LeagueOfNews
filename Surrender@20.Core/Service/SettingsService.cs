@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 namespace Surrender_20.Core.Service
 {
-
     public class NewsfeedNavigationParameter
     {
         public string Title { get; set; }

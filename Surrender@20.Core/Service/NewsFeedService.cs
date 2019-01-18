@@ -4,7 +4,6 @@ using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using System.Web;
 
@@ -17,8 +16,8 @@ namespace Surrender_20.Core.Service
         private string NextPageUrl { get; set; }
         private Pages _page;
         private string _officialBaseURL;
-        private IWebClientService _cookieWebClientService;
-        private ISettingsService _settingsService;
+        private readonly IWebClientService _cookieWebClientService;
+        private readonly ISettingsService _settingsService;
 
         public NewsfeedService(IWebClientService cookieWebClientService, ISettingsService settingsService)
         {

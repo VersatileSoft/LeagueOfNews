@@ -15,8 +15,8 @@ namespace Surrender_20.Core.ViewModels
         public bool IsLoading { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
-        private IWebClientService _cookieWebClientService;
-        private INotificationService _notificationService;
+        private readonly IWebClientService _cookieWebClientService;
+        private readonly INotificationService _notificationService;
 
         public NewsfeedItemCoreViewModel(IWebClientService cookieWebClientService, INotificationService notificationService)
         {
@@ -26,13 +26,15 @@ namespace Surrender_20.Core.ViewModels
 
         protected override void InitFromBundle(IMvxBundle parameters)
         {
-            var s = parameters.Read<Newsfeed>();
+            Newsfeed s = parameters.Read<Newsfeed>();
 
             if (!(s.UrlToNewsfeed is null))
+            {
                 MvxNotifyTask.Create(LoadPage(s));
+            }
         }
 
-        public async override void Prepare(Newsfeed newsfeed)
+        public override async void Prepare(Newsfeed newsfeed)
         {
             await LoadPage(newsfeed);
         }
@@ -42,7 +44,7 @@ namespace Surrender_20.Core.ViewModels
             Title = newsfeed.Title;
             Date = newsfeed.Date;
             IsLoading = true;
-            var doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed, newsfeed.Page);
+            HtmlDocument doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed, newsfeed.Page);
             ParseHtml(doc.DocumentNode, newsfeed.Page);
             IsLoading = false;
         }

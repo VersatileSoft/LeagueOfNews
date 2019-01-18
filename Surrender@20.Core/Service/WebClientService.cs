@@ -19,7 +19,7 @@ namespace Surrender_20.Core.Model
                 case Pages.RedPosts:
                 case Pages.Rotations:
                 case Pages.Releases: return await GetPageByWebClient(url);
-                case Pages.Official: return await GetPageByRequest(url);               
+                case Pages.Official: return await GetPageByRequest(url);
             }
             return null;
         }

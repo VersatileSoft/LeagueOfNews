@@ -2,7 +2,6 @@
 
 namespace Surrender_20.Core.Interface
 {
-
     public interface ISettingsService
     {
         NewsfeedNavigationParameter this[Pages PropertyName] { get; set; } //Should return object, cast later in code

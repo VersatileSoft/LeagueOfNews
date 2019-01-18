@@ -9,6 +9,30 @@
                       Title="Settings">
 
     <views:MvxContentPage.Content>
-        <Label Text="Settins" FontSize="Large" TextColor="White"/>
+        <StackLayout Spacing="15" Padding="15">
+            <Frame Style="{StaticResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Text="Notifications" TextColor="White" FontSize="Large"/>
+                    <Switch IsToggled="True" IsEnabled="True"/>
+                    <Label Text="Notifications delay" TextColor="White" FontSize="Large"/>
+                    <Picker Title="Select delay" ItemsSource="" TextColor="White" FontSize="Large"/>
+                </StackLayout>
+            </Frame>
+
+            <Frame Style="{StaticResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Text="Dark theme" TextColor="White" FontSize="Large"/>
+                    <Switch IsToggled="True" IsEnabled="True" />
+                </StackLayout>
+            </Frame>
+
+            <Frame Style="{StaticResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
+                <StackLayout>
+                    <Label Text="League of News v1.0" TextColor="White" FontSize="Large"/>
+                    <Label Text="Versatile Software 2019" TextColor="Gray" FontSize="Medium"/>
+                    <!--<Label Text="Marek Kida, Michał Woźniak and Kacper Tryniecki" TextColor="White" FontSize="Large"/>-->
+                </StackLayout>
+            </Frame>
+        </StackLayout>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

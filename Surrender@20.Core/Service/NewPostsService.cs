@@ -1,8 +1,6 @@
 ﻿using Surrender_20.Core.Interface;
 using Surrender_20.Model;
-using System;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace Surrender_20.Core.Service
@@ -13,9 +11,9 @@ namespace Surrender_20.Core.Service
         private const string LAST_POST_KEY_SURRENDER = "LAST_POST_KEY_SURRENDER";
         private const string LAST_POST_KEY_OFFICIAL = "LAST_POST_KEY_OFFICIAL";
 
-        private INotificationService _notificationService;
-        private INewsfeedService _newsfeedService;
-        private ISaveDataService _saveDataService;
+        private readonly INotificationService _notificationService;
+        private readonly INewsfeedService _newsfeedService;
+        private readonly ISaveDataService _saveDataService;
 
         public string elo { get; set; }
 
@@ -55,7 +53,9 @@ namespace Surrender_20.Core.Service
             _saveDataService.SaveData(LastPostKey, list[0].Title);
 
             if (newPosts.Count > 0)
+            {
                 _notificationService.ShowNewPostNotification(newPosts[0]); //TODO Show all new post not only one
+            }
         }
     }
 }

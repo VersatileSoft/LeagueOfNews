@@ -1,6 +1,5 @@
 ﻿using PropertyChanged;
 using Surrender_20.Core.Interface;
-using System;
 
 namespace Surrender_20.Model
 {

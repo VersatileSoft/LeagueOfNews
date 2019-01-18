@@ -7,6 +7,5 @@ namespace Surrender_20.Forms.ViewModels
     public class SettingsViewModel : SettingsCoreViewModel
     {
 
-
     }
 }
