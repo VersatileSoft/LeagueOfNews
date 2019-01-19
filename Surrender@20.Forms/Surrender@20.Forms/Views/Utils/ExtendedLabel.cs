@@ -2,7 +2,6 @@
 
 namespace Surrender_20.Forms.Views.Utils
 {
-
     public class ExtendedLabel : Label
     {
         public static new readonly BindableProperty MaxLinesProperty =

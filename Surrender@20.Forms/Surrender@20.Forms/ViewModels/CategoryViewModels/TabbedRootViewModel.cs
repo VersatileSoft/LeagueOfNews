@@ -9,7 +9,6 @@ namespace Surrender_20.Forms.ViewModels
 {
     public class TabbedRootViewModel : MainPageCoreViewModel
     {
-
         private bool _tabsLoaded = false;
         public ITabsInitService _tabsInitService;
 

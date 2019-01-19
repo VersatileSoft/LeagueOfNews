@@ -9,7 +9,6 @@ namespace Surrender_20.Forms.ViewModels
 {
     public class NewsfeedCategoryListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<Pages>
     {
-
         public NewsfeedCategoryListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService,
             IMvxNavigationService navigationService, ITabsInitService tabsInitService)
             : base(newsfeedService, settingsService, navigationService)

@@ -110,9 +110,7 @@ namespace Surrender_20.Core.Service
 
             foreach (HtmlNode node in nodes)
             {
-
                 Newsfeed newsfeed = new Newsfeed();
-
                 try
                 {
                     newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString();

@@ -11,7 +11,6 @@ namespace Surrender_20.Forms.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class RootPageViewModel : MvxViewModel
     {
-
         private readonly IMvxNavigationService _navigationService;
 
         public event EventHandler HideMaster;

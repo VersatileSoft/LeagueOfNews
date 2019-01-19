@@ -6,7 +6,6 @@ namespace Surrender_20.Forms
 {
     public partial class App : MvxFormsApplication
     {
-
         public App()
         {
             InitializeComponent();

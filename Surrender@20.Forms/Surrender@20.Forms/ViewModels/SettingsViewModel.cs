@@ -6,6 +6,5 @@ namespace Surrender_20.Forms.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class SettingsViewModel : SettingsCoreViewModel
     {
-
     }
 }

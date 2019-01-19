@@ -31,7 +31,7 @@
 
                                         <Label Style="{StaticResource TitleExtendedLabel}"
                                                Text="{Binding Name}"
-                                               TextColor="White" 
+                                               TextColor="White"
                                                VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </Frame>
