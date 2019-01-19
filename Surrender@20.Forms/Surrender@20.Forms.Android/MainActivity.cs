@@ -18,7 +18,6 @@ namespace Surrender_20.Forms.Droid
     [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : MvxFormsAppCompatActivity<Setup, CoreApp, App>
     {
-
         public static readonly string CHANNEL_ID = "news_notification";
 
         protected override void OnCreate(Bundle bundle)
@@ -104,4 +103,3 @@ namespace Surrender_20.Forms.Droid
         }
     }
 }
-

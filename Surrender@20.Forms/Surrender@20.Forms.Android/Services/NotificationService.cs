@@ -10,38 +10,36 @@ using Application = Android.App.Application;
 
 namespace Surrender_20.Forms.Droid.Services
 {
-
     public class NotificationService : INotificationService
     {
-
         public void ShowNewPostNotification(Newsfeed newsfeed)
         {
-            var notification = new NotificationCompat.Builder(Application.Context, MainActivity.CHANNEL_ID)
+            Notification notification = new NotificationCompat.Builder(Application.Context, MainActivity.CHANNEL_ID)
                 .SetContentTitle(newsfeed.Title)
                 .SetContentText(newsfeed.ShortDescription)
                 .SetSmallIcon(Resource.Drawable.AppIcon)
                 .SetContentIntent(GetContentIntent(newsfeed))
-              
+
                 .SetShowWhen(true)
                 .SetAutoCancel(true)
                 .Build();
 
-            var notificationManager = NotificationManagerCompat.From(Application.Context);
+            NotificationManagerCompat notificationManager = NotificationManagerCompat.From(Application.Context);
             notificationManager.Notify(1000, notification);
 
         }
 
         private PendingIntent GetContentIntent(Newsfeed newsfeed)
         {
-            var bundle = new MvxBundle();
+            MvxBundle bundle = new MvxBundle();
             bundle.Write(newsfeed);
 
-            var request = new MvxViewModelRequest<NewsfeedItemViewModel>(bundle, null);
+            MvxViewModelRequest<NewsfeedItemViewModel> request = new MvxViewModelRequest<NewsfeedItemViewModel>(bundle, null);
 
-            var converter = Mvx.IoCProvider.Resolve<IMvxNavigationSerializer>();
-            var requestText = converter.Serializer.SerializeObject(request);
+            IMvxNavigationSerializer converter = Mvx.IoCProvider.Resolve<IMvxNavigationSerializer>();
+            string requestText = converter.Serializer.SerializeObject(request);
 
-            var intent = new Intent(Application.Context, typeof(MainActivity));
+            Intent intent = new Intent(Application.Context, typeof(MainActivity));
 
             // We only want one activity started
             intent.AddFlags(flags: ActivityFlags.SingleTop);

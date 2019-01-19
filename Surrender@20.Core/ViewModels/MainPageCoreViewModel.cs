@@ -8,7 +8,6 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class MainPageCoreViewModel : MvxViewModel
     {
-
         public IMvxNavigationService _navigationService;
         public IOperatingSystemService _operatingSystemService;
 

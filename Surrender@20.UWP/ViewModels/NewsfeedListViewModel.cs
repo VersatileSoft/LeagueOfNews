@@ -13,7 +13,7 @@ namespace Surrender_20.UWP.ViewModels
            : base(newsfeedService, settingsService, navigationService)
         {
         }
-        
+
         public void Prepare(Pages parameter)
         {
             Title = _settingsService[parameter].Title;

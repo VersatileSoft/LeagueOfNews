@@ -8,7 +8,6 @@ namespace Surrender_20.Core.Model
 {
     public class WebClientService : IWebClientService
     {
-
         public async Task<HtmlDocument> GetPage(string url, Pages page)
         {
             switch (page)

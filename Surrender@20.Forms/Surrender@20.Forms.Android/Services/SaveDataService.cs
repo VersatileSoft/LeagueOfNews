@@ -13,9 +13,13 @@ namespace Surrender_20.Forms.Droid.Services
 
             string result = prefs.GetString(key, "null");
             if (result == "null")
+            {
                 return null;
+            }
             else
+            {
                 return result;
+            }
         }
 
         public void SaveData(string key, string data)

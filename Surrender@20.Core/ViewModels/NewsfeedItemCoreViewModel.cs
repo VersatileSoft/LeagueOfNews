@@ -10,7 +10,6 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public abstract class NewsfeedItemCoreViewModel : MvxViewModel<Newsfeed>
     {
-
         protected HtmlDocument _doc { get; set; }
         public bool IsLoading { get; set; }
         public string Title { get; set; }

@@ -14,7 +14,6 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public abstract class NewsfeedListCoreViewModel : MvxViewModel
     {
-
         protected INewsfeedService _newsfeedService;
         protected ISettingsService _settingsService;
         protected IMvxNavigationService _navigationService;
@@ -75,7 +74,7 @@ namespace Surrender_20.Core.ViewModels
             Newsfeeds.Clear();
             new Thread(async () =>
             {
-                IsRefreshing = true;               
+                IsRefreshing = true;
                 Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(_page));
                 IsRefreshing = false;
             }).Start();

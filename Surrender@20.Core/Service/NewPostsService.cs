@@ -7,7 +7,6 @@ namespace Surrender_20.Core.Service
 {
     public class NewPostsService : INewPostsService
     {
-
         private const string LAST_POST_KEY_SURRENDER = "LAST_POST_KEY_SURRENDER";
         private const string LAST_POST_KEY_OFFICIAL = "LAST_POST_KEY_OFFICIAL";
 

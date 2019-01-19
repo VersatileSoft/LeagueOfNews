@@ -13,7 +13,6 @@ namespace Surrender_20.Forms.Droid
 {
     public sealed class Setup : MvxFormsAndroidSetup<CoreApp, App>
     {
-
         protected override void InitializeLastChance()
         {
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService()); //TODO move to InitializeFirstChance

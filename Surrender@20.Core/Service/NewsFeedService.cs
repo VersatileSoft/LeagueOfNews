@@ -12,7 +12,7 @@ namespace Surrender_20.Core.Service
     public class NewsfeedService : INewsfeedService
     {
         private IList<Newsfeed> Newsfeeds { get; set; }
-        private Dictionary<Pages, string> _nextPageUrls;
+        private readonly Dictionary<Pages, string> _nextPageUrls;
         private string _officialBaseURL;
         private readonly IWebClientService _cookieWebClientService;
         private readonly ISettingsService _settingsService;
@@ -28,7 +28,7 @@ namespace Surrender_20.Core.Service
         {
             string URL = _settingsService[page].URL;
             _officialBaseURL = "https://" + new Uri(URL).Host;
-            
+
             HtmlDocument doc = await _cookieWebClientService.GetPage(URL, page);
             switch (page)
             {
@@ -37,7 +37,7 @@ namespace Surrender_20.Core.Service
                 case Pages.PBE:
                 case Pages.RedPosts:
                 case Pages.Rotations:
-                case Pages.Releases: Newsfeeds = await LoadSurrender(doc, page); break;
+                case Pages.Releases: Newsfeeds = LoadSurrender(doc, page); break;
                 case Pages.Official: Newsfeeds = await LoadOfficial(doc, page); break;
             }
 
@@ -51,10 +51,12 @@ namespace Surrender_20.Core.Service
 
             if (_nextPageUrls.TryGetValue(page, out string _url))
             {
-                doc = await _cookieWebClientService.GetPage(_url, page);              
+                doc = await _cookieWebClientService.GetPage(_url, page);
             }
             else
+            {
                 throw new Exception("Filed to load next page url");
+            }
 
             switch (page)
             {
@@ -63,7 +65,7 @@ namespace Surrender_20.Core.Service
                 case Pages.PBE:
                 case Pages.RedPosts:
                 case Pages.Rotations:
-                case Pages.Releases: newsfeeds = await LoadSurrender(doc, page); break;
+                case Pages.Releases: newsfeeds = LoadSurrender(doc, page); break;
                 case Pages.Official: newsfeeds = await LoadOfficial(doc, page); break;
             }
             return newsfeeds;
@@ -85,8 +87,7 @@ namespace Surrender_20.Core.Service
                     newsfeed.UrlToNewsfeed = _officialBaseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value;
                     newsfeed.Image = await _cookieWebClientService.GetImage(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText)
-                        .RemoveSpaceFromString()
-                        .RemoveContinueReadingString();
+                        .RemoveSpaceFromString();
                     newsfeed.Page = page;
                 }
                 catch { continue; }
@@ -101,7 +102,7 @@ namespace Surrender_20.Core.Service
             return newsfeeds;
         }
 
-        public async Task<List<Newsfeed>> LoadSurrender(HtmlDocument Document, Pages page)
+        public List<Newsfeed> LoadSurrender(HtmlDocument Document, Pages page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             _nextPageUrls[page] = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;
@@ -117,7 +118,7 @@ namespace Surrender_20.Core.Service
                     newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString();
                     newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString();
                     newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
-                   // newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
+                    // newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
                         .RemoveSpaceFromString()
                         .RemoveContinueReadingString();
