@@ -117,7 +117,7 @@ namespace Surrender_20.Core.Service
                     newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString();
                     newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString();
                     newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
-                    newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
+                   // newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
                         .RemoveSpaceFromString()
                         .RemoveContinueReadingString();
@@ -127,10 +127,10 @@ namespace Surrender_20.Core.Service
 
                 newsfeeds.Add(newsfeed);
 
-                if (newsfeed.Title == null || newsfeed.UrlToNewsfeed == null || newsfeed.Image == null || newsfeed.ShortDescription == null)
-                {
-                    throw new Exception();
-                }
+                //if (newsfeed.Title == null || newsfeed.UrlToNewsfeed == null || newsfeed.Image == null || newsfeed.ShortDescription == null)
+                //{
+                //    throw new Exception();
+                //}
             }
             return newsfeeds;
         }
