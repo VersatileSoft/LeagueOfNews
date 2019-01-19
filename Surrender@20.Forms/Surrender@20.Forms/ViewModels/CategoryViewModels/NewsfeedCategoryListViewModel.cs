@@ -14,12 +14,12 @@ namespace Surrender_20.Forms.ViewModels
             IMvxNavigationService navigationService, ITabsInitService tabsInitService)
             : base(newsfeedService, settingsService, navigationService)
         {
-            tabsInitService.TabsLoaded += async (s, e) => await InitTabs();
+            tabsInitService.TabsLoaded += (s, e) => InitTabs();
         }
 
-        private async Task InitTabs()
+        private void InitTabs()
         {
-            await LoadNewsfeeds(_page);
+            LoadNewsfeeds();
         }
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)

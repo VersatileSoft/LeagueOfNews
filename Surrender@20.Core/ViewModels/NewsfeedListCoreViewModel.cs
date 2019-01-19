@@ -5,6 +5,7 @@ using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Model;
 using System.Collections.ObjectModel;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -28,8 +29,6 @@ namespace Surrender_20.Core.ViewModels
         public ICommand LoadMore { get; set; }
         public ICommand RefreshItems { get; set; }
 
-
-
         public NewsfeedListCoreViewModel(INewsfeedService newsfeedService, ISettingsService settingsService,
             IMvxNavigationService navigationService)
         {
@@ -37,44 +36,49 @@ namespace Surrender_20.Core.ViewModels
             _settingsService = settingsService;
             _navigationService = navigationService;
 
-
-            ItemTapped = new MvxAsyncCommand<Newsfeed>((Newsfeed) =>
+            ItemTapped = new MvxAsyncCommand<Newsfeed>(async (Newsfeed) =>
             {
-                return NavigateToAsync(Newsfeed);
+                await NavigateToAsync(Newsfeed);
             });
 
-            RefreshItems = new MvxAsyncCommand(async () =>
-            {
-                Newsfeeds.Clear();
-                await RefreshNewsfeeds(_page);
-            });
-
-
-            LoadMore = new MvxAsyncCommand(async () =>
-            {
-                IsLoadingMore = true;
-                foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds())
-                {
-                    Newsfeeds.Add(item);
-                }
-                IsLoadingMore = false;
-            });
+            RefreshItems = new MvxCommand(RefreshNewsfeeds);
+            LoadMore = new MvxCommand(LoadMoreNewsfeeds);
         }
 
         protected abstract Task NavigateToAsync(Newsfeed newsfeed);
 
-        protected async Task LoadNewsfeeds(Pages page)
+        protected void LoadNewsfeeds()
         {
-            IsLoading = true;
-            Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(page));
-            IsLoading = false;
+            new Thread(async () =>
+            {
+                IsLoading = true;
+                Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(_page));
+                IsLoading = false;
+            }).Start();
         }
 
-        protected async Task RefreshNewsfeeds(Pages page)
+        protected void LoadMoreNewsfeeds()
         {
-            IsRefreshing = true;
-            Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(page));
-            IsRefreshing = false;
+            new Thread(async () =>
+            {
+                IsLoadingMore = true;
+                foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds(_page))
+                {
+                    Newsfeeds.Add(item);
+                }
+                IsLoadingMore = false;
+            }).Start();
+        }
+
+        protected void RefreshNewsfeeds()
+        {
+            Newsfeeds.Clear();
+            new Thread(async () =>
+            {
+                IsRefreshing = true;               
+                Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(_page));
+                IsRefreshing = false;
+            }).Start();
         }
     }
 }
