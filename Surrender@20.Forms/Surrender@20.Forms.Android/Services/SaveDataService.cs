@@ -7,11 +7,22 @@ namespace Surrender_20.Forms.Droid.Services
 {
     public class SaveDataService : ISaveDataService
     {
-        public string GetData(string key)
+
+        private const string LAST_POST_KEY_SURRENDER = "LAST_POST_KEY_SURRENDER";
+        private const string LAST_POST_KEY_OFFICIAL = "LAST_POST_KEY_OFFICIAL";
+        private const string CHECK_NEW_POSTS_FREQUENCY = "CHECK_NEW_POSTS_FREQUENCY";
+
+        public int GetCheckNewPostsFrequency()
+        {
+            return PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetInt(CHECK_NEW_POSTS_FREQUENCY, 1);
+        }
+
+        public string GetLastPostTitle(Pages page)
         {
             ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
 
-            string result = prefs.GetString(key, "null");
+            string result = prefs.GetString(PageToKey(page), "null");
+                      
             if (result == "null")
             {
                 return null;
@@ -21,13 +32,23 @@ namespace Surrender_20.Forms.Droid.Services
                 return result;
             }
         }
-
-        public void SaveData(string key, string data)
+        
+        public void SaveLastPostTitle(Pages page, string lastPostTitle)
         {
             ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
             ISharedPreferencesEditor editor = prefs.Edit();
-            editor.PutString(key, data);
+            editor.PutString(PageToKey(page), lastPostTitle);
             editor.Apply();
+        }
+
+        private string PageToKey(Pages page)
+        {
+            switch (page)
+            {
+                case Pages.SurrenderHome: return LAST_POST_KEY_SURRENDER;
+                case Pages.Official: return LAST_POST_KEY_SURRENDER;
+            }
+            return null;
         }
     }
 }

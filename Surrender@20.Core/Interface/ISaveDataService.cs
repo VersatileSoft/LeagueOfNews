@@ -2,7 +2,8 @@
 {
     public interface ISaveDataService
     {
-        void SaveData(string key, string data);
-        string GetData(string key);
+        void SaveLastPostTitle(Pages page, string lastPostTitle);
+        string GetLastPostTitle(Pages page);
+        int GetCheckNewPostsFrequency();
     }
 }

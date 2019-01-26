@@ -1,17 +1,14 @@
 ﻿using Android.App;
-using Android.App.Job;
 using Android.Content;
 using Android.Content.PM;
 using Android.OS;
-using Android.Util;
-using Java.Lang;
-using LabelHtml.Forms.Plugin.Droid;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Views;
 using MvvmCross.ViewModels;
 using MvvmCross.Views;
 using Surrender_20.Core;
-using Surrender_20.Forms.Services;
+using Surrender_20.Core.Interface;
+using System.Threading.Tasks;
 
 namespace Surrender_20.Forms.Droid
 {
@@ -22,39 +19,27 @@ namespace Surrender_20.Forms.Droid
 
         protected override void OnCreate(Bundle bundle)
         {
-            HtmlLabelRenderer.Initialize();
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-            CreateNotificationChannel();
+
             base.OnCreate(bundle);
 
-            NavigateToRequestIfPresent(Intent);
-            StartJob();
+            NavigateToRequestIfPresent(Intent);        
         }
 
-        private void StartJob()
+        public override void InitializeApplication()
         {
-            Class javaClass = Class.FromType(typeof(NotificationJobService));
-            ComponentName componentName = new ComponentName(this, javaClass);
+            base.InitializeApplication();
 
-            JobInfo info = new JobInfo.Builder(123, componentName)
-               .SetMinimumLatency(60 * 60 * 1000)
-               .SetOverrideDeadline(2 * 60 * 60 * 1000)
-               .SetPersisted(true)
-               .Build();
+            INotificationService notificationService = Mvx.IoCProvider.Resolve<INotificationService>();
+            ISaveDataService saveDataService = Mvx.IoCProvider.Resolve<ISaveDataService>();
+            notificationService.CreateNotificationChannel();
+            notificationService.StartNotificationJobService(saveDataService.GetCheckNewPostsFrequency());
 
 
-            JobScheduler jobScheduler = (JobScheduler)GetSystemService(JobSchedulerService);
-            int result = jobScheduler.Schedule(info);
-            if (result == JobScheduler.ResultSuccess)
-            {
-                Log.Info("MainActivity", "Job Sheduled");
-            }
-            else
-            {
-                Log.Info("MainActivity", "Job Filed Sheduled");
-            }
+            //Task.Run(async () => await Mvx.IoCProvider.Resolve<INewPostsService>().CheckNewPosts());
         }
+
 
         protected override void OnNewIntent(Intent intent)
         {
@@ -79,27 +64,6 @@ namespace Surrender_20.Forms.Droid
             MvxViewModelRequest request = converter.Serializer.DeserializeObject<MvxViewModelRequest>(requestText);
 
             viewDispatcher.ShowViewModel(request);
-        }
-
-        private void CreateNotificationChannel()
-        {
-            if (Build.VERSION.SdkInt < BuildVersionCodes.O)
-            {
-                // Notification channels are new in API 26 (and not a part of the
-                // support library). There is no need to create a notification
-                // channel on older versions of Android.
-                return;
-            }
-
-            string name = Resources.GetString(Resource.String.channel_name);
-            string description = GetString(Resource.String.channel_description);
-            NotificationChannel channel = new NotificationChannel(CHANNEL_ID, name, NotificationImportance.Default)
-            {
-                Description = description
-            };
-
-            NotificationManager notificationManager = (NotificationManager)GetSystemService(NotificationService);
-            notificationManager.CreateNotificationChannel(channel);
-        }
+        }      
     }
 }

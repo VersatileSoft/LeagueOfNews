@@ -8,6 +8,8 @@ using Surrender_20.Forms.Droid.Services;
 using Surrender_20.Forms.Interfaces;
 using Surrender_20.Forms.Services;
 using Surrender_20.Forms.ViewModels;
+using System.Collections.Generic;
+using System.Reflection;
 
 namespace Surrender_20.Forms.Droid
 {
@@ -24,12 +26,12 @@ namespace Surrender_20.Forms.Droid
             base.InitializeLastChance(); //TODO remove (check if work)
         }
 
-        //public override IEnumerable<Assembly> GetViewModelAssemblies()
-        //{
-        //    List<Assembly> list = new List<Assembly>();
-        //    list.AddRange(base.GetViewModelAssemblies());
-        //    list.Add(typeof(NewsfeedItemViewModel).Assembly);
-        //    return list.ToArray();
-        //}
+        public override IEnumerable<Assembly> GetViewModelAssemblies()
+        {
+            List<Assembly> list = new List<Assembly>();
+            list.AddRange(base.GetViewModelAssemblies());
+            list.Add(typeof(NewsfeedItemViewModel).Assembly);
+            return list.ToArray();
+        }
     }
 }
