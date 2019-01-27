@@ -24,6 +24,7 @@ namespace Surrender_20.Core.Service
             this[Pages.Rotations] = new NewsfeedNavigationParameter { Title = "Rotations", URL = "https://www.surrenderat20.net/search/label/Rotations" };
             this[Pages.ESports] = new NewsfeedNavigationParameter { Title = "E-Sports", URL = "https://www.surrenderat20.net/search/label/Esports" };
             this[Pages.Official] = new NewsfeedNavigationParameter { Title = "League of Legends Official", URL = "https://eune.leagueoflegends.com/en/news" };
+           // this[Pages.Dev] = new NewsfeedNavigationParameter { Title = "Dev", URL = "https://eune.leagueoflegends.com/en/news" };
 
         }
 

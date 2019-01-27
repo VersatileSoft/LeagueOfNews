@@ -12,8 +12,6 @@ namespace Surrender_20.Core.Service
         private readonly INewsfeedService _newsfeedService;
         private readonly ISaveDataService _saveDataService;
 
-        public string elo { get; set; }
-
         public NewPostsService(INotificationService notificationService, INewsfeedService newsfeedService, ISaveDataService saveDataService)
         {
             _notificationService = notificationService;

@@ -22,7 +22,7 @@ namespace Surrender_20.Forms.ViewModels
             MenuElements = new ObservableCollection<MenuListElement>
             {
                 new MenuListElement { Name = "League of Legends Official", MenuImage = "LolOfficialIcon.png", Page = Pages.Official },
-                new MenuListElement { Name = "/dev blog", MenuImage = "DevBlogIcon.png", Page = Pages.Official }, //TODO zmiana Page
+                //new MenuListElement { Name = "/dev blog", MenuImage = "DevBlogIcon.png", Page = Pages.Dev }, //TODO zmiana Page
                 new MenuListElement { Name = "Surrender@20", MenuImage = "SurrenderAt20Icon.png", Page = Pages.SurrenderHome },
                 new MenuListElement { Name = "Settings", MenuImage = "SettingsIcon.png", Page = Pages.Settings }
             };

@@ -13,16 +13,16 @@
             <Frame Style="{StaticResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <Label Text="Notifications" TextColor="White" FontSize="Large"/>
-                    <Switch IsToggled="True" IsEnabled="True"/>
+                    <Switch IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}" IsEnabled="True"/>
                     <Label Text="Notifications delay" TextColor="White" FontSize="Large"/>
-                    <Picker Title="Select delay" ItemsSource="" TextColor="White" FontSize="Large"/>
+                    <Picker Title="Select delay" ItemsSource="{Binding DelayList}" SelectedItem="{Binding Delay, Mode=TwoWay}" TextColor="White" FontSize="Large"/>
                 </StackLayout>
             </Frame>
 
             <Frame Style="{StaticResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <Label Text="Dark theme" TextColor="White" FontSize="Large"/>
-                    <Switch IsToggled="True" IsEnabled="True" />
+                    <Switch IsToggled="{Binding DarkTheme, Mode=TwoWay}" IsEnabled="True"/>
                 </StackLayout>
             </Frame>
 

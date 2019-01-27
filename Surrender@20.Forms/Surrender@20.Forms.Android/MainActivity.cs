@@ -32,14 +32,10 @@ namespace Surrender_20.Forms.Droid
             base.InitializeApplication();
 
             INotificationService notificationService = Mvx.IoCProvider.Resolve<INotificationService>();
-            ISaveDataService saveDataService = Mvx.IoCProvider.Resolve<ISaveDataService>();
             notificationService.CreateNotificationChannel();
-            notificationService.StartNotificationJobService(saveDataService.GetCheckNewPostsFrequency());
-
-
-            //Task.Run(async () => await Mvx.IoCProvider.Resolve<INewPostsService>().CheckNewPosts());
+            notificationService.RefreshNotificationJobService();
+            Mvx.IoCProvider.Resolve<IThemeService>().SetAppTheme(Mvx.IoCProvider.Resolve<ISaveDataService>().GetIsDarkTheme() ? AppTheme.Dark : AppTheme.Ligt);
         }
-
 
         protected override void OnNewIntent(Intent intent)
         {

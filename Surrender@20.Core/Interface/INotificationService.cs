@@ -6,7 +6,7 @@ namespace Surrender_20.Core.Interface
     {
         void ShowNewPostNotification(Newsfeed newsfeed);
 
-        void StartNotificationJobService(int HoursFrequency);
+        void RefreshNotificationJobService();
 
         void CreateNotificationChannel();
     }

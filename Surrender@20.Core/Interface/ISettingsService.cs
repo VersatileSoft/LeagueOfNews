@@ -16,6 +16,7 @@ namespace Surrender_20.Core.Interface
         Rotations,
         ESports,
         Official,
+        Dev,
         Settings
     }
 }

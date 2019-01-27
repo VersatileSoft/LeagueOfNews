@@ -18,7 +18,7 @@ namespace Surrender_20.Forms.Droid.Services
     public class NotificationService : INotificationService
     {
         private static readonly string CHANNEL_ID = "news_notification";
-
+        
         public void CreateNotificationChannel()
         {
             if (Build.VERSION.SdkInt < BuildVersionCodes.O)
@@ -39,7 +39,7 @@ namespace Surrender_20.Forms.Droid.Services
             NotificationManager notificationManager = (NotificationManager)Application.Context.GetSystemService(Context.NotificationService);
             notificationManager.CreateNotificationChannel(channel);
         }
-
+        
         public void ShowNewPostNotification(Newsfeed newsfeed)
         {
             Notification notification = new NotificationCompat.Builder(Application.Context, CHANNEL_ID)
@@ -56,7 +56,15 @@ namespace Surrender_20.Forms.Droid.Services
             notificationManager.Notify(1000, notification);            
         }
 
-        public void StartNotificationJobService(int HoursFrequency)
+        public void RefreshNotificationJobService()
+        {
+            if (Mvx.IoCProvider.Resolve<ISaveDataService>().GetIsNotificationsEnabled())
+                StartNotificationJobService(Mvx.IoCProvider.Resolve<ISaveDataService>().GetCheckNewPostsFrequency());
+            else
+                StopNotificationJobService();
+        }
+
+        private void StartNotificationJobService(int HoursFrequency)
         {
             Class javaClass = Class.FromType(typeof(NotificationJobService));
             ComponentName componentName = new ComponentName(Application.Context, javaClass);
@@ -68,7 +76,6 @@ namespace Surrender_20.Forms.Droid.Services
                .Build();
 
             JobScheduler jobScheduler = (JobScheduler)Application.Context.GetSystemService(Context.JobSchedulerService);
-
             int result = jobScheduler.Schedule(info);
             if (result == JobScheduler.ResultSuccess)
             {
@@ -78,6 +85,12 @@ namespace Surrender_20.Forms.Droid.Services
             {
                 Log.Info("MainActivity", "Job Filed Sheduled");
             }
+        }
+
+        public void StopNotificationJobService()
+        {
+            JobScheduler jobScheduler = (JobScheduler)Application.Context.GetSystemService(Context.JobSchedulerService);
+            jobScheduler.Cancel(123);
         }
 
         private PendingIntent GetContentIntent(Newsfeed newsfeed)
