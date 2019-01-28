@@ -11,6 +11,7 @@ using Surrender_20.Core.Interface;
 using Surrender_20.Forms.Services;
 using Surrender_20.Forms.ViewModels;
 using Surrender_20.Model;
+using System;
 using Application = Android.App.Application;
 
 namespace Surrender_20.Forms.Droid.Services
@@ -40,20 +41,24 @@ namespace Surrender_20.Forms.Droid.Services
             notificationManager.CreateNotificationChannel(channel);
         }
         
-        public void ShowNewPostNotification(Newsfeed newsfeed)
+        public void ShowNewPostNotification(Newsfeed newsfeed, Pages page)
         {
             Notification notification = new NotificationCompat.Builder(Application.Context, CHANNEL_ID)
                 .SetContentTitle(newsfeed.Title)
                 .SetContentText(newsfeed.ShortDescription)
                 .SetSmallIcon(Resource.Drawable.AppIcon)
                 .SetContentIntent(GetContentIntent(newsfeed))
-
                 .SetShowWhen(true)
                 .SetAutoCancel(true)
                 .Build();
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.From(Application.Context);
-            notificationManager.Notify(1000, notification);            
+
+            if(page == Pages.Official)
+                notificationManager.Notify(1000, notification);    
+            else
+                notificationManager.Notify(1001, notification);
+
         }
 
         public void RefreshNotificationJobService()
@@ -107,11 +112,10 @@ namespace Surrender_20.Forms.Droid.Services
 
             // We only want one activity started
             intent.AddFlags(flags: ActivityFlags.SingleTop);
-
-            intent.PutExtra("MvxLaunchData", requestText);
+            intent.PutExtra("Request", requestText);
 
             // Create Pending intent, with OneShot. We're not going to want to update this.
-            return PendingIntent.GetActivity(Application.Context, 0, intent, PendingIntentFlags.OneShot);
+            return PendingIntent.GetActivity(Application.Context, (int)(DateTimeOffset.Now.ToUnixTimeMilliseconds() / 1000), intent, PendingIntentFlags.OneShot);
         }
     }
 }

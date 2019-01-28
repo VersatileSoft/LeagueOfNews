@@ -78,7 +78,7 @@ namespace Surrender_20.Forms.Droid.Services
             switch (page)
             {
                 case Pages.SurrenderHome: return LAST_POST_KEY_SURRENDER;
-                case Pages.Official: return LAST_POST_KEY_SURRENDER;
+                case Pages.Official: return LAST_POST_KEY_OFFICIAL;
             }
             return null;
         }

@@ -49,7 +49,7 @@ namespace Surrender_20.Core.Service
 
             if (newPosts.Count > 0)
             {
-                _notificationService.ShowNewPostNotification(newPosts[0]); //TODO Show all new post not only one
+                _notificationService.ShowNewPostNotification(newPosts[0], page); //TODO Show all new post not only one
             }
         }
     }

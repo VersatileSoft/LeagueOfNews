@@ -36,7 +36,6 @@ namespace Surrender_20.Core.ViewModels
 
         public override async void Prepare(Newsfeed newsfeed)
         {
-            await Mvx.IoCProvider.Resolve<INewPostsService>().CheckNewPosts();
             await LoadPage(newsfeed);
         }
 
