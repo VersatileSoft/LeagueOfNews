@@ -30,7 +30,7 @@ namespace Surrender_20.Forms.ViewModels
             Task.Run(async () =>
             {
                 await _navigationService.Navigate<MasterViewModel>();
-                await _navigationService.Navigate<TabbedRootViewModel>();
+                await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.Official);
             });
         }
 

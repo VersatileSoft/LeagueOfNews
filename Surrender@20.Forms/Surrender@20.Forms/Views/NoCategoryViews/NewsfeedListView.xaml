@@ -81,6 +81,7 @@
                 </ListView.Footer>
 
             </util:InfiniteListView>
+            <util:AdControlView/>
         </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

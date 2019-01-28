@@ -1,6 +1,7 @@
 ﻿using Android.App;
 using Android.Content;
 using Android.Content.PM;
+using Android.Gms.Ads;
 using Android.OS;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Views;
@@ -30,7 +31,7 @@ namespace Surrender_20.Forms.Droid
         public override void InitializeApplication()
         {
             base.InitializeApplication();
-
+            MobileAds.Initialize(ApplicationContext, Resources.GetString(Resource.String.app_unit_id));
             INotificationService notificationService = Mvx.IoCProvider.Resolve<INotificationService>();
             notificationService.CreateNotificationChannel();
             notificationService.RefreshNotificationJobService();

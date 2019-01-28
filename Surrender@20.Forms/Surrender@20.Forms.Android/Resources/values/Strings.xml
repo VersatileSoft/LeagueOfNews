@@ -2,4 +2,7 @@
 <resources>
   <string name="channel_name">Local Notifications</string>
   <string name="channel_description">The count from MainActivity.</string>
+  <string name="banner_ad_unit_id">ca-app-pub-6160992522885126/5761565555</string>
+  <string name="app_unit_id">ca-app-pub-6160992522885126~6231504696</string>
+  
 </resources>
