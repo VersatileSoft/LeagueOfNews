@@ -1,7 +1,4 @@
 ﻿using Surrender_20.Core.Interface;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Surrender_20.Forms.Services
 {
@@ -20,14 +17,14 @@ namespace Surrender_20.Forms.Services
         {
             //TODO setting ligt theme
 
-           // App.Current.Resources["ListColor"] = App.Current.Resources["LightListColor"];
+            // App.Current.Resources["ListColor"] = App.Current.Resources["LightListColor"];
         }
 
         private void SetDarkTheme()
         {
             //TODO setting ligt theme
 
-           // App.Current.Resources["ListColor"] = App.Current.Resources["DarkListColor"];
+            // App.Current.Resources["ListColor"] = App.Current.Resources["DarkListColor"];
         }
     }
 }

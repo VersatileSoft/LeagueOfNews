@@ -12,7 +12,6 @@ namespace Surrender_20.UWP.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class MainPageViewModel : MainPageCoreViewModel
     {
-
         public ICommand NavCommand { get; set; } //TODO rename to NavigateCommand
         public ICommand RefreshCommand { get; set; } //TODO add command that forces RSS service to update
 

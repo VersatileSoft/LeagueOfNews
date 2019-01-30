@@ -8,7 +8,8 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class SettingsCoreViewModel : MvxViewModel
     {
-        public bool IsNotificationsEnabled {
+        public bool IsNotificationsEnabled
+        {
             get
             {
                 return _saveDataService.GetIsNotificationsEnabled();
@@ -27,7 +28,7 @@ namespace Surrender_20.Core.ViewModels
                 return _saveDataService.GetIsDarkTheme();
             }
             set
-            { 
+            {
                 _saveDataService.SaveIsDarkTheme(value);
                 if (value)
                     _themeService.SetAppTheme(AppTheme.Dark);
@@ -43,12 +44,12 @@ namespace Surrender_20.Core.ViewModels
                 return _saveDataService.GetCheckNewPostsFrequency() + " Hours";
             }
             set
-            { 
+            {
                 _saveDataService.SaveCheckNewPostsFrequency(int.Parse(Regex.Match(value, @"\d+").Value));
                 _notificationService.RefreshNotificationJobService();
             }
         }
-        
+
         public MvxObservableCollection<string> DelayList { get; set; }
 
         private ISaveDataService _saveDataService;
