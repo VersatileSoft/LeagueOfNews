@@ -1,5 +1,4 @@
 ﻿using HtmlAgilityPack;
-using MvvmCross;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;

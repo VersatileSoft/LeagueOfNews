@@ -9,7 +9,6 @@ using MvvmCross.ViewModels;
 using MvvmCross.Views;
 using Surrender_20.Core;
 using Surrender_20.Core.Interface;
-using System.Threading.Tasks;
 
 namespace Surrender_20.Forms.Droid
 {
@@ -25,7 +24,7 @@ namespace Surrender_20.Forms.Droid
 
             base.OnCreate(bundle);
 
-            NavigateToRequestIfPresent(Intent);        
+            NavigateToRequestIfPresent(Intent);
         }
 
         public override void InitializeApplication()
@@ -62,6 +61,6 @@ namespace Surrender_20.Forms.Droid
             MvxViewModelRequest request = converter.Serializer.DeserializeObject<MvxViewModelRequest>(requestText);
 
             viewDispatcher.ShowViewModel(request);
-        }      
+        }
     }
 }
