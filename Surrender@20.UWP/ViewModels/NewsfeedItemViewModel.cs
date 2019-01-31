@@ -8,7 +8,7 @@ namespace Surrender_20.UWP.ViewModels
     {
         public string Content { get; set; }
 
-        public NewsfeedItemViewModel(ICookieWebClientService cookieWebClientService) : base(cookieWebClientService) { }
+        public NewsfeedItemViewModel(IWebClientService cookieWebClientService, INotificationService notificationService) : base(cookieWebClientService, notificationService) { }
 
         public override void ParseHtml(HtmlNode documentNode, Pages page)
         {

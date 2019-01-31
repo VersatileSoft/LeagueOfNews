@@ -107,7 +107,10 @@
     <Compile Include="Converters\ImageConverter.cs" />
     <Compile Include="Converters\SelectedItemToStringConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\InternetConnectionService.cs" />
+    <Compile Include="Services\NotificationService.cs" />
     <Compile Include="Services\OperatingSystemService.cs" />
+    <Compile Include="Services\SaveDataService.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\NewsfeedItemViewModel.cs" />
     <Compile Include="ViewModels\NewsfeedListViewModel.cs" />

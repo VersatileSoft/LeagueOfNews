@@ -10,18 +10,19 @@ namespace Surrender_20.UWP.Converters
     internal class ImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
-        {
-            return Task.Run(() => ImageFromBytes((byte[])value));
+        {                          
+            BitmapImage im = ImageFromBytesAsync((byte[])value).Result;
+            return im;
         }
 
-        private static async Task<BitmapImage> ImageFromBytes(byte[] bytes)
+        private static async Task<BitmapImage> ImageFromBytesAsync(byte[] bytes)
         {
             BitmapImage image = new BitmapImage();
             using (InMemoryRandomAccessStream stream = new InMemoryRandomAccessStream())
             {
                 await stream.WriteAsync(bytes.AsBuffer());
                 stream.Seek(0);
-                await image.SetSourceAsync(stream);
+                 image.SetSource(stream);
             }
             return image;
         }

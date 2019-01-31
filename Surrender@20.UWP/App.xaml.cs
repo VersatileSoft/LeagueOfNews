@@ -25,6 +25,9 @@ namespace Surrender_20.UWP
         protected override void InitializeFirstChance()
         {
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService());
+            Mvx.IoCProvider.RegisterSingleton(typeof(IInternetConnectionService), new InternetConnectionService());
+            Mvx.IoCProvider.RegisterSingleton(typeof(INotificationService), new NotificationService());
+            Mvx.IoCProvider.RegisterSingleton(typeof(ISaveDataService), new SaveDataService());
         }
 
         protected override void InitializeLastChance()
