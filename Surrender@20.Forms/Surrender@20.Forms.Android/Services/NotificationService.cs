@@ -19,7 +19,7 @@ namespace Surrender_20.Forms.Droid.Services
     public class NotificationService : INotificationService
     {
         private static readonly string CHANNEL_ID = "news_notification";
-        
+
         public void CreateNotificationChannel()
         {
             if (Build.VERSION.SdkInt < BuildVersionCodes.O)
@@ -40,7 +40,7 @@ namespace Surrender_20.Forms.Droid.Services
             NotificationManager notificationManager = (NotificationManager)Application.Context.GetSystemService(Context.NotificationService);
             notificationManager.CreateNotificationChannel(channel);
         }
-        
+
         public void ShowNewPostNotification(Newsfeed newsfeed, Pages page)
         {
             Notification notification = new NotificationCompat.Builder(Application.Context, CHANNEL_ID)
@@ -54,19 +54,26 @@ namespace Surrender_20.Forms.Droid.Services
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.From(Application.Context);
 
-            if(page == Pages.Official)
-                notificationManager.Notify(1000, notification);    
+            if (page == Pages.Official)
+            {
+                notificationManager.Notify(1000, notification);
+            }
             else
+            {
                 notificationManager.Notify(1001, notification);
-
+            }
         }
 
         public void RefreshNotificationJobService()
         {
             if (Mvx.IoCProvider.Resolve<ISaveDataService>().GetIsNotificationsEnabled())
+            {
                 StartNotificationJobService(Mvx.IoCProvider.Resolve<ISaveDataService>().GetCheckNewPostsFrequency());
+            }
             else
+            {
                 StopNotificationJobService();
+            }
         }
 
         private void StartNotificationJobService(int HoursFrequency)

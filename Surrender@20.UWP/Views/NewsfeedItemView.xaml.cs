@@ -6,7 +6,7 @@ namespace Surrender_20.UWP.View
     {
         public NewsfeedItemView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }

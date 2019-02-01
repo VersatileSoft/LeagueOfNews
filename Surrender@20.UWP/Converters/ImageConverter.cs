@@ -10,7 +10,7 @@ namespace Surrender_20.UWP.Converters
     internal class ImageConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
-        {                          
+        {
             BitmapImage im = ImageFromBytesAsync((byte[])value).Result;
             return im;
         }
@@ -22,7 +22,7 @@ namespace Surrender_20.UWP.Converters
             {
                 await stream.WriteAsync(bytes.AsBuffer());
                 stream.Seek(0);
-                 image.SetSource(stream);
+                image.SetSource(stream);
             }
             return image;
         }

@@ -10,12 +10,11 @@ namespace Surrender_20.UWP.View
 {
     public sealed partial class NewsfeedListView : MvxWindowsPage
     {
-
         private BitmapImage LogoLight, LogoDark;
 
         public NewsfeedListView()
         {
-            this.InitializeComponent();
+            InitializeComponent();
             LoadImages();
             ChangeThemeLogo();
         }

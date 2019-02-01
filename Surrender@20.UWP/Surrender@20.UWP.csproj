@@ -142,6 +142,9 @@
     <Content Include="Assets\Images\SettingsPageAssets\ja.jpg" />
     <Content Include="Assets\Images\SettingsPageAssets\mymaster.jpg" />
     <Content Include="Assets\Images\SettingsPageAssets\wozniak.jpg" />
+    <Content Include="Assets\Images\SiteChooseDialogAssets\DevBlogIcon.png" />
+    <Content Include="Assets\Images\SiteChooseDialogAssets\LolOfficialIcon.png" />
+    <Content Include="Assets\Images\SiteChooseDialogAssets\SurrenderAt20Icon.png" />
     <Content Include="Assets\LargeTile.scale-100.png" />
     <Content Include="Assets\LargeTile.scale-125.png" />
     <Content Include="Assets\LargeTile.scale-150.png" />

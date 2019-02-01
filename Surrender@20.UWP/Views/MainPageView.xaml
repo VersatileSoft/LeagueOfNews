@@ -71,11 +71,82 @@
                 </NavigationViewItem>
             </NavigationView.MenuItems>
 
-            <!--<NavigationView.PaneFooter>
-                <NavigationViewItem Icon="Home" Content="Home"/>
-            </NavigationView.PaneFooter>-->
+            <NavigationView.PaneFooter>
+                <NavigationViewItem Icon="Switch" Tapped="ChangeSite_Tapped"/>
+            </NavigationView.PaneFooter>
 
-            <Frame x:Name="ContentFrame"/>
+            <SplitView IsPaneOpen="True"
+                       DisplayMode="Inline"
+                       OpenPaneLength="700">
+                <SplitView.Pane>
+                    <Grid x:Name="MasterGrid"
+                      Grid.Column="0">
+
+                        <Frame x:Name="MasterFrame">
+                            <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                        </Frame>
+                    </Grid>
+                </SplitView.Pane>
+
+                <Grid x:Name="DetailGrid"
+                      Visibility="Collapsed"
+                      Grid.Column="1">
+
+                    <Frame x:Name="DetailFrame">
+                        <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                    </Frame>
+                </Grid>
+            </SplitView>
+
+            <!--<Grid x:Name="LayoutRoot">
+                <VisualStateManager.VisualStateGroups>
+                    <VisualStateGroup>
+                        <VisualState>
+                            <VisualState.StateTriggers>
+                                --><!--VisualState to be triggered when window width is >=720 effective pixels.--><!--
+                                <AdaptiveTrigger MinWindowWidth="780"/>
+                            </VisualState.StateTriggers>
+
+                            <VisualState.Setters>
+                                <Setter Target="NewsfeedItemGrid.Visibility" Value="Visible"/>
+                                <Setter Target="MasterColumn.Width" Value="450"/>
+                                <Setter Target="DetailColumn.Width" Value="*"/>
+                            </VisualState.Setters>
+                        </VisualState>
+                    </VisualStateGroup>
+                </VisualStateManager.VisualStateGroups>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition x:Name="MasterColumn" Width="*"/>
+                    <ColumnDefinition x:Name="DetailColumn" Width="0"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid x:Name="MasterGrid"
+                      Grid.Column="0">
+
+                    <Frame x:Name="MasterFrame">
+                        <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                    </Frame>
+                </Grid>
+
+                <Grid x:Name="DetailGrid"
+                      Visibility="Collapsed"
+                      Grid.Column="1">
+                    
+                    <Frame x:Name="DetailFrame">
+                        <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"/>
+                    </Frame>
+                </Grid>
+
+            </Grid>-->
         </NavigationView>
     </Grid>
 </m:MvxWindowsPage>

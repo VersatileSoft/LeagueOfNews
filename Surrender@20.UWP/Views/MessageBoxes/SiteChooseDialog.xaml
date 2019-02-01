@@ -9,21 +9,32 @@
     Title="Which site would you choose to read?"
     Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}">
 
-    <Grid Width="500" 
-          Height="500">
+    <ContentDialog.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Styles/MessageBoxesStyles/SiteChooseDialogStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </ContentDialog.Resources>
+
+    <StackPanel>
 
         <GridView>
-            <Grid Width="80" 
-                  Height="80">
+            <StackPanel Style="{StaticResource StackPanel}">
+                <Image Source="/Assets/Images/SiteChooseDialogAssets/LolOfficialIcon.png" Height="100"/>
 
-                <Image Source="/Assets/Square150x150Logo.scale-125.png"/>
-            </Grid>
+                <TextBlock Text="League of Legends official"
+                           Style="{StaticResource TitleText}"/>
+            </StackPanel>
 
-            <Grid Width="80" 
-                  Height="80">
+            <StackPanel Style="{StaticResource StackPanel}">
+                <Image Source="/Assets/Images/SiteChooseDialogAssets/SurrenderAt20icon.png"  Height="100"/>
 
-                <Image Source="/Assets/Square44x44Logo.scale-125.png"/>
-            </Grid>
+                <TextBlock Text="Surrender@20"
+                           Style="{StaticResource TitleText}"/>
+            </StackPanel>
         </GridView>
-    </Grid>
+        <Button Style="{StaticResource CommonButton}"
+                Click="CancelButton_Click"/>
+    </StackPanel>
 </ContentDialog>

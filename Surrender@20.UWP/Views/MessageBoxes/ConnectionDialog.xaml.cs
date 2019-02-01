@@ -9,7 +9,7 @@ namespace Surrender_20.UWP.Views.MessageBoxes
     {
         public ConnectionDialog()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -19,7 +19,7 @@ namespace Surrender_20.UWP.Views.MessageBoxes
 
         private async void CheckButton_Click(object sender, RoutedEventArgs e)
         {
-            this.Hide();
+            Hide();
 
             bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
             if (isInternetConnected == false)
@@ -29,7 +29,7 @@ namespace Surrender_20.UWP.Views.MessageBoxes
             }
             else
             {
-                this.Hide();
+                Hide();
             }
         }
     }

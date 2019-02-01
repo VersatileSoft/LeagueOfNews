@@ -6,6 +6,7 @@ using Windows.ApplicationModel.Core;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Animation;
 using Windows.UI.Xaml.Media.Imaging;
 using Windows.UI.Xaml.Navigation;
@@ -15,6 +16,8 @@ namespace Surrender_20.UWP.View
     public sealed partial class MainPageView : MvxWindowsPage
     {
         private BitmapImage LogoLight, LogoDark;
+        private readonly ConnectionDialog ConnectionDialog = new ConnectionDialog();
+        private readonly SiteChooseDialog SiteChooseDialog = new SiteChooseDialog();
 
         public MainPageView()
         {
@@ -23,12 +26,12 @@ namespace Surrender_20.UWP.View
             LoadImages();
             ChangeThemeLogo();
 
-            var CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+            CoreApplicationViewTitleBar CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             CoreTitleBar.ExtendViewIntoTitleBar = true;
 
             Window.Current.SetTitleBar(DragArea);
 
-            var titleBar = ApplicationView.GetForCurrentView().TitleBar;
+            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
@@ -40,13 +43,13 @@ namespace Surrender_20.UWP.View
             switch (e.NavigationMode)
             {
                 case NavigationMode.New:
-                    ContentFrame.Navigate(e.SourcePageType, e.Parameter, new DrillInNavigationTransitionInfo());
+                    MasterFrame.Navigate(e.SourcePageType, e.Parameter, new DrillInNavigationTransitionInfo());
                     break;
                 case NavigationMode.Forward:
-                    ContentFrame.GoForward(); //Navigate?
+                    MasterFrame.GoForward(); //Navigate?
                     break;
                 case NavigationMode.Back:
-                    ContentFrame.GoBack(e.NavigationTransitionInfo);
+                    MasterFrame.GoBack(e.NavigationTransitionInfo);
                     break;
                 case NavigationMode.Refresh:
                 default: break;
@@ -61,9 +64,7 @@ namespace Surrender_20.UWP.View
 
             if (isInternetConnected == false)
             {
-                ConnectionDialog Dialog = new ConnectionDialog();
-
-                await Dialog.ShowAsync();
+                await ConnectionDialog.ShowAsync();
             }
         }
 
@@ -99,6 +100,16 @@ namespace Surrender_20.UWP.View
         {
             ChangeThemeLogo();
         }
+
+        private async void ChangeSite_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            await SiteChooseDialog.ShowAsync();
+        }
+
+        //private async Task ChangeSite_Tapped(object sender, TappedRoutedEventArgs e)
+        //{     
+        //    await SiteChooseDialog.ShowAsync();
+        //}
 
         private void ChangeThemeLogo()
         {

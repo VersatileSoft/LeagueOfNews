@@ -1,4 +1,5 @@
-﻿using Windows.UI.Xaml.Controls;
+﻿using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace Surrender_20.UWP.Views.MessageBoxes
 {
@@ -6,7 +7,12 @@ namespace Surrender_20.UWP.Views.MessageBoxes
     {
         public SiteChooseDialog()
         {
-            this.InitializeComponent();
+            InitializeComponent();
+        }
+
+        private void CancelButton_Click(object sender, RoutedEventArgs e)
+        {
+            Hide();
         }
     }
 }

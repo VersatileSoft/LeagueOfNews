@@ -18,29 +18,7 @@
     </m:MvxWindowsPage.Resources>
 
     <Grid>
-        <VisualStateManager.VisualStateGroups>
-            <VisualStateGroup>
-                <VisualState>
-                    <VisualState.StateTriggers>
-                        <!--VisualState to be triggered when window width is >=720 effective pixels.-->
-                        <AdaptiveTrigger MinWindowWidth="780"/>
-                    </VisualState.StateTriggers>
-
-                    <VisualState.Setters>
-                        <Setter Target="NewsfeedItemGrid.Visibility" Value="Visible"/>
-                        <Setter Target="ListGridColumn.Width" Value="450"/>
-                        <Setter Target="ItemGridColumn.Width" Value="*"/>
-                    </VisualState.Setters>
-                </VisualState>
-            </VisualStateGroup>
-        </VisualStateManager.VisualStateGroups>
-
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition x:Name="ListGridColumn" Width="*"/>
-            <ColumnDefinition x:Name="ItemGridColumn" Width="0"/>
-        </Grid.ColumnDefinitions>
-
-        <Grid Grid.Column="0">
+        <Grid>
             <ProgressRing Style="{StaticResource ProgressRing}"
                           IsActive="{Binding IsLoading}"/>
 
@@ -54,7 +32,7 @@
                         <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
                             <Grid>
                                 <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" 
-                                       Stretch="UniformToFill"
+                                       Stretch="Fill"
                                        Margin="1"
                                        x:Phase="1"/>
 

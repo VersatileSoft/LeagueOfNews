@@ -4,6 +4,7 @@
                   xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                   xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                  xmlns:Surrender_20.Model="using:Surrender_20.Model"
                   mc:Ignorable="d"
                   Background="{ThemeResource SystemControlAcrylicWindowBrush}">
 
@@ -19,7 +20,9 @@
         <ProgressRing Style="{StaticResource ProgressRing}"
                       IsActive="{Binding IsLoading}"/>
 
-        <ScrollViewer Style="{StaticResource ScrollViewer}"
+        <WebView Source="https://www.google.com"/>
+
+            <!--<ScrollViewer Style="{StaticResource ScrollViewer}"
                       x:Name="ForegroundElement">
             <StackPanel>
                 <Grid MaxHeight="250" 
@@ -29,7 +32,7 @@
                     <ParallaxView Source="{x:Bind ForegroundElement}" 
                                   VerticalShift="60">
 
-                        <!--Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"-->
+                        --><!--Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"--><!--
                         <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"
                                Stretch="UniformToFill"
                                HorizontalAlignment="Center"/>
@@ -47,10 +50,10 @@
                     </StackPanel>
                 </Grid>
 
-                <!--Text="{Binding TextContent}"-->
+                --><!--Text="{Binding TextContent}"--><!--
                 <TextBlock Text="{Binding ShortDescription}"
                            Style="{StaticResource ContentText}"/>
             </StackPanel>
-        </ScrollViewer>
+        </ScrollViewer>-->
     </Grid>
 </m:MvxWindowsPage>
