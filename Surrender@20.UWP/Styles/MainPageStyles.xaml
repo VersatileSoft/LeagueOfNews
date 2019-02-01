@@ -29,7 +29,7 @@
 
     <Style x:Key="NavigationView" TargetType="NavigationView">
         <Setter Property="PaneDisplayMode" Value="Top"/>
-        <Setter Property="IsSettingsVisible" Value="False"/>
+        <Setter Property="IsSettingsVisible" Value="True"/>
         <Setter Property="IsBackButtonVisible" Value="Collapsed"/>
         <Setter Property="SelectionFollowsFocus" Value="Enabled"/>
     </Style>

@@ -6,7 +6,7 @@
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
                   xmlns:Surrender_20.Model="using:Surrender_20.Model"
-                  mc:Ignorable="d" GotFocus="MvxWindowsPage_GotFocus"
+                  mc:Ignorable="d"
                   Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
 
     <m:MvxWindowsPage.Resources>
@@ -60,18 +60,6 @@
                     </GridView.ItemsPanel>
                 </GridView>
             </ScrollViewer>
-        </Grid>
-
-        <Grid x:Name="NewsfeedItemGrid"
-              Visibility="Collapsed"
-              Grid.Column="1"
-              Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-            <Frame x:Name="NewsfeedItemFrame">
-                <Image x:Name="LogoImage"
-                       Source="ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"
-                       HorizontalAlignment="Center"
-                       VerticalAlignment="Center"/>
-            </Frame>
         </Grid>
     </Grid>
 </m:MvxWindowsPage>
