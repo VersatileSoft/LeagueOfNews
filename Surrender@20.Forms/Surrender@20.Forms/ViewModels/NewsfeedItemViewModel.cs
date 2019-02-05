@@ -9,12 +9,20 @@ namespace Surrender_20.Forms.ViewModels
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
 
-        private string _content;
+        //private string _content;
 
-        public string Content
+        //public string Content
+        //{
+        //    get => _content;
+        //    set => SetProperty(ref _content, value);
+        //}
+
+        private string _url;
+
+        public string URL
         {
-            get => _content;
-            set => SetProperty(ref _content, value);
+            get => _url;
+            set => SetProperty(ref _url, value);
         }
 
         public NewsfeedItemViewModel(IWebClientService cookieWebClientService, INotificationService notificationService) : base(cookieWebClientService, notificationService)
@@ -22,10 +30,11 @@ namespace Surrender_20.Forms.ViewModels
 
         }
 
-        public override void ParseHtml(HtmlNode documentNode, Pages page)
+        //public override void ParseHtml(HtmlNode documentNode, Pages page)
+        public override void ParseHtml(string url, Pages page)
         {
-            base.ParseHtml(documentNode, page);
-            Content = documentNode.InnerHtml;
+            base.ParseHtml(URL, page);
+            URL = url;
         }
     }
 }

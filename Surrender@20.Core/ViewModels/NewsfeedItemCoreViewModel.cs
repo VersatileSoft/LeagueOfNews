@@ -44,14 +44,18 @@ namespace Surrender_20.Core.ViewModels
             Date = newsfeed.Date;
             IsLoading = true;
             HtmlDocument doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed, newsfeed.Page);
-            ParseHtml(doc.DocumentNode, newsfeed.Page);
+          //  ParseHtml(doc.DocumentNode, newsfeed.Page);
+            ParseHtml(newsfeed.UrlToNewsfeed, newsfeed.Page);
             IsLoading = false;
         }
 
-        public virtual void ParseHtml(HtmlNode documentNode, Pages page)
+        // public virtual void ParseHtml(HtmlNode documentNode, Pages page)
+        public virtual void ParseHtml(string URL, Pages page)
         {
             switch (page)
             {
+
+
 
                 case Pages.Official:
                     // TODO delete not needed nodes from document node

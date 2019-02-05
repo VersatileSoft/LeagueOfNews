@@ -25,11 +25,14 @@
 
             <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
                 <StackLayout>
-                    <WebView VerticalOptions="FillAndExpand">
+                    <!--<WebView VerticalOptions="FillAndExpand">
                         <WebView.Source>
                             <HtmlWebViewSource Html="{Binding Content}"/>
                         </WebView.Source>
-                    </WebView>
+                    </WebView>-->
+
+                    <WebView VerticalOptions="FillAndExpand" Source="{Binding URL}"/>
+
                 </StackLayout>
             </ScrollView>
         </Grid>
