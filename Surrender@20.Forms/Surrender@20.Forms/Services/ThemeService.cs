@@ -17,14 +17,14 @@ namespace Surrender_20.Forms.Services
         {
             //TODO setting ligt theme
 
-            // App.Current.Resources["ListColor"] = App.Current.Resources["LightListColor"];
+            App.Current.Resources["Frame"] = App.Current.Resources["LightFrame"];
         }
 
         private void SetDarkTheme()
         {
             //TODO setting ligt theme
 
-            // App.Current.Resources["ListColor"] = App.Current.Resources["DarkListColor"];
+             App.Current.Resources["Frame"] = App.Current.Resources["DarkFrame"];
         }
     }
 }

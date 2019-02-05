@@ -42,7 +42,7 @@
                 <views:MvxListView.ItemTemplate>
                     <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
                         <ViewCell>
-                            <Frame Style="{StaticResource Frame}"
+                            <Frame Style="{DynamicResource Frame}"
                                    Margin="10,5,10,5"
                                    Padding="5">
 
@@ -52,7 +52,7 @@
                                         <ColumnDefinition Width="65*"/>
                                     </Grid.ColumnDefinitions>
 
-                                    <Frame Style="{StaticResource Frame}" Margin="-10,-5,0,-5" Grid.Column="0">
+                                    <Frame Style="{DynamicResource Frame}" Margin="-10,-5,0,-5" Grid.Column="0">
                                         <Image Source="{x:Binding Path=Image, Converter={StaticResource UriToImageSource}}"
                                                Aspect="AspectFill"/>
                                     </Frame>

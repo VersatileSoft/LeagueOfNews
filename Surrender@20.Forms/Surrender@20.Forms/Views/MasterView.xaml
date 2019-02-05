@@ -22,7 +22,7 @@
                     <views:MvxListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame Style="{StaticResource Frame}" 
+                                <Frame Style="{DynamicResource Frame}" 
                                        Margin="10,5,10,5">
                                     <StackLayout Orientation="Horizontal">
                                         <Image Source="{Binding MenuImage}" 

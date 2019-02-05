@@ -2,6 +2,7 @@
 using Android.Content;
 using Android.Net;
 using Android.Widget;
+using Surrender_20.Core.Interface;
 
 namespace Surrender_20.Forms.Droid.Services
 {

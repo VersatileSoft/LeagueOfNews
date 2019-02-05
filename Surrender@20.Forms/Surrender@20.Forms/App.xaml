@@ -14,7 +14,14 @@
                 <Setter Property="IsRunning" Value="{Binding IsLoading}"/>
             </Style>
 
-            <Style x:Key="Frame" TargetType="Frame">
+            <Style x:Key="LightFrame" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="Margin" Value="-5,-5,-5,2"/>
+                <Setter Property="BackgroundColor" Value="#FFFFFF"/>
+            </Style>
+            
+            <Style x:Key="DarkFrame" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="Margin" Value="-5,-5,-5,2"/>

@@ -41,7 +41,7 @@
                 <views:MvxListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame Style="{StaticResource Frame}"
+                            <Frame Style="{DynamicResource Frame}"
                                    Margin="10,5,10,5"
                                    Padding="10">
                                 <Grid>
