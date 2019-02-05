@@ -10,42 +10,14 @@ namespace Surrender_20.UWP.View
 {
     public sealed partial class NewsfeedListView : MvxWindowsPage
     {
-        private BitmapImage LogoLight, LogoDark;
-
         public NewsfeedListView()
         {
             InitializeComponent();
-            LoadImages();
-            ChangeThemeLogo();
         }
 
         private void GridView_Tapped(object sender, TappedRoutedEventArgs e)
         {
             ((NewsfeedListViewModel)ViewModel).ItemTapped.Execute(((GridView)sender).SelectedItem);
-        }
-
-        private void LoadImages()
-        {
-            LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Images/NewsfeedAssets/BackgroundLight.png"));
-            LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Images/NewsfeedAssets/BackgroundDark.png"));
-        }
-
-        private void MvxWindowsPage_GotFocus(object sender, RoutedEventArgs e)
-        {
-            ChangeThemeLogo();
-        }
-
-        private void ChangeThemeLogo()
-        {
-            if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
-            {
-                LogoImage.Source = LogoLight;
-            }
-
-            else
-            {
-                LogoImage.Source = LogoDark;
-            }
         }
     }
 }
