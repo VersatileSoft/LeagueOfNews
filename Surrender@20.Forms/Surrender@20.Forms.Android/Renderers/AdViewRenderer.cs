@@ -37,6 +37,7 @@ namespace Surrender_20.Forms.Droid.Renderers
 
             adView.LoadAd(new AdRequest
                             .Builder()
+                            .AddTestDevice("CAFB33A5D42F4D16D9004932F5314862") // TODO Kacpur dodaj tu swój tel do testów
                             .Build());
             return adView;
         }

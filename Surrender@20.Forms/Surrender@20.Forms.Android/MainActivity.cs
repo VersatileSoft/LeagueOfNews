@@ -35,7 +35,6 @@ namespace Surrender_20.Forms.Droid
             notificationService.CreateNotificationChannel();
             notificationService.RefreshNotificationJobService();
             Mvx.IoCProvider.Resolve<IThemeService>().SetAppTheme(Mvx.IoCProvider.Resolve<ISaveDataService>().GetIsDarkTheme() ? AppTheme.Dark : AppTheme.Ligt);
-
         }
 
         protected override void OnNewIntent(Intent intent)
