@@ -10,10 +10,11 @@ namespace Surrender_20.UWP.ViewModels
 
         public NewsfeedItemViewModel(IWebClientService cookieWebClientService, INotificationService notificationService) : base(cookieWebClientService, notificationService) { }
 
-        public override void ParseHtml(HtmlNode documentNode, Pages page)
-        {
-            base.ParseHtml(documentNode, page);
-            Content = documentNode.InnerHtml;
-        }
+        // Psuje kompilowanie
+        //public override void ParseHtml(HtmlNode documentNode, Pages page)
+        //{
+        //    base.ParseHtml(documentNode, page);
+        //    Content = documentNode.InnerHtml;
+        //}
     }
 }

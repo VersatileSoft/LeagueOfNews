@@ -19,12 +19,13 @@
                 </StackLayout>
             </Frame>
 
-            <Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
+            <!--TODO: light/dark theme-->
+            <!--<Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <Label Text="Dark theme" TextColor="White" FontSize="Large"/>
                     <Switch IsToggled="{Binding DarkTheme, Mode=TwoWay}" IsEnabled="True"/>
                 </StackLayout>
-            </Frame>
+            </Frame>-->
 
             <Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
                 <StackLayout>

@@ -7,7 +7,6 @@
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels;assembly=Surrender_20.Forms"
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       x:Class="Surrender_20.Forms.Views.NewsfeedItemView"
-                      BackgroundColor="#001119"
                       Title="{Binding Path=Title}">
 
     <views:MvxContentPage.Resources>
@@ -23,18 +22,7 @@
                 <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
             </Grid>
 
-            <ScrollView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}">
-                <StackLayout>
-                    <!--<WebView VerticalOptions="FillAndExpand">
-                        <WebView.Source>
-                            <HtmlWebViewSource Html="{Binding Content}"/>
-                        </WebView.Source>
-                    </WebView>-->
-
-                    <WebView VerticalOptions="FillAndExpand" Source="{Binding URL}"/>
-
-                </StackLayout>
-            </ScrollView>
+            <WebView IsVisible="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}" VerticalOptions="FillAndExpand" Source="{Binding URL}"/>
         </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

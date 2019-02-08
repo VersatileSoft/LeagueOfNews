@@ -1,4 +1,5 @@
 ﻿using Surrender_20.Core.Interface;
+using Xamarin.Forms;
 
 namespace Surrender_20.Forms.Services
 {
@@ -17,14 +18,14 @@ namespace Surrender_20.Forms.Services
         {
             //TODO setting ligt theme
 
-            App.Current.Resources["Frame"] = App.Current.Resources["LightFrame"];
+            Application.Current.Resources["Frame"] = Application.Current.Resources["LightFrame"];
         }
 
         private void SetDarkTheme()
         {
             //TODO setting ligt theme
 
-             App.Current.Resources["Frame"] = App.Current.Resources["DarkFrame"];
+            Application.Current.Resources["Frame"] = Application.Current.Resources["DarkFrame"];
         }
     }
 }

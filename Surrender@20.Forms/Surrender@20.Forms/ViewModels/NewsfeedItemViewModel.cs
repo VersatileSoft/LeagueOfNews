@@ -1,5 +1,4 @@
-﻿using HtmlAgilityPack;
-using PropertyChanged;
+﻿using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 

@@ -26,5 +26,4 @@ namespace Surrender_20.Forms.Views.Utils
             set => SetValue(MaxLinesProperty, value);
         }
     }
-
 }

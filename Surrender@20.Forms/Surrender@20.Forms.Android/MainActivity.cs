@@ -12,7 +12,7 @@ using Surrender_20.Core.Interface;
 
 namespace Surrender_20.Forms.Droid
 {
-    [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MainTheme", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MyTheme.Splash", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : MvxFormsAppCompatActivity<Setup, CoreApp, App>
     {
         public static readonly string CHANNEL_ID = "news_notification";
@@ -22,6 +22,7 @@ namespace Surrender_20.Forms.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(bundle);
 
             NavigateToRequestIfPresent(Intent);

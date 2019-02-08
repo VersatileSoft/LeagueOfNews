@@ -10,10 +10,7 @@ namespace Surrender_20.Core.ViewModels
     {
         public bool IsNotificationsEnabled
         {
-            get
-            {
-                return _saveDataService.GetIsNotificationsEnabled();
-            }
+            get => _saveDataService.GetIsNotificationsEnabled();
             set
             {
                 _saveDataService.SaveIsNotificationsEnabled(value);
@@ -23,26 +20,24 @@ namespace Surrender_20.Core.ViewModels
 
         public bool DarkTheme
         {
-            get
-            {
-                return _saveDataService.GetIsDarkTheme();
-            }
+            get => _saveDataService.GetIsDarkTheme();
             set
             {
                 _saveDataService.SaveIsDarkTheme(value);
                 if (value)
+                {
                     _themeService.SetAppTheme(AppTheme.Dark);
+                }
                 else
+                {
                     _themeService.SetAppTheme(AppTheme.Ligt);
+                }
             }
         }
 
         public string Delay
         {
-            get
-            {
-                return _saveDataService.GetCheckNewPostsFrequency() + " Hours";
-            }
+            get => _saveDataService.GetCheckNewPostsFrequency() + " Hours";
             set
             {
                 _saveDataService.SaveCheckNewPostsFrequency(int.Parse(Regex.Match(value, @"\d+").Value));
@@ -52,9 +47,9 @@ namespace Surrender_20.Core.ViewModels
 
         public MvxObservableCollection<string> DelayList { get; set; }
 
-        private ISaveDataService _saveDataService;
-        private INotificationService _notificationService;
-        private IThemeService _themeService;
+        private readonly ISaveDataService _saveDataService;
+        private readonly INotificationService _notificationService;
+        private readonly IThemeService _themeService;
 
         public SettingsCoreViewModel(ISaveDataService saveDataService, INotificationService notificationService, IThemeService themeService)
         {
