@@ -9,7 +9,7 @@
                       xmlns:conv="clr-namespace:Surrender_20.Forms.Converters"
                       xmlns:Surrender_20.Model="clr-namespace:Surrender_20.Model;assembly=Surrender@20.Core"
                       x:Class="Surrender_20.Forms.Views.NewsfeedListView"
-                      BackgroundColor="#001119"
+                      Style="{DynamicResource Page}"
                       Title="{Binding Title}">
     <views:MvxContentPage.Resources>
         <ResourceDictionary>
@@ -64,7 +64,7 @@
                                         <Label Style="{StaticResource DateLabel}"
                                                Text="{x:Binding Date}"/>
 
-                                        <Label Style="{StaticResource DescriptionLabel}"
+                                        <Label Style="{DynamicResource DescriptionLabel}"
                                                Text="{x:Binding ShortDescription}"/>
                                     </StackLayout>
                                 </Grid>

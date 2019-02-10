@@ -1,10 +1,7 @@
 ﻿using MvvmCross.Platforms.Uap.Views;
 using Surrender_20.UWP.ViewModels;
-using System;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
-using Windows.UI.Xaml.Media.Imaging;
 
 namespace Surrender_20.UWP.View
 {

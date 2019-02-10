@@ -106,11 +106,6 @@ namespace Surrender_20.UWP.View
             await SiteChooseDialog.ShowAsync();
         }
 
-        //private async Task ChangeSite_Tapped(object sender, TappedRoutedEventArgs e)
-        //{     
-        //    await SiteChooseDialog.ShowAsync();
-        //}
-
         private void ChangeThemeLogo()
         {
             if (Application.Current.RequestedTheme == ApplicationTheme.Dark)

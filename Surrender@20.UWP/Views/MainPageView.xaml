@@ -72,7 +72,7 @@
             </NavigationView.MenuItems>
 
             <NavigationView.PaneFooter>
-                <NavigationViewItem Icon="Switch" Tapped="ChangeSite_Tapped"/>
+                <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Click to change site" Tapped="ChangeSite_Tapped"/>
             </NavigationView.PaneFooter>
 
             <!--<SplitView IsPaneOpen="True"
@@ -92,44 +92,22 @@
             </SplitView>-->
 
             <Grid x:Name="LayoutRoot">
-                <!--<Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="MasterColumn" Width="*"/>
-                    <ColumnDefinition x:Name="DetailColumn" Width="0"/>
-                </Grid.ColumnDefinitions>
-
-                <VisualStateManager.VisualStateGroups>
-                    <VisualStateGroup>
-                        <VisualState>
-                            <VisualState.StateTriggers>
-                                --><!--VisualState to be triggered when window width is >=720 effective pixels.--><!--
-                                <AdaptiveTrigger MinWindowWidth="720"/>
-                            </VisualState.StateTriggers>
-
-                            <VisualState.Setters>
-                                <Setter Target="DetailGrid.Visibility" Value="Visible"/>
-                                <Setter Target="MasterColumn.Width" Value="450"/>
-                                <Setter Target="DetailColumn.Width" Value="*"/>
-                            </VisualState.Setters>
-                        </VisualState>
-                    </VisualStateGroup>
-                </VisualStateManager.VisualStateGroups>-->
-
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="AdaptiveStates">
                         <VisualState x:Name="DefaultState">
                             <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="1000" />
+                                <AdaptiveTrigger MinWindowWidth="1000"/>
                             </VisualState.StateTriggers>
                         </VisualState>
 
                         <VisualState x:Name="NarrowState">
                             <VisualState.StateTriggers>
-                                <AdaptiveTrigger MinWindowWidth="770" />
+                                <AdaptiveTrigger MinWindowWidth="770"/>
                             </VisualState.StateTriggers>
 
                             <VisualState.Setters>
-                                <Setter Target="MasterColumn.Width" Value="*" />
-                                <Setter Target="DetailColumn.Width" Value="0" />
+                                <Setter Target="MasterColumn.Width" Value="*"/>
+                                <Setter Target="DetailColumn.Width" Value="0"/>
                                 <Setter Target="DetailGrid.Visibility" Value="Collapsed"/>
                             </VisualState.Setters>
                         </VisualState>
@@ -137,8 +115,8 @@
                 </VisualStateManager.VisualStateGroups>
 
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition x:Name="MasterColumn" Width="450" />
-                    <ColumnDefinition x:Name="DetailColumn" Width="*" />
+                    <ColumnDefinition x:Name="MasterColumn" Width="450"/>
+                    <ColumnDefinition x:Name="DetailColumn" Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid x:Name="MasterGrid"

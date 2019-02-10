@@ -9,6 +9,7 @@ using MvvmCross.ViewModels;
 using MvvmCross.Views;
 using Surrender_20.Core;
 using Surrender_20.Core.Interface;
+using Plugin.CrossPlatformTintedImage.Android;
 
 namespace Surrender_20.Forms.Droid
 {
@@ -24,6 +25,8 @@ namespace Surrender_20.Forms.Droid
 
             base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(bundle);
+
+            TintedImageRenderer.Init();
 
             NavigateToRequestIfPresent(Intent);
         }

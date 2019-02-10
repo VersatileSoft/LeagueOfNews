@@ -1,5 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<m:MvxFormsApplication xmlns:m="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms" 
+<m:MvxFormsApplication xmlns:m="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+                       xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
                        xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                        x:Class="Surrender_20.Forms.App">
@@ -18,7 +20,7 @@
                 <Setter Property="CornerRadius" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="Margin" Value="-5,-5,-5,2"/>
-                <Setter Property="BackgroundColor" Value="#FFFFFF"/>
+                <Setter Property="BackgroundColor" Value="White"/>
             </Style>
             
             <Style x:Key="DarkFrame" TargetType="Frame">
@@ -26,6 +28,52 @@
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="Margin" Value="-5,-5,-5,2"/>
                 <Setter Property="BackgroundColor" Value="#002132"/>
+            </Style>
+
+            <Style x:Key="LightPage" TargetType="views:MvxContentPage">
+                <Setter Property="BackgroundColor" Value="#F0F0F0"/>
+            </Style>
+
+            <Style x:Key="DarkPage" TargetType="views:MvxContentPage">
+                <Setter Property="BackgroundColor" Value="#001119"/>
+            </Style>
+
+            <Style x:Key="DarkLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style x:Key="LightLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style x:Key="DarkMenuLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="White"/>
+            </Style>
+
+            <Style x:Key="LightMenuLabel" TargetType="Label">
+                <Setter Property="TextColor" Value="#ce9f3d"/>
+            </Style>
+
+            <Style x:Key="DarkImage" TargetType="controls:TintedImage">
+                <Setter Property="TintColor" Value="White"/>
+            </Style>
+
+            <Style x:Key="LightImage" TargetType="controls:TintedImage">
+                <Setter Property="TintColor" Value="#ce9f3d"/>
+            </Style>
+
+            <Style x:Key="LightDescriptionLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="LineBreakMode" Value="TailTruncation"/>
+                <Setter Property="MaxLines" Value="2"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+
+            <Style x:Key="DarkDescriptionLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium"/>
+                <Setter Property="LineBreakMode" Value="TailTruncation"/>
+                <Setter Property="MaxLines" Value="2"/>
+                <Setter Property="TextColor" Value="White"/>
             </Style>
 
             <Style x:Key="ListView" TargetType="ListView">

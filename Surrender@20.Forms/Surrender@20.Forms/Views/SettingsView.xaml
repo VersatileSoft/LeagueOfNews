@@ -5,31 +5,30 @@
                       xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels;assembly=Surrender_20.Forms"
                       x:Class="Surrender_20.Forms.Views.SettingsView"
-                      BackgroundColor="#001119"
+                      Style="{DynamicResource Page}"
                       Title="Settings">
 
     <views:MvxContentPage.Content>
         <StackLayout Spacing="15" Padding="15">
             <Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Text="Notifications" TextColor="White" FontSize="Large"/>
+                    <Label Text="Notifications" Style="{DynamicResource Label}" FontSize="Large"/>
                     <Switch IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}" IsEnabled="True"/>
-                    <Label Text="Notifications delay" TextColor="White" FontSize="Large"/>
-                    <Picker Title="Select delay" ItemsSource="{Binding DelayList}" SelectedItem="{Binding Delay, Mode=TwoWay}" TextColor="White" FontSize="Large"/>
+                    <Label Text="Notifications delay" Style="{DynamicResource Label}" FontSize="Large"/>
+                    <Picker Title="Select delay" ItemsSource="{Binding DelayList}" SelectedItem="{Binding Delay, Mode=TwoWay}" Style="{DynamicResource Label}" FontSize="Large"/>
                 </StackLayout>
             </Frame>
 
-            <!--TODO: light/dark theme-->
-            <!--<Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
+            <Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Text="Dark theme" TextColor="White" FontSize="Large"/>
+                    <Label Text="Dark theme" Style="{DynamicResource Label}" FontSize="Large"/>
                     <Switch IsToggled="{Binding DarkTheme, Mode=TwoWay}" IsEnabled="True"/>
                 </StackLayout>
-            </Frame>-->
+            </Frame>
 
             <Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Text="League of News v1.0" TextColor="White" FontSize="Large"/>
+                    <Label Text="League of News v1.0" Style="{DynamicResource Label}" FontSize="Large"/>
                     <Label Text="Versatile Software 2019" TextColor="Gray" FontSize="Medium"/>
                     <!--<Label Text="Marek Kida, Michał Woźniak and Kacper Tryniecki" TextColor="White" FontSize="Large"/>-->
                 </StackLayout>
