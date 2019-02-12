@@ -25,12 +25,12 @@
             <StackLayout>
                 <!--ItemClick="MvxListView_ItemClick"-->
                 <util:InfiniteListView Style="{StaticResource InfiniteListView}"
-                                   IsPullToRefreshEnabled="True"
-                                   RefreshCommand="{Binding RefreshItems}"
-                                   IsRefreshing="{Binding IsRefreshing}"
-                                   ItemsSource="{Binding Newsfeeds}"
-                                   LoadMoreCommand="{Binding LoadMore}"
-                                   ItemTapped="MvxListView_ItemTapped">
+                                       IsPullToRefreshEnabled="True"
+                                       RefreshCommand="{Binding RefreshItems}"
+                                       IsRefreshing="{Binding IsRefreshing}"
+                                       ItemsSource="{Binding Newsfeeds}"
+                                       LoadMoreCommand="{Binding LoadMore}"
+                                       ItemTapped="MvxListView_ItemTapped">
 
                     <!--TODO Change event to Behavior-->
 
@@ -44,8 +44,8 @@
                         <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
                             <ViewCell>
                                 <Frame Style="{DynamicResource Frame}"
-                                   Margin="10,5,10,5"
-                                   Padding="5">
+                                       Margin="10,5,10,5"
+                                       Padding="5">
 
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -55,18 +55,19 @@
 
                                         <Frame Style="{DynamicResource Frame}" Margin="-10,-5,0,-5" Grid.Column="0">
                                             <Image Source="{x:Binding Path=Image, Converter={StaticResource UriToImageSource}}"
-                                               Aspect="AspectFill"/>
+                                                   IsOpaque="False"
+                                                   Aspect="AspectFill"/>
                                         </Frame>
 
                                         <StackLayout Grid.Column="1" Padding="5">
                                             <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
-                                                            Text="{x:Binding Title}"/>
+                                                                Text="{x:Binding Title}"/>
 
                                             <Label Style="{StaticResource DateLabel}"
-                                               Text="{x:Binding Date}"/>
+                                                   Text="{x:Binding Date}"/>
 
                                             <Label Style="{DynamicResource DescriptionLabel}"
-                                               Text="{x:Binding ShortDescription}"/>
+                                                   Text="{x:Binding ShortDescription}"/>
                                         </StackLayout>
                                     </Grid>
                                 </Frame>

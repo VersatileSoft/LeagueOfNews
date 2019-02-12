@@ -26,12 +26,12 @@
             <StackLayout>
                 <!--ItemClick="MvxListView_ItemClick"-->
                 <util:InfiniteListView Style="{StaticResource InfiniteListView}"
-                                   IsPullToRefreshEnabled="True"
-                                   RefreshCommand="{Binding RefreshItems}"
-                                   IsRefreshing="{Binding IsRefreshing}"
-                                   ItemsSource="{Binding Newsfeeds}"
-                                   LoadMoreCommand="{Binding LoadMore}"
-                                   ItemTapped="MvxListView_ItemTapped">
+                                       IsPullToRefreshEnabled="True"
+                                       RefreshCommand="{Binding RefreshItems}"
+                                       IsRefreshing="{Binding IsRefreshing}"
+                                       ItemsSource="{Binding Newsfeeds}"
+                                       LoadMoreCommand="{Binding LoadMore}"
+                                       ItemTapped="MvxListView_ItemTapped">
 
                     <!--TODO Change event to Behavior-->
 
@@ -45,8 +45,8 @@
                         <DataTemplate>
                             <ViewCell>
                                 <Frame Style="{DynamicResource Frame}"
-                                   Margin="10,5,10,5"
-                                   Padding="10">
+                                       Margin="10,5,10,5"
+                                       Padding="10">
                                     <Grid>
                                         <!--<Grid.ColumnDefinitions>
                                         <ColumnDefinition Width="35*"/>
@@ -60,15 +60,15 @@
 
                                         <StackLayout>
                                             <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
-                                                            Text="{x:Binding Title}"/>
+                                                                Text="{x:Binding Title}"/>
 
                                             <Label Style="{StaticResource DateLabel}"
-                                               Text="{x:Binding Date}"
-                                               TextColor="{DynamicResource Label}"/>
+                                                   Text="{x:Binding Date}"
+                                                   TextColor="{DynamicResource Label}"/>
 
                                             <Label Style="{DynamicResource DescriptionLabel}"
-                                               Text="{x:Binding ShortDescription}"
-                                               MaxLines="10"/>
+                                                   Text="{x:Binding ShortDescription}"
+                                                   MaxLines="10"/>
                                         </StackLayout>
                                     </Grid>
                                 </Frame>
@@ -79,7 +79,7 @@
                     <ListView.Footer>
                         <Grid HeightRequest="70">
                             <ActivityIndicator Style="{StaticResource ActivityIndicator}"
-                                           IsRunning="{Binding IsLoadingMore}"/>
+                                               IsRunning="{Binding IsLoadingMore}"/>
                         </Grid>
                     </ListView.Footer>
 

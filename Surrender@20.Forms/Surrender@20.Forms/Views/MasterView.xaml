@@ -6,8 +6,7 @@
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
                       xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
                       x:Class="Surrender_20.Forms.Views.MasterView"
-                      Style="{DynamicResource Page}"
-                      Title="{Binding Path=Title}">
+                      Style="{DynamicResource Page}">
 
     <views:MvxContentPage.Content>
         <StackLayout>
@@ -29,7 +28,8 @@
                                         <controls:TintedImage Source="{Binding MenuImage}"
                                                               Style="{DynamicResource Image}"
                                                               HeightRequest="35"
-                                                              Margin="10,10,10,10"/>
+                                                              Margin="10"
+                                                              IsOpaque="True"/>
 
                                         <Label Style="{DynamicResource MenuLabel}"
                                                Text="{Binding Name}"
