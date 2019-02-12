@@ -7,6 +7,7 @@
                   xmlns:i="using:Microsoft.Xaml.Interactivity"
                   xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                   xmlns:conv="using:Surrender_20.UWP.Converters"
+				  xmlns:views="using:Surrender_20.UWP.View"
                   x:Class="Surrender_20.UWP.View.MainPageView"
                   mc:Ignorable="d"                 
                   GotFocus="MvxWindowsPage_GotFocus" SizeChanged="MvxWindowsPage_SizeChanged"
@@ -46,13 +47,13 @@
 
                 <NavigationViewItem Content="PBE">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph=""/>
+                        <FontIcon Glyph="&#60589;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
                 <NavigationViewItem Content="Releases">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph=""/>
+                        <FontIcon Glyph="&#59176;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
@@ -74,23 +75,8 @@
             <NavigationView.PaneFooter>
                 <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Click to change site" Tapped="ChangeSite_Tapped"/>
             </NavigationView.PaneFooter>
-
-            <!--<SplitView IsPaneOpen="True"
-                       DisplayMode="Inline"
-                       OpenPaneLength="450"
-                       Background="Transparent">
-                <SplitView.Pane>
-                    <Frame x:Name="MasterFrame" Grid.Column="0" Canvas.ZIndex="99999"/>
-                </SplitView.Pane>
-
-                <Grid x:Name="DetailGrid"
-                      Visibility="Collapsed"
-                      Grid.Column="1">
-    
-                    <Frame x:Name="DetailFrame"/>
-                </Grid>
-            </SplitView>-->
-
+		
+			<!--
             <Grid x:Name="LayoutRoot">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="AdaptiveStates">
@@ -135,6 +121,20 @@
                 </Grid>
 
             </Grid>
+			-->
         </NavigationView>
+		
+		<SplitView IsPaneOpen="True"
+				   DisplayMode="Inline"
+			       OpenPaneLength="450"
+			       Background="Transparent">
+			<SplitView.Pane>
+				<views:NewsfeedListView Newsfeed="{x:Bind SelectedNewsfeedCategory}"/>
+			</SplitView.Pane>
+
+			<SplitView.Content>
+				<Frame x:Name="DetailFrame"/>
+			</SplitView.Content>
+		</SplitView>
     </Grid>
 </m:MvxWindowsPage>

@@ -1,5 +1,6 @@
 ﻿using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Model;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.UWP.ViewModels
 {
+    [AddINotifyPropertyChangedInterface]
     public class NewsfeedListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<Pages>
     {
         public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService)

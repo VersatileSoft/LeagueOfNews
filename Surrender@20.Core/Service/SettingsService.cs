@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Surrender_20.Core.Service
 {
-    public class NewsfeedNavigationParameter
+    public class NewsfeedNavigationParameter //TODO change name to... NewsfeedCategoryMetadata? It's no longer about navigation
     {
         public string Title { get; set; }
         public string URL { get; set; }
@@ -30,17 +30,7 @@ namespace Surrender_20.Core.Service
 
         public NewsfeedNavigationParameter this[Pages PropertyName]
         {
-            get
-            {
-                if (settings.TryGetValue(PropertyName, out NewsfeedNavigationParameter value))
-                {
-                    return value;
-                }
-                else
-                {
-                    return null;
-                }
-            }
+            get => settings.TryGetValue(PropertyName, out NewsfeedNavigationParameter value) ? value : null;
             set => settings.Add(PropertyName, value);
         }
     }

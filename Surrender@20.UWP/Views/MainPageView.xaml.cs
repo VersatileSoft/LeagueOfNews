@@ -1,4 +1,6 @@
-﻿using MvvmCross.Platforms.Uap.Views;
+﻿using MvvmCross.Base;
+using MvvmCross.Platforms.Uap.Views;
+using MvvmCross.ViewModels;
 using Surrender_20.UWP.Views.MessageBoxes;
 using System;
 using System.Net.NetworkInformation;
@@ -19,10 +21,22 @@ namespace Surrender_20.UWP.View
         private readonly ConnectionDialog ConnectionDialog = new ConnectionDialog();
         private readonly SiteChooseDialog SiteChooseDialog = new SiteChooseDialog();
 
+        private IMvxInteraction<Func<bool>> _checkInternetConnectionInteraction;
+        public IMvxInteraction<Func<bool>> CheckInternetConnectionInteraction {
+            get => _checkInternetConnectionInteraction;
+            set {
+                if (_checkInternetConnectionInteraction != null)
+                    _checkInternetConnectionInteraction.Requested -= OnInternetCheckRequested;
+
+                _checkInternetConnectionInteraction = value;
+                _checkInternetConnectionInteraction.Requested += OnInternetCheckRequested;
+            }
+        }
+
         public MainPageView()
         {
             InitializeComponent();
-            CheckInternetConnection();
+
             LoadImages();
             ChangeThemeLogo();
 
@@ -37,19 +51,19 @@ namespace Surrender_20.UWP.View
         }
 
         protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        {
+        { 
             e.Cancel = true;
 
             switch (e.NavigationMode)
             {
                 case NavigationMode.New:
-                    MasterFrame.Navigate(e.SourcePageType, e.Parameter, new DrillInNavigationTransitionInfo());
+                    //MasterFrame.Navigate(e.SourcePageType, e.Parameter, new DrillInNavigationTransitionInfo());
                     break;
                 case NavigationMode.Forward:
-                    MasterFrame.GoForward(); //Navigate?
+                    //MasterFrame.GoForward(); //Navigate?
                     break;
                 case NavigationMode.Back:
-                    MasterFrame.GoBack(e.NavigationTransitionInfo);
+                    //MasterFrame.GoBack(e.NavigationTransitionInfo);
                     break;
                 case NavigationMode.Refresh:
                 default: break;
@@ -58,14 +72,9 @@ namespace Surrender_20.UWP.View
             base.OnNavigatingFrom(e);
         }
 
-        private async void CheckInternetConnection() //ViewModel?
+        private void OnInternetCheckRequested(object sender, MvxValueEventArgs<Func<bool>> e)
         {
-            bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
-
-            if (isInternetConnected == false)
-            {
-                await ConnectionDialog.ShowAsync();
-            }
+            ConnectionDialog.Execute(e.Value);
         }
 
         private void LoadImages()

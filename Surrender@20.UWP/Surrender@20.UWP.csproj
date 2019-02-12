@@ -114,6 +114,7 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\NewsfeedItemViewModel.cs" />
     <Compile Include="ViewModels\NewsfeedListViewModel.cs" />
+    <Compile Include="Views\Custom\MvxUserControl.cs" />
     <Compile Include="Views\MainPageView.xaml.cs">
       <DependentUpon>MainPageView.xaml</DependentUpon>
     </Compile>

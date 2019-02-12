@@ -18,7 +18,7 @@ namespace Surrender_20.Core.Model
 
         public async Task<HtmlDocument> GetPage(string url, Pages page)
         {
-            if (!_intrernetConnecionService.CheckInternetConnection())           
+            if (!_intrernetConnecionService.IsInternetAvailable())           
                 return null;
             
             switch (page)
@@ -60,7 +60,7 @@ namespace Surrender_20.Core.Model
         public async Task<byte[]> GetImage(string url)
         {
 
-            if (!_intrernetConnecionService.CheckInternetConnection())          
+            if (!_intrernetConnecionService.IsInternetAvailable())          
                 return null;
             
             try

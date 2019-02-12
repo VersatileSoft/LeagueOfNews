@@ -24,11 +24,13 @@ namespace Surrender_20.Core.ViewModels
         public bool IsLoading { get; set; }
         public bool IsRefreshing { get; set; }
         public bool IsLoadingMore { get; set; }
-        public ICommand ItemTapped { get; set; }
-        public ICommand LoadMore { get; set; }
+        public ICommand ItemTapped { get; set; } //ItemSelected? Tapped sounds like WinForms-like UI event, not command
+        public ICommand LoadMore { get; set; } //-Command suffix?
         public ICommand RefreshItems { get; set; }
 
-        public NewsfeedListCoreViewModel(INewsfeedService newsfeedService, ISettingsService settingsService,
+        public NewsfeedListCoreViewModel(
+            INewsfeedService newsfeedService, 
+            ISettingsService settingsService,
             IMvxNavigationService navigationService)
         {
             _newsfeedService = newsfeedService;
@@ -46,7 +48,7 @@ namespace Surrender_20.Core.ViewModels
 
         protected abstract Task NavigateToAsync(Newsfeed newsfeed);
 
-        protected void LoadNewsfeeds()
+        protected void LoadNewsfeeds() //TODO Add Page parameter to make it more universal
         {
             new Thread(async () =>
             {

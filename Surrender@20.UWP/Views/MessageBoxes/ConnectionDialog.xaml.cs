@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MvvmCross.IoC;
+using Surrender_20.Core.Interface;
+using System;
 using System.Net.NetworkInformation;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
@@ -7,9 +9,21 @@ namespace Surrender_20.UWP.Views.MessageBoxes
 {
     public sealed partial class ConnectionDialog : ContentDialog
     {
+        public Func<bool> HasInternetConnection { get; set; }
+
         public ConnectionDialog()
         {
             InitializeComponent();
+        }
+
+        public async void Execute(Func<bool> hasInternetConnection)
+        {
+            HasInternetConnection = hasInternetConnection;
+
+            if (!hasInternetConnection.Invoke())
+            {
+                await this.ShowAsync();
+            }
         }
 
         private void ExitButton_Click(object sender, RoutedEventArgs e)
@@ -21,15 +35,10 @@ namespace Surrender_20.UWP.Views.MessageBoxes
         {
             Hide();
 
-            bool isInternetConnected = NetworkInterface.GetIsNetworkAvailable();
-            if (isInternetConnected == false)
+            if (!HasInternetConnection.Invoke())
             {
                 ConnectionDialog Dialog = new ConnectionDialog();
-                await Dialog.ShowAsync();
-            }
-            else
-            {
-                Hide();
+                Dialog.Execute(HasInternetConnection);
             }
         }
     }

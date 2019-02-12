@@ -18,7 +18,7 @@ namespace Surrender_20.Forms.ViewModels
 
         private string _url;
 
-        public string URL
+        public string URL //Fody takes care of it... Or is it?
         {
             get => _url;
             set => SetProperty(ref _url, value);

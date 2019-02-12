@@ -1,20 +1,33 @@
 ﻿using HtmlAgilityPack;
+using MvvmCross.ViewModels;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
+using Windows.UI.Xaml.Controls;
 
 namespace Surrender_20.UWP.ViewModels
 {
-    public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
+    public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel, IMvxViewModel<WebView>
     {
-        public string Content { get; set; }
+        private WebView _webView;
+        private IWebClientService _webClientService;
 
-        public NewsfeedItemViewModel(IWebClientService cookieWebClientService, INotificationService notificationService) : base(cookieWebClientService, notificationService) { }
+        public NewsfeedItemViewModel(
+            IWebClientService webClientService, 
+            INotificationService notificationService) 
+        : base(webClientService, notificationService) {
 
-        // Psuje kompilowanie
-        //public override void ParseHtml(HtmlNode documentNode, Pages page)
-        //{
-        //    base.ParseHtml(documentNode, page);
-        //    Content = documentNode.InnerHtml;
-        //}
+            this._webClientService = webClientService;
+        }
+
+
+        public override void ParseHtml(string URL, Pages page)
+        {
+            _webView.NavigateToString(_webClientService.GetPage(URL, page).ToString());
+        }
+
+        public void Prepare(WebView parameter)
+        {
+            this._webView = parameter;
+        }
     }
 }

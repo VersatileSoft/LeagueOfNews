@@ -11,9 +11,11 @@ namespace Surrender_20.Core.Service
 {
     public class NewsfeedService : INewsfeedService
     {
-        private IList<Newsfeed> Newsfeeds { get; set; }
-        private readonly Dictionary<Pages, string> _nextPageUrls;
         private string _officialBaseURL;
+
+        private IList<Newsfeed> _newsfeeds { get; set; }
+        private readonly Dictionary<Pages, string> _nextPageUrls;
+
         private readonly IWebClientService _cookieWebClientService;
         private readonly ISettingsService _settingsService;
         private readonly IOperatingSystemService _operatingSystemService;
@@ -45,20 +47,20 @@ namespace Surrender_20.Core.Service
                 case Pages.PBE:
                 case Pages.RedPosts:
                 case Pages.Rotations:
-                case Pages.Releases: Newsfeeds = await LoadSurrender(doc, page); break;
-                case Pages.Official: Newsfeeds = await LoadOfficial(doc, page); break;
+                case Pages.Releases: _newsfeeds = await LoadSurrender(doc, page); break;
+                case Pages.Official: _newsfeeds = await LoadOfficial(doc, page); break;
             }
 
-            return Newsfeeds;
+            return _newsfeeds;
         }
 
         public async Task<IList<Newsfeed>> LoadMoreNewsfeeds(Pages page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             HtmlDocument doc;
-            if (_nextPageUrls.TryGetValue(page, out string _url))
+            if (_nextPageUrls.TryGetValue(page, out string url))
             {
-                doc = await _cookieWebClientService.GetPage(_url, page);
+                doc = await _cookieWebClientService.GetPage(url, page);
             }
             else
             {

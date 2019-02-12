@@ -1,12 +1,13 @@
 ﻿using Surrender_20.Core.Interface;
+using System.Net.NetworkInformation;
 
 namespace Surrender_20.UWP.Services
 {
     public class InternetConnectionService : IInternetConnectionService
     {
-        public bool CheckInternetConnection()
+        public bool IsInternetAvailable()
         {
-            return true;
+            return NetworkInterface.GetIsNetworkAvailable();
         }
     }
 }

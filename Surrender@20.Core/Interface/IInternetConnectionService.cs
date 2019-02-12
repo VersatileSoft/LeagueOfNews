@@ -2,6 +2,6 @@
 {
     public interface IInternetConnectionService
     {
-        bool CheckInternetConnection();
+        bool IsInternetAvailable();
     }
 }
