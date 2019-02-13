@@ -1,4 +1,5 @@
-﻿using MvvmCross.Commands;
+﻿using MvvmCross;
+using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
@@ -12,11 +13,10 @@ using System.Windows.Input;
 
 namespace Surrender_20.UWP.ViewModels
 {
-    public class MainPageViewModel : MainPageCoreViewModel
+    [AddINotifyPropertyChangedInterface]
+    public class MainPageViewModel : MvxViewModel
     {
         private IInternetConnectionService _internetConnectionService;
-        private Pages _selectedNewsfeedCategory;
-        private Newsfeed _selectedNewsfeed;
 
         public ICommand NavigateCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
@@ -24,26 +24,13 @@ namespace Surrender_20.UWP.ViewModels
 
         public MvxInteraction<Func<bool>> CheckInternetConnectionInteraction { get; }
 
-        public Newsfeed SelectedNewsfeed {
-            get => _selectedNewsfeed;
-            set => SetProperty(ref _selectedNewsfeed, value);
-        }
+        public Pages SelectedNewsfeedCategory { get; set; }
 
-        public Pages SelectedNewsfeedCategory 
+        public MainPageViewModel(IInternetConnectionService internetConnectionService)
         {
-            get => _selectedNewsfeedCategory;
-            set => SetProperty(ref _selectedNewsfeedCategory, value);
-        }
+            _internetConnectionService = internetConnectionService;
 
-        public MainPageViewModel(
-            IMvxNavigationService navigationService, 
-            IOperatingSystemService operatingSystemService,
-            IInternetConnectionService internetConnectionService)
-                : base(navigationService, operatingSystemService)
-        {
-            this._internetConnectionService = internetConnectionService;
-            
-            this.CheckInternetConnectionInteraction = new MvxInteraction<Func<bool>>();
+            CheckInternetConnectionInteraction = new MvxInteraction<Func<bool>>();
 
             NavigateCommand = new MvxAsyncCommand<string>((Parameter) =>
             {
@@ -69,7 +56,7 @@ namespace Surrender_20.UWP.ViewModels
 
         protected Task NavigateTo(Pages setting)
         {
-            SelectedNewsfeedCategory = setting;
+            Mvx.IoCProvider.Resolve<NewsfeedListViewModel>().Prepare(setting);
             return Task.CompletedTask;
         }
     }

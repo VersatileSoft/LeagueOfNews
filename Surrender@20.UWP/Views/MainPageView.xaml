@@ -75,8 +75,8 @@
             <NavigationView.PaneFooter>
                 <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Click to change site" Tapped="ChangeSite_Tapped"/>
             </NavigationView.PaneFooter>
-		
-			<!--
+
+            <!--
             <Grid x:Name="LayoutRoot">
                 <VisualStateManager.VisualStateGroups>
                     <VisualStateGroup x:Name="AdaptiveStates">
@@ -122,19 +122,19 @@
 
             </Grid>
 			-->
-			
-			<SplitView IsPaneOpen="True"
+
+            <SplitView IsPaneOpen="True"
 					   DisplayMode="Inline"
 					   OpenPaneLength="450"
 					   Background="Transparent">
-				<SplitView.Pane>
-					<views:NewsfeedListView Page="{Binding SelectedNewsfeedCategory}"/>
-				</SplitView.Pane>
+                <SplitView.Pane>
+                    <views:NewsfeedListView/>
+                </SplitView.Pane>
 
-				<SplitView.Content>
-					<views:NewsfeedItemView/>
-				</SplitView.Content>
-			</SplitView>
+                <SplitView.Content>
+                    <views:NewsfeedItemView/>
+                </SplitView.Content>
+            </SplitView>
         </NavigationView>
     </Grid>
 </m:MvxWindowsPage>
