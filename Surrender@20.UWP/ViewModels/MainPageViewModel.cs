@@ -6,24 +6,34 @@ using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Model;
 using System;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Surrender_20.UWP.ViewModels
 {
-
-    [AddINotifyPropertyChangedInterface]
     public class MainPageViewModel : MainPageCoreViewModel
     {
         private IInternetConnectionService _internetConnectionService;
+        private Pages _selectedNewsfeedCategory;
+        private Newsfeed _selectedNewsfeed;
 
         public ICommand NavigateCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
         public ICommand CheckInternetConnectionCommand { get; set; }
 
-        public Pages SelectedNewsfeedCategory { get; set; }
-
         public MvxInteraction<Func<bool>> CheckInternetConnectionInteraction { get; }
+
+        public Newsfeed SelectedNewsfeed {
+            get => _selectedNewsfeed;
+            set => SetProperty(ref _selectedNewsfeed, value);
+        }
+
+        public Pages SelectedNewsfeedCategory 
+        {
+            get => _selectedNewsfeedCategory;
+            set => SetProperty(ref _selectedNewsfeedCategory, value);
+        }
 
         public MainPageViewModel(
             IMvxNavigationService navigationService, 
@@ -60,7 +70,7 @@ namespace Surrender_20.UWP.ViewModels
         protected Task NavigateTo(Pages setting)
         {
             SelectedNewsfeedCategory = setting;
-            return new Task(null);
+            return Task.CompletedTask;
         }
     }
 }

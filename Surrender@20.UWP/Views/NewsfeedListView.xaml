@@ -1,24 +1,23 @@
-﻿<c:MvxUserControl x:Class="Surrender_20.UWP.View.NewsfeedListView"
-				  x:TypeArguments="viewModels:NewsfeedListViewModel"
-                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-				  xmlns:m="using:MvvmCross.Platforms.Uap.Views"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-				  xmlns:c="using:Surrender_20.UWP.Views.Custom"
-				  xmlns:ViewModels="using:Surrender_20.UWP.ViewModels"
-                  xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-                  xmlns:Surrender_20.Model="using:Surrender_20.Model"
-                  mc:Ignorable="d"
-                  Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
+﻿<c:NewsfeedListViewBase x:Class="Surrender_20.UWP.View.NewsfeedListView"
+					    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+					    xmlns:m="using:MvvmCross.Platforms.Uap.Views"
+					    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+					    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+					    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+					    xmlns:c="using:Surrender_20.UWP.View"
+					    xmlns:ViewModels="using:Surrender_20.UWP.ViewModels"
+					    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+					    xmlns:Surrender_20.Model="using:Surrender_20.Model"
+					    mc:Ignorable="d"
+					    Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
 
-    <c:MvxUserControl.Resources>
+    <c:NewsfeedListViewBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/NewsfeedListStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </c:MvxUserControl.Resources>
+    </c:NewsfeedListViewBase.Resources>
 
 	<Grid>
 		<ProgressRing Style="{StaticResource ProgressRing}"
@@ -63,4 +62,4 @@
 			</GridView>
 		</ScrollViewer>
 	</Grid>
-</c:MvxUserControl>
+</c:NewsfeedListViewBase>

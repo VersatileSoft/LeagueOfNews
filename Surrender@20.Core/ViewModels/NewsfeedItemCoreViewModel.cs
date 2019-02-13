@@ -35,7 +35,10 @@ namespace Surrender_20.Core.ViewModels
 
         public override async void Prepare(Newsfeed newsfeed)
         {
-            await LoadPage(newsfeed);
+            if (newsfeed != null)
+            {
+                await LoadPage(newsfeed);
+            }
         }
 
         private async Task LoadPage(Newsfeed newsfeed)

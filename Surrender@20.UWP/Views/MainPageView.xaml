@@ -38,7 +38,7 @@
 
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
-                    <core:InvokeCommandAction Command="{Binding NavCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
+                    <core:InvokeCommandAction Command="{Binding NavigateCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
                 </core:EventTriggerBehavior>
             </i:Interaction.Behaviors>
 
@@ -67,7 +67,7 @@
 
                 <NavigationViewItem Content="E-Sports">
                     <NavigationViewItem.Icon>
-                        <FontIcon Glyph=""/>
+                        <FontIcon Glyph="&#57602;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
             </NavigationView.MenuItems>
@@ -122,19 +122,19 @@
 
             </Grid>
 			-->
-        </NavigationView>
-		
-		<SplitView IsPaneOpen="True"
-				   DisplayMode="Inline"
-			       OpenPaneLength="450"
-			       Background="Transparent">
-			<SplitView.Pane>
-				<views:NewsfeedListView Newsfeed="{x:Bind SelectedNewsfeedCategory}"/>
-			</SplitView.Pane>
+			
+			<SplitView IsPaneOpen="True"
+					   DisplayMode="Inline"
+					   OpenPaneLength="450"
+					   Background="Transparent">
+				<SplitView.Pane>
+					<views:NewsfeedListView Page="{Binding SelectedNewsfeedCategory}"/>
+				</SplitView.Pane>
 
-			<SplitView.Content>
-				<Frame x:Name="DetailFrame"/>
-			</SplitView.Content>
-		</SplitView>
+				<SplitView.Content>
+					<views:NewsfeedItemView Item="{Binding SelectedNewsfeed}"/>
+				</SplitView.Content>
+			</SplitView>
+        </NavigationView>
     </Grid>
 </m:MvxWindowsPage>

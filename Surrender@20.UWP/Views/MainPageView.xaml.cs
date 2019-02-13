@@ -37,7 +37,7 @@ namespace Surrender_20.UWP.View
         {
             InitializeComponent();
 
-            LoadImages();
+            LoadImages(); //TODO move all of this properties adjustments into a single f called InitializeView()
             ChangeThemeLogo();
 
             CoreApplicationViewTitleBar CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
@@ -48,28 +48,6 @@ namespace Surrender_20.UWP.View
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-        }
-
-        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
-        { 
-            e.Cancel = true;
-
-            switch (e.NavigationMode)
-            {
-                case NavigationMode.New:
-                    //MasterFrame.Navigate(e.SourcePageType, e.Parameter, new DrillInNavigationTransitionInfo());
-                    break;
-                case NavigationMode.Forward:
-                    //MasterFrame.GoForward(); //Navigate?
-                    break;
-                case NavigationMode.Back:
-                    //MasterFrame.GoBack(e.NavigationTransitionInfo);
-                    break;
-                case NavigationMode.Refresh:
-                default: break;
-            }
-
-            base.OnNavigatingFrom(e);
         }
 
         private void OnInternetCheckRequested(object sender, MvxValueEventArgs<Func<bool>> e)

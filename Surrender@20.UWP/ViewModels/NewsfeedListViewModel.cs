@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.UWP.ViewModels
 {
-    [AddINotifyPropertyChangedInterface]
     public class NewsfeedListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<Pages>
     {
         public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService)

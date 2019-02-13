@@ -10,6 +10,45 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\CategoryViews\NewsfeedCategoryListView.xaml.cs">
+      <DependentUpon>NewsfeedCategoryListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\CategoryViews\TabbedRootPage.xaml.cs">
+      <DependentUpon>TabbedRootPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\MasterView.xaml.cs" />
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\NewsfeedItemView.xaml.cs" />
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\NoCategoryViews\NewsfeedListView.xaml.cs">
+      <DependentUpon>NewsfeedListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\RootPageView.xaml.cs" />
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\SettingsView.xaml.cs" />
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\Utils\AdControlView.cs" />
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\Utils\ExtendedLabel.cs" />
+    <Compile Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\Utils\InfiniteListView.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\CategoryViews\NewsfeedCategoryListView.xaml" />
+    <EmbeddedResource Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\CategoryViews\TabbedRootPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\MasterView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\NewsfeedItemView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\NoCategoryViews\NewsfeedListView.xaml" />
+    <EmbeddedResource Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\RootPageView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Include="..\..\..\Surrender%254020\Surrender%254020.Forms\Surrender%254020.Forms\ViewModels\Views\SettingsView.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="MvvmCross" Version="6.2.2" />
     <PackageReference Include="MvvmCross.Forms" Version="6.2.2" />
     <PackageReference Include="Plugin.CrossPlatformTintedImage" Version="1.0.0" />
@@ -20,36 +59,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Surrender@20.Core\Surrender@20.Core.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="Views\NoCategoryViews\NewsfeedListView.xaml.cs">
-      <DependentUpon>NewsfeedListView.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\CategoryViews\TabbedRootPage.xaml.cs">
-      <DependentUpon>TabbedRootPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Views\CategoryViews\NewsfeedCategoryListView.xaml.cs">
-      <DependentUpon>NewsfeedCategoryListView.xaml</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="Views\MasterView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\RootPageView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\CategoryViews\TabbedRootPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\NewsfeedItemView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="Views\SettingsView.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
   </ItemGroup>
 
   <ItemGroup>
