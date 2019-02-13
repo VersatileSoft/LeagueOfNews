@@ -50,21 +50,21 @@
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Content="Releases">
+                <NavigationViewItem Content="Releases" Visibility="{Binding MenuVisibility}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#59176;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Content="Red Posts">
+                <NavigationViewItem Content="Red Posts" Visibility="{Binding MenuVisibility}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEC7A;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Icon="People" Content="Rotations"/>
+                <NavigationViewItem Icon="People" Content="Rotations" Visibility="{Binding MenuVisibility}"/>
 
-                <NavigationViewItem Content="E-Sports">
+                <NavigationViewItem Content="E-Sports" Visibility="{Binding MenuVisibility}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#57602;"/>
                     </NavigationViewItem.Icon>
@@ -79,7 +79,7 @@
                                 <StackPanel>
                                     <TextBlock Text="Which site would you choose to read?" FontSize="14"/>
                                     <RadioButton Content="League of Legends official" GroupName="Sites"/>
-                                    <RadioButton Content="SurrenderAt20" GroupName="Sites" IsChecked="{Binding IsSurrender}" IsEnabledChanged="RadioButton_IsEnabledChanged">
+                                    <RadioButton Content="SurrenderAt20" GroupName="Sites" IsChecked="{Binding IsSurrender, Mode=TwoWay}" Checked="RadioButton_Checked" Unchecked="RadioButton_Checked">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsEnabledChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectedPageChangedCommand}"/>

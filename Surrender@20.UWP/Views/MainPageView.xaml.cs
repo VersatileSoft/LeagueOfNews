@@ -15,7 +15,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Surrender_20.UWP.View
 {
-    public sealed partial class MainPageView : MvxWindowsPage<MainPageViewModel>
+    public sealed partial class MainPageView : MvxWindowsPage
     {
         private BitmapImage LogoLight, LogoDark;
         private readonly ConnectionDialog ConnectionDialog = new ConnectionDialog();
@@ -71,19 +71,19 @@ namespace Surrender_20.UWP.View
 
         private void MvxWindowsPage_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            switch (UIViewSettings.GetForCurrentView().UserInteractionMode)
-            {
-                case UserInteractionMode.Mouse:
-                    VisualStateManager.GoToState(this, "MouseLayout", true);
-                    DragArea.Visibility = Visibility.Visible;
-                    break;
+            //switch (UIViewSettings.GetForCurrentView().UserInteractionMode)
+            //{
+            //    case UserInteractionMode.Mouse:
+            //        VisualStateManager.GoToState(this, "MouseLayout", true);
+            //        DragArea.Visibility = Visibility.Visible;
+            //        break;
 
-                case UserInteractionMode.Touch:
-                default:
-                    VisualStateManager.GoToState(this, "TouchLayout", true);
-                    DragArea.Visibility = Visibility.Collapsed;
-                    break;
-            }
+            //    case UserInteractionMode.Touch:
+            //    default:
+            //        VisualStateManager.GoToState(this, "TouchLayout", true);
+            //        DragArea.Visibility = Visibility.Collapsed;
+            //        break;
+            //}
 
             ApplicationView applicationView = ApplicationView.GetForCurrentView();
 
@@ -128,9 +128,9 @@ namespace Surrender_20.UWP.View
             _ = await Launcher.LaunchUriAsync(new Uri(@"https://www.facebook.com/VersatileSoftware"));
         }
 
-        private void RadioButton_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        private void RadioButton_Checked(object sender, RoutedEventArgs e)
         {
-            
+            (ViewModel as MainPageViewModel).SelectedPageChangedCommand.Execute(null);
         }
 
         private void ChangeThemeLogo()
