@@ -18,7 +18,7 @@
         <ProgressRing Style="{StaticResource ProgressRing}"
                       IsActive="{Binding IsLoading}"/>
 
-        <WebView x:Name="NewsfeedWebView" CacheMode="BitmapCache" Source="{Binding URL}"/>
+        <WebView x:Name="NewsfeedWebView" CacheMode="BitmapCache" Source="{Binding URL}" ContainsFullScreenElementChanged="NewsfeedWebView_ContainsFullScreenElementChanged"/>
 
         <!--<ScrollViewer Style="{StaticResource ScrollViewer}"
                       x:Name="ForegroundElement">

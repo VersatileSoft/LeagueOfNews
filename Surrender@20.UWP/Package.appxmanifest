@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10" xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5" IgnorableNamespaces="uap mp uap5">
-  <Identity Name="4792MohairApp.SurrenderAt20" Publisher="CN=91FC2611-0BE1-4BF6-BF67-9AC292856A90" Version="0.2.1.0" />
+  <Identity Name="4792MohairApp.SurrenderAt20" Publisher="CN=91FC2611-0BE1-4BF6-BF67-9AC292856A90" Version="1.0.0.0" />
   <mp:PhoneIdentity PhoneProductId="0f91ea98-ec5b-4790-bd24-1ff17a0fa9c0" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   <Properties>
     <DisplayName>League of News</DisplayName>

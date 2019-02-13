@@ -1,13 +1,7 @@
-﻿using System;
-using MvvmCross;
+﻿using MvvmCross;
 using MvvmCross.IoC;
-using MvvmCross.Platforms.Uap.Views;
-using MvvmCross.ViewModels;
-using MvvmCross.Views;
-using Surrender_20.Core.Interface;
 using Surrender_20.UWP.ViewModels;
 using Surrender_20.UWP.Views.Custom;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 

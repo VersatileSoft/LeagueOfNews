@@ -73,7 +73,7 @@
 
             <NavigationView.PaneFooter>
                 <StackPanel Orientation="Horizontal">
-                    <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Click to change site" Tapped="Switch_Tapped">
+                    <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Change site - more sites soon" IsEnabled="False" Tapped="Switch_Tapped">
                         <FlyoutBase.AttachedFlyout>
                             <Flyout LightDismissOverlayMode="Auto">
                                 <StackPanel>
@@ -93,12 +93,14 @@
                                     <RadioButton Content="Light" GroupName="Theme"/>
                                     <RadioButton Content="Dark" GroupName="Theme"/>
                                     <RadioButton Content="Use system setting" GroupName="Theme" IsChecked="True"/>
-                                    
-                                    <TextBlock Text="Notyfications - soon" FontSize="14"/>
-                                    <RadioButton Content="Enabled" GroupName="Notyfi" IsEnabled="False"/>
-                                    <RadioButton Content="Disabled" GroupName="Notyfi" IsChecked="True" IsEnabled="False"/>
 
-                                    <HyperlinkButton Content="Try our app on android" Tapped="AndroidApp_Tapped" />
+                                    <TextBlock Text="Notifications - soon" FontSize="14"/>
+                                    <RadioButton Content="Enabled" GroupName="Notifi" IsEnabled="False"/>
+                                    <RadioButton Content="Disabled" GroupName="Notifi" IsChecked="True" IsEnabled="False"/>
+
+                                    <HyperlinkButton Content="Our facebook" Tapped="Facebook_Tapped"/>
+                                    <HyperlinkButton Content="Try our app on android" Tapped="AndroidApp_Tapped"/>
+                                    <TextBlock Text="Versatile Software - League of News v1.0"/>
                                 </StackPanel>
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>

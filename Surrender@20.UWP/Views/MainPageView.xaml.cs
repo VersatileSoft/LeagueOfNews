@@ -83,6 +83,23 @@ namespace Surrender_20.UWP.View
                     DragArea.Visibility = Visibility.Collapsed;
                     break;
             }
+
+            ApplicationView applicationView = ApplicationView.GetForCurrentView();
+
+            if (applicationView.IsFullScreenMode == true)
+            {
+                MasterColumn.Width = new GridLength(0);
+                MasterView.Visibility = Visibility.Collapsed;
+                DragArea.Visibility = Visibility.Collapsed;
+                NavigationBar.IsPaneVisible = false;
+            }
+            else if (applicationView.IsFullScreenMode == false)
+            {
+                MasterColumn.Width = new GridLength(450);
+                MasterView.Visibility = Visibility.Visible;
+                DragArea.Visibility = Visibility.Visible;
+                NavigationBar.IsPaneVisible = true;
+            }
         }
 
         private void MvxWindowsPage_GotFocus(object sender, RoutedEventArgs e)
@@ -103,6 +120,11 @@ namespace Surrender_20.UWP.View
         private async void AndroidApp_Tapped(object sender, TappedRoutedEventArgs e)
         {
             _ = await Launcher.LaunchUriAsync(new Uri(@"https://play.google.com/store/apps/details?id=com.versatilesofware"));
+        }
+
+        private async void Facebook_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            _ = await Launcher.LaunchUriAsync(new Uri(@"https://www.facebook.com/VersatileSoftware"));
         }
 
         private void ChangeThemeLogo()
