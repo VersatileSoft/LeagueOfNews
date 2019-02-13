@@ -8,8 +8,7 @@
 					    xmlns:ViewModels="using:Surrender_20.UWP.ViewModels"
 					    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
 					    xmlns:Surrender_20.Model="using:Surrender_20.Model"
-					    mc:Ignorable="d"
-					    Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
+					    mc:Ignorable="d">
 
     <c:NewsfeedListViewBase.Resources>
         <ResourceDictionary>
@@ -19,47 +18,47 @@
         </ResourceDictionary>
     </c:NewsfeedListViewBase.Resources>
 
-	<Grid>
-		<ProgressRing Style="{StaticResource ProgressRing}"
+    <Grid>
+        <ProgressRing Style="{StaticResource ProgressRing}"
 					  IsActive="{Binding IsLoading}"/>
 
-		<ScrollViewer Style="{StaticResource ScrollViewer}">
+        <ScrollViewer Style="{StaticResource ScrollViewer}">
 
-			<GridView Style="{StaticResource GridView}" 
+            <GridView Style="{StaticResource GridView}" 
 					  ItemsSource="{Binding Newsfeeds}" 
 					  ShowsScrollingPlaceholders="True"
 					  Tapped="GridView_Tapped">
-				<GridView.ItemTemplate>
-					<DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
-						<Grid>
-							<Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" 
+                <GridView.ItemTemplate>
+                    <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
+                        <Grid>
+                            <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" 
 								   Stretch="Fill"
 								   Margin="1"
 								   x:Phase="1"/>
 
-							<StackPanel Style="{StaticResource StackPanel}">
+                            <StackPanel Style="{StaticResource StackPanel}">
 
-								<Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" x:Phase="1"/>
+                                <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" x:Phase="1"/>
 
-								<TextBlock Text="{x:Bind Title}" x:Phase="2"
+                                <TextBlock Text="{x:Bind Title}" x:Phase="2"
 										   Style="{StaticResource TitleText}"/>
 
-								<TextBlock Text="{x:Bind Date}" x:Phase="3"
+                                <TextBlock Text="{x:Bind Date}" x:Phase="3"
 										   Style="{StaticResource DateText}"/>
 
-								<TextBlock Text="{x:Bind ShortDescription}" x:Phase="4"
+                                <TextBlock Text="{x:Bind ShortDescription}" x:Phase="4"
 										   Style="{StaticResource DescriptionText}"/>
-							</StackPanel>
-						</Grid>
-					</DataTemplate>
-				</GridView.ItemTemplate>
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </GridView.ItemTemplate>
 
-				<GridView.ItemsPanel>
-					<ItemsPanelTemplate>
-						<controls:StaggeredPanel/>
-					</ItemsPanelTemplate>
-				</GridView.ItemsPanel>
-			</GridView>
-		</ScrollViewer>
-	</Grid>
+                <GridView.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <controls:StaggeredPanel/>
+                    </ItemsPanelTemplate>
+                </GridView.ItemsPanel>
+            </GridView>
+        </ScrollViewer>
+    </Grid>
 </c:NewsfeedListViewBase>

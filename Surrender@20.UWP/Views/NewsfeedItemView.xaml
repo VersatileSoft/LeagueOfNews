@@ -6,8 +6,7 @@
 					    xmlns:m="using:MvvmCross.Platforms.Uap.Views"
 					    xmlns:c="using:Surrender_20.UWP.View"
 					    xmlns:Surrender_20.Model="using:Surrender_20.Model"
-					    mc:Ignorable="d"
-					    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+					    mc:Ignorable="d">
 
     <c:NewsfeedItemViewBase.Resources>
         <ResourceDictionary>
@@ -21,9 +20,9 @@
         <ProgressRing Style="{StaticResource ProgressRing}"
                       IsActive="{Binding IsLoading}"/>
 
-        <WebView x:Name="NewsfeedWebView" Source="{Binding URL}"/>
+        <WebView x:Name="NewsfeedWebView" CacheMode="BitmapCache" Source="{Binding URL}"/>
 
-            <!--<ScrollViewer Style="{StaticResource ScrollViewer}"
+        <!--<ScrollViewer Style="{StaticResource ScrollViewer}"
                       x:Name="ForegroundElement">
             <StackPanel>
                 <Grid MaxHeight="250" 
@@ -33,7 +32,9 @@
                     <ParallaxView Source="{x:Bind ForegroundElement}" 
                                   VerticalShift="60">
 
-                        --><!--Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"--><!--
+                        -->
+        <!--Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"-->
+        <!--
                         <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"
                                Stretch="UniformToFill"
                                HorizontalAlignment="Center"/>
@@ -51,7 +52,9 @@
                     </StackPanel>
                 </Grid>
 
-                --><!--Text="{Binding TextContent}"--><!--
+                -->
+        <!--Text="{Binding TextContent}"-->
+        <!--
                 <TextBlock Text="{Binding ShortDescription}"
                            Style="{StaticResource ContentText}"/>
             </StackPanel>
