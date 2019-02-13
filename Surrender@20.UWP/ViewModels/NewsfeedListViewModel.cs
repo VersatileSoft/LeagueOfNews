@@ -1,8 +1,6 @@
-﻿using MvvmCross;
-using MvvmCross.IoC;
+﻿using MvvmCross.IoC;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Core.ViewModels;
 using Surrender_20.Model;

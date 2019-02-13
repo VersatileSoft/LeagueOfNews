@@ -1,13 +1,9 @@
 ﻿using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
-using Surrender_20.Core.ViewModels;
-using Surrender_20.Model;
 using System;
-using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
@@ -16,7 +12,7 @@ namespace Surrender_20.UWP.ViewModels
     [AddINotifyPropertyChangedInterface]
     public class MainPageViewModel : MvxViewModel
     {
-        private IInternetConnectionService _internetConnectionService;
+        private readonly IInternetConnectionService _internetConnectionService;
 
         public ICommand NavigateCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
@@ -51,7 +47,7 @@ namespace Surrender_20.UWP.ViewModels
         {
             base.ViewCreated();
 
-            this.CheckInternetConnectionInteraction.Raise(() => _internetConnectionService.IsInternetAvailable());
+            CheckInternetConnectionInteraction.Raise(() => _internetConnectionService.IsInternetAvailable());
         }
 
         protected Task NavigateTo(Pages setting)

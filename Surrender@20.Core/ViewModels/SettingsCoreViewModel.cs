@@ -30,7 +30,7 @@ namespace Surrender_20.Core.ViewModels
                 }
                 else
                 {
-                    _themeService.SetAppTheme(AppTheme.Ligt);
+                    _themeService.SetAppTheme(AppTheme.Light);
                 }
             }
         }

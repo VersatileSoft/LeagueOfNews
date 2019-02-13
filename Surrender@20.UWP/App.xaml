@@ -36,7 +36,6 @@
         <!--Others-->
         <Style x:Key="ProgressRing" TargetType="ProgressRing">
             <Setter Property="Canvas.ZIndex" Value="5"/>
-            <Setter Property="Foreground" Value="{ThemeResource SystemBaseHighColor}"/>
             <Setter Property="Width" Value="100"/>
             <Setter Property="Height" Value="100"/>
             <Setter Property="VerticalAlignment" Value="Center"/>

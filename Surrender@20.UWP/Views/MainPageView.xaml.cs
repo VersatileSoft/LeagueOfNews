@@ -26,7 +26,9 @@ namespace Surrender_20.UWP.View
             set
             {
                 if (_checkInternetConnectionInteraction != null)
+                {
                     _checkInternetConnectionInteraction.Requested -= OnInternetCheckRequested;
+                }
 
                 _checkInternetConnectionInteraction = value;
                 _checkInternetConnectionInteraction.Requested += OnInternetCheckRequested;

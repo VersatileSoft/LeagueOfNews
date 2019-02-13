@@ -29,7 +29,7 @@ namespace Surrender_20.Core.ViewModels
         public ICommand RefreshItems { get; set; }
 
         public NewsfeedListCoreViewModel(
-            INewsfeedService newsfeedService, 
+            INewsfeedService newsfeedService,
             ISettingsService settingsService,
             IMvxNavigationService navigationService)
         {

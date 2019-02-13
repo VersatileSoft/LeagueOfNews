@@ -9,7 +9,7 @@ namespace Surrender_20.Core.Model
     public class WebClientService : IWebClientService
     {
 
-        private IInternetConnectionService _intrernetConnecionService;
+        private readonly IInternetConnectionService _intrernetConnecionService;
 
         public WebClientService(IInternetConnectionService intrernetConnecionService)
         {
@@ -18,9 +18,11 @@ namespace Surrender_20.Core.Model
 
         public async Task<HtmlDocument> GetPage(string url, Pages page)
         {
-            if (!_intrernetConnecionService.IsInternetAvailable())           
+            if (!_intrernetConnecionService.IsInternetAvailable())
+            {
                 return null;
-            
+            }
+
             switch (page)
             {
                 case Pages.SurrenderHome:
@@ -60,9 +62,11 @@ namespace Surrender_20.Core.Model
         public async Task<byte[]> GetImage(string url)
         {
 
-            if (!_intrernetConnecionService.IsInternetAvailable())          
+            if (!_intrernetConnecionService.IsInternetAvailable())
+            {
                 return null;
-            
+            }
+
             try
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);

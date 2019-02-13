@@ -1,7 +1,4 @@
-﻿using MvvmCross.IoC;
-using Surrender_20.Core.Interface;
-using System;
-using System.Net.NetworkInformation;
+﻿using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -22,7 +19,7 @@ namespace Surrender_20.UWP.Views.MessageBoxes
 
             if (!hasInternetConnection.Invoke())
             {
-                await this.ShowAsync();
+                await ShowAsync();
             }
         }
 
@@ -31,7 +28,7 @@ namespace Surrender_20.UWP.Views.MessageBoxes
             Application.Current.Exit();
         }
 
-        private async void CheckButton_Click(object sender, RoutedEventArgs e)
+        private void CheckButton_Click(object sender, RoutedEventArgs e)
         {
             Hide();
 

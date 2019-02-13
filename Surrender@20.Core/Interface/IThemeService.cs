@@ -7,7 +7,7 @@
 
     public enum AppTheme
     {
-        Ligt,
+        Light,
         Dark
     }
 }
