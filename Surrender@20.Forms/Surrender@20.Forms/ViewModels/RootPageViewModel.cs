@@ -15,7 +15,7 @@ namespace Surrender_20.Forms.ViewModels
 
         public event EventHandler HideMaster;
 
-        public RootPageViewModel(IMvxNavigationService navigationService, IOperatingSystemService operatingSystemService, IMasterDetailService masterDetailService)
+        public RootPageViewModel(IMvxNavigationService navigationService, IMasterDetailService masterDetailService)
         //: base(navigationService, operatingSystemService)
         {
             _navigationService = navigationService;
