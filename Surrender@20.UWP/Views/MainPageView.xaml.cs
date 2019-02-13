@@ -1,6 +1,7 @@
 ﻿using MvvmCross.Base;
 using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.ViewModels;
+using Surrender_20.UWP.ViewModels;
 using Surrender_20.UWP.Views.MessageBoxes;
 using System;
 using Windows.ApplicationModel.Core;
@@ -14,7 +15,7 @@ using Windows.UI.Xaml.Media.Imaging;
 
 namespace Surrender_20.UWP.View
 {
-    public sealed partial class MainPageView : MvxWindowsPage
+    public sealed partial class MainPageView : MvxWindowsPage<MainPageViewModel>
     {
         private BitmapImage LogoLight, LogoDark;
         private readonly ConnectionDialog ConnectionDialog = new ConnectionDialog();
@@ -125,6 +126,11 @@ namespace Surrender_20.UWP.View
         private async void Facebook_Tapped(object sender, TappedRoutedEventArgs e)
         {
             _ = await Launcher.LaunchUriAsync(new Uri(@"https://www.facebook.com/VersatileSoftware"));
+        }
+
+        private void RadioButton_IsEnabledChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+            
         }
 
         private void ChangeThemeLogo()

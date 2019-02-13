@@ -44,7 +44,7 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="Home"/>
 
-                <NavigationViewItem Content="PBE">
+                <NavigationViewItem Content="PBE" Visibility="{Binding MenuVisibility}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#60589;"/>
                     </NavigationViewItem.Icon>
@@ -73,13 +73,19 @@
 
             <NavigationView.PaneFooter>
                 <StackPanel Orientation="Horizontal">
-                    <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Change site - more sites soon" IsEnabled="False" Tapped="Switch_Tapped">
+                    <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Change site - more sites soon" IsEnabled="true" Tapped="Switch_Tapped">
                         <FlyoutBase.AttachedFlyout>
                             <Flyout LightDismissOverlayMode="Auto">
                                 <StackPanel>
                                     <TextBlock Text="Which site would you choose to read?" FontSize="14"/>
                                     <RadioButton Content="League of Legends official" GroupName="Sites"/>
-                                    <RadioButton Content="SurrenderAt20" GroupName="Sites" IsChecked="True"/>
+                                    <RadioButton Content="SurrenderAt20" GroupName="Sites" IsChecked="{Binding IsSurrender}" IsEnabledChanged="RadioButton_IsEnabledChanged">
+                                        <i:Interaction.Behaviors>
+                                            <core:EventTriggerBehavior EventName="IsEnabledChanged">
+                                                <core:InvokeCommandAction Command="{Binding SelectedPageChangedCommand}"/>
+                                            </core:EventTriggerBehavior>
+                                        </i:Interaction.Behaviors>
+                                    </RadioButton>
                                 </StackPanel>
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>

@@ -6,6 +6,7 @@ using Surrender_20.Core.Interface;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml;
 
 namespace Surrender_20.UWP.ViewModels
 {
@@ -17,7 +18,11 @@ namespace Surrender_20.UWP.ViewModels
         public ICommand NavigateCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
         public ICommand CheckInternetConnectionCommand { get; set; }
+        public ICommand SelectedPageChangedCommand { get; set; }
 
+        public bool IsSurrender { get; set; }
+        public Visibility MenuVisible { get; set; }
+        
         public MvxInteraction<Func<bool>> CheckInternetConnectionInteraction { get; }
 
         public Pages SelectedNewsfeedCategory { get; set; }
@@ -32,7 +37,7 @@ namespace Surrender_20.UWP.ViewModels
             {
                 switch (Parameter)
                 {
-                    case "Home": return NavigateTo(Pages.SurrenderHome);
+                    case "Home": return NavigateTo(IsSurrender ? Pages.SurrenderHome : Pages.Official);
                     case "PBE": return NavigateTo(Pages.PBE);
                     case "Red Posts": return NavigateTo(Pages.RedPosts);
                     case "Rotations": return NavigateTo(Pages.Rotations);
@@ -41,6 +46,18 @@ namespace Surrender_20.UWP.ViewModels
                     default: return null;
                 }
             });
+
+            SelectedPageChangedCommand = new MvxCommand(SelectedPageChanged);
+        }
+
+        private void SelectedPageChanged()
+        {
+            if (IsSurrender)
+            {
+                MenuVisible = Visibility.Visible;
+            }
+            else
+                MenuVisible = Visibility.Collapsed;
         }
 
         public override void ViewCreated()
