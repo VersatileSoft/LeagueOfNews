@@ -1,4 +1,6 @@
-﻿using MvvmCross.Navigation;
+﻿using MvvmCross;
+using MvvmCross.IoC;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
@@ -24,7 +26,9 @@ namespace Surrender_20.UWP.ViewModels
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)
         {
-            await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);
+            NewsfeedItemViewModel vm = MvxIoCProvider.Instance.Resolve<NewsfeedItemViewModel>();
+
+            vm.Prepare(newsfeed);
         }
     }
 }

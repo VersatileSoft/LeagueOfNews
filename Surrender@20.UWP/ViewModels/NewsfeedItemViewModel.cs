@@ -8,39 +8,41 @@ using Windows.UI.Xaml.Controls;
 
 namespace Surrender_20.UWP.ViewModels
 {
-    public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel, IMvxViewModel<WebView>
+    public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
-        private WebView _webView;
-        private IWebClientService _webClientService;
 
         public Newsfeed Newsfeed { get; set; }
+
+        private string _url;
+
+        public string URL //Fody takes care of it... Or is it?
+        {
+            get => _url;
+            set => SetProperty(ref _url, value);
+        }
 
         public NewsfeedItemViewModel(
             IWebClientService webClientService, 
             INotificationService notificationService) 
                 : base(webClientService, notificationService)
         {
-            this._webClientService = webClientService;
+
         }
 
-        public override void ViewAppearing()
-        {
-            base.ViewAppearing();
+        //public override void ViewAppearing()
+        //{
+        //    base.ViewAppearing();
 
-            if (Newsfeed != null)
-            {
-                ParseHtml(Newsfeed.UrlToNewsfeed, Newsfeed.Page);
-            }
-        }
+        //    if (Newsfeed != null)
+        //    {
+        //        ParseHtml(Newsfeed.UrlToNewsfeed, Newsfeed.Page);
+        //    }
+        //}
 
-        public override void ParseHtml(string URL, Pages page)
+        public override void ParseHtml(string _url, Pages page)
         {
-            _webView.NavigateToString(_webClientService.GetPage(URL, page).ToString()); //FIXME webView is null where it shouldn't be :c
-        }
-
-        public void Prepare(WebView parameter)
-        {
-            this._webView = parameter;
+            base.ParseHtml(URL, page);
+            URL = _url;
         }
     }
 }

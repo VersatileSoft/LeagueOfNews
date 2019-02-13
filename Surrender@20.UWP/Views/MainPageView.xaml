@@ -132,7 +132,7 @@
 				</SplitView.Pane>
 
 				<SplitView.Content>
-					<views:NewsfeedItemView Item="{Binding SelectedNewsfeed}"/>
+					<views:NewsfeedItemView/>
 				</SplitView.Content>
 			</SplitView>
         </NavigationView>

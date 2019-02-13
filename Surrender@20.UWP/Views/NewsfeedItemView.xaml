@@ -5,7 +5,6 @@
 					    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 					    xmlns:m="using:MvvmCross.Platforms.Uap.Views"
 					    xmlns:c="using:Surrender_20.UWP.View"
-					    xmlns:viewModels="using:Surrender_20.ViewModels"
 					    xmlns:Surrender_20.Model="using:Surrender_20.Model"
 					    mc:Ignorable="d"
 					    Background="{ThemeResource SystemControlAcrylicWindowBrush}">
@@ -22,7 +21,7 @@
         <ProgressRing Style="{StaticResource ProgressRing}"
                       IsActive="{Binding IsLoading}"/>
 
-        <WebView x:Name="NewsfeedWebView"/>
+        <WebView x:Name="NewsfeedWebView" Source="{Binding URL}"/>
 
             <!--<ScrollViewer Style="{StaticResource ScrollViewer}"
                       x:Name="ForegroundElement">
