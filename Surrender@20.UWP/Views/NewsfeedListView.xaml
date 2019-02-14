@@ -34,7 +34,8 @@
 
                             <StackPanel Style="{StaticResource StackPanel}">
 
-                                <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" x:Phase="1"/>
+                                <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" 
+                                       x:Phase="1"/>
 
                                 <TextBlock Text="{x:Bind Title}" x:Phase="2"
 										   Style="{StaticResource TitleText}"/>

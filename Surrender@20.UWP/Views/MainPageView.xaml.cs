@@ -60,8 +60,8 @@ namespace Surrender_20.UWP.View
 
         private void LoadImages()
         {
-            LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.scale-100.png"));
-            LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.scale-100Dark.png"));
+            LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-48.png"));
+            LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-48Dark.png"));
         }
 
         private void NavigationBar_Loaded(object sender, RoutedEventArgs e)

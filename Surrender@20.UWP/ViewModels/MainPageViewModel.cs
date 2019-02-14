@@ -21,8 +21,8 @@ namespace Surrender_20.UWP.ViewModels
         public ICommand SelectedPageChangedCommand { get; set; }
 
         public bool IsSurrender { get; set; }
-        public Visibility MenuVisibility { get; set; }
-        
+        public bool MenuVisibility { get; set; }
+
         public MvxInteraction<Func<bool>> CheckInternetConnectionInteraction { get; }
 
         public Pages SelectedNewsfeedCategory { get; set; }
@@ -54,13 +54,13 @@ namespace Surrender_20.UWP.ViewModels
         {
             if (IsSurrender)
             {
-                MenuVisibility = Visibility.Visible;
+                MenuVisibility = true;
                 NavigateTo(Pages.SurrenderHome);
             }
             else
             {
                 NavigateTo(Pages.Official);
-                MenuVisibility = Visibility.Collapsed;
+                MenuVisibility = false;
             }
         }
 
