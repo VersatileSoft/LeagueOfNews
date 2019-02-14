@@ -1,6 +1,7 @@
 ﻿using MvvmCross.IoC;
 using Surrender_20.UWP.ViewModels;
 using Surrender_20.UWP.Views.Custom;
+using System;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
 
@@ -33,6 +34,12 @@ namespace Surrender_20.UWP.View
             {
                 applicationView.ExitFullScreenMode();
             }
+        }
+
+        private async void NewsfeedWebView_NavigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
+        {
+            await WebView.ClearTemporaryWebDataAsync();
+            GC.Collect();
         }
     }
 }

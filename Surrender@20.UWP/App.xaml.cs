@@ -16,6 +16,9 @@ namespace Surrender_20.UWP
     {
         public App()
         {
+            //MainPageViewModel.LoadSettings();                                     https://docs.microsoft.com/pl-pl/windows/uwp/design/app-settings/store-and-retrieve-app-data
+            //RequestedTheme = MainPageViewModel.SelectedTheme; ///////NIECH KTOŚ   https://stackoverflow.com/questions/34554871/changing-theme-in-windows-10-uwp-app-programmatically/34688690
+
             InitializeComponent();
         }
     }

@@ -96,9 +96,27 @@
                             <Flyout LightDismissOverlayMode="Auto">
                                 <StackPanel>
                                     <TextBlock Text="Theme" FontSize="14"/>
-                                    <RadioButton Content="Light" GroupName="Theme"/>
-                                    <RadioButton Content="Dark" GroupName="Theme"/>
-                                    <RadioButton Content="Use system setting" GroupName="Theme" IsChecked="True"/>
+                                    <RadioButton Content="Light" IsChecked="{Binding IsLight, Mode=TwoWay}" GroupName="Theme">
+                                        <i:Interaction.Behaviors>
+                                            <core:EventTriggerBehavior EventName="IsCheckedChanged">
+                                                <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
+                                            </core:EventTriggerBehavior>
+                                        </i:Interaction.Behaviors>
+                                    </RadioButton>
+                                    <RadioButton Content="Dark" IsChecked="{Binding IsDark, Mode=TwoWay}" GroupName="Theme">
+                                        <i:Interaction.Behaviors>
+                                            <core:EventTriggerBehavior EventName="IsCheckedChanged">
+                                                <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
+                                            </core:EventTriggerBehavior>
+                                        </i:Interaction.Behaviors>
+                                    </RadioButton>
+                                    <RadioButton Content="Use system setting" IsChecked="{Binding IsDefault, Mode=TwoWay}" GroupName="Theme">
+                                        <i:Interaction.Behaviors>
+                                            <core:EventTriggerBehavior EventName="IsCheckedChanged">
+                                                <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
+                                            </core:EventTriggerBehavior>
+                                        </i:Interaction.Behaviors>
+                                    </RadioButton>
 
                                     <TextBlock Text="Notifications - soon" FontSize="14"/>
                                     <RadioButton Content="Enabled" GroupName="Notifi" IsEnabled="False"/>

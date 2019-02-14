@@ -6,6 +6,7 @@ using Surrender_20.Core.Interface;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.Storage;
 using Windows.UI.Xaml;
 
 namespace Surrender_20.UWP.ViewModels
@@ -22,6 +23,17 @@ namespace Surrender_20.UWP.ViewModels
 
         public bool IsSurrender { get; set; }
         public bool MenuVisibility { get; set; }
+
+        //ayyyyyyyyyyyyyyyyyyyyyyyy
+        public bool IsLight { get; set; }
+
+        public bool IsDark { get; set; }
+
+        public bool IsDefault { get; set; }
+        public static ApplicationTheme SelectedTheme { get; set; }
+
+        private readonly ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
+        //ayyyyyyyyyyyyyyyyyyyyyyyy
 
         public MvxInteraction<Func<bool>> CheckInternetConnectionInteraction { get; }
 
@@ -63,6 +75,29 @@ namespace Surrender_20.UWP.ViewModels
                 MenuVisibility = false;
             }
         }
+
+        //ayyyyyyyyyyyyyyyyyyyyyyyy
+        public void LoadSettings() 
+        {
+            SelectedTheme = (ApplicationTheme)localSettings.Values["Theme"];
+        }
+
+        private void SelectedThemeChanged()
+        {
+            if (IsLight)
+            {
+                localSettings.Values["Theme"] = ApplicationTheme.Light;
+            }
+            else if (IsDark)
+            {
+                localSettings.Values["Theme"] = ApplicationTheme.Dark;
+            }
+            else if (IsDefault)
+            {
+                ApplicationData.Current.LocalSettings.Values.Remove("Theme");
+            }
+        }
+        //ayyyyyyyyyyyyyyyyyyyyyyyy
 
         public override void ViewCreated()
         {
