@@ -7,6 +7,7 @@
                   xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                   xmlns:conv="using:Surrender_20.UWP.Converters"
 				  xmlns:views="using:Surrender_20.UWP.View"
+                  xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
                   x:Class="Surrender_20.UWP.View.MainPageView"
                   mc:Ignorable="d"                 
                   GotFocus="MvxWindowsPage_GotFocus" SizeChanged="MvxWindowsPage_SizeChanged"
@@ -164,8 +165,15 @@
                     <views:NewsfeedListView x:Name="MasterView" 
                                             Grid.Column="0"/>
 
-                    <views:NewsfeedItemView x:Name="DetailView" 
-                                            Grid.Column="1"/>
+                    <controls:DropShadowPanel Grid.Column="1">
+                        <Grid>
+                            <views:NewsfeedItemView x:Name="DetailView"/>
+
+                            <Image Source="ms-appx:///Assets/Square44x44Logo.scale-400.png"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                        </Grid>
+                    </controls:DropShadowPanel>
                 </Grid>
 
                 <!--<SplitView IsPaneOpen="True"
