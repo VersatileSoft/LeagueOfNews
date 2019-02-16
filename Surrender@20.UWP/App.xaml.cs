@@ -19,14 +19,6 @@ namespace Surrender_20.UWP
     {
         public App()
         {
-<<<<<<< HEAD
-=======
-            //MainPageViewModel ViewModel = new MainPageViewModel();
-
-            //ViewModel.LoadSettings();
-            //RequestedTheme = MainPageViewModel.SelectedTheme;
-
->>>>>>> 8b1c22c1909c95e179850af0b906eba9a277c535
             InitializeComponent();
         }
     }
