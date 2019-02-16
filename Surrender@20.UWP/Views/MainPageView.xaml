@@ -73,13 +73,13 @@
 
             <NavigationView.PaneFooter>
                 <StackPanel Orientation="Horizontal">
-                    <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Change site - more sites soon" IsEnabled="true" Tapped="Switch_Tapped">
+                    <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Change site" Tapped="Switch_Tapped">
                         <FlyoutBase.AttachedFlyout>
                             <Flyout LightDismissOverlayMode="Auto">
                                 <StackPanel>
                                     <TextBlock Text="Which site would you choose to read?" FontSize="14"/>
                                     <RadioButton Content="League of Legends official" IsChecked="True" GroupName="Sites"/>
-                                    <RadioButton Content="SurrenderAt20" GroupName="Sites" IsChecked="{Binding IsSurrender, Mode=TwoWay}" Checked="RadioButton_Checked" Unchecked="RadioButton_Checked">
+                                    <RadioButton Content="Surrender@20" GroupName="Sites" IsChecked="{Binding IsSurrender, Mode=TwoWay}" Checked="RadioButton_Checked" Unchecked="RadioButton_Checked">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsEnabledChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectedPageChangedCommand}"/>
@@ -98,7 +98,7 @@
                                     <TextBlock Text="Theme" FontSize="14"/>
                                     <RadioButton Content="Light" IsChecked="{Binding IsLight, Mode=TwoWay}" GroupName="Theme">
                                         <i:Interaction.Behaviors>
-                                            <core:EventTriggerBehavior EventName="IsCheckedChanged">
+                                            <core:EventTriggerBehavior EventName="IsEnabledChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
