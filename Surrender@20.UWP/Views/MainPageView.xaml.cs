@@ -71,22 +71,21 @@ namespace Surrender_20.UWP.View
 
         private void MvxWindowsPage_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            //switch (UIViewSettings.GetForCurrentView().UserInteractionMode)
-            //{
-            //    case UserInteractionMode.Mouse:
-            //        VisualStateManager.GoToState(this, "MouseLayout", true);
-            //        DragArea.Visibility = Visibility.Visible;
-            //        break;
+            switch (UIViewSettings.GetForCurrentView().UserInteractionMode)
+            {
+                case UserInteractionMode.Mouse:
+                    VisualStateManager.GoToState(this, "MouseLayout", true);
+                    DragArea.Visibility = Visibility.Visible;
+                    break;
 
-            //    case UserInteractionMode.Touch:
-            //    default:
-            //        VisualStateManager.GoToState(this, "TouchLayout", true);
-            //        DragArea.Visibility = Visibility.Collapsed;
-            //        break;
-            //}
+                case UserInteractionMode.Touch:
+                default:
+                    VisualStateManager.GoToState(this, "TouchLayout", true);
+                    DragArea.Visibility = Visibility.Collapsed;
+                    break;
+            }
 
             ApplicationView applicationView = ApplicationView.GetForCurrentView();
-
             if (applicationView.IsFullScreenMode == true)
             {
                 MasterColumn.Width = new GridLength(0);

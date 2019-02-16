@@ -6,7 +6,6 @@ namespace Surrender_20.UWP.ViewModels
 {
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel
     {
-
         public Newsfeed Newsfeed { get; set; }
 
         private string _url;
