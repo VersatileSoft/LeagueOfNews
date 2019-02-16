@@ -17,7 +17,7 @@ namespace Surrender_20.Core.ViewModels
         protected INewsfeedService _newsfeedService;
         protected ISettingsService _settingsService;
         protected IMvxNavigationService _navigationService;
-        protected Pages _page;
+        protected NewsCategory _page;
 
         public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
         public string Title { get; set; }

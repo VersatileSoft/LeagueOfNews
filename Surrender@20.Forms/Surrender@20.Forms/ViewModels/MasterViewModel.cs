@@ -21,10 +21,10 @@ namespace Surrender_20.Forms.ViewModels
         {
             MenuElements = new ObservableCollection<MenuListElement>
             {
-                new MenuListElement { Name = "League of Legends Official", MenuImage = "LolOfficialIcon.png", Page = Pages.Official },
+                new MenuListElement { Name = "League of Legends Official", MenuImage = "LolOfficialIcon.png", Page = NewsCategory.Official },
                 //new MenuListElement { Name = "/dev blog", MenuImage = "DevBlogIcon.png", Page = Pages.Dev }, //TODO add page in future 
-                new MenuListElement { Name = "Surrender@20", MenuImage = "SurrenderAt20Icon.png", Page = Pages.SurrenderHome },
-                new MenuListElement { Name = "Settings", MenuImage = "SettingsIcon.png", Page = Pages.Settings }
+                new MenuListElement { Name = "Surrender@20", MenuImage = "SurrenderAt20Icon.png", Page = NewsCategory.SurrenderHome },
+                new MenuListElement { Name = "Settings", MenuImage = "SettingsIcon.png", Page = NewsCategory.None }
             };
 
             NavigateCommand = new MvxCommand<MenuListElement>((Parameter) =>
@@ -36,7 +36,7 @@ namespace Surrender_20.Forms.ViewModels
 
     public class MenuListElement
     {
-        public Pages Page { get; set; }
+        public NewsCategory Page { get; set; }
         public string Name { get; set; }
         public string MenuImage { get; set; }
     }

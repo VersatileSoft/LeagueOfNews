@@ -20,7 +20,7 @@ namespace Surrender_20.Forms.Droid
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService()); //TODO move to InitializeFirstChance
             Mvx.IoCProvider.RegisterSingleton(typeof(IMasterDetailService), new MasterDetailService());       //TODO same /\
             Mvx.IoCProvider.RegisterSingleton(typeof(INotificationService), new NotificationService());       //TODO same /\
-            Mvx.IoCProvider.RegisterSingleton(typeof(ISaveDataService), new SaveDataService());       //TODO same /\
+            Mvx.IoCProvider.RegisterSingleton(typeof(IPersistentDataService), new SaveDataService());       //TODO same /\
             Mvx.IoCProvider.RegisterSingleton(typeof(IThemeService), new ThemeService());       //TODO same /\
             Mvx.IoCProvider.RegisterSingleton(typeof(IInternetConnectionService), new InternetConnectionService());       //TODO same /\
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<RootPageViewModel>>();

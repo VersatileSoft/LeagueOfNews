@@ -2,6 +2,7 @@
 using MvvmCross.IoC;
 using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
+using MvvmCross.Plugin;
 using MvvmCross.ViewModels;
 using Surrender_20.Core;
 using Surrender_20.Core.Interface;
@@ -12,13 +13,12 @@ using System.Reflection;
 
 namespace Surrender_20.UWP
 {
+    public abstract class UWPApplication : MvxApplication<UWPSetup, CoreApp> { }
+
     public sealed partial class App : UWPApplication
     {
         public App()
         {
-            //MainPageViewModel.LoadSettings();                                     https://docs.microsoft.com/pl-pl/windows/uwp/design/app-settings/store-and-retrieve-app-data
-            //RequestedTheme = MainPageViewModel.SelectedTheme; ///////NIECH KTOŚ   https://stackoverflow.com/questions/34554871/changing-theme-in-windows-10-uwp-app-programmatically/34688690
-
             InitializeComponent();
         }
     }
@@ -27,10 +27,10 @@ namespace Surrender_20.UWP
     {
         protected override void InitializeFirstChance()
         {
+            Mvx.IoCProvider.RegisterSingleton(typeof(ISettingsService), new SettingsService());
             Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService());
             Mvx.IoCProvider.RegisterSingleton(typeof(IInternetConnectionService), new InternetConnectionService());
             Mvx.IoCProvider.RegisterSingleton(typeof(INotificationService), new NotificationService());
-            Mvx.IoCProvider.RegisterSingleton(typeof(ISaveDataService), new SaveDataService());
         }
 
         protected override void InitializeLastChance()
@@ -38,14 +38,22 @@ namespace Surrender_20.UWP
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<MainPageViewModel>>();
         }
 
+        protected override void InitializeApp(IMvxPluginManager pluginManager, IMvxApplication app)
+        {
+            base.InitializeApp(pluginManager, app);
+
+            var theme = Mvx.IoCProvider.Resolve<ISettingsService>().Theme;
+            (app as UWPApplication).RequestedTheme = 
+                (Windows.UI.Xaml.ApplicationTheme) ((theme == ApplicationTheme.Default) ? ApplicationTheme.Light : theme);
+        }
+
         public override IEnumerable<Assembly> GetViewModelAssemblies()
         {
             List<Assembly> list = new List<Assembly>();
             list.AddRange(base.GetViewModelAssemblies());
             list.Add(typeof(MainPageViewModel).Assembly);
-            return list.ToArray();
+
+            return list;
         }
     }
-
-    public abstract class UWPApplication : MvxApplication<UWPSetup, CoreApp> { }
 }

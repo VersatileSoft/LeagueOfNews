@@ -12,6 +12,6 @@ namespace Surrender_20.Model
         public string ShortDescription { get; set; } //Overlaps with Content?
         public string ThumbnailURL { get; set; }
         public byte[] Image { get; set; }
-        public Pages Page { get; set; }
+        public NewsCategory Page { get; set; }
     }
 }

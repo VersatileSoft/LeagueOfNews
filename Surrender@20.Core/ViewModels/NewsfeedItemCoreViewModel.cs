@@ -53,14 +53,14 @@ namespace Surrender_20.Core.ViewModels
         }
 
         // public virtual void ParseHtml(HtmlNode documentNode, Pages page)
-        public virtual void ParseHtml(string URL, Pages page)
+        public virtual void ParseHtml(string URL, NewsCategory page)
         {
             switch (page)
             {
 
 
 
-                case Pages.Official:
+                case NewsCategory.Official:
                     // TODO delete not needed nodes from document node
 
 
@@ -72,12 +72,12 @@ namespace Surrender_20.Core.ViewModels
                     //    documentNode.SelectSingleNode("./div[@id='riotbar-subbar']").Remove();
                     break;
 
-                case Pages.SurrenderHome:
-                case Pages.ESports:
-                case Pages.PBE:
-                case Pages.RedPosts:
-                case Pages.Rotations:
-                case Pages.Releases:
+                case NewsCategory.SurrenderHome:
+                case NewsCategory.ESports:
+                case NewsCategory.PBE:
+                case NewsCategory.RedPosts:
+                case NewsCategory.Rotations:
+                case NewsCategory.Releases:
                     // TODO delete not needed nodes from document node
                     break;
 

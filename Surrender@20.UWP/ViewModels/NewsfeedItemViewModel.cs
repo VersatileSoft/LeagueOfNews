@@ -35,7 +35,7 @@ namespace Surrender_20.UWP.ViewModels
         //    }
         //}
 
-        public override void ParseHtml(string _url, Pages page)
+        public override void ParseHtml(string _url, NewsCategory page)
         {
             base.ParseHtml(URL, page);
             URL = _url;

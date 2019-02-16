@@ -10,9 +10,9 @@ namespace Surrender_20.Core.Service
 
         private readonly INotificationService _notificationService;
         private readonly INewsfeedService _newsfeedService;
-        private readonly ISaveDataService _saveDataService;
+        private readonly IPersistentDataService _saveDataService;
 
-        public NewPostsService(INotificationService notificationService, INewsfeedService newsfeedService, ISaveDataService saveDataService)
+        public NewPostsService(INotificationService notificationService, INewsfeedService newsfeedService, IPersistentDataService saveDataService)
         {
             _notificationService = notificationService;
             _newsfeedService = newsfeedService;
@@ -21,11 +21,11 @@ namespace Surrender_20.Core.Service
 
         public async Task CheckNewPosts()
         {
-            await CheckNewPosts(Pages.Official);
-            await CheckNewPosts(Pages.SurrenderHome);
+            await CheckNewPosts(NewsCategory.Official);
+            await CheckNewPosts(NewsCategory.SurrenderHome);
         }
 
-        private async Task CheckNewPosts(Pages page)
+        private async Task CheckNewPosts(NewsCategory page)
         {
             List<Newsfeed> list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(page));
             List<Newsfeed> newPosts = new List<Newsfeed>();

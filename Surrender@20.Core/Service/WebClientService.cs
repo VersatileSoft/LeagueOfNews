@@ -16,7 +16,7 @@ namespace Surrender_20.Core.Model
             _intrernetConnecionService = intrernetConnecionService;
         }
 
-        public async Task<HtmlDocument> GetPage(string url, Pages page)
+        public async Task<HtmlDocument> GetPage(string url, NewsCategory page)
         {
             if (!_intrernetConnecionService.IsInternetAvailable())
             {
@@ -25,13 +25,13 @@ namespace Surrender_20.Core.Model
 
             switch (page)
             {
-                case Pages.SurrenderHome:
-                case Pages.ESports:
-                case Pages.PBE:
-                case Pages.RedPosts:
-                case Pages.Rotations:
-                case Pages.Releases: return await GetPageByWebClient(url);
-                case Pages.Official: return await GetPageByRequest(url);
+                case NewsCategory.SurrenderHome:
+                case NewsCategory.ESports:
+                case NewsCategory.PBE:
+                case NewsCategory.RedPosts:
+                case NewsCategory.Rotations:
+                case NewsCategory.Releases: return await GetPageByWebClient(url);
+                case NewsCategory.Official: return await GetPageByRequest(url);
             }
             return null;
         }

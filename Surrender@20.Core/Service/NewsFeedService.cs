@@ -14,7 +14,7 @@ namespace Surrender_20.Core.Service
         private string _officialBaseURL;
 
         private IList<Newsfeed> _newsfeeds { get; set; }
-        private readonly Dictionary<Pages, string> _nextPageUrls;
+        private readonly Dictionary<NewsCategory, string> _nextPageUrls;
 
         private readonly IWebClientService _cookieWebClientService;
         private readonly ISettingsService _settingsService;
@@ -25,10 +25,10 @@ namespace Surrender_20.Core.Service
             _cookieWebClientService = cookieWebClientService;
             _settingsService = settingsService;
             _operatingSystemService = operatingSystemService;
-            _nextPageUrls = new Dictionary<Pages, string>();
+            _nextPageUrls = new Dictionary<NewsCategory, string>();
         }
 
-        public async Task<IList<Newsfeed>> LoadNewsfeedsAsync(Pages page)
+        public async Task<IList<Newsfeed>> LoadNewsfeedsAsync(NewsCategory page)
         {
             string URL = _settingsService[page].URL;
             _officialBaseURL = "https://" + new Uri(URL).Host;
@@ -42,19 +42,19 @@ namespace Surrender_20.Core.Service
 
             switch (page)
             {
-                case Pages.SurrenderHome:
-                case Pages.ESports:
-                case Pages.PBE:
-                case Pages.RedPosts:
-                case Pages.Rotations:
-                case Pages.Releases: _newsfeeds = await LoadSurrender(doc, page); break;
-                case Pages.Official: _newsfeeds = await LoadOfficial(doc, page); break;
+                case NewsCategory.SurrenderHome:
+                case NewsCategory.ESports:
+                case NewsCategory.PBE:
+                case NewsCategory.RedPosts:
+                case NewsCategory.Rotations:
+                case NewsCategory.Releases: _newsfeeds = await LoadSurrender(doc, page); break;
+                case NewsCategory.Official: _newsfeeds = await LoadOfficial(doc, page); break;
             }
 
             return _newsfeeds;
         }
 
-        public async Task<IList<Newsfeed>> LoadMoreNewsfeeds(Pages page)
+        public async Task<IList<Newsfeed>> LoadMoreNewsfeeds(NewsCategory page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             HtmlDocument doc;
@@ -69,18 +69,18 @@ namespace Surrender_20.Core.Service
 
             switch (page)
             {
-                case Pages.SurrenderHome:
-                case Pages.ESports:
-                case Pages.PBE:
-                case Pages.RedPosts:
-                case Pages.Rotations:
-                case Pages.Releases: newsfeeds = await LoadSurrender(doc, page); break;
-                case Pages.Official: newsfeeds = await LoadOfficial(doc, page); break;
+                case NewsCategory.SurrenderHome:
+                case NewsCategory.ESports:
+                case NewsCategory.PBE:
+                case NewsCategory.RedPosts:
+                case NewsCategory.Rotations:
+                case NewsCategory.Releases: newsfeeds = await LoadSurrender(doc, page); break;
+                case NewsCategory.Official: newsfeeds = await LoadOfficial(doc, page); break;
             }
             return newsfeeds;
         }
 
-        public async Task<List<Newsfeed>> LoadOfficial(HtmlDocument Document, Pages page)
+        public async Task<List<Newsfeed>> LoadOfficial(HtmlDocument Document, NewsCategory page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             _nextPageUrls[page] = _officialBaseURL + Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
@@ -111,7 +111,7 @@ namespace Surrender_20.Core.Service
             return newsfeeds;
         }
 
-        public async Task<List<Newsfeed>> LoadSurrender(HtmlDocument Document, Pages page)
+        public async Task<List<Newsfeed>> LoadSurrender(HtmlDocument Document, NewsCategory page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             _nextPageUrls[page] = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;

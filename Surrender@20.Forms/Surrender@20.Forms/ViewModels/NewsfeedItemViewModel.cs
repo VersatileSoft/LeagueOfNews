@@ -30,7 +30,7 @@ namespace Surrender_20.Forms.ViewModels
         }
 
         //public override void ParseHtml(HtmlNode documentNode, Pages page)
-        public override void ParseHtml(string url, Pages page)
+        public override void ParseHtml(string url, NewsCategory page)
         {
             base.ParseHtml(URL, page);
             URL = url;

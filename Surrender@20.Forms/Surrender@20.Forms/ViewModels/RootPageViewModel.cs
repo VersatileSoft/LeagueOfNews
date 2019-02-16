@@ -30,7 +30,7 @@ namespace Surrender_20.Forms.ViewModels
             Task.Run(async () =>
             {
                 await _navigationService.Navigate<MasterViewModel>();
-                await _navigationService.Navigate<NewsfeedListViewModel, Pages>(Pages.Official);
+                await _navigationService.Navigate<NewsfeedListViewModel, NewsCategory>(NewsCategory.Official);
             });
         }
 
@@ -41,10 +41,10 @@ namespace Surrender_20.Forms.ViewModels
             {
                 switch (e.Page)
                 {
-                    case Pages.SurrenderHome: await _navigationService.Navigate<TabbedRootViewModel>(); break;
+                    case NewsCategory.SurrenderHome: await _navigationService.Navigate<TabbedRootViewModel>(); break;
                     // case Pages.Dev:
-                    case Pages.Official: await _navigationService.Navigate<NewsfeedListViewModel, Pages>(e.Page); break;
-                    case Pages.Settings: await _navigationService.Navigate<SettingsViewModel>(); break;
+                    case NewsCategory.Official: await _navigationService.Navigate<NewsfeedListViewModel, NewsCategory>(e.Page); break;
+                    case NewsCategory.None: await _navigationService.Navigate<SettingsViewModel>(); break;
                 }
             });
         }

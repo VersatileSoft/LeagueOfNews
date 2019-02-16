@@ -5,12 +5,12 @@ namespace Surrender_20.Forms.Interfaces
 {
     public interface IMasterDetailService
     {
-        void MasterPageSelect(Pages Page);
+        void MasterPageSelect(NewsCategory Page);
         event EventHandler<MasterPageSelectArgs> OnMasterPageSelect;
     }
 
     public class MasterPageSelectArgs
     {
-        public Pages Page { get; set; }
+        public NewsCategory Page { get; set; }
     }
 }

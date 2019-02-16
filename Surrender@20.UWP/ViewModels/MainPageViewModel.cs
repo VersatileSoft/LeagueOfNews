@@ -24,20 +24,9 @@ namespace Surrender_20.UWP.ViewModels
         public bool IsSurrender { get; set; }
         public bool MenuVisibility { get; set; }
 
-        //ayyyyyyyyyyyyyyyyyyyyyyyy
-        public bool IsLight { get; set; }
-
-        public bool IsDark { get; set; }
-
-        public bool IsDefault { get; set; }
-        public static ApplicationTheme SelectedTheme { get; set; }
-
-        private readonly ApplicationDataContainer localSettings = ApplicationData.Current.LocalSettings;
-        //ayyyyyyyyyyyyyyyyyyyyyyyy
-
         public MvxInteraction<Func<bool>> CheckInternetConnectionInteraction { get; }
 
-        public Pages SelectedNewsfeedCategory { get; set; }
+        public NewsCategory SelectedNewsfeedCategory { get; set; }
 
         public MainPageViewModel(IInternetConnectionService internetConnectionService)
         {
@@ -49,12 +38,12 @@ namespace Surrender_20.UWP.ViewModels
             {
                 switch (Parameter)
                 {
-                    case "Home": return NavigateTo(IsSurrender ? Pages.SurrenderHome : Pages.Official);
-                    case "PBE": return NavigateTo(Pages.PBE);
-                    case "Red Posts": return NavigateTo(Pages.RedPosts);
-                    case "Rotations": return NavigateTo(Pages.Rotations);
-                    case "Releases": return NavigateTo(Pages.Releases);
-                    case "E-Sports": return NavigateTo(Pages.ESports);
+                    case "Home": return NavigateTo(IsSurrender ? NewsCategory.SurrenderHome : NewsCategory.Official);
+                    case "PBE": return NavigateTo(NewsCategory.PBE);
+                    case "Red Posts": return NavigateTo(NewsCategory.RedPosts);
+                    case "Rotations": return NavigateTo(NewsCategory.Rotations);
+                    case "Releases": return NavigateTo(NewsCategory.Releases);
+                    case "E-Sports": return NavigateTo(NewsCategory.ESports);
                     default: return null;
                 }
             });
@@ -67,37 +56,38 @@ namespace Surrender_20.UWP.ViewModels
             if (IsSurrender)
             {
                 MenuVisibility = true;
-                NavigateTo(Pages.SurrenderHome);
+                NavigateTo(NewsCategory.SurrenderHome);
             }
             else
             {
-                NavigateTo(Pages.Official);
+                NavigateTo(NewsCategory.Official);
                 MenuVisibility = false;
             }
         }
 
-        //ayyyyyyyyyyyyyyyyyyyyyyyy
         public void LoadSettings() 
         {
-            SelectedTheme = (ApplicationTheme)localSettings.Values["Theme"];
+            if (_localSettings.Values.TryGetValue("Theme", out var value))
+            {
+                SelectedTheme = (ApplicationTheme) value;
+            }
         }
 
         private void SelectedThemeChanged()
         {
             if (IsLight)
             {
-                localSettings.Values["Theme"] = ApplicationTheme.Light;
+                _localSettings.Values["Theme"] = ApplicationTheme.Light;
             }
             else if (IsDark)
             {
-                localSettings.Values["Theme"] = ApplicationTheme.Dark;
+                _localSettings.Values["Theme"] = ApplicationTheme.Dark;
             }
-            else if (IsDefault)
+            else if (IsUsingDefaultColors)
             {
                 ApplicationData.Current.LocalSettings.Values.Remove("Theme");
             }
         }
-        //ayyyyyyyyyyyyyyyyyyyyyyyy
 
         public override void ViewCreated()
         {
@@ -106,7 +96,7 @@ namespace Surrender_20.UWP.ViewModels
             CheckInternetConnectionInteraction.Raise(() => _internetConnectionService.IsInternetAvailable());
         }
 
-        protected Task NavigateTo(Pages setting)
+        protected Task NavigateTo(NewsCategory setting)
         {
             Mvx.IoCProvider.Resolve<NewsfeedListViewModel>().Prepare(setting);
             return Task.CompletedTask;

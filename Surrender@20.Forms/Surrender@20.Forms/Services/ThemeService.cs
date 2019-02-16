@@ -10,7 +10,7 @@ namespace Surrender_20.Forms.Services
             switch (appTheme)
             {
                 case AppTheme.Dark: SetDarkTheme(); break;
-                case AppTheme.Ligt: SetLightTheme(); break;
+                case AppTheme.Light: SetLightTheme(); break;
             }
         }
 

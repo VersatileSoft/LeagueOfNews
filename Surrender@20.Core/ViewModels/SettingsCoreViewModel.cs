@@ -47,11 +47,11 @@ namespace Surrender_20.Core.ViewModels
 
         public MvxObservableCollection<string> DelayList { get; set; }
 
-        private readonly ISaveDataService _saveDataService;
+        private readonly IPersistentDataService _saveDataService;
         private readonly INotificationService _notificationService;
         private readonly IThemeService _themeService;
 
-        public SettingsCoreViewModel(ISaveDataService saveDataService, INotificationService notificationService, IThemeService themeService)
+        public SettingsCoreViewModel(IPersistentDataService saveDataService, INotificationService notificationService, IThemeService themeService)
         {
             _saveDataService = saveDataService;
             _notificationService = notificationService;

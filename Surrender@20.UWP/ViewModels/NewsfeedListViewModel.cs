@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.UWP.ViewModels
 {
-    public class NewsfeedListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<Pages>
+    public class NewsfeedListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<NewsCategory>
     {
         public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService)
            : base(newsfeedService, settingsService, navigationService)
         {
         }
 
-        public void Prepare(Pages parameter)
+        public void Prepare(NewsCategory parameter)
         {
             Title = _settingsService[parameter].Title;
             _page = parameter;

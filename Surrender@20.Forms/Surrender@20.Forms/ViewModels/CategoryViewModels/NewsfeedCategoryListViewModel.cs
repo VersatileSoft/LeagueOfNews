@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.Forms.ViewModels
 {
-    public class NewsfeedCategoryListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<Pages>
+    public class NewsfeedCategoryListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<NewsCategory>
     {
         public NewsfeedCategoryListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService,
             IMvxNavigationService navigationService, ITabsInitService tabsInitService)
@@ -26,7 +26,7 @@ namespace Surrender_20.Forms.ViewModels
             await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);
         }
 
-        public void Prepare(Pages parameter)
+        public void Prepare(NewsCategory parameter)
         {
             Title = _settingsService[parameter].Title;
             _page = parameter;

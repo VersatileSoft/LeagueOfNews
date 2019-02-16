@@ -5,7 +5,7 @@ using Surrender_20.Core.Interface;
 
 namespace Surrender_20.Forms.Droid.Services
 {
-    public class SaveDataService : ISaveDataService
+    public class SaveDataService : IPersistentDataService
     {
 
         private const string LAST_POST_KEY_SURRENDER = "LAST_POST_KEY_SURRENDER";
@@ -50,7 +50,7 @@ namespace Surrender_20.Forms.Droid.Services
             editor.Apply();
         }
 
-        public string GetLastPostTitle(Pages page)
+        public string GetLastPostTitle(NewsCategory page)
         {
             ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
 
@@ -66,19 +66,19 @@ namespace Surrender_20.Forms.Droid.Services
             }
         }
 
-        public void SaveLastPostTitle(Pages page, string lastPostTitle)
+        public void SaveLastPostTitle(NewsCategory page, string lastPostTitle)
         {
             ISharedPreferencesEditor editor = PreferenceManager.GetDefaultSharedPreferences(Application.Context).Edit();
             editor.PutString(PageToKey(page), lastPostTitle);
             editor.Apply();
         }
 
-        private string PageToKey(Pages page)
+        private string PageToKey(NewsCategory page)
         {
             switch (page)
             {
-                case Pages.SurrenderHome: return LAST_POST_KEY_SURRENDER;
-                case Pages.Official: return LAST_POST_KEY_OFFICIAL;
+                case NewsCategory.SurrenderHome: return LAST_POST_KEY_SURRENDER;
+                case NewsCategory.Official: return LAST_POST_KEY_OFFICIAL;
             }
             return null;
         }

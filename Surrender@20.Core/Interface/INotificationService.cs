@@ -4,7 +4,7 @@ namespace Surrender_20.Core.Interface
 {
     public interface INotificationService
     {
-        void ShowNewPostNotification(Newsfeed newsfeed, Pages page);
+        void ShowNewPostNotification(Newsfeed newsfeed, NewsCategory page);
 
         void RefreshNotificationJobService();
 
