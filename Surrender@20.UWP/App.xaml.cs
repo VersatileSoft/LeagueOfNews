@@ -43,8 +43,8 @@ namespace Surrender_20.UWP
             base.InitializeApp(pluginManager, app);
 
             var theme = Mvx.IoCProvider.Resolve<ISettingsService>().Theme;
-            (app as UWPApplication).RequestedTheme = 
-                (Windows.UI.Xaml.ApplicationTheme) ((theme == ApplicationTheme.Default) ? ApplicationTheme.Light : theme);
+            (app as UWPApplication).RequestedTheme =
+                (Windows.UI.Xaml.ApplicationTheme)((theme == ApplicationTheme.Default) ? ApplicationTheme.Light : theme);
         }
 
         public override IEnumerable<Assembly> GetViewModelAssemblies()

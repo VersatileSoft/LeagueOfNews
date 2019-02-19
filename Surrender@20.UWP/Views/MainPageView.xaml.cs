@@ -21,31 +21,31 @@ namespace Surrender_20.UWP.View
         private readonly ConnectionDialog ConnectionDialog = new ConnectionDialog();
 
         private IMvxInteraction<Func<bool>> _checkInternetConnectionInteraction;
-        public IMvxInteraction<Func<bool>> CheckInternetConnectionInteraction
-        {
-            get => _checkInternetConnectionInteraction;
-            set
-            {
-                if (_checkInternetConnectionInteraction != null)
-                {
-                    _checkInternetConnectionInteraction.Requested -= OnInternetCheckRequested;
-                }
+        //public IMvxInteraction<Func<bool>> CheckInternetConnectionInteraction
+        //{
+        //    get => _checkInternetConnectionInteraction;
+        //    set
+        //    {
+        //        if (_checkInternetConnectionInteraction != null)
+        //        {
+        //            _checkInternetConnectionInteraction.Requested -= OnInternetCheckRequested;
+        //        }
 
-                _checkInternetConnectionInteraction = value;
-                _checkInternetConnectionInteraction.Requested += OnInternetCheckRequested;
-            }
-        }
+        //        _checkInternetConnectionInteraction = value;
+        //        _checkInternetConnectionInteraction.Requested += OnInternetCheckRequested;
+        //    }
+        //}
 
         public MainPageView()
         {
             InitializeComponent();
-            MainPageViewModel.
-            messenger.Subscribe<InternetCheckMessage>((message) => {
-                if (message.Check())
-                {
-                    ConnectionDialog.Execute(e.Value);
-                }
-            });
+            //MainPageViewModel.
+            //messenger.Subscribe<InternetCheckMessage>((message) => {
+            //    if (message.Check())
+            //    {
+            //        ConnectionDialog.Execute(e.Value);
+            //    }
+            //});
 
             LoadImages(); //TODO move all of this properties adjustments into a single f called InitializeView()
             ChangeThemeLogo();
