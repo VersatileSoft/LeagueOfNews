@@ -10,52 +10,39 @@ namespace Surrender_20.Core.ViewModels
     {
         public bool IsNotificationsEnabled
         {
-            get => _saveDataService.GetIsNotificationsEnabled();
+            get => _settingsService.HasNotificationsEnabled;
             set
             {
-                _saveDataService.SaveIsNotificationsEnabled(value);
+                _settingsService.HasNotificationsEnabled = value;
                 _notificationService.RefreshNotificationJobService();
             }
         }
 
-        public bool DarkTheme
+        public ApplicationTheme Theme //Why?
         {
-            get => _saveDataService.GetIsDarkTheme();
-            set
-            {
-                _saveDataService.SaveIsDarkTheme(value);
-                if (value)
-                {
-                    _themeService.SetAppTheme(AppTheme.Dark);
-                }
-                else
-                {
-                    _themeService.SetAppTheme(AppTheme.Light);
-                }
-            }
+            get => _settingsService.Theme;
+            set => _settingsService.Theme = value;
         }
 
         public string Delay
         {
-            get => _saveDataService.GetCheckNewPostsFrequency() + " Hours";
+            get => _settingsService.NewPostCheckFrequency + " Hours";
             set
             {
-                _saveDataService.SaveCheckNewPostsFrequency(int.Parse(Regex.Match(value, @"\d+").Value));
+                _settingsService.NewPostCheckFrequency = int.Parse(Regex.Match(value, @"\d+").Value);
                 _notificationService.RefreshNotificationJobService();
             }
         }
 
         public MvxObservableCollection<string> DelayList { get; set; }
 
-        private readonly IPersistentDataService _saveDataService;
+        private readonly ISettingsService _settingsService;
         private readonly INotificationService _notificationService;
-        private readonly IThemeService _themeService;
 
-        public SettingsCoreViewModel(IPersistentDataService saveDataService, INotificationService notificationService, IThemeService themeService)
+        public SettingsCoreViewModel(ISettingsService settingsService, INotificationService notificationService)
         {
-            _saveDataService = saveDataService;
+            _settingsService = settingsService;
             _notificationService = notificationService;
-            _themeService = themeService;
             DelayList = new MvxObservableCollection<string>
             {
                 "2 Hours",

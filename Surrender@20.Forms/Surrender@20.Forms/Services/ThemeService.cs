@@ -3,7 +3,7 @@ using Xamarin.Forms;
 
 namespace Surrender_20.Forms.Services
 {
-    public class ThemeService : IThemeService
+    public class ThemeService : IThemeService //TODO move to SettingsService
     {
         public void SetAppTheme(AppTheme appTheme)
         {

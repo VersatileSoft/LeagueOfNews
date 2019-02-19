@@ -1,5 +1,6 @@
 ﻿using MvvmCross;
 using MvvmCross.Commands;
+using MvvmCross.Plugin.Messenger;
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
@@ -15,24 +16,23 @@ namespace Surrender_20.UWP.ViewModels
     public class MainPageViewModel : MvxViewModel
     {
         private readonly IInternetConnectionService _internetConnectionService;
+        private readonly IMvxMessenger _messenger;
 
         public ICommand NavigateCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
         public ICommand CheckInternetConnectionCommand { get; set; }
         public ICommand SelectedPageChangedCommand { get; set; }
 
-        public bool IsSurrender { get; set; }
+        public bool IsSurrender { get; set; } //TODO remove
         public bool MenuVisibility { get; set; }
-
-        public MvxInteraction<Func<bool>> CheckInternetConnectionInteraction { get; }
 
         public NewsCategory SelectedNewsfeedCategory { get; set; }
 
-        public MainPageViewModel(IInternetConnectionService internetConnectionService)
+        public MainPageViewModel(IInternetConnectionService internetConnectionService, IMvxMessenger messenger)
         {
             _internetConnectionService = internetConnectionService;
-
-            CheckInternetConnectionInteraction = new MvxInteraction<Func<bool>>();
+            _messenger = messenger;
+            
 
             NavigateCommand = new MvxAsyncCommand<string>((Parameter) =>
             {
@@ -51,6 +51,13 @@ namespace Surrender_20.UWP.ViewModels
             SelectedPageChangedCommand = new MvxCommand(SelectedPageChanged);
         }
 
+        public override void ViewCreated()
+        {
+            base.ViewCreated();
+
+            _messenger.Publish(new InternetCheckMessage(this, () => _internetConnectionService.IsInternetAvailable()));
+        }
+
         private void SelectedPageChanged()
         {
             if (IsSurrender)
@@ -65,41 +72,20 @@ namespace Surrender_20.UWP.ViewModels
             }
         }
 
-        public void LoadSettings() 
-        {
-            if (_localSettings.Values.TryGetValue("Theme", out var value))
-            {
-                SelectedTheme = (ApplicationTheme) value;
-            }
-        }
-
-        private void SelectedThemeChanged()
-        {
-            if (IsLight)
-            {
-                _localSettings.Values["Theme"] = ApplicationTheme.Light;
-            }
-            else if (IsDark)
-            {
-                _localSettings.Values["Theme"] = ApplicationTheme.Dark;
-            }
-            else if (IsUsingDefaultColors)
-            {
-                ApplicationData.Current.LocalSettings.Values.Remove("Theme");
-            }
-        }
-
-        public override void ViewCreated()
-        {
-            base.ViewCreated();
-
-            CheckInternetConnectionInteraction.Raise(() => _internetConnectionService.IsInternetAvailable());
-        }
-
         protected Task NavigateTo(NewsCategory setting)
         {
             Mvx.IoCProvider.Resolve<NewsfeedListViewModel>().Prepare(setting);
             return Task.CompletedTask;
+        }
+
+        public class InternetCheckMessage : MvxMessage
+        {
+            public InternetCheckMessage(object sender, Func<bool> checkFunction): base(sender)
+            {
+                Check = checkFunction;
+            }
+
+            public Func<bool> Check { get; set; }
         }
     }
 }

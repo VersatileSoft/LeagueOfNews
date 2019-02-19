@@ -30,7 +30,7 @@ namespace Surrender_20.Core.Service
 
         public async Task<IList<Newsfeed>> LoadNewsfeedsAsync(NewsCategory page)
         {
-            string URL = _settingsService[page].URL;
+            string URL = _settingsService[page].CategoryURL;
             _officialBaseURL = "https://" + new Uri(URL).Host;
 
             HtmlDocument doc = await _cookieWebClientService.GetPage(URL, page);

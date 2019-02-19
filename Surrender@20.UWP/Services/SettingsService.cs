@@ -28,28 +28,19 @@ namespace Surrender_20.UWP.Services
             set => _localSettings.Values["Notifications"] = value;
         }
 
-        public void LoadSettings()
+        public SettingsService() : base()
         {
-            if (_localSettings.Values.TryGetValue("Theme", out var value))
+            this.TitleChanged += OnTitleChanged;
+
+            foreach (var category in categories)
             {
-                SelectedTheme = (ApplicationTheme)value;
+                category.Value.LastPostTitle = _localSettings.Values.TryGetValue(category.Key.ToString(), out var value) ? value as string : null;
             }
         }
 
-        private void SelectedThemeChanged()
+        private void OnTitleChanged(PostTitleArgs args)
         {
-            if (IsLight)
-            {
-                _localSettings.Values["Theme"] = ApplicationTheme.Light;
-            }
-            else if (IsDark)
-            {
-                _localSettings.Values["Theme"] = ApplicationTheme.Dark;
-            }
-            else if (IsUsingDefaultColors)
-            {
-                ApplicationData.Current.LocalSettings.Values.Remove("Theme");
-            }
+            _localSettings.Values[args.Category.ToString()] = args.Title;
         }
     }
 }

@@ -10,13 +10,13 @@ namespace Surrender_20.Core.Service
 
         private readonly INotificationService _notificationService;
         private readonly INewsfeedService _newsfeedService;
-        private readonly IPersistentDataService _saveDataService;
+        private readonly ISettingsService _settingsService;
 
-        public NewPostsService(INotificationService notificationService, INewsfeedService newsfeedService, IPersistentDataService saveDataService)
+        public NewPostsService(INotificationService notificationService, INewsfeedService newsfeedService, ISettingsService settingsService)
         {
             _notificationService = notificationService;
             _newsfeedService = newsfeedService;
-            _saveDataService = saveDataService;
+            _settingsService = settingsService;
         }
 
         public async Task CheckNewPosts()
@@ -29,7 +29,7 @@ namespace Surrender_20.Core.Service
         {
             List<Newsfeed> list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(page));
             List<Newsfeed> newPosts = new List<Newsfeed>();
-            string lastPostTitle = _saveDataService.GetLastPostTitle(page);
+            string lastPostTitle = _settingsService[page].LastPostTitle;
             if (lastPostTitle != null)
             {
                 foreach (Newsfeed newsfeed in list)
@@ -45,7 +45,7 @@ namespace Surrender_20.Core.Service
                 }
             }
 
-            _saveDataService.SaveLastPostTitle(page, list[0].Title);
+            _settingsService.SaveLastPostTitle(page, list[0].Title);
 
             if (newPosts.Count > 0)
             {

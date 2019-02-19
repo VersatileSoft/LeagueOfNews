@@ -39,6 +39,13 @@ namespace Surrender_20.UWP.View
         public MainPageView()
         {
             InitializeComponent();
+            MainPageViewModel.
+            messenger.Subscribe<InternetCheckMessage>((message) => {
+                if (message.Check())
+                {
+                    ConnectionDialog.Execute(e.Value);
+                }
+            });
 
             LoadImages(); //TODO move all of this properties adjustments into a single f called InitializeView()
             ChangeThemeLogo();
@@ -51,11 +58,6 @@ namespace Surrender_20.UWP.View
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
-        }
-
-        private void OnInternetCheckRequested(object sender, MvxValueEventArgs<Func<bool>> e)
-        {
-            ConnectionDialog.Execute(e.Value);
         }
 
         private void LoadImages()

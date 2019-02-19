@@ -7,16 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surrender@20.UWP", "Surrend
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surrender@20.Core", "Surrender@20.Core\Surrender@20.Core.csproj", "{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surrender@20.Core.Tests", "Surrender@20.Core.Tests\Surrender@20.Core.Tests.csproj", "{82D0B512-2381-45E8-A035-41F2340CB5BF}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surrender@20.Forms.Android", "Surrender@20.Forms\Surrender@20.Forms.Android\Surrender@20.Forms.Android.csproj", "{47BAF33B-374E-4379-B9B0-FAE6230ADED0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surrender@20.Forms", "Surrender@20.Forms\Surrender@20.Forms\Surrender@20.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F3660E82-E2AA-4DE2-BB13-DE1B8E7B3591}"
-	ProjectSection(SolutionItems) = preProject
-		NavigationGraph.dgml = NavigationGraph.dgml
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -74,26 +67,6 @@ Global
 		{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}.Release|x64.Build.0 = Release|Any CPU
 		{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}.Release|x86.ActiveCfg = Release|Any CPU
 		{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}.Release|x86.Build.0 = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|ARM.Build.0 = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|ARM64.ActiveCfg = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|ARM64.Build.0 = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|x64.Build.0 = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Debug|x86.Build.0 = Debug|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|ARM.ActiveCfg = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|ARM.Build.0 = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|ARM64.ActiveCfg = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|ARM64.Build.0 = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|x64.ActiveCfg = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|x64.Build.0 = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|x86.ActiveCfg = Release|Any CPU
-		{82D0B512-2381-45E8-A035-41F2340CB5BF}.Release|x86.Build.0 = Release|Any CPU
 		{47BAF33B-374E-4379-B9B0-FAE6230ADED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{47BAF33B-374E-4379-B9B0-FAE6230ADED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47BAF33B-374E-4379-B9B0-FAE6230ADED0}.Debug|Any CPU.Deploy.0 = Debug|Any CPU

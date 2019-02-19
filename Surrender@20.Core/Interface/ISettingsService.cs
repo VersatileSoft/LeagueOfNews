@@ -11,13 +11,13 @@ namespace Surrender_20.Core.Interface
         int NewPostCheckFrequency { get; set; }
         bool HasNotificationsEnabled { get; set; }
 
-        void SaveLastPostTitle(NewsCategory page, string title);
+        void SaveLastPostTitle(NewsCategory page, string title); //Remove?
     }
 
     public class CategoryData
     {
         public string Title { get; set; }
-        public string LastPostTitle { get; internal set; }
+        public string LastPostTitle { get; set; }
         public string CategoryURL { get; set; } //Should be Uri or string?
 
         public NewsCategory Category { get; set; } = NewsCategory.None;

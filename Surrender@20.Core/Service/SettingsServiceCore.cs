@@ -6,10 +6,10 @@ namespace Surrender_20.Core.Service
 {
     public abstract class AbstractSettingsService : ISettingsService
     {
-        private readonly Dictionary<NewsCategory, CategoryData> categories;
+        protected readonly Dictionary<NewsCategory, CategoryData> categories;
 
         protected delegate void OnTitleChange(PostTitleArgs args);
-        protected event OnTitleChange ChangeTitle;
+        protected event OnTitleChange TitleChanged;
 
         public AbstractSettingsService()
         {
@@ -36,7 +36,7 @@ namespace Surrender_20.Core.Service
         public void SaveLastPostTitle(NewsCategory page, string title)
         {
             this[page].LastPostTitle = title;
-            ChangeTitle(new PostTitleArgs { Category = page, Title = title });
+            TitleChanged(new PostTitleArgs { Category = page, Title = title });
         }
 
         public abstract ApplicationTheme Theme { get; set; }
