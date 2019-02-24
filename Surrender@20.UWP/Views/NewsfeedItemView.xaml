@@ -5,7 +5,6 @@
 					    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
 					    xmlns:c="using:Surrender_20.UWP.View"
 					    mc:Ignorable="d">
-
     <c:NewsfeedItemViewBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -18,44 +17,9 @@
         <ProgressRing Style="{StaticResource ProgressRing}"
                       IsActive="{Binding IsLoading}"/>
 
-        <WebView x:Name="NewsfeedWebView" CacheMode="BitmapCache" Source="{Binding URL}" ContainsFullScreenElementChanged="NewsfeedWebView_ContainsFullScreenElementChanged" NavigationCompleted="NewsfeedWebView_NavigationCompleted"/>
-
-        <!--<ScrollViewer Style="{StaticResource ScrollViewer}"
-                      x:Name="ForegroundElement">
-            <StackPanel>
-                <Grid MaxHeight="250" 
-                      HorizontalAlignment="Stretch" 
-                      VerticalAlignment="Top">
-
-                    <ParallaxView Source="{x:Bind ForegroundElement}" 
-                                  VerticalShift="60">
-
-                        -->
-        <!--Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"-->
-        <!--
-                        <Image Source="ms-appx:///Assets/Images/NewsfeedAssets/TestPostImage.jpg"
-                               Stretch="UniformToFill"
-                               HorizontalAlignment="Center"/>
-                    </ParallaxView>
-
-                    <StackPanel Style="{StaticResource StackPanel}"
-                                Padding="10,0,10,0"
-                                Margin="0,0,0,-2">
-
-                        <TextBlock Text="{Binding Title}"
-                                   Style="{StaticResource TitleText}"/>
-
-                        <TextBlock Text="{Binding Date}"
-                                   Style="{StaticResource DateText}"/>
-                    </StackPanel>
-                </Grid>
-
-                -->
-        <!--Text="{Binding TextContent}"-->
-        <!--
-                <TextBlock Text="{Binding ShortDescription}"
-                           Style="{StaticResource ContentText}"/>
-            </StackPanel>
-        </ScrollViewer>-->
+        <WebView x:Name="NewsfeedWebView" 
+                 CacheMode="BitmapCache" 
+                 Source="{Binding URL}" 
+                 ContainsFullScreenElementChanged="NewsfeedWebView_ContainsFullScreenElementChanged"/>
     </Grid>
 </c:NewsfeedItemViewBase>

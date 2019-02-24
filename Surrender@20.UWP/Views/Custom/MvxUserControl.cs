@@ -1,11 +1,6 @@
 ﻿using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.ViewModels;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Windows.UI.Core;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
@@ -14,13 +9,15 @@ namespace Surrender_20.UWP.Views.Custom
     public class MvxUserControl : UserControl, IMvxWindowsView, IDisposable
     {
         public IMvxViewModel _viewModel;
-        public IMvxViewModel ViewModel {
-            get {
-                return _viewModel;
-            }
-            set {
+        public IMvxViewModel ViewModel
+        {
+            get => _viewModel;
+            set
+            {
                 if (_viewModel == value)
+                {
                     return;
+                }
 
                 _viewModel = value;
                 DataContext = ViewModel;
@@ -28,7 +25,7 @@ namespace Surrender_20.UWP.Views.Custom
             }
         }
 
-        protected virtual void OnViewModelSet() {}
+        protected virtual void OnViewModelSet() { }
 
         public MvxUserControl()
         {
@@ -83,9 +80,10 @@ namespace Surrender_20.UWP.Views.Custom
 
     public class MvxUserControl<TViewModel> : MvxUserControl, IMvxWindowsView<TViewModel> where TViewModel : class, IMvxViewModel
     {
-        public new TViewModel ViewModel {
-            get { return (TViewModel) base.ViewModel; }
-            set { base.ViewModel = value; }
+        public new TViewModel ViewModel
+        {
+            get => (TViewModel)base.ViewModel;
+            set => base.ViewModel = value;
         }
     }
 }

@@ -5,11 +5,11 @@
          xmlns:uap5="http://schemas.microsoft.com/appx/manifest/uap/windows10/5" 
          IgnorableNamespaces="uap mp uap5">
   
-  <Identity Name="4792MohairApp.SurrenderAt20" 
+  <Identity Name="4792MohairApp.LeagueofNews" 
             Publisher="CN=91FC2611-0BE1-4BF6-BF67-9AC292856A90" 
             Version="1.0.0.0" />
   
-  <mp:PhoneIdentity PhoneProductId="0f91ea98-ec5b-4790-bd24-1ff17a0fa9c0" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <mp:PhoneIdentity PhoneProductId="4e504db9-a9f9-44ae-b313-438aee4fb23c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   
   <Properties>
     <DisplayName>League of News</DisplayName>

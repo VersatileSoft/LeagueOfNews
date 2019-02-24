@@ -1,7 +1,4 @@
-﻿using Surrender_20.Core.Service;
-using System;
-
-namespace Surrender_20.Core.Interface
+﻿namespace Surrender_20.Core.Interface
 {
     public interface ISettingsService
     {

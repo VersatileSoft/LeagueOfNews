@@ -1,5 +1,4 @@
-﻿using MvvmCross.Base;
-using MvvmCross.Platforms.Uap.Views;
+﻿using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.ViewModels;
 using Surrender_20.UWP.ViewModels;
 using Surrender_20.UWP.Views.MessageBoxes;
@@ -17,10 +16,10 @@ namespace Surrender_20.UWP.View
 {
     public sealed partial class MainPageView : MvxWindowsPage
     {
-        private BitmapImage LogoLight, LogoDark;
+        private BitmapImage LogoLight, LogoDark, ItemLogoLight, ItemLogoDark;
         private readonly ConnectionDialog ConnectionDialog = new ConnectionDialog();
 
-        private IMvxInteraction<Func<bool>> _checkInternetConnectionInteraction;
+        private readonly IMvxInteraction<Func<bool>> _checkInternetConnectionInteraction;
         //public IMvxInteraction<Func<bool>> CheckInternetConnectionInteraction
         //{
         //    get => _checkInternetConnectionInteraction;
@@ -64,6 +63,9 @@ namespace Surrender_20.UWP.View
         {
             LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-48.png"));
             LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-48Dark.png"));
+
+            ItemLogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-256.png"));
+            ItemLogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-256Dark.png"));
         }
 
         private void NavigationBar_Loaded(object sender, RoutedEventArgs e)
@@ -139,11 +141,13 @@ namespace Surrender_20.UWP.View
             if (Application.Current.RequestedTheme == ApplicationTheme.Dark)
             {
                 LogoImage.Source = LogoLight;
+                ItemLogo.Source = ItemLogoLight;
             }
 
             else
             {
                 LogoImage.Source = LogoDark;
+                ItemLogo.Source = ItemLogoDark;
             }
         }
     }
