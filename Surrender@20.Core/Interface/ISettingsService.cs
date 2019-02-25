@@ -1,5 +1,3 @@
-﻿using Surrender_20.Core.Service;
-using System;
 using System.Collections.Generic;
 
 namespace Surrender_20.Core.Interface

@@ -8,11 +8,11 @@
                   xmlns:conv="using:Surrender_20.UWP.Converters"
 				  xmlns:views="using:Surrender_20.UWP.View"
                   xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+                  xmlns:ad="using:Microsoft.Advertising.WinRT.UI"
                   x:Class="Surrender_20.UWP.View.MainPageView"
                   mc:Ignorable="d"                 
                   GotFocus="MvxWindowsPage_GotFocus" SizeChanged="MvxWindowsPage_SizeChanged"
                   Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
-
     <m:MvxWindowsPage.Resources>
         <ResourceDictionary>
             <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>
@@ -96,22 +96,22 @@
                         <FlyoutBase.AttachedFlyout>
                             <Flyout LightDismissOverlayMode="Auto">
                                 <StackPanel>
-                                    <TextBlock Text="Theme" FontSize="14"/>
-                                    <RadioButton Content="Light" IsChecked="{Binding IsLight, Mode=TwoWay}" GroupName="Theme">
+                                    <TextBlock Text="Theme - soon" FontSize="14"/>
+                                    <RadioButton Content="Light" IsChecked="{Binding IsLight, Mode=TwoWay}" GroupName="Theme" IsEnabled="False">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsEnabledChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
                                     </RadioButton>
-                                    <RadioButton Content="Dark" IsChecked="{Binding IsDark, Mode=TwoWay}" GroupName="Theme">
+                                    <RadioButton Content="Dark" IsChecked="{Binding IsDark, Mode=TwoWay}" GroupName="Theme" IsEnabled="False">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsCheckedChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
                                     </RadioButton>
-                                    <RadioButton Content="Use system setting" IsChecked="{Binding IsDefault, Mode=TwoWay}" GroupName="Theme">
+                                    <RadioButton Content="Use system setting" IsChecked="{Binding IsDefault, Mode=TwoWay}" GroupName="Theme" IsEnabled="False">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsCheckedChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
@@ -140,51 +140,52 @@
                         <ColumnDefinition x:Name="DetailColumn" Width="*"/>
                     </Grid.ColumnDefinitions>
 
-                    <VisualStateManager.VisualStateGroups>
-                        <VisualStateGroup x:Name="AdaptiveStates">
-                            <VisualState x:Name="DefaultState">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="1000"/>
-                                </VisualState.StateTriggers>
-                            </VisualState>
+                    <Grid Grid.Column="0">
+                        <views:NewsfeedListView x:Name="MasterView" Canvas.ZIndex="5"/>
 
-                            <VisualState x:Name="NarrowState">
-                                <VisualState.StateTriggers>
-                                    <AdaptiveTrigger MinWindowWidth="770"/>
-                                </VisualState.StateTriggers>
+                        <ad:AdControl ApplicationId="9n06tgn05xnk"
+ 		                              AdUnitId="1100040279"
+ 		                              Width="320"
+ 		                              Height="50"
+                                      HorizontalAlignment="Center"
+ 		                              VerticalAlignment="Bottom"
+                                      Canvas.ZIndex="6"/>
+                    </Grid>
+                    
 
-                                <VisualState.Setters>
-                                    <Setter Target="MasterColumn.Width" Value="*"/>
-                                    <Setter Target="DetailColumn.Width" Value="0"/>
-                                    <Setter Target="DetailGrid.Visibility" Value="Collapsed"/>
-                                </VisualState.Setters>
-                            </VisualState>
-                        </VisualStateGroup>
-                    </VisualStateManager.VisualStateGroups>
+                    <Grid Grid.Column="1" Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
+                        <views:NewsfeedItemView x:Name="DetailView" Canvas.ZIndex="5"/>
 
-                    <views:NewsfeedListView x:Name="MasterView" 
-                                            Grid.Column="0"/>
-
-                    <controls:DropShadowPanel Grid.Column="1">
-                        <Grid>
-                            <views:NewsfeedItemView x:Name="DetailView"/>
-
-                            <Image Source="ms-appx:///Assets/Square44x44Logo.scale-400.png"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </controls:DropShadowPanel>
+                        <Image HorizontalAlignment="Center"
+                               VerticalAlignment="Center" 
+                               MaxHeight="200"
+                               x:Name="ItemLogo"/>
+                        <ad:AdControl ApplicationId="9n06tgn05xnk"
+ 		                              AdUnitId="1100040278"
+ 		                              Width="728"
+ 		                              Height="90"
+                                      HorizontalAlignment="Center"
+ 		                              VerticalAlignment="Bottom"
+                                      Canvas.ZIndex="3"/>
+                    </Grid>
                 </Grid>
 
                 <!--<SplitView IsPaneOpen="True"
 					       DisplayMode="Inline"
-					       OpenPaneLength="420">
+					       OpenPaneLength="420"
+                           PaneBackground="Transparent">
                     <SplitView.Pane>
-                        <views:NewsfeedListView Page="{Binding SelectedNewsfeedCategory}"/>
+                        <views:NewsfeedListView x:Name="MasterView"/>
                     </SplitView.Pane>
 
                     <SplitView.Content>
-                        <views:NewsfeedItemView/>
+                        <Grid Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
+                            <views:NewsfeedItemView x:Name="DetailView" Canvas.ZIndex="5"/>
+
+                            <Image Source="ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-256.png"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"/>
+                        </Grid>
                     </SplitView.Content>
                 </SplitView>-->
             </NavigationView.Content>

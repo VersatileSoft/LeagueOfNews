@@ -7,8 +7,6 @@ using Surrender_20.Core.Interface;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using Windows.Storage;
-using Windows.UI.Xaml;
 
 namespace Surrender_20.UWP.ViewModels
 {
@@ -32,7 +30,7 @@ namespace Surrender_20.UWP.ViewModels
         {
             _internetConnectionService = internetConnectionService;
             _messenger = messenger;
-            
+
 
             NavigateCommand = new MvxAsyncCommand<string>((Parameter) =>
             {
@@ -80,7 +78,7 @@ namespace Surrender_20.UWP.ViewModels
 
         public class InternetCheckMessage : MvxMessage
         {
-            public InternetCheckMessage(object sender, Func<bool> checkFunction): base(sender)
+            public InternetCheckMessage(object sender, Func<bool> checkFunction) : base(sender)
             {
                 Check = checkFunction;
             }

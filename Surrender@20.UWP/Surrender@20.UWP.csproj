@@ -22,7 +22,7 @@
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
     <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
-    <PackageCertificateThumbprint>9C0F04F7C93098013FD1FD11B65C42C503E6B84C</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>8C6D66E7BB7493657FBC7798D008BF3242FFC256</PackageCertificateThumbprint>
     <AppInstallerUpdateFrequency>1</AppInstallerUpdateFrequency>
     <AppInstallerCheckForUpdateFrequency>OnApplicationRun</AppInstallerCheckForUpdateFrequency>
   </PropertyGroup>
@@ -157,6 +157,7 @@
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-16.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-24.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-256Dark.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-32.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48.png" />
     <Content Include="Assets\Square44x44Logo.altform-unplated_targetsize-48Dark.png" />
@@ -262,7 +263,14 @@
       <Name>Surrender%4020.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <SDKReference Include="Microsoft.Advertising.Xaml, Version=10.0">
+      <Name>Microsoft Advertising SDK for XAML</Name>
+    </SDKReference>
+    <SDKReference Include="Microsoft.VCLibs, Version=14.0">
+      <Name>Visual C++ 2015 Runtime for Universal Windows Platform Apps</Name>
+    </SDKReference>
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
