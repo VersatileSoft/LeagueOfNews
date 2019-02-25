@@ -6,7 +6,8 @@
                       xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
                       xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
                       x:Class="Surrender_20.Forms.Views.MasterView"
-                      Style="{DynamicResource Page}">
+                      Style="{DynamicResource Page}"
+                      Title="Placeholder">
 
     <views:MvxContentPage.Content>
         <StackLayout>

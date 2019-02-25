@@ -18,10 +18,10 @@ namespace Surrender_20.Core.ViewModels
             }
         }
 
-        public ApplicationTheme Theme
+        public bool DarkTheme
         {
-            get => _settingsService.Theme;
-            set => _settingsService.Theme = value;
+            get => _settingsService.Theme == ApplicationTheme.Dark;
+            set => _settingsService.Theme = value ? ApplicationTheme.Dark : ApplicationTheme.Light;
         }
 
         public string Delay
