@@ -41,7 +41,7 @@ namespace Surrender_20.Forms.Droid.Services
             notificationManager.CreateNotificationChannel(channel);
         }
 
-        public void ShowNewPostNotification(Newsfeed newsfeed, NewsCategory page)
+        public void ShowNewPostNotification(Newsfeed newsfeed, NewsWebsite page)
         {
             Notification notification = new NotificationCompat.Builder(Application.Context, CHANNEL_ID)
                 .SetContentTitle(newsfeed.Title)
@@ -54,7 +54,7 @@ namespace Surrender_20.Forms.Droid.Services
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.From(Application.Context);
 
-            if (page == NewsCategory.Official)
+            if (page == NewsWebsite.LoL)
             {
                 notificationManager.Notify(1000, notification);
             }
@@ -66,9 +66,9 @@ namespace Surrender_20.Forms.Droid.Services
 
         public void RefreshNotificationJobService()
         {
-            if (Mvx.IoCProvider.Resolve<IPersistentDataService>().GetIsNotificationsEnabled())
+            if (Mvx.IoCProvider.Resolve<ISettingsService>().HasNotificationsEnabled)
             {
-                StartNotificationJobService(Mvx.IoCProvider.Resolve<IPersistentDataService>().GetCheckNewPostsFrequency());
+                StartNotificationJobService(Mvx.IoCProvider.Resolve<ISettingsService>().NewPostCheckFrequency);
             }
             else
             {

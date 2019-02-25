@@ -18,7 +18,7 @@ namespace Surrender_20.Core.ViewModels
             }
         }
 
-        public ApplicationTheme Theme //Why?
+        public ApplicationTheme Theme
         {
             get => _settingsService.Theme;
             set => _settingsService.Theme = value;

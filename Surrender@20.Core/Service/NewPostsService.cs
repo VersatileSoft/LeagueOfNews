@@ -21,20 +21,33 @@ namespace Surrender_20.Core.Service
 
         public async Task CheckNewPosts()
         {
-            await CheckNewPosts(NewsCategory.Official);
-            await CheckNewPosts(NewsCategory.SurrenderHome);
+            await CheckNewPosts(NewsWebsite.Surrender);
+            await CheckNewPosts(NewsWebsite.LoL);
         }
 
-        private async Task CheckNewPosts(NewsCategory page)
+        private async Task CheckNewPosts(NewsWebsite page)
         {
-            List<Newsfeed> list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(page));
+            List<Newsfeed> list = null;
             List<Newsfeed> newPosts = new List<Newsfeed>();
-            string lastPostTitle = _settingsService[page].LastPostTitle;
-            if (lastPostTitle != null)
+            string lastPostUrl = "";
+            switch (page)
+            {
+                case NewsWebsite.LoL:
+                    lastPostUrl = _settingsService.WebsiteHistoryData.LastPostOfficialUrl;
+                    list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(NewsCategory.Official));
+                    break;
+                case NewsWebsite.Surrender:
+                    lastPostUrl = _settingsService.WebsiteHistoryData.LastPostSurrenderUrl;
+                    list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(NewsCategory.SurrenderHome));
+                    break;
+                default: break;
+            }
+            
+            if (!string.IsNullOrWhiteSpace(lastPostUrl))
             {
                 foreach (Newsfeed newsfeed in list)
                 {
-                    if (newsfeed.Title == lastPostTitle)
+                    if (newsfeed.UrlToNewsfeed == lastPostUrl)
                     {
                         break;
                     }
@@ -45,8 +58,17 @@ namespace Surrender_20.Core.Service
                 }
             }
 
-            _settingsService.SaveLastPostTitle(page, list[0].Title);
-
+            switch (page)
+            {
+                case NewsWebsite.LoL:
+                    _settingsService.WebsiteHistoryData.LastPostOfficialUrl = list[0].UrlToNewsfeed;
+                    break;
+                case NewsWebsite.Surrender:
+                    _settingsService.WebsiteHistoryData.LastPostSurrenderUrl = list[0].UrlToNewsfeed;
+                    break;
+                default: break;
+            }
+            
             if (newPosts.Count > 0)
             {
                 _notificationService.ShowNewPostNotification(newPosts[0], page); //TODO Show all new post not only one

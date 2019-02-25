@@ -1,5 +1,6 @@
 ﻿using Surrender_20.Core.Service;
 using System;
+using System.Collections.Generic;
 
 namespace Surrender_20.Core.Interface
 {
@@ -11,17 +12,23 @@ namespace Surrender_20.Core.Interface
         int NewPostCheckFrequency { get; set; }
         bool HasNotificationsEnabled { get; set; }
 
-        void SaveLastPostTitle(NewsCategory page, string title); //Remove?
+        WebsiteHistoryData WebsiteHistoryData { get; set; }
     }
 
     public class CategoryData
     {
         public string Title { get; set; }
-        public string LastPostTitle { get; set; }
-        public string CategoryURL { get; set; } //Should be Uri or string?
+        public string CategoryURL { get; set; }
 
         public NewsCategory Category { get; set; } = NewsCategory.None;
         public NewsWebsite Website { get; set; } = NewsWebsite.None;
+    }
+
+    public class WebsiteHistoryData
+    {
+        public string LastPostSurrenderUrl { get; set; }
+        public string LastPostOfficialUrl { get; set; }
+        public List<string> VisitedPosts { get; set; } = new List<string>();
     }
 
     public enum NewsCategory

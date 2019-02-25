@@ -15,6 +15,8 @@ namespace Surrender_20.Core.Service
         {
             categories = new Dictionary<NewsCategory, CategoryData>();
 
+            WebsiteHistoryData = new WebsiteHistoryData();
+
             this[NewsCategory.None] = new CategoryData { Title = "Settings" };
 
             this[NewsCategory.SurrenderHome] = new CategoryData { Title = "Home", CategoryURL = "https://www.surrenderat20.net/" };
@@ -33,19 +35,14 @@ namespace Surrender_20.Core.Service
             set => categories.Add(Category, value);
         }
 
-        public void SaveLastPostTitle(NewsCategory page, string title)
-        {
-            this[page].LastPostTitle = title;
-            TitleChanged(new PostTitleArgs { Category = page, Title = title });
-        }
-
         public abstract ApplicationTheme Theme { get; set; }
         public abstract int NewPostCheckFrequency { get; set; }
         public abstract bool HasNotificationsEnabled { get; set; }
+        public WebsiteHistoryData WebsiteHistoryData { get; set; }
 
         protected class PostTitleArgs
         {
-            public NewsCategory Category { get; set; }
+            public NewsWebsite Category { get; set; }
             public string Title { get; set; }
         }
     }

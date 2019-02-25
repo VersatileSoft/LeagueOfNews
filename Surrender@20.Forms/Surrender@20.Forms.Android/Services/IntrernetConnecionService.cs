@@ -9,7 +9,7 @@ namespace Surrender_20.Forms.Droid.Services
 {
     public class InternetConnectionService : IInternetConnectionService
     {
-        public bool CheckInternetConnection()
+        public bool IsInternetAvailable()
         {
             ConnectivityManager cm = (ConnectivityManager)Application.Context.GetSystemService(Context.ConnectivityService);
             bool isConnected = cm.ActiveNetworkInfo == null ? false : cm.ActiveNetworkInfo.IsConnected;

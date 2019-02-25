@@ -8,9 +8,9 @@ namespace Surrender_20.Forms.Services
     {
         public event EventHandler<MasterPageSelectArgs> OnMasterPageSelect;
 
-        public void MasterPageSelect(NewsCategory Page)
+        public void MasterPageSelect(NewsWebsite Page)
         {
-            OnMasterPageSelect?.Invoke(this, new MasterPageSelectArgs { NewsCategory = Page });
+            OnMasterPageSelect?.Invoke(this, new MasterPageSelectArgs { Page = Page });
         }
     }
 }

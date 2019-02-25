@@ -7,15 +7,16 @@ using System.Threading.Tasks;
 
 namespace Surrender_20.Forms.ViewModels
 {
-    public class TabbedRootViewModel : MainPageCoreViewModel
+    public class TabbedRootViewModel : MvxViewModel
     {
         private bool _tabsLoaded = false;
-        public ITabsInitService _tabsInitService;
+        private ITabsInitService _tabsInitService;
+        private IMvxNavigationService _navigationService;
 
-        public TabbedRootViewModel(IMvxNavigationService navigationService, ITabsInitService tabsInitService, IOperatingSystemService operatingSystemService)
-            : base(navigationService, operatingSystemService)
+        public TabbedRootViewModel(ITabsInitService tabsInitService, IMvxNavigationService navigationService)
         {
             _tabsInitService = tabsInitService;
+            _navigationService = navigationService;
         }
 
         public override void ViewAppeared()

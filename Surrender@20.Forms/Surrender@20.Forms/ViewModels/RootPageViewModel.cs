@@ -41,10 +41,10 @@ namespace Surrender_20.Forms.ViewModels
             {
                 switch (e.Page)
                 {
-                    case NewsCategory.SurrenderHome: await _navigationService.Navigate<TabbedRootViewModel>(); break;
+                    case NewsWebsite.Surrender: await _navigationService.Navigate<TabbedRootViewModel>(); break;
                     // case Pages.Dev:
-                    case NewsCategory.Official: await _navigationService.Navigate<NewsfeedListViewModel, NewsCategory>(e.Page); break;
-                    case NewsCategory.None: await _navigationService.Navigate<SettingsViewModel>(); break;
+                    case NewsWebsite.LoL: await _navigationService.Navigate<NewsfeedListViewModel, NewsCategory>(NewsCategory.Official); break;
+                    case NewsWebsite.None: await _navigationService.Navigate<SettingsViewModel>(); break;
                 }
             });
         }

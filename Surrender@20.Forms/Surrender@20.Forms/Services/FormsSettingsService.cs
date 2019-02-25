@@ -1,20 +1,28 @@
 ﻿using Surrender_20.Core.Interface;
+using Surrender_20.Core.Service;
 using Xamarin.Forms;
 
 namespace Surrender_20.Forms.Services
 {
-    public class ThemeService : IThemeService //TODO move to SettingsService
+    public abstract class FormsSettingsService : AbstractSettingsService
     {
-        public void SetAppTheme(AppTheme appTheme)
+
+        public FormsSettingsService() : base()
         {
-            switch (appTheme)
+            SetAppTheme();
+        }
+
+        public void SetAppTheme()
+        {
+            switch (Theme)
             {
-                case AppTheme.Dark: SetDarkTheme(); break;
-                case AppTheme.Light: SetLightTheme(); break;
+                case ApplicationTheme.Dark: SetDarkTheme(); break;
+                case ApplicationTheme.Light: SetLightTheme(); break;
+                default: SetDarkTheme(); break;
             }
         }
 
-        private void SetLightTheme()
+        protected void SetLightTheme()
         {
             Application.Current.Resources["Page"] = Application.Current.Resources["LightPage"];
             Application.Current.Resources["Frame"] = Application.Current.Resources["LightFrame"];
@@ -23,8 +31,7 @@ namespace Surrender_20.Forms.Services
             Application.Current.Resources["Image"] = Application.Current.Resources["LightImage"];
             Application.Current.Resources["DescriptionLabel"] = Application.Current.Resources["LightDescriptionLabel"];
         }
-
-        private void SetDarkTheme()
+        protected void SetDarkTheme()
         {
             Application.Current.Resources["Page"] = Application.Current.Resources["DarkPage"];
             Application.Current.Resources["Frame"] = Application.Current.Resources["DarkFrame"];

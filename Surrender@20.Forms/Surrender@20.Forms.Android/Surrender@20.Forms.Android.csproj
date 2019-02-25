@@ -99,7 +99,7 @@
     <Compile Include="Services\IntrernetConnecionService.cs" />
     <Compile Include="Services\NotificationJobService.cs" />
     <Compile Include="Services\NotificationService.cs" />
-    <Compile Include="Services\SaveDataService.cs" />
+    <Compile Include="Services\AndroidSettingsService.cs" />
     <Compile Include="Setup.cs" />
   </ItemGroup>
   <ItemGroup>
