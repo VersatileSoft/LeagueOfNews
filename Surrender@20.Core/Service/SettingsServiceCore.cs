@@ -18,7 +18,7 @@ namespace Surrender_20.Core.Service
 
             this[NewsCategory.None] = new CategoryData { Title = "Settings" };
 
-            this[NewsCategory.SurrenderHome] = new CategoryData { Title = "Home", CategoryURL = "https://www.surrenderat20.net/" };
+            this[NewsCategory.SurrenderHome] = new CategoryData { Title = "Home", CategoryURL = "https://www.surrenderat20.net/", Website = NewsWebsite.Surrender };
             this[NewsCategory.PBE] = new CategoryData { Title = "PBE", CategoryURL = "https://www.surrenderat20.net/search/label/PBE/", Website = NewsWebsite.Surrender };
             this[NewsCategory.Releases] = new CategoryData { Title = "Releases", CategoryURL = "https://www.surrenderat20.net/search/label/Releases", Website = NewsWebsite.Surrender };
             this[NewsCategory.RedPosts] = new CategoryData { Title = "Red Posts", CategoryURL = "https://www.surrenderat20.net/search/label/Red%20Posts", Website = NewsWebsite.Surrender };

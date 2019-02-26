@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surrender_20.Core.Interface
+namespace Surrender_20.Forms.Interfaces
 {
     public interface ITabsInitService
     {

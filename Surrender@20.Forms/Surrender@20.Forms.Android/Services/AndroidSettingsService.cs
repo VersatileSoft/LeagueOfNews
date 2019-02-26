@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.Preferences;
 using Surrender_20.Core.Interface;
 using Surrender_20.Forms.Services;
@@ -15,7 +14,7 @@ namespace Surrender_20.Forms.Droid.Services
         private const string THEME = "THEME";
         private const string IS_NOTIFICATIONS_ENABLED = "IS_NOTIFICATIONS_ENABLED";
 
-        public AndroidSettingsService():base()
+        public AndroidSettingsService() : base()
         {
             TitleChanged += SaveTitle;
 
@@ -35,15 +34,15 @@ namespace Surrender_20.Forms.Droid.Services
                 default: break;
             }
 
-           PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-                .Edit()
-                .PutString(PageToKey(args.Category), args.Title)
-                .Apply();
+            PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+                 .Edit()
+                 .PutString(PageToKey(args.Category), args.Title)
+                 .Apply();
         }
 
         public override ApplicationTheme Theme
         {
-            get => (ApplicationTheme)PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetInt(THEME, -1);
+            get => (ApplicationTheme)PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetInt(THEME, (int)ApplicationTheme.Dark);
             set
             {
                 PreferenceManager.GetDefaultSharedPreferences(Application.Context)
@@ -69,23 +68,6 @@ namespace Surrender_20.Forms.Droid.Services
                     .PutBoolean(IS_NOTIFICATIONS_ENABLED, value)
                     .Apply();
         }
-
-        public string GetLastPostTitle(NewsWebsite page)
-        {
-            ISharedPreferences prefs = PreferenceManager.GetDefaultSharedPreferences(Application.Context);
-
-            string result = prefs.GetString(PageToKey(page), "null");
-
-            if (result == "null")
-            {
-                return null;
-            }
-            else
-            {
-                return result;
-            }
-        }
-
 
         private string PageToKey(NewsWebsite page)
         {

@@ -2,6 +2,7 @@
 using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
+using Surrender_20.Core.ViewModels;
 using Surrender_20.Forms.Interfaces;
 using System;
 using System.Threading.Tasks;
@@ -16,7 +17,6 @@ namespace Surrender_20.Forms.ViewModels
         public event EventHandler HideMaster;
 
         public RootPageViewModel(IMvxNavigationService navigationService, IMasterDetailService masterDetailService)
-        //: base(navigationService, operatingSystemService)
         {
             _navigationService = navigationService;
             masterDetailService.OnMasterPageSelect += OnMasterPageSelect;

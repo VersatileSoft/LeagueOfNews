@@ -5,11 +5,9 @@ namespace Surrender_20.Core.Interface
     public interface ISettingsService
     {
         CategoryData this[NewsCategory Category] { get; set; }
-
         ApplicationTheme Theme { get; set; }
         int NewPostCheckFrequency { get; set; }
         bool HasNotificationsEnabled { get; set; }
-
         WebsiteHistoryData WebsiteHistoryData { get; set; }
     }
 
@@ -17,8 +15,6 @@ namespace Surrender_20.Core.Interface
     {
         public string Title { get; set; }
         public string CategoryURL { get; set; }
-
-        public NewsCategory Category { get; set; } = NewsCategory.None;
         public NewsWebsite Website { get; set; } = NewsWebsite.None;
     }
 

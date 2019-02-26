@@ -10,10 +10,12 @@ namespace Surrender_20.Core.Model
     {
 
         private readonly IInternetConnectionService _intrernetConnecionService;
+        private readonly ISettingsService _settingsService;
 
-        public WebClientService(IInternetConnectionService intrernetConnecionService)
+        public WebClientService(IInternetConnectionService intrernetConnecionService, ISettingsService settingsService)
         {
             _intrernetConnecionService = intrernetConnecionService;
+            _settingsService = settingsService;
         }
 
         public async Task<HtmlDocument> GetPage(string url, NewsCategory page)
@@ -23,15 +25,10 @@ namespace Surrender_20.Core.Model
                 return null;
             }
 
-            switch (page)
+            switch (_settingsService[page].Website)
             {
-                case NewsCategory.SurrenderHome:
-                case NewsCategory.ESports:
-                case NewsCategory.PBE:
-                case NewsCategory.RedPosts:
-                case NewsCategory.Rotations:
-                case NewsCategory.Releases: return await GetPageByWebClient(url);
-                case NewsCategory.Official: return await GetPageByRequest(url);
+                case NewsWebsite.Surrender: return await GetPageByWebClient(url);
+                case NewsWebsite.LoL: return await GetPageByRequest(url);
             }
             return null;
         }

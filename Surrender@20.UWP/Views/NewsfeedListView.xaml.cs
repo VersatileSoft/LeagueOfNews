@@ -23,7 +23,7 @@ namespace Surrender_20.UWP.View
 
         private void GridView_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            ViewModel.ItemTapped.Execute((sender as GridView).SelectedItem);
+            ViewModel.ItemSelectedCommand.Execute((sender as GridView).SelectedItem);
         }
     }
 }

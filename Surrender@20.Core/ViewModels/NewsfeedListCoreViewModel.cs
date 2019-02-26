@@ -24,9 +24,9 @@ namespace Surrender_20.Core.ViewModels
         public bool IsLoading { get; set; }
         public bool IsRefreshing { get; set; }
         public bool IsLoadingMore { get; set; }
-        public ICommand ItemTapped { get; set; } //ItemSelected? Tapped sounds like WinForms-like UI event, not command
-        public ICommand LoadMore { get; set; } //-Command suffix?
-        public ICommand RefreshItems { get; set; }
+        public ICommand ItemSelectedCommand { get; set; }
+        public ICommand LoadMoreCommand { get; set; }
+        public ICommand RefreshItemsCommand { get; set; }
 
         public NewsfeedListCoreViewModel(
             INewsfeedService newsfeedService,
@@ -37,13 +37,13 @@ namespace Surrender_20.Core.ViewModels
             _settingsService = settingsService;
             _navigationService = navigationService;
 
-            ItemTapped = new MvxAsyncCommand<Newsfeed>(async (Newsfeed) =>
+            ItemSelectedCommand = new MvxAsyncCommand<Newsfeed>(async (Newsfeed) =>
             {
                 await NavigateToAsync(Newsfeed);
             });
 
-            RefreshItems = new MvxCommand(RefreshNewsfeeds);
-            LoadMore = new MvxCommand(LoadMoreNewsfeeds);
+            RefreshItemsCommand = new MvxCommand(RefreshNewsfeeds);
+            LoadMoreCommand = new MvxCommand(LoadMoreNewsfeeds);
         }
 
         protected abstract Task NavigateToAsync(Newsfeed newsfeed);
@@ -70,7 +70,6 @@ namespace Surrender_20.Core.ViewModels
                 IsLoadingMore = false;
             }).Start();
         }
-
         protected void RefreshNewsfeeds()
         {
             Newsfeeds.Clear();

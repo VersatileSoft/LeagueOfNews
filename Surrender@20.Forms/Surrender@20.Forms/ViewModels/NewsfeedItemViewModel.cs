@@ -24,13 +24,13 @@ namespace Surrender_20.Forms.ViewModels
             set => SetProperty(ref _url, value);
         }
 
-        public NewsfeedItemViewModel(IWebClientService cookieWebClientService, INotificationService notificationService) : base(cookieWebClientService, notificationService)
+        public NewsfeedItemViewModel(IWebClientService cookieWebClientService, ISettingsService settingsService) : base(cookieWebClientService, settingsService)
         {
 
         }
 
         //public override void ParseHtml(HtmlNode documentNode, Pages page)
-        public override void ParseHtml(string url, NewsCategory page)
+        public override void ParseHtml(string url, NewsWebsite page)
         {
             base.ParseHtml(URL, page);
             URL = url;

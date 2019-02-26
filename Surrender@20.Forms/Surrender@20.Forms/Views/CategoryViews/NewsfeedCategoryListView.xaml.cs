@@ -18,7 +18,7 @@ namespace Surrender_20.Forms.Views
 
         private void MvxListView_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            ViewModel.ItemTapped.Execute((Newsfeed)e.Item);
+            ViewModel.ItemSelectedCommand.Execute((Newsfeed)e.Item);
         }
     }
 }

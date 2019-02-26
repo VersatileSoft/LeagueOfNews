@@ -10,17 +10,16 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public abstract class NewsfeedItemCoreViewModel : MvxViewModel<Newsfeed>
     {
-        protected HtmlDocument _doc { get; set; }
         public bool IsLoading { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
         private readonly IWebClientService _cookieWebClientService;
-        private readonly INotificationService _notificationService;
+        private readonly ISettingsService _settingsService;
 
-        public NewsfeedItemCoreViewModel(IWebClientService cookieWebClientService, INotificationService notificationService)
+        public NewsfeedItemCoreViewModel(IWebClientService cookieWebClientService, ISettingsService settingsService)
         {
             _cookieWebClientService = cookieWebClientService;
-            _notificationService = notificationService;
+            _settingsService = settingsService;
         }
 
         protected override void InitFromBundle(IMvxBundle parameters)
@@ -46,21 +45,18 @@ namespace Surrender_20.Core.ViewModels
             Title = newsfeed.Title;
             Date = newsfeed.Date;
             IsLoading = true;
-            HtmlDocument doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed, newsfeed.Page);
+           // HtmlDocument doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed, newsfeed.Page);
             //  ParseHtml(doc.DocumentNode, newsfeed.Page);
-            ParseHtml(newsfeed.UrlToNewsfeed, newsfeed.Page);
+            ParseHtml(newsfeed.UrlToNewsfeed, _settingsService[newsfeed.Page].Website);
             IsLoading = false;
         }
 
         // public virtual void ParseHtml(HtmlNode documentNode, Pages page)
-        public virtual void ParseHtml(string URL, NewsCategory page)
+        public virtual void ParseHtml(string URL, NewsWebsite page)
         {
             switch (page)
             {
-
-
-
-                case NewsCategory.Official:
+                case NewsWebsite.LoL:
                     // TODO delete not needed nodes from document node
 
 
@@ -71,16 +67,9 @@ namespace Surrender_20.Core.ViewModels
 
                     //    documentNode.SelectSingleNode("./div[@id='riotbar-subbar']").Remove();
                     break;
-
-                case NewsCategory.SurrenderHome:
-                case NewsCategory.ESports:
-                case NewsCategory.PBE:
-                case NewsCategory.RedPosts:
-                case NewsCategory.Rotations:
-                case NewsCategory.Releases:
+                case NewsWebsite.Surrender:
                     // TODO delete not needed nodes from document node
                     break;
-
             }
         }
     }

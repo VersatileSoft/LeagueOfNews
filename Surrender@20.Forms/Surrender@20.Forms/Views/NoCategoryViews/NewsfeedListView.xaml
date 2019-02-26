@@ -26,10 +26,10 @@
                 <!--ItemClick="MvxListView_ItemClick"-->
                 <util:InfiniteListView Style="{StaticResource InfiniteListView}"
                                        IsPullToRefreshEnabled="True"
-                                       RefreshCommand="{Binding RefreshItems}"
+                                       RefreshCommand="{Binding RefreshItemsCommand}"
                                        IsRefreshing="{Binding IsRefreshing}"
                                        ItemsSource="{Binding Newsfeeds}"
-                                       LoadMoreCommand="{Binding LoadMore}"
+                                       LoadMoreCommand="{Binding LoadMoreCommand}"
                                        ItemTapped="MvxListView_ItemTapped">
 
                     <!--TODO Change event to Behavior-->

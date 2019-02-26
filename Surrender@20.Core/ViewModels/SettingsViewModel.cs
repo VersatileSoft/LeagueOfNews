@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 namespace Surrender_20.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
-    public class SettingsCoreViewModel : MvxViewModel
+    public class SettingsViewModel : MvxViewModel
     {
         public bool IsNotificationsEnabled
         {
@@ -39,7 +39,7 @@ namespace Surrender_20.Core.ViewModels
         private readonly ISettingsService _settingsService;
         private readonly INotificationService _notificationService;
 
-        public SettingsCoreViewModel(ISettingsService settingsService, INotificationService notificationService)
+        public SettingsViewModel(ISettingsService settingsService, INotificationService notificationService)
         {
             _settingsService = settingsService;
             _notificationService = notificationService;

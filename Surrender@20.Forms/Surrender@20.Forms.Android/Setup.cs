@@ -17,14 +17,15 @@ namespace Surrender_20.Forms.Droid
     {
         protected override void InitializeLastChance()
         {
-            Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService()); //TODO move to InitializeFirstChance
-            Mvx.IoCProvider.RegisterSingleton(typeof(IMasterDetailService), new MasterDetailService());       //TODO same /\
-            Mvx.IoCProvider.RegisterSingleton(typeof(INotificationService), new NotificationService());       //TODO same /\
-            Mvx.IoCProvider.RegisterSingleton(typeof(ISettingsService), new AndroidSettingsService());       //TODO same /\
-            Mvx.IoCProvider.RegisterSingleton(typeof(IInternetConnectionService), new InternetConnectionService());       //TODO same /\
+            Mvx.IoCProvider.RegisterSingleton(typeof(IOperatingSystemService), new OperatingSystemService()); 
+            Mvx.IoCProvider.RegisterSingleton(typeof(IMasterDetailService), new MasterDetailService());      
+            Mvx.IoCProvider.RegisterSingleton(typeof(ITabsInitService), new TabsInitService());      
+            Mvx.IoCProvider.RegisterSingleton(typeof(INotificationService), new NotificationService());       
+            Mvx.IoCProvider.RegisterSingleton(typeof(ISettingsService), new AndroidSettingsService());       
+            Mvx.IoCProvider.RegisterSingleton(typeof(IInternetConnectionService), new InternetConnectionService());       
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<RootPageViewModel>>();
 
-            base.InitializeLastChance(); //TODO remove (check if work)
+            base.InitializeLastChance();
         }
 
         public override IEnumerable<Assembly> GetViewModelAssemblies()

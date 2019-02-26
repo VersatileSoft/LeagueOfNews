@@ -16,24 +16,19 @@ namespace Surrender_20.Forms.Droid
     [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MyTheme.Splash", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : MvxFormsAppCompatActivity<Setup, CoreApp, App>
     {
-        public static readonly string CHANNEL_ID = "news_notification";
-
         protected override void OnCreate(Bundle bundle)
         {
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
-
             base.SetTheme(Resource.Style.MainTheme);
-            base.OnCreate(bundle);
-
-            TintedImageRenderer.Init();
-
+            base.OnCreate(bundle);           
             NavigateToRequestIfPresent(Intent);
         }
 
         public override void InitializeApplication()
         {
             base.InitializeApplication();
+            TintedImageRenderer.Init();
             MobileAds.Initialize(ApplicationContext, Resources.GetString(Resource.String.app_unit_id));
             INotificationService notificationService = Mvx.IoCProvider.Resolve<INotificationService>();
             notificationService.CreateNotificationChannel();
@@ -43,7 +38,6 @@ namespace Surrender_20.Forms.Droid
         protected override void OnNewIntent(Intent intent)
         {
             base.OnNewIntent(intent);
-
             NavigateToRequestIfPresent(intent);
         }
 

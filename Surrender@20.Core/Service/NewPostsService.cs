@@ -7,7 +7,6 @@ namespace Surrender_20.Core.Service
 {
     public class NewPostsService : INewPostsService
     {
-
         private readonly INotificationService _notificationService;
         private readonly INewsfeedService _newsfeedService;
         private readonly ISettingsService _settingsService;
@@ -42,7 +41,7 @@ namespace Surrender_20.Core.Service
                     break;
                 default: break;
             }
-            
+
             if (!string.IsNullOrWhiteSpace(lastPostUrl))
             {
                 foreach (Newsfeed newsfeed in list)
@@ -68,7 +67,7 @@ namespace Surrender_20.Core.Service
                     break;
                 default: break;
             }
-            
+
             if (newPosts.Count > 0)
             {
                 _notificationService.ShowNewPostNotification(newPosts[0], page); //TODO Show all new post not only one

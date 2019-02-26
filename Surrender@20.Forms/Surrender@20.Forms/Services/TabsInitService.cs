@@ -1,7 +1,7 @@
-﻿using Surrender_20.Core.Interface;
+﻿using Surrender_20.Forms.Interfaces;
 using System;
 
-namespace Surrender_20.Core.Service
+namespace Surrender_20.Forms.Services
 {
     public class TabsInitService : ITabsInitService
     {

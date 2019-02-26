@@ -9,8 +9,7 @@ namespace Surrender_20.Model
         public string UrlToNewsfeed { get; set; }
         public string Date { get; set; }
         public string Title { get; set; }
-        public string ShortDescription { get; set; } //Overlaps with Content?
-        public string ThumbnailURL { get; set; }
+        public string ShortDescription { get; set; }
         public byte[] Image { get; set; }
         public NewsCategory Page { get; set; }
     }

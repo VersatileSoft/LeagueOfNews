@@ -31,6 +31,7 @@ namespace Surrender_20.Core.Service
         public async Task<IList<Newsfeed>> LoadNewsfeedsAsync(NewsCategory page)
         {
             string URL = _settingsService[page].CategoryURL;
+            NewsWebsite newsWebsite = _settingsService[page].Website;
             _officialBaseURL = "https://" + new Uri(URL).Host;
 
             HtmlDocument doc = await _cookieWebClientService.GetPage(URL, page);
@@ -40,15 +41,10 @@ namespace Surrender_20.Core.Service
                 return new List<Newsfeed>();
             }
 
-            switch (page)
+            switch (newsWebsite)
             {
-                case NewsCategory.SurrenderHome:
-                case NewsCategory.ESports:
-                case NewsCategory.PBE:
-                case NewsCategory.RedPosts:
-                case NewsCategory.Rotations:
-                case NewsCategory.Releases: _newsfeeds = await LoadSurrender(doc, page); break;
-                case NewsCategory.Official: _newsfeeds = await LoadOfficial(doc, page); break;
+                case NewsWebsite.Surrender: _newsfeeds = await LoadSurrender(doc, page); break;
+                case NewsWebsite.LoL: _newsfeeds = await LoadOfficial(doc, page); break;
             }
 
             return _newsfeeds;
@@ -67,15 +63,10 @@ namespace Surrender_20.Core.Service
                 throw new Exception("Filed to load next page url");
             }
 
-            switch (page)
+            switch (_settingsService[page].Website)
             {
-                case NewsCategory.SurrenderHome:
-                case NewsCategory.ESports:
-                case NewsCategory.PBE:
-                case NewsCategory.RedPosts:
-                case NewsCategory.Rotations:
-                case NewsCategory.Releases: newsfeeds = await LoadSurrender(doc, page); break;
-                case NewsCategory.Official: newsfeeds = await LoadOfficial(doc, page); break;
+                case NewsWebsite.Surrender: newsfeeds = await LoadSurrender(doc, page); break;
+                case NewsWebsite.LoL: newsfeeds = await LoadOfficial(doc, page); break;
             }
             return newsfeeds;
         }

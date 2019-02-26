@@ -12,7 +12,7 @@ namespace Surrender_20.Forms.Services
             SetAppTheme();
         }
 
-        public void SetAppTheme()
+        protected void SetAppTheme()
         {
             switch (Theme)
             {
@@ -22,7 +22,7 @@ namespace Surrender_20.Forms.Services
             }
         }
 
-        protected void SetLightTheme()
+        private void SetLightTheme()
         {
             Application.Current.Resources["Page"] = Application.Current.Resources["LightPage"];
             Application.Current.Resources["Frame"] = Application.Current.Resources["LightFrame"];
@@ -31,7 +31,7 @@ namespace Surrender_20.Forms.Services
             Application.Current.Resources["Image"] = Application.Current.Resources["LightImage"];
             Application.Current.Resources["DescriptionLabel"] = Application.Current.Resources["LightDescriptionLabel"];
         }
-        protected void SetDarkTheme()
+        private void SetDarkTheme()
         {
             Application.Current.Resources["Page"] = Application.Current.Resources["DarkPage"];
             Application.Current.Resources["Frame"] = Application.Current.Resources["DarkFrame"];
