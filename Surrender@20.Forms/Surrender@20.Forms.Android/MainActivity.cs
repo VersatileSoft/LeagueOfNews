@@ -21,14 +21,14 @@ namespace Surrender_20.Forms.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.SetTheme(Resource.Style.MainTheme);
-            base.OnCreate(bundle);           
+            base.OnCreate(bundle);
+            TintedImageRenderer.Init();
             NavigateToRequestIfPresent(Intent);
         }
 
         public override void InitializeApplication()
         {
             base.InitializeApplication();
-            TintedImageRenderer.Init();
             MobileAds.Initialize(ApplicationContext, Resources.GetString(Resource.String.app_unit_id));
             INotificationService notificationService = Mvx.IoCProvider.Resolve<INotificationService>();
             notificationService.CreateNotificationChannel();
