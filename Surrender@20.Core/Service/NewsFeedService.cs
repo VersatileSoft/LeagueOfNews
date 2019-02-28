@@ -122,7 +122,7 @@ namespace Surrender_20.Core.Service
                     }
                     else if (_operatingSystemService.GetSystemType() == SystemType.UWP)
                     {
-                        newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value;
+                        newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
                         newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
                     }
 

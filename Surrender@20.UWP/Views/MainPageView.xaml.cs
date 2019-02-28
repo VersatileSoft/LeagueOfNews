@@ -56,6 +56,8 @@ namespace Surrender_20.UWP.View
                            UWP
                            GREAT
                            AGAIN             */
+
+            SiteCombo.SelectedItem = "Surrender@20";
         }
 
         private void ChangeThemeLogo()

@@ -79,7 +79,18 @@
                         <FlyoutBase.AttachedFlyout>
                             <Flyout LightDismissOverlayMode="Auto">
                                 <StackPanel>
-                                    <TextBlock Text="Which site would you choose to read?" FontSize="14"/>
+                                    <ComboBox x:Name="SiteCombo" Header="Which site would you choose to read?" Width="250">
+                                        <x:String>Surrender@20</x:String>
+                                        <x:String>League of Legends official</x:String>
+                                        <!--<x:String>/dev blog</x:String>-->
+
+                                        <i:Interaction.Behaviors>
+                                            <core:EventTriggerBehavior EventName="SelectionChanged">
+                                                <core:InvokeCommandAction Command="{Binding SelectWebsiteCommand}"/>
+                                            </core:EventTriggerBehavior>
+                                        </i:Interaction.Behaviors>
+                                    </ComboBox>
+                                    <!--<TextBlock Text="Which site would you choose to read?" FontSize="14"/>
                                     <RadioButton Content="League of Legends official" IsChecked="True" GroupName="Sites"/>
                                     <RadioButton Content="Surrender@20" GroupName="Sites" IsChecked="{Binding HasSurrenderElementsVisible, Mode=TwoWay}" Checked="RadioButton_Checked" Unchecked="RadioButton_Checked">
                                         <i:Interaction.Behaviors>
@@ -87,7 +98,7 @@
                                                 <core:InvokeCommandAction Command="{Binding SelectWebsiteCommand}"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
-                                    </RadioButton>
+                                    </RadioButton>-->
                                 </StackPanel>
                             </Flyout>
                         </FlyoutBase.AttachedFlyout>

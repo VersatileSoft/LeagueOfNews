@@ -18,6 +18,7 @@
                       IsActive="{Binding IsLoading}"/>
 
         <WebView x:Name="NewsfeedWebView" 
+                 MaxWidth="2000"
                  CacheMode="BitmapCache" 
                  Source="{Binding URL}" 
                  ContainsFullScreenElementChanged="NewsfeedWebView_ContainsFullScreenElementChanged"/>
