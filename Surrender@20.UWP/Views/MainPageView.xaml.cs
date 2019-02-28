@@ -48,7 +48,14 @@ namespace Surrender_20.UWP.View
 
             //Run check for internet connection
             ConnectionDialog.Execute(
-                () => (ViewModel as MainPageViewModel).CheckInternetConnection());
+                () => (ViewModel as MainPageViewModel).CheckInternetConnection()); // To wypierdala na starcie + ItemView sie nie wyświetla, nie działa zmiana strony s@20/oficialny. KOCHAM CIE MARUŚ <3
+
+
+            /*             LET'S
+             *             MAKE
+                           UWP
+                           GREAT
+                           AGAIN             */
         }
 
         private void ChangeThemeLogo()

@@ -98,21 +98,21 @@
                             <Flyout LightDismissOverlayMode="Auto">
                                 <StackPanel>
                                     <TextBlock Text="Theme - soon" FontSize="14"/>
-                                    <RadioButton Content="Light" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}" GroupName="Theme" IsEnabled="False">
+                                    <RadioButton Content="Light" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}" GroupName="Theme">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsEnabledChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Light"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
                                     </RadioButton>
-                                    <RadioButton Content="Dark" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}" GroupName="Theme" IsEnabled="False">
+                                    <RadioButton Content="Dark" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}" GroupName="Theme">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsCheckedChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Dark"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
                                     </RadioButton>
-                                    <RadioButton Content="Use system setting" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}}" GroupName="Theme" IsEnabled="False">
+                                    <RadioButton Content="Use system setting" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}}" GroupName="Theme">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsCheckedChanged">
                                                 <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
