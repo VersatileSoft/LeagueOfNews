@@ -47,8 +47,8 @@ namespace Surrender_20.UWP.View
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
             //Run check for internet connection
-            ConnectionDialog.Execute(
-                () => (ViewModel as MainPageViewModel).CheckInternetConnection()); // To wypierdala na starcie + ItemView sie nie wyświetla, nie działa zmiana strony s@20/oficialny. KOCHAM CIE MARUŚ <3
+            //ConnectionDialog.Execute(
+            //    () => (ViewModel as MainPageViewModel).CheckInternetConnection()); // To wypierdala na starcie + ItemView sie nie wyświetla, nie działa zmiana strony s@20/oficialny. KOCHAM CIE MARUŚ <3
 
 
             /*             LET'S

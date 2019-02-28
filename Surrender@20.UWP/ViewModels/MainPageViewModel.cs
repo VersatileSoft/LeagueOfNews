@@ -14,7 +14,7 @@ namespace Surrender_20.UWP.ViewModels
     {
         private readonly IInternetConnectionService _internetConnectionService;
 
-        public ICommand NavigateCommand { get; set; }
+        public ICommand SetupItemCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
         public ICommand CheckInternetConnectionCommand { get; set; }
         public ICommand SelectWebsiteCommand { get; set; }
@@ -28,7 +28,9 @@ namespace Surrender_20.UWP.ViewModels
         {
             _internetConnectionService = internetConnectionService;
 
-            NavigateCommand = new MvxAsyncCommand<string>((Parameter) =>
+            HasSurrenderElementsVisible = true;
+
+            SetupItemCommand = new MvxAsyncCommand<string>((Parameter) =>
             {
                 switch (Parameter)
                 {

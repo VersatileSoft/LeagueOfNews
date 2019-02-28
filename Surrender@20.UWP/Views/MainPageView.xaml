@@ -39,7 +39,7 @@
 
             <i:Interaction.Behaviors>
                 <core:EventTriggerBehavior EventName="SelectionChanged">
-                    <core:InvokeCommandAction Command="{Binding NavigateCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
+                    <core:InvokeCommandAction Command="{Binding SetupItemCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
                 </core:EventTriggerBehavior>
             </i:Interaction.Behaviors>
 
@@ -152,7 +152,7 @@
  		                              VerticalAlignment="Bottom"
                                       Canvas.ZIndex="6"/>
                     </Grid>
-                    
+
 
                     <Grid Grid.Column="1" Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
                         <views:NewsfeedItemView x:Name="DetailView" Canvas.ZIndex="5"/>
@@ -170,25 +170,6 @@
                                       Canvas.ZIndex="3"/>
                     </Grid>
                 </Grid>
-
-                <!--<SplitView IsPaneOpen="True"
-					       DisplayMode="Inline"
-					       OpenPaneLength="420"
-                           PaneBackground="Transparent">
-                    <SplitView.Pane>
-                        <views:NewsfeedListView x:Name="MasterView"/>
-                    </SplitView.Pane>
-
-                    <SplitView.Content>
-                        <Grid Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
-                            <views:NewsfeedItemView x:Name="DetailView" Canvas.ZIndex="5"/>
-
-                            <Image Source="ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-256.png"
-                                   HorizontalAlignment="Center"
-                                   VerticalAlignment="Center"/>
-                        </Grid>
-                    </SplitView.Content>
-                </SplitView>-->
             </NavigationView.Content>
         </NavigationView>
     </Grid>

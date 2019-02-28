@@ -23,18 +23,18 @@ namespace Surrender_20.UWP.ViewModels
 
         public override void ViewAppearing()
         {
-            //base.ViewAppearing();
+            base.ViewAppearing();
 
-            //if (Newsfeed != null)
-            //{
-            //    ParseHtml(Newsfeed.UrlToNewsfeed, Newsfeed.Website);
-            //}
+            if (Newsfeed != null)
+            {
+                ParseHtml(Newsfeed.UrlToNewsfeed, Newsfeed.Website);
+            }
         }
-        /*
+        
         public override void ParseHtml(string _url, NewsWebsite page)
         {
             base.ParseHtml(URL, page);
             URL = _url;
-        }*/
+        }
     }
 }
