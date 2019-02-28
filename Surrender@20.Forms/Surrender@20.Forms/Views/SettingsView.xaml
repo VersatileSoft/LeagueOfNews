@@ -12,26 +12,32 @@
         <StackLayout Spacing="15" Padding="15">
             <Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
                 <StackLayout>
-                    <Label Text="Notifications" Style="{DynamicResource Label}" FontSize="Large"/>
-                    <Switch IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}" IsEnabled="True"/>
-                    <Label Text="Notifications delay" Style="{DynamicResource Label}" FontSize="Large"/>
-                    <Picker Title="Select delay" ItemsSource="{Binding DelayList}" SelectedItem="{Binding Delay, Mode=TwoWay}" Style="{DynamicResource Label}" FontSize="Large"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Notifications" Style="{DynamicResource Label}" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large"/>
+                        <Switch IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}" HorizontalOptions="EndAndExpand" IsEnabled="True"/>
+                    </StackLayout>
+
+                    <Label Text="Delay" Style="{DynamicResource Label}" Margin="0,10,0,0" FontSize="Large"/>
+                    <Picker Title="Select delay" ItemsSource="{Binding DelayList}" SelectedItem="{Binding Delay, Mode=TwoWay}" Style="{DynamicResource Label}"/>
                 </StackLayout>
             </Frame>
 
             <Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
-                <StackLayout>
-                    <Label Text="Dark theme" Style="{DynamicResource Label}" FontSize="Large"/>
-                    <Switch IsToggled="{Binding DarkTheme, Mode=TwoWay}" IsEnabled="True"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Dark theme" Style="{DynamicResource Label}" VerticalOptions="CenterAndExpand" FontAttributes="Bold" FontSize="Large"/>
+                    <Switch IsToggled="{Binding DarkTheme, Mode=TwoWay}" HorizontalOptions="EndAndExpand" IsEnabled="True"/>
                 </StackLayout>
             </Frame>
 
             <Frame Style="{DynamicResource Frame}" Padding="10" HorizontalOptions="FillAndExpand">
-                <StackLayout>
-                    <Label Text="League of News v1.0" Style="{DynamicResource Label}" FontSize="Large"/>
-                    <Label Text="Versatile Software 2019" TextColor="Gray" FontSize="Medium"/>
-                    <!--<Label Text="Marek Kida, Michał Woźniak and Kacper Tryniecki" TextColor="White" FontSize="Large"/>-->
-                </StackLayout>
+                <Grid>
+                    <StackLayout>
+                        <Label Text="League of News v1.1" Style="{DynamicResource Label}" FontAttributes="Bold" FontSize="Large"/>
+                        <Label Text="Versatile Software 2019" TextColor="Gray" FontSize="Medium"/>
+                    </StackLayout>
+
+                    <Button Text="Try this app on Windows 10" BackgroundColor="#ce9f3d" TextColor="White" HorizontalOptions="EndAndExpand" Clicked="WindowsAppButton_Clicked"/>
+                </Grid>
             </Frame>
         </StackLayout>
     </views:MvxContentPage.Content>
