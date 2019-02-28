@@ -12,5 +12,6 @@ namespace Surrender_20.Model
         public string ShortDescription { get; set; }
         public byte[] Image { get; set; }
         public NewsCategory Page { get; set; }
+        public NewsWebsite Website { get; set; }
     }
 }

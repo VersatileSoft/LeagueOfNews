@@ -27,6 +27,8 @@ namespace Surrender_20.UWP.Views.Custom
 
         protected virtual void OnViewModelSet() { }
 
+        public void ClearBackStack() { }
+
         public MvxUserControl()
         {
             Loading += MvxUserControl_Loading;
@@ -47,11 +49,6 @@ namespace Surrender_20.UWP.Views.Custom
         private void MvxUserControl_Unloaded(object sender, RoutedEventArgs e)
         {
             ViewModel?.ViewDestroy();
-        }
-
-        public void ClearBackStack()
-        {
-            //TODO remove content?
         }
 
         #region IDisposable

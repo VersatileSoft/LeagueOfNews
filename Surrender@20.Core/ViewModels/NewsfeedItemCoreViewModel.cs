@@ -1,5 +1,4 @@
-﻿using HtmlAgilityPack;
-using MvvmCross.ViewModels;
+﻿using MvvmCross.ViewModels;
 using PropertyChanged;
 using Surrender_20.Core.Interface;
 using Surrender_20.Model;
@@ -10,11 +9,12 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public abstract class NewsfeedItemCoreViewModel : MvxViewModel<Newsfeed>
     {
+        private readonly IWebClientService _cookieWebClientService;
+        private readonly ISettingsService _settingsService;
+
         public bool IsLoading { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
-        private readonly IWebClientService _cookieWebClientService;
-        private readonly ISettingsService _settingsService;
 
         public NewsfeedItemCoreViewModel(IWebClientService cookieWebClientService, ISettingsService settingsService)
         {
@@ -26,7 +26,7 @@ namespace Surrender_20.Core.ViewModels
         {
             Newsfeed s = parameters.Read<Newsfeed>();
 
-            if (!(s.UrlToNewsfeed is null))
+            if (s != null && !string.IsNullOrWhiteSpace(s.UrlToNewsfeed))
             {
                 MvxNotifyTask.Create(LoadPage(s));
             }
@@ -40,18 +40,19 @@ namespace Surrender_20.Core.ViewModels
             }
         }
 
-        private async Task LoadPage(Newsfeed newsfeed)
+        private Task LoadPage(Newsfeed newsfeed)
         {
             Title = newsfeed.Title;
             Date = newsfeed.Date;
             IsLoading = true;
-           // HtmlDocument doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed, newsfeed.Page);
-            //  ParseHtml(doc.DocumentNode, newsfeed.Page);
+            //HtmlDocument doc = await _cookieWebClientService.GetPage(newsfeed.UrlToNewsfeed, newsfeed.Page);
+            //ParseHtml(doc.DocumentNode, newsfeed.Page);
             ParseHtml(newsfeed.UrlToNewsfeed, _settingsService[newsfeed.Page].Website);
             IsLoading = false;
+
+            return Task.CompletedTask;
         }
 
-        // public virtual void ParseHtml(HtmlNode documentNode, Pages page)
         public virtual void ParseHtml(string URL, NewsWebsite page)
         {
             switch (page)

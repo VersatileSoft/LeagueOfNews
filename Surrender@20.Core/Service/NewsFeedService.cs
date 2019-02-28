@@ -30,7 +30,7 @@ namespace Surrender_20.Core.Service
 
         public async Task<IList<Newsfeed>> LoadNewsfeedsAsync(NewsCategory page)
         {
-            string URL = _settingsService[page].CategoryURL;
+            string URL = _settingsService[page].CategoryUrl;
             NewsWebsite newsWebsite = _settingsService[page].Website;
             _officialBaseURL = "https://" + new Uri(URL).Host;
 
@@ -89,6 +89,7 @@ namespace Surrender_20.Core.Service
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText)
                         .RemoveSpaceFromString();
                     newsfeed.Page = page;
+                    //TODO newsfeed.Website
                 }
                 catch { continue; }
 
@@ -129,6 +130,7 @@ namespace Surrender_20.Core.Service
                         .RemoveSpaceFromString()
                         .RemoveContinueReadingString();
                     newsfeed.Page = page;
+                    //TODO newsfeed.Website
                 }
                 catch { continue; }
 

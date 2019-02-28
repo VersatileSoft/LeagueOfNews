@@ -32,11 +32,11 @@ namespace Surrender_20.Core.Service
             switch (page)
             {
                 case NewsWebsite.LoL:
-                    lastPostUrl = _settingsService.WebsiteHistoryData.LastPostOfficialUrl;
+                    lastPostUrl = _settingsService.WebsiteHistoryData.LastOfficialPostUrl;
                     list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(NewsCategory.Official));
                     break;
                 case NewsWebsite.Surrender:
-                    lastPostUrl = _settingsService.WebsiteHistoryData.LastPostSurrenderUrl;
+                    lastPostUrl = _settingsService.WebsiteHistoryData.LastSurrenderPostUrl;
                     list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(NewsCategory.SurrenderHome));
                     break;
                 default: break;
@@ -60,10 +60,10 @@ namespace Surrender_20.Core.Service
             switch (page)
             {
                 case NewsWebsite.LoL:
-                    _settingsService.WebsiteHistoryData.LastPostOfficialUrl = list[0].UrlToNewsfeed;
+                    _settingsService.WebsiteHistoryData.LastOfficialPostUrl = list[0].UrlToNewsfeed;
                     break;
                 case NewsWebsite.Surrender:
-                    _settingsService.WebsiteHistoryData.LastPostSurrenderUrl = list[0].UrlToNewsfeed;
+                    _settingsService.WebsiteHistoryData.LastSurrenderPostUrl = list[0].UrlToNewsfeed;
                     break;
                 default: break;
             }

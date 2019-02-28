@@ -14,14 +14,14 @@ namespace Surrender_20.Core.Interface
     public class CategoryData
     {
         public string Title { get; set; }
-        public string CategoryURL { get; set; }
+        public string CategoryUrl { get; set; }
         public NewsWebsite Website { get; set; } = NewsWebsite.None;
     }
 
     public class WebsiteHistoryData
     {
-        public string LastPostSurrenderUrl { get; set; }
-        public string LastPostOfficialUrl { get; set; }
+        public string LastSurrenderPostUrl { get; set; }
+        public string LastOfficialPostUrl { get; set; }
         public List<string> VisitedPosts { get; set; } = new List<string>();
     }
 

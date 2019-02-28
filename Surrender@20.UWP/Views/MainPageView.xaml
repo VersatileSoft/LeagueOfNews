@@ -16,6 +16,7 @@
     <m:MvxWindowsPage.Resources>
         <ResourceDictionary>
             <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>
+            <conv:ThemeToBoolConverter x:Key="ThemeToBool"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/MainPageStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -45,27 +46,27 @@
             <NavigationView.MenuItems>
                 <NavigationViewItem Icon="Home" Content="Home"/>
 
-                <NavigationViewItem Content="PBE" IsEnabled="{Binding MenuVisibility}">
+                <NavigationViewItem Content="PBE" IsEnabled="{Binding HasSurrenderElementsVisible}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#60589;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Content="Releases" IsEnabled="{Binding MenuVisibility}">
+                <NavigationViewItem Content="Releases" IsEnabled="{Binding HasSurrenderElementsVisible}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#59176;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Content="Red Posts" IsEnabled="{Binding MenuVisibility}">
+                <NavigationViewItem Content="Red Posts" IsEnabled="{Binding HasSurrenderElementsVisible}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#xEC7A;"/>
                     </NavigationViewItem.Icon>
                 </NavigationViewItem>
 
-                <NavigationViewItem Icon="People" Content="Rotations" IsEnabled="{Binding MenuVisibility}"/>
+                <NavigationViewItem Icon="People" Content="Rotations" IsEnabled="{Binding HasSurrenderElementsVisible}"/>
 
-                <NavigationViewItem Content="E-Sports" IsEnabled="{Binding MenuVisibility}">
+                <NavigationViewItem Content="E-Sports" IsEnabled="{Binding HasSurrenderElementsVisible}">
                     <NavigationViewItem.Icon>
                         <FontIcon Glyph="&#57602;"/>
                     </NavigationViewItem.Icon>
@@ -80,10 +81,10 @@
                                 <StackPanel>
                                     <TextBlock Text="Which site would you choose to read?" FontSize="14"/>
                                     <RadioButton Content="League of Legends official" IsChecked="True" GroupName="Sites"/>
-                                    <RadioButton Content="Surrender@20" GroupName="Sites" IsChecked="{Binding IsSurrender, Mode=TwoWay}" Checked="RadioButton_Checked" Unchecked="RadioButton_Checked">
+                                    <RadioButton Content="Surrender@20" GroupName="Sites" IsChecked="{Binding HasSurrenderElementsVisible, Mode=TwoWay}" Checked="RadioButton_Checked" Unchecked="RadioButton_Checked">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsEnabledChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectedPageChangedCommand}"/>
+                                                <core:InvokeCommandAction Command="{Binding SelectWebsiteCommand}"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
                                     </RadioButton>
@@ -97,24 +98,24 @@
                             <Flyout LightDismissOverlayMode="Auto">
                                 <StackPanel>
                                     <TextBlock Text="Theme - soon" FontSize="14"/>
-                                    <RadioButton Content="Light" IsChecked="{Binding IsLight, Mode=TwoWay}" GroupName="Theme" IsEnabled="False">
+                                    <RadioButton Content="Light" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}" GroupName="Theme" IsEnabled="False">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsEnabledChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
+                                                <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Light"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
                                     </RadioButton>
-                                    <RadioButton Content="Dark" IsChecked="{Binding IsDark, Mode=TwoWay}" GroupName="Theme" IsEnabled="False">
+                                    <RadioButton Content="Dark" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}" GroupName="Theme" IsEnabled="False">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsCheckedChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
+                                                <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Dark"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
                                     </RadioButton>
-                                    <RadioButton Content="Use system setting" IsChecked="{Binding IsDefault, Mode=TwoWay}" GroupName="Theme" IsEnabled="False">
+                                    <RadioButton Content="Use system setting" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}}" GroupName="Theme" IsEnabled="False">
                                         <i:Interaction.Behaviors>
                                             <core:EventTriggerBehavior EventName="IsCheckedChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectedThemeChangedCommand}"/>
+                                                <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
                                             </core:EventTriggerBehavior>
                                         </i:Interaction.Behaviors>
                                     </RadioButton>

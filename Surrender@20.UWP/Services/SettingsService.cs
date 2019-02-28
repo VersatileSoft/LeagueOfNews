@@ -1,6 +1,5 @@
 ﻿using Surrender_20.Core.Interface;
 using Surrender_20.Core.Service;
-using System.Collections.Generic;
 using Windows.Storage;
 
 namespace Surrender_20.UWP.Services
@@ -31,15 +30,25 @@ namespace Surrender_20.UWP.Services
         {
             TitleChanged += OnTitleChanged;
 
-            foreach (KeyValuePair<NewsCategory, CategoryData> category in categories)
-            {
-                category.Value.LastPostTitle = _localSettings.Values.TryGetValue(category.Key.ToString(), out object value) ? value as string : null;
-            }
+            //TODO use consts like in Android project
+            WebsiteHistoryData.LastOfficialPostUrl = _localSettings.Values
+                .TryGetValue("LastOfficialPostUrl", out var official) ? official as string : "";
+
+            WebsiteHistoryData.LastSurrenderPostUrl = _localSettings.Values
+                .TryGetValue("LastSurrenderPostUrl", out var surrender) ? surrender as string : "";
         }
 
         private void OnTitleChanged(PostTitleArgs args)
         {
-            _localSettings.Values[args.Category.ToString()] = args.Title;
+            switch (args.Category)
+            {
+                case NewsWebsite.LoL:
+                    _localSettings.Values["LastOfficialPostUrl"] = args.Title;
+                    break;
+                case NewsWebsite.Surrender:
+                    _localSettings.Values["LastSurrenderPostUrl"] = args.Title;
+                    break;
+            }
         }
     }
 }

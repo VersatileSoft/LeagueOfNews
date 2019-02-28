@@ -18,15 +18,16 @@ namespace Surrender_20.UWP.ViewModels
         public void Prepare(NewsCategory parameter)
         {
             Title = _settingsService[parameter].Title;
-            _page = parameter;
+            SelectedCategory = parameter;
             LoadNewsfeeds();
         }
 
-        protected override async Task NavigateToAsync(Newsfeed newsfeed)
+        protected override Task NavigateToAsync(Newsfeed newsfeed)
         {
-            NewsfeedItemViewModel vm = MvxIoCProvider.Instance.Resolve<NewsfeedItemViewModel>();
+            var itemVM = MvxIoCProvider.Instance.Resolve<NewsfeedItemViewModel>();
+            itemVM.Prepare(newsfeed);
 
-            vm.Prepare(newsfeed);
+            return Task.CompletedTask;
         }
     }
 }

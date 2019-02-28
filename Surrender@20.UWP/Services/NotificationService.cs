@@ -16,7 +16,7 @@ namespace Surrender_20.UWP.Services
             throw new NotImplementedException();
         }
 
-        public void ShowNewPostNotification(Newsfeed newsfeed, NewsCategory page)
+        public void ShowNewPostNotification(Newsfeed newsfeed, NewsWebsite page)
         {
             throw new NotImplementedException();
         }

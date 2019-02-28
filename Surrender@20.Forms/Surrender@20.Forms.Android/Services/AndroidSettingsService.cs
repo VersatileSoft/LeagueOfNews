@@ -18,10 +18,10 @@ namespace Surrender_20.Forms.Droid.Services
         {
             TitleChanged += SaveTitle;
 
-            WebsiteHistoryData.LastPostOfficialUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+            WebsiteHistoryData.LastOfficialPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context)
                 .GetString(PageToKey(NewsWebsite.LoL), "");
 
-            WebsiteHistoryData.LastPostSurrenderUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+            WebsiteHistoryData.LastSurrenderPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context)
                 .GetString(PageToKey(NewsWebsite.Surrender), "");
         }
 
@@ -29,8 +29,8 @@ namespace Surrender_20.Forms.Droid.Services
         {
             switch (args.Category)
             {
-                case NewsWebsite.LoL: WebsiteHistoryData.LastPostOfficialUrl = args.Title; break;
-                case NewsWebsite.Surrender: WebsiteHistoryData.LastPostSurrenderUrl = args.Title; break;
+                case NewsWebsite.LoL: WebsiteHistoryData.LastOfficialPostUrl = args.Title; break;
+                case NewsWebsite.Surrender: WebsiteHistoryData.LastSurrenderPostUrl = args.Title; break;
                 default: break;
             }
 

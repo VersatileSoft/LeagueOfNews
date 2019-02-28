@@ -30,7 +30,7 @@ namespace Surrender_20.Forms.ViewModels
         public void Prepare(NewsCategory parameter)
         {
             Title = _settingsService[parameter].Title;
-            _page = parameter;
+            SelectedCategory = parameter;
         }
     }
 }

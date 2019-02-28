@@ -14,10 +14,11 @@ namespace Surrender_20.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public abstract class NewsfeedListCoreViewModel : MvxViewModel
     {
-        protected INewsfeedService _newsfeedService;
-        protected ISettingsService _settingsService;
-        protected IMvxNavigationService _navigationService;
-        protected NewsCategory _page;
+        protected readonly INewsfeedService _newsfeedService;
+        protected readonly ISettingsService _settingsService;
+        protected readonly IMvxNavigationService _navigationService;
+
+        protected NewsCategory SelectedCategory;
 
         public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
         public string Title { get; set; }
@@ -48,12 +49,13 @@ namespace Surrender_20.Core.ViewModels
 
         protected abstract Task NavigateToAsync(Newsfeed newsfeed);
 
-        protected void LoadNewsfeeds() //TODO Add Page parameter to make it more universal
+        //TODO make 1 f instead of 3, maybe enum with sth like LoadingAction (load?, loadMore, refresh)
+        protected void LoadNewsfeeds()
         {
             new Thread(async () =>
             {
                 IsLoading = true;
-                Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(_page));
+                Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory));
                 IsLoading = false;
             }).Start();
         }
@@ -63,20 +65,21 @@ namespace Surrender_20.Core.ViewModels
             new Thread(async () =>
             {
                 IsLoadingMore = true;
-                foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds(_page))
+                foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds(SelectedCategory))
                 {
                     Newsfeeds.Add(item);
                 }
                 IsLoadingMore = false;
             }).Start();
         }
+
         protected void RefreshNewsfeeds()
         {
             Newsfeeds.Clear();
             new Thread(async () =>
             {
                 IsRefreshing = true;
-                Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(_page));
+                Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory));
                 IsRefreshing = false;
             }).Start();
         }
