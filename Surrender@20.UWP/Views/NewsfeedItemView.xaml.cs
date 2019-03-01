@@ -19,6 +19,19 @@ namespace Surrender_20.UWP.View
             //Workaround: MvxUserControl is custom-made, thus VM is not created by default
             ViewModel = MvxIoCProvider.Instance.IoCConstruct<NewsfeedItemViewModel>();
             Mvx.IoCProvider.RegisterSingleton(ViewModel);
+
+            NewsfeedWebView.NavigationCompleted += webview_navigationCompleted;
+            NewsfeedWebView.NavigationStarting += webview_navigationStarting;
+        }
+
+        private void webview_navigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
+        {
+            LoadingControl.IsLoading = false;
+        }
+
+        private void webview_navigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
+        {
+            LoadingControl.IsLoading = true;
         }
 
         private void NewsfeedWebView_ContainsFullScreenElementChanged(WebView sender, object args)

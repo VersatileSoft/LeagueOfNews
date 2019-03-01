@@ -65,13 +65,13 @@ namespace Surrender_20.UWP.View
             switch (Application.Current.RequestedTheme)
             {
                 case ApplicationTheme.Light:
-                    LogoImage.Source = LogoLight;
-                    ItemLogo.Source = ItemLogoLight;
+                    LogoImage.Source = LogoDark;
+                    ItemLogo.Source = ItemLogoDark;
                     break;
 
                 case ApplicationTheme.Dark:
-                    LogoImage.Source = LogoDark;
-                    ItemLogo.Source = ItemLogoDark;
+                    LogoImage.Source = LogoLight;
+                    ItemLogo.Source = ItemLogoLight;
                     break;
             }
         }

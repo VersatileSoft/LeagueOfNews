@@ -16,13 +16,17 @@
     </c:NewsfeedListViewBase.Resources>
 
     <Grid>
-        <ProgressRing Style="{StaticResource ProgressRing}"
-					  IsActive="{Binding IsLoading}"/>
+        <controls:Loading IsLoading="{Binding IsLoading}" 
+                          Style="{StaticResource LoadingScreen}">
+            <StackPanel>
+                <ProgressRing Style="{StaticResource ProgressRing}"/>
+                <TextBlock Style="{StaticResource LoadingText}"/>
+            </StackPanel>
+        </controls:Loading>
 
         <ScrollViewer Style="{StaticResource ScrollViewer}">
             <GridView Style="{StaticResource GridView}" 
 					  ItemsSource="{Binding Newsfeeds}" 
-					  ShowsScrollingPlaceholders="True"
 					  Tapped="GridView_Tapped">
                 <GridView.ItemTemplate>
                     <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">

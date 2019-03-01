@@ -7,7 +7,6 @@
                   xmlns:core="using:Microsoft.Xaml.Interactions.Core"
                   xmlns:conv="using:Surrender_20.UWP.Converters"
 				  xmlns:views="using:Surrender_20.UWP.View"
-                  xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
                   xmlns:ad="using:Microsoft.Advertising.WinRT.UI"
                   x:Class="Surrender_20.UWP.View.MainPageView"
                   mc:Ignorable="d"                 
@@ -74,35 +73,18 @@
             </NavigationView.MenuItems>
 
             <NavigationView.PaneFooter>
-                <StackPanel Orientation="Horizontal">
-                    <NavigationViewItem Icon="Switch" ToolTipService.ToolTip="Change site" Tapped="Switch_Tapped">
-                        <FlyoutBase.AttachedFlyout>
-                            <Flyout LightDismissOverlayMode="Auto">
-                                <StackPanel>
-                                    <ComboBox x:Name="SiteCombo" Header="Which site would you choose to read?" Width="250">
-                                        <x:String>Surrender@20</x:String>
-                                        <x:String>League of Legends official</x:String>
-                                        <!--<x:String>/dev blog</x:String>-->
+                <StackPanel Orientation="Horizontal" Spacing="10">
+                    <ComboBox x:Name="SiteCombo" VerticalAlignment="Center" Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}" Width="220">
+                        <x:String>Surrender@20</x:String>
+                        <x:String>League of Legends official</x:String>
+                        <!--<x:String>/dev blog</x:String>-->
 
-                                        <i:Interaction.Behaviors>
-                                            <core:EventTriggerBehavior EventName="SelectionChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectWebsiteCommand}"/>
-                                            </core:EventTriggerBehavior>
-                                        </i:Interaction.Behaviors>
-                                    </ComboBox>
-                                    <!--<TextBlock Text="Which site would you choose to read?" FontSize="14"/>
-                                    <RadioButton Content="League of Legends official" IsChecked="True" GroupName="Sites"/>
-                                    <RadioButton Content="Surrender@20" GroupName="Sites" IsChecked="{Binding HasSurrenderElementsVisible, Mode=TwoWay}" Checked="RadioButton_Checked" Unchecked="RadioButton_Checked">
-                                        <i:Interaction.Behaviors>
-                                            <core:EventTriggerBehavior EventName="IsEnabledChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectWebsiteCommand}"/>
-                                            </core:EventTriggerBehavior>
-                                        </i:Interaction.Behaviors>
-                                    </RadioButton>-->
-                                </StackPanel>
-                            </Flyout>
-                        </FlyoutBase.AttachedFlyout>
-                    </NavigationViewItem>
+                        <i:Interaction.Behaviors>
+                            <core:EventTriggerBehavior EventName="SelectionChanged">
+                                <core:InvokeCommandAction Command="{Binding SelectWebsiteCommand}"/>
+                            </core:EventTriggerBehavior>
+                        </i:Interaction.Behaviors>
+                    </ComboBox>
 
                     <NavigationViewItem Icon="Setting" ToolTipService.ToolTip="Settings" Tapped="Settings_Tapped">
                         <FlyoutBase.AttachedFlyout>
@@ -136,7 +118,7 @@
                                     <RadioButton Content="Disabled" GroupName="Notifi" IsChecked="True" IsEnabled="False"/>
 
                                     <HyperlinkButton Content="Visit our facebook" Tapped="Facebook_Tapped"/>
-                                    <HyperlinkButton Content="Try our app on android" Tapped="AndroidApp_Tapped"/>
+                                    <HyperlinkButton Content="Try this app on android" Tapped="AndroidApp_Tapped"/>
                                     <TextBlock Text="Versatile Software - League of News v1.0"/>
                                 </StackPanel>
                             </Flyout>
@@ -164,9 +146,8 @@
                                       Canvas.ZIndex="6"/>
                     </Grid>
 
-
-                    <Grid Grid.Column="1" Background="{ThemeResource SystemControlChromeLowAcrylicWindowBrush}">
-                        <views:NewsfeedItemView x:Name="DetailView" Canvas.ZIndex="5"/>
+                    <Grid Grid.Column="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+                        <views:NewsfeedItemView x:Name="DetailView" Canvas.ZIndex="4"/>
 
                         <Image HorizontalAlignment="Center"
                                VerticalAlignment="Center" 

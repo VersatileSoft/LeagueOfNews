@@ -2,7 +2,8 @@
     xmlns:m="using:Surrender_20.UWP"
     x:Class="Surrender_20.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
 
     <m:UWPApplication.Resources>
         <!--NewsfeedListView/NewsfeedItemView-->
@@ -33,13 +34,25 @@
             <Setter Property="CanContentRenderOutsideBounds" Value="True"/>
         </Style>
 
-        <!--Others-->
-        <Style x:Key="ProgressRing" TargetType="ProgressRing">
+        <!--Loading Screen-->
+        <Style x:Key="LoadingScreen" TargetType="controls:Loading">
             <Setter Property="Canvas.ZIndex" Value="5"/>
-            <Setter Property="Width" Value="100"/>
-            <Setter Property="Height" Value="100"/>
-            <Setter Property="VerticalAlignment" Value="Center"/>
-            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>
+            <Setter Property="IsLoading" Value="False"/>
         </Style>
+
+        <Style x:Key="ProgressRing" TargetType="ProgressRing">
+            <Setter Property="Width" Value="50"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="IsActive" Value="True"/>
+            <Setter Property="Foreground" Value="White"/>
+        </Style>
+
+        <Style x:Key="LoadingText" TargetType="TextBlock">
+            <Setter Property="TextAlignment" Value="Center"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="Text" Value="It's ok, we are working on it.&#x0a;( ͡° ͜ʖ ͡° )つ──☆*:・ﾟ"/>
+        </Style>
+
     </m:UWPApplication.Resources>
 </m:UWPApplication>
