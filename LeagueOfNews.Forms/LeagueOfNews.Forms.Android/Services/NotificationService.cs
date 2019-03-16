@@ -5,12 +5,12 @@ using Android.OS;
 using Android.Support.V4.App;
 using Android.Util;
 using Java.Lang;
-using MvvmCross;
-using MvvmCross.ViewModels;
 using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Forms.Services;
 using LeagueOfNews.Forms.ViewModels;
 using LeagueOfNews.Model;
+using MvvmCross;
+using MvvmCross.ViewModels;
 using System;
 using Application = Android.App.Application;
 

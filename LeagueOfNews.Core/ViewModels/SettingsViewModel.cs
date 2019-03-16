@@ -1,6 +1,6 @@
-﻿using MvvmCross.ViewModels;
+﻿using LeagueOfNews.Core.Interface;
+using MvvmCross.ViewModels;
 using PropertyChanged;
-using LeagueOfNews.Core.Interface;
 using System.Text.RegularExpressions;
 
 namespace LeagueOfNews.Core.ViewModels

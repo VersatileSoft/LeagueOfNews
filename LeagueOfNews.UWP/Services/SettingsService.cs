@@ -32,10 +32,10 @@ namespace LeagueOfNews.UWP.Services
 
             //TODO use consts like in Android project
             WebsiteHistoryData.LastOfficialPostUrl = _localSettings.Values
-                .TryGetValue("LastOfficialPostUrl", out var official) ? official as string : "";
+                .TryGetValue("LastOfficialPostUrl", out object official) ? official as string : "";
 
             WebsiteHistoryData.LastSurrenderPostUrl = _localSettings.Values
-                .TryGetValue("LastSurrenderPostUrl", out var surrender) ? surrender as string : "";
+                .TryGetValue("LastSurrenderPostUrl", out object surrender) ? surrender as string : "";
         }
 
         private void OnTitleChanged(PostTitleArgs args)

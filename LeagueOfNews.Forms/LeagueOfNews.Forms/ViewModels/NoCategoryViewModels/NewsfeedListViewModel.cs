@@ -1,9 +1,10 @@
-﻿using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
-using LeagueOfNews.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.ViewModels;
 using LeagueOfNews.Model;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace LeagueOfNews.Forms.ViewModels
 {
@@ -23,7 +24,8 @@ namespace LeagueOfNews.Forms.ViewModels
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)
         {
-            await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);         
+            await Browser.OpenAsync(newsfeed.UrlToNewsfeed, BrowserLaunchMode.SystemPreferred);
+            //await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);         
         }
     }
 }

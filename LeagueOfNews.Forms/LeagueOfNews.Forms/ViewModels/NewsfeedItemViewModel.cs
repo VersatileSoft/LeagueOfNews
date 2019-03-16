@@ -1,6 +1,6 @@
-﻿using PropertyChanged;
-using LeagueOfNews.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.ViewModels;
+using PropertyChanged;
 
 namespace LeagueOfNews.Forms.ViewModels
 {

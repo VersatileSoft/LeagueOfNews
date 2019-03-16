@@ -1,6 +1,6 @@
-﻿using MvvmCross.Forms.Presenters.Attributes;
+﻿using LeagueOfNews.Core.ViewModels;
+using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using LeagueOfNews.Core.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;

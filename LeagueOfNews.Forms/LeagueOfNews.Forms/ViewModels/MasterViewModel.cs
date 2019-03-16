@@ -1,8 +1,8 @@
-﻿using MvvmCross.Commands;
+﻿using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Forms.Interfaces;
+using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using LeagueOfNews.Core.Interface;
-using LeagueOfNews.Forms.Interfaces;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 

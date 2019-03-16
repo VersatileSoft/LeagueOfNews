@@ -1,6 +1,6 @@
-﻿using MvvmCross.Platforms.Uap.Views;
-using LeagueOfNews.UWP.ViewModels;
+﻿using LeagueOfNews.UWP.ViewModels;
 using LeagueOfNews.UWP.Views.MessageBoxes;
+using MvvmCross.Platforms.Uap.Views;
 using System;
 using Windows.ApplicationModel.Core;
 using Windows.System;

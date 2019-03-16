@@ -30,7 +30,7 @@ namespace LeagueOfNews.UWP.ViewModels
                 ParseHtml(Newsfeed.UrlToNewsfeed, Newsfeed.Website);
             }
         }
-        
+
         public override void ParseHtml(string _url, NewsWebsite page)
         {
             base.ParseHtml(URL, page);

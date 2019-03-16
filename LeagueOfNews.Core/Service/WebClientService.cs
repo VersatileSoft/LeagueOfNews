@@ -8,7 +8,6 @@ namespace LeagueOfNews.Core.Model
 {
     public class WebClientService : IWebClientService
     {
-
         private readonly IInternetConnectionService _intrernetConnecionService;
         private readonly ISettingsService _settingsService;
 

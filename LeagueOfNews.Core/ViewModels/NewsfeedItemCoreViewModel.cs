@@ -1,7 +1,7 @@
-﻿using MvvmCross.ViewModels;
-using PropertyChanged;
-using LeagueOfNews.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Model;
+using MvvmCross.ViewModels;
+using PropertyChanged;
 using System.Threading.Tasks;
 
 namespace LeagueOfNews.Core.ViewModels

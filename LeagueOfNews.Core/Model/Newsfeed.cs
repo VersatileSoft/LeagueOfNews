@@ -1,5 +1,5 @@
-﻿using PropertyChanged;
-using LeagueOfNews.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
+using PropertyChanged;
 
 namespace LeagueOfNews.Model
 {

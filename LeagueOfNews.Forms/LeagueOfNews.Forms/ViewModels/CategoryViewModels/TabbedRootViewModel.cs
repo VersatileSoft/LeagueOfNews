@@ -1,7 +1,7 @@
-﻿using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
-using LeagueOfNews.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Forms.Interfaces;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using System;
 using System.Threading.Tasks;
 
@@ -10,8 +10,8 @@ namespace LeagueOfNews.Forms.ViewModels
     public class TabbedRootViewModel : MvxViewModel
     {
         private bool _tabsLoaded = false;
-        private ITabsInitService _tabsInitService;
-        private IMvxNavigationService _navigationService;
+        private readonly ITabsInitService _tabsInitService;
+        private readonly IMvxNavigationService _navigationService;
 
         public TabbedRootViewModel(ITabsInitService tabsInitService, IMvxNavigationService navigationService)
         {

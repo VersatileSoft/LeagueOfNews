@@ -1,13 +1,13 @@
-﻿using MvvmCross;
+﻿using LeagueOfNews.Core;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.UWP.Services;
+using LeagueOfNews.UWP.ViewModels;
+using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.Plugin;
 using MvvmCross.ViewModels;
-using LeagueOfNews.Core;
-using LeagueOfNews.Core.Interface;
-using LeagueOfNews.UWP.Services;
-using LeagueOfNews.UWP.ViewModels;
 using System.Collections.Generic;
 using System.Reflection;
 

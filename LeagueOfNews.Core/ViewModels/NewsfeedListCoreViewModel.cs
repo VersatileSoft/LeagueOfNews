@@ -1,9 +1,9 @@
-﻿using MvvmCross.Commands;
+﻿using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Model;
+using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using LeagueOfNews.Core.Interface;
-using LeagueOfNews.Model;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;

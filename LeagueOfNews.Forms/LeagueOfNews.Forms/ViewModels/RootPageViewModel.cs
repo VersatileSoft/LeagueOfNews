@@ -1,9 +1,9 @@
-﻿using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
-using PropertyChanged;
-using LeagueOfNews.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.ViewModels;
 using LeagueOfNews.Forms.Interfaces;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
+using PropertyChanged;
 using System;
 using System.Threading.Tasks;
 

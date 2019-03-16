@@ -1,9 +1,9 @@
 ﻿using Android.App;
 using Android.App.Job;
 using Android.Util;
+using LeagueOfNews.Core.Interface;
 using MvvmCross;
 using MvvmCross.Platforms.Android.Core;
-using LeagueOfNews.Core.Interface;
 using System.Threading;
 
 namespace LeagueOfNews.Forms.Services

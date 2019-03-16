@@ -1,7 +1,7 @@
-﻿using MvvmCross;
-using MvvmCross.IoC;
-using LeagueOfNews.UWP.ViewModels;
+﻿using LeagueOfNews.UWP.ViewModels;
 using LeagueOfNews.UWP.Views.Custom;
+using MvvmCross;
+using MvvmCross.IoC;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 

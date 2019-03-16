@@ -1,9 +1,9 @@
-﻿using MvvmCross.IoC;
-using MvvmCross.Navigation;
-using MvvmCross.ViewModels;
-using LeagueOfNews.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.ViewModels;
 using LeagueOfNews.Model;
+using MvvmCross.IoC;
+using MvvmCross.Navigation;
+using MvvmCross.ViewModels;
 using System.Threading.Tasks;
 
 namespace LeagueOfNews.UWP.ViewModels
@@ -24,7 +24,7 @@ namespace LeagueOfNews.UWP.ViewModels
 
         protected override Task NavigateToAsync(Newsfeed newsfeed)
         {
-            var itemVM = MvxIoCProvider.Instance.Resolve<NewsfeedItemViewModel>();
+            NewsfeedItemViewModel itemVM = MvxIoCProvider.Instance.Resolve<NewsfeedItemViewModel>();
             itemVM.Prepare(newsfeed);
 
             return Task.CompletedTask;
