@@ -1,8 +1,8 @@
-﻿using Surrender_20.Core.Interface;
-using Surrender_20.Core.Service;
+﻿using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Core.Service;
 using Xamarin.Forms;
 
-namespace Surrender_20.Forms.Services
+namespace LeagueOfNews.Forms.Services
 {
     public abstract class FormsSettingsService : AbstractSettingsService
     {

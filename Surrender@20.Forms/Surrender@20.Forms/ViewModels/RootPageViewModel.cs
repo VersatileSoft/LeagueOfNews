@@ -1,13 +1,13 @@
 ﻿using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using Surrender_20.Core.Interface;
-using Surrender_20.Core.ViewModels;
-using Surrender_20.Forms.Interfaces;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Core.ViewModels;
+using LeagueOfNews.Forms.Interfaces;
 using System;
 using System.Threading.Tasks;
 
-namespace Surrender_20.Forms.ViewModels
+namespace LeagueOfNews.Forms.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class RootPageViewModel : MvxViewModel

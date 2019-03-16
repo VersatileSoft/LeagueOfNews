@@ -1,11 +1,11 @@
 ﻿using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using Surrender_20.Core.ViewModels;
+using LeagueOfNews.Core.ViewModels;
 using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Surrender_20.Forms.Views
+namespace LeagueOfNews.Forms.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = true)]

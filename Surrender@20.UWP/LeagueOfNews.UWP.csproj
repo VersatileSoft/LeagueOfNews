@@ -7,8 +7,8 @@
     <ProjectGuid>{96378F75-EE82-4E75-9189-EE9D60868CA7}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Surrender_20.UWP</RootNamespace>
-    <AssemblyName>Surrender%4020.UWP</AssemblyName>
+    <RootNamespace>LeagueOfNews.UWP</RootNamespace>
+    <AssemblyName>LeagueOfNews.UWP</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.17763.0</TargetPlatformVersion>
@@ -185,9 +185,7 @@
     <Content Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
-    <None Include="Surrender%4020.UWP_StoreKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
@@ -256,9 +254,9 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Surrender%4020.Core\Surrender%4020.Core.csproj">
+    <ProjectReference Include="..\Surrender%4020.Core\LeagueOfNews.Core.csproj">
       <Project>{8d65a64c-9c6f-4f13-a159-d76631cfe8f7}</Project>
-      <Name>Surrender%4020.Core</Name>
+      <Name>LeagueOfNews.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

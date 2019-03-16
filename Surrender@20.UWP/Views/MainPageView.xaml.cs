@@ -1,6 +1,6 @@
 ﻿using MvvmCross.Platforms.Uap.Views;
-using Surrender_20.UWP.ViewModels;
-using Surrender_20.UWP.Views.MessageBoxes;
+using LeagueOfNews.UWP.ViewModels;
+using LeagueOfNews.UWP.Views.MessageBoxes;
 using System;
 using Windows.ApplicationModel.Core;
 using Windows.System;
@@ -11,7 +11,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace Surrender_20.UWP.View
+namespace LeagueOfNews.UWP.View
 {
     public sealed partial class MainPageView : MvxWindowsPage
     {

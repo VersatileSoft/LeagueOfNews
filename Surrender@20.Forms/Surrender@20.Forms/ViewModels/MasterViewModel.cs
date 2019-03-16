@@ -1,12 +1,12 @@
 ﻿using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using Surrender_20.Core.Interface;
-using Surrender_20.Forms.Interfaces;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Forms.Interfaces;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 
-namespace Surrender_20.Forms.ViewModels
+namespace LeagueOfNews.Forms.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class MasterViewModel : MvxViewModel

@@ -1,13 +1,13 @@
 ﻿using ExtensionMethods;
 using HtmlAgilityPack;
-using Surrender_20.Core.Interface;
-using Surrender_20.Model;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Model;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace Surrender_20.Core.Service
+namespace LeagueOfNews.Core.Service
 {
     public class NewsfeedService : INewsfeedService
     {

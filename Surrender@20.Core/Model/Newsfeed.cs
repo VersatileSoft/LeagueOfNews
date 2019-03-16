@@ -1,7 +1,7 @@
 ﻿using PropertyChanged;
-using Surrender_20.Core.Interface;
+using LeagueOfNews.Core.Interface;
 
-namespace Surrender_20.Model
+namespace LeagueOfNews.Model
 {
     [AddINotifyPropertyChangedInterface]
     public class Newsfeed

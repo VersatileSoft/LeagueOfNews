@@ -1,6 +1,6 @@
-﻿using Surrender_20.Model;
+﻿using LeagueOfNews.Model;
 
-namespace Surrender_20.Core.Interface
+namespace LeagueOfNews.Core.Interface
 {
     public interface INotificationService
     {

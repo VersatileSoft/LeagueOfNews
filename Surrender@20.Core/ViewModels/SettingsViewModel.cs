@@ -1,9 +1,9 @@
 ﻿using MvvmCross.ViewModels;
 using PropertyChanged;
-using Surrender_20.Core.Interface;
+using LeagueOfNews.Core.Interface;
 using System.Text.RegularExpressions;
 
-namespace Surrender_20.Core.ViewModels
+namespace LeagueOfNews.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class SettingsViewModel : MvxViewModel

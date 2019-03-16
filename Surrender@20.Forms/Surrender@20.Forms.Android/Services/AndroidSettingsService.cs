@@ -1,9 +1,9 @@
 ﻿using Android.App;
 using Android.Preferences;
-using Surrender_20.Core.Interface;
-using Surrender_20.Forms.Services;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Forms.Services;
 
-namespace Surrender_20.Forms.Droid.Services
+namespace LeagueOfNews.Forms.Droid.Services
 {
     public class AndroidSettingsService : FormsSettingsService
     {

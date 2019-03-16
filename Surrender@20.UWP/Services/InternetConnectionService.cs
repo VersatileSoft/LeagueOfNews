@@ -1,7 +1,7 @@
-﻿using Surrender_20.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using System.Net.NetworkInformation;
 
-namespace Surrender_20.UWP.Services
+namespace LeagueOfNews.UWP.Services
 {
     public class InternetConnectionService : IInternetConnectionService
     {

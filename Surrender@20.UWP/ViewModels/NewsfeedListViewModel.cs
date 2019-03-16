@@ -1,12 +1,12 @@
 ﻿using MvvmCross.IoC;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using Surrender_20.Core.Interface;
-using Surrender_20.Core.ViewModels;
-using Surrender_20.Model;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Core.ViewModels;
+using LeagueOfNews.Model;
 using System.Threading.Tasks;
 
-namespace Surrender_20.UWP.ViewModels
+namespace LeagueOfNews.UWP.ViewModels
 {
     public class NewsfeedListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<NewsCategory>
     {

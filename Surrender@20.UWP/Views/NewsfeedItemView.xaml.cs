@@ -1,11 +1,11 @@
 ﻿using MvvmCross;
 using MvvmCross.IoC;
-using Surrender_20.UWP.ViewModels;
-using Surrender_20.UWP.Views.Custom;
+using LeagueOfNews.UWP.ViewModels;
+using LeagueOfNews.UWP.Views.Custom;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml.Controls;
 
-namespace Surrender_20.UWP.View
+namespace LeagueOfNews.UWP.View
 {
     //Workaround: Generic classes are not supported as a base in UWP XAML
     public abstract class NewsfeedItemViewBase : MvxUserControl<NewsfeedItemViewModel> { }

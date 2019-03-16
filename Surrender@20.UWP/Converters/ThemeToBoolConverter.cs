@@ -1,4 +1,4 @@
-﻿using Surrender_20.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
-namespace Surrender_20.UWP.Converters
+namespace LeagueOfNews.UWP.Converters
 {
     public class ThemeToBoolConverter : IValueConverter
     {

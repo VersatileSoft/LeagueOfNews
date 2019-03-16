@@ -1,12 +1,12 @@
 ﻿using Android.Content;
 using Android.Gms.Ads;
 using Android.Widget;
-using Surrender_20.Forms.Views.Utils;
+using LeagueOfNews.Forms.Views.Utils;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
-[assembly: ExportRenderer(typeof(AdControlView), typeof(Surrender_20.Forms.Droid.Renderers.AdViewRenderer))]
-namespace Surrender_20.Forms.Droid.Renderers
+[assembly: ExportRenderer(typeof(AdControlView), typeof(LeagueOfNews.Forms.Droid.Renderers.AdViewRenderer))]
+namespace LeagueOfNews.Forms.Droid.Renderers
 {
     public class AdViewRenderer : ViewRenderer<AdControlView, AdView>
     {

@@ -4,7 +4,7 @@ using System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Surrender_20.UWP.Views.Custom
+namespace LeagueOfNews.UWP.Views.Custom
 {
     public class MvxUserControl : UserControl, IMvxWindowsView, IDisposable
     {

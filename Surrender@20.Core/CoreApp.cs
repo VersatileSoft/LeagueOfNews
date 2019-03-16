@@ -1,7 +1,7 @@
 ﻿using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 
-namespace Surrender_20.Core
+namespace LeagueOfNews.Core
 {
     public class CoreApp : MvxApplication
     {

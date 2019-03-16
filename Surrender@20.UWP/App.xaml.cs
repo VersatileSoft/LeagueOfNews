@@ -4,14 +4,14 @@ using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.Plugin;
 using MvvmCross.ViewModels;
-using Surrender_20.Core;
-using Surrender_20.Core.Interface;
-using Surrender_20.UWP.Services;
-using Surrender_20.UWP.ViewModels;
+using LeagueOfNews.Core;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.UWP.Services;
+using LeagueOfNews.UWP.ViewModels;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Surrender_20.UWP
+namespace LeagueOfNews.UWP
 {
     public abstract class UWPApplication : MvxApplication<UWPSetup, CoreApp> { }
 

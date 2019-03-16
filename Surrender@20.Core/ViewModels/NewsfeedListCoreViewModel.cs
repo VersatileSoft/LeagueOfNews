@@ -2,14 +2,14 @@
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using Surrender_20.Core.Interface;
-using Surrender_20.Model;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Model;
 using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Surrender_20.Core.ViewModels
+namespace LeagueOfNews.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public abstract class NewsfeedListCoreViewModel : MvxViewModel

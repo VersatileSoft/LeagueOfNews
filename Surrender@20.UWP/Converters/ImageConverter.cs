@@ -5,7 +5,7 @@ using Windows.Storage.Streams;
 using Windows.UI.Xaml.Data;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace Surrender_20.UWP.Converters
+namespace LeagueOfNews.UWP.Converters
 {
     internal class ImageConverter : IValueConverter
     {

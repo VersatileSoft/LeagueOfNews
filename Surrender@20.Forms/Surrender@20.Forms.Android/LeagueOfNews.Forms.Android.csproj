@@ -7,8 +7,8 @@
     <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TemplateGuid>{6968b3a4-1835-46a3-ac5c-1ae33b475983}</TemplateGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Surrender_20.Forms.Droid</RootNamespace>
-    <AssemblyName>Surrender%4020.Forms.Android</AssemblyName>
+    <RootNamespace>LeagueOfNews.Forms.Droid</RootNamespace>
+    <AssemblyName>LeagueOfNews.Forms.Android</AssemblyName>
     <AndroidApplication>True</AndroidApplication>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
@@ -33,9 +33,12 @@
     <BundleAssemblies>false</BundleAssemblies>
     <AndroidUseSharedRuntime>true</AndroidUseSharedRuntime>
     <EmbedAssembliesIntoApk>false</EmbedAssembliesIntoApk>
-    <AndroidStoreUncompressedFileExtensions>.png</AndroidStoreUncompressedFileExtensions>
+    <AndroidStoreUncompressedFileExtensions>
+    </AndroidStoreUncompressedFileExtensions>
     <AndroidEnableMultiDex>true</AndroidEnableMultiDex>
     <AndroidFastDeploymentType>Assemblies:Dexes</AndroidFastDeploymentType>
+    <AotAssemblies>false</AotAssemblies>
+    <EnableLLVM>false</EnableLLVM>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -131,13 +134,13 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Surrender%4020.Core\Surrender%4020.Core.csproj">
+    <ProjectReference Include="..\..\Surrender%4020.Core\LeagueOfNews.Core.csproj">
       <Project>{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}</Project>
-      <Name>Surrender%4020.Core</Name>
+      <Name>LeagueOfNews.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Surrender%4020.Forms\Surrender%4020.Forms.csproj">
+    <ProjectReference Include="..\Surrender%4020.Forms\LeagueOfNews.Forms.csproj">
       <Project>{d2f5605c-8569-4a30-b614-982dc34edc92}</Project>
-      <Name>Surrender%4020.Forms</Name>
+      <Name>LeagueOfNews.Forms</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

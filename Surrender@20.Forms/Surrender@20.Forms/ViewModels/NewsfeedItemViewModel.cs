@@ -1,8 +1,8 @@
 ﻿using PropertyChanged;
-using Surrender_20.Core.Interface;
-using Surrender_20.Core.ViewModels;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Core.ViewModels;
 
-namespace Surrender_20.Forms.ViewModels
+namespace LeagueOfNews.Forms.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class NewsfeedItemViewModel : NewsfeedItemCoreViewModel

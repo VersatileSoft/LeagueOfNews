@@ -5,10 +5,10 @@
                   xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:i="using:Microsoft.Xaml.Interactivity"
                   xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-                  xmlns:conv="using:Surrender_20.UWP.Converters"
-				  xmlns:views="using:Surrender_20.UWP.View"
+                  xmlns:conv="using:LeagueOfNews.UWP.Converters"
+				  xmlns:views="using:LeagueOfNews.UWP.View"
                   xmlns:ad="using:Microsoft.Advertising.WinRT.UI"
-                  x:Class="Surrender_20.UWP.View.MainPageView"
+                  x:Class="LeagueOfNews.UWP.View.MainPageView"
                   mc:Ignorable="d"                 
                   GotFocus="MvxWindowsPage_GotFocus" SizeChanged="MvxWindowsPage_SizeChanged"
                   Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">

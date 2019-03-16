@@ -2,12 +2,12 @@
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using Surrender_20.Core.Interface;
+using LeagueOfNews.Core.Interface;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
 
-namespace Surrender_20.UWP.ViewModels
+namespace LeagueOfNews.UWP.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public class MainPageViewModel : MvxViewModel

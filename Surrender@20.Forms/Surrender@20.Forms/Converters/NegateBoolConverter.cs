@@ -2,7 +2,7 @@
 using System.Globalization;
 using Xamarin.Forms;
 
-namespace Surrender_20.Forms.Converters
+namespace LeagueOfNews.Forms.Converters
 {
     public class NegateBoolConverter : IValueConverter
     {

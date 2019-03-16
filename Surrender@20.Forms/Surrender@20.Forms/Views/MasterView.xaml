@@ -3,9 +3,9 @@
                       xmlns="http://xamarin.com/schemas/2014/forms"
                       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                      xmlns:viewModels="clr-namespace:Surrender_20.Forms.ViewModels"
+                      xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels"
                       xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
-                      x:Class="Surrender_20.Forms.Views.MasterView"
+                      x:Class="LeagueOfNews.Forms.Views.MasterView"
                       Style="{DynamicResource Page}"
                       Title="Placeholder">
 

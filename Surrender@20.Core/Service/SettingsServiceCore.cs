@@ -1,7 +1,7 @@
-﻿using Surrender_20.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using System.Collections.Generic;
 
-namespace Surrender_20.Core.Service
+namespace LeagueOfNews.Core.Service
 {
     public abstract class AbstractSettingsService : ISettingsService
     {

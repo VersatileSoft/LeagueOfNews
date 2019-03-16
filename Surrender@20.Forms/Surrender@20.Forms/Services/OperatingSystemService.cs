@@ -1,7 +1,7 @@
-﻿using Surrender_20.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using Xamarin.Forms;
 
-namespace Surrender_20.Forms.Services
+namespace LeagueOfNews.Forms.Services
 {
     public class OperatingSystemService : IOperatingSystemService
     {

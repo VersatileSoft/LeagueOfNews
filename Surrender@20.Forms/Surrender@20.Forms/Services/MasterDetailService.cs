@@ -1,8 +1,8 @@
-﻿using Surrender_20.Core.Interface;
-using Surrender_20.Forms.Interfaces;
+﻿using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Forms.Interfaces;
 using System;
 
-namespace Surrender_20.Forms.Services
+namespace LeagueOfNews.Forms.Services
 {
     public class MasterDetailService : IMasterDetailService
     {

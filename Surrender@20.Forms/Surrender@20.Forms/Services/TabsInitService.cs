@@ -1,7 +1,7 @@
-﻿using Surrender_20.Forms.Interfaces;
+﻿using LeagueOfNews.Forms.Interfaces;
 using System;
 
-namespace Surrender_20.Forms.Services
+namespace LeagueOfNews.Forms.Services
 {
     public class TabsInitService : ITabsInitService
     {

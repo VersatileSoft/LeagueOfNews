@@ -7,11 +7,11 @@ using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Views;
 using MvvmCross.ViewModels;
 using MvvmCross.Views;
-using Surrender_20.Core;
-using Surrender_20.Core.Interface;
+using LeagueOfNews.Core;
+using LeagueOfNews.Core.Interface;
 using Plugin.CrossPlatformTintedImage.Android;
 
-namespace Surrender_20.Forms.Droid
+namespace LeagueOfNews.Forms.Droid
 {
     [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MyTheme.Splash", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : MvxFormsAppCompatActivity<Setup, CoreApp, App>

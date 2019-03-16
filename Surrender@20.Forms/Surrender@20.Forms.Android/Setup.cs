@@ -2,16 +2,16 @@
 using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
-using Surrender_20.Core;
-using Surrender_20.Core.Interface;
-using Surrender_20.Forms.Droid.Services;
-using Surrender_20.Forms.Interfaces;
-using Surrender_20.Forms.Services;
-using Surrender_20.Forms.ViewModels;
+using LeagueOfNews.Core;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Forms.Droid.Services;
+using LeagueOfNews.Forms.Interfaces;
+using LeagueOfNews.Forms.Services;
+using LeagueOfNews.Forms.ViewModels;
 using System.Collections.Generic;
 using System.Reflection;
 
-namespace Surrender_20.Forms.Droid
+namespace LeagueOfNews.Forms.Droid
 {
     public sealed class Setup : MvxFormsAndroidSetup<CoreApp, App>
     {

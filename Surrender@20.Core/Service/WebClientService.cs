@@ -1,10 +1,10 @@
 ﻿using HtmlAgilityPack;
-using Surrender_20.Core.Interface;
+using LeagueOfNews.Core.Interface;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace Surrender_20.Core.Model
+namespace LeagueOfNews.Core.Model
 {
     public class WebClientService : IWebClientService
     {

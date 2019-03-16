@@ -1,8 +1,8 @@
-﻿using Surrender_20.Core.Interface;
-using Surrender_20.Model;
+﻿using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Model;
 using System;
 
-namespace Surrender_20.UWP.Services
+namespace LeagueOfNews.UWP.Services
 {
     public class NotificationService : INotificationService
     {

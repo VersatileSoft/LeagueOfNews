@@ -2,7 +2,7 @@
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
-namespace Surrender_20.UWP.Views.MessageBoxes
+namespace LeagueOfNews.UWP.Views.MessageBoxes
 {
     public sealed partial class ConnectionDialog : ContentDialog
     {

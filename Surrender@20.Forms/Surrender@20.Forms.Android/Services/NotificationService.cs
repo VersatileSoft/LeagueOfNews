@@ -7,14 +7,14 @@ using Android.Util;
 using Java.Lang;
 using MvvmCross;
 using MvvmCross.ViewModels;
-using Surrender_20.Core.Interface;
-using Surrender_20.Forms.Services;
-using Surrender_20.Forms.ViewModels;
-using Surrender_20.Model;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Forms.Services;
+using LeagueOfNews.Forms.ViewModels;
+using LeagueOfNews.Model;
 using System;
 using Application = Android.App.Application;
 
-namespace Surrender_20.Forms.Droid.Services
+namespace LeagueOfNews.Forms.Droid.Services
 {
     public class NotificationService : INotificationService
     {

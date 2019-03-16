@@ -1,7 +1,7 @@
 ﻿using System;
 using Windows.UI.Xaml.Data;
 
-namespace Surrender_20.UWP.Converters
+namespace LeagueOfNews.UWP.Converters
 {
     public class SelectedItemToStringConverter : IValueConverter
     {

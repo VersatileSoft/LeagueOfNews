@@ -1,8 +1,8 @@
-﻿using Surrender_20.Core.Interface;
-using Surrender_20.Core.Service;
+﻿using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Core.Service;
 using Windows.Storage;
 
-namespace Surrender_20.UWP.Services
+namespace LeagueOfNews.UWP.Services
 {
     public class SettingsService : AbstractSettingsService
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Surrender_20.Forms.Interfaces
+namespace LeagueOfNews.Forms.Interfaces
 {
     public interface ITabsInitService
     {

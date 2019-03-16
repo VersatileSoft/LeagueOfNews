@@ -3,10 +3,10 @@ using Android.App.Job;
 using Android.Util;
 using MvvmCross;
 using MvvmCross.Platforms.Android.Core;
-using Surrender_20.Core.Interface;
+using LeagueOfNews.Core.Interface;
 using System.Threading;
 
-namespace Surrender_20.Forms.Services
+namespace LeagueOfNews.Forms.Services
 {
     [Service(Exported = true, Permission = "android.permission.BIND_JOB_SERVICE")]
     public class NotificationJobService : JobService

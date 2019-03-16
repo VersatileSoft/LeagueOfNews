@@ -3,9 +3,9 @@ using Android.Content;
 using Android.Net;
 using Android.OS;
 using Android.Widget;
-using Surrender_20.Core.Interface;
+using LeagueOfNews.Core.Interface;
 
-namespace Surrender_20.Forms.Droid.Services
+namespace LeagueOfNews.Forms.Droid.Services
 {
     public class InternetConnectionService : IInternetConnectionService
     {

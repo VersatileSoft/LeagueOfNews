@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.28531.58
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surrender@20.UWP", "Surrender@20.UWP\Surrender@20.UWP.csproj", "{96378F75-EE82-4E75-9189-EE9D60868CA7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.UWP", "Surrender@20.UWP\LeagueOfNews.UWP.csproj", "{96378F75-EE82-4E75-9189-EE9D60868CA7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surrender@20.Core", "Surrender@20.Core\Surrender@20.Core.csproj", "{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.Core", "Surrender@20.Core\LeagueOfNews.Core.csproj", "{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Surrender@20.Forms.Android", "Surrender@20.Forms\Surrender@20.Forms.Android\Surrender@20.Forms.Android.csproj", "{47BAF33B-374E-4379-B9B0-FAE6230ADED0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.Forms.Android", "Surrender@20.Forms\Surrender@20.Forms.Android\LeagueOfNews.Forms.Android.csproj", "{47BAF33B-374E-4379-B9B0-FAE6230ADED0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Surrender@20.Forms", "Surrender@20.Forms\Surrender@20.Forms\Surrender@20.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.Forms", "Surrender@20.Forms\Surrender@20.Forms\LeagueOfNews.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

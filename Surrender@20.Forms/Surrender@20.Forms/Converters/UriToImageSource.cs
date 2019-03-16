@@ -3,7 +3,7 @@ using System.Globalization;
 using System.IO;
 using Xamarin.Forms;
 
-namespace Surrender_20.Forms.Converters
+namespace LeagueOfNews.Forms.Converters
 {
     public class UriToImageSource : IValueConverter
     {

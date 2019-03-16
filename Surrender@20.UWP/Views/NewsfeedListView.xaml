@@ -1,11 +1,11 @@
-﻿<c:NewsfeedListViewBase x:Class="Surrender_20.UWP.View.NewsfeedListView"
+﻿<c:NewsfeedListViewBase x:Class="LeagueOfNews.UWP.View.NewsfeedListView"
 					    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
 					    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
 					    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
 					    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-					    xmlns:c="using:Surrender_20.UWP.View"
+					    xmlns:c="using:LeagueOfNews.UWP.View"
 					    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-					    xmlns:Surrender_20.Model="using:Surrender_20.Model"
+					    xmlns:LeagueOfNews.Model="using:LeagueOfNews.Model"
 					    mc:Ignorable="d">
     <c:NewsfeedListViewBase.Resources>
         <ResourceDictionary>
@@ -29,7 +29,7 @@
 					  ItemsSource="{Binding Newsfeeds}" 
 					  Tapped="GridView_Tapped">
                 <GridView.ItemTemplate>
-                    <DataTemplate x:DataType="Surrender_20.Model:Newsfeed">
+                    <DataTemplate x:DataType="LeagueOfNews.Model:Newsfeed">
                         <Grid>
                             <Image Source="{x:Bind Image, Converter={StaticResource ImageConverter}}" 
 								   Stretch="Fill"

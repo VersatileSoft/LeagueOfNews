@@ -4,7 +4,7 @@
                        xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
                        xmlns="http://xamarin.com/schemas/2014/forms"
                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                       x:Class="Surrender_20.Forms.App">
+                       x:Class="LeagueOfNews.Forms.App">
     <m:MvxFormsApplication.Resources>
         <ResourceDictionary>
 

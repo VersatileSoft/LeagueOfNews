@@ -1,10 +1,10 @@
 ﻿using MvvmCross.ViewModels;
 using PropertyChanged;
-using Surrender_20.Core.Interface;
-using Surrender_20.Model;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Model;
 using System.Threading.Tasks;
 
-namespace Surrender_20.Core.ViewModels
+namespace LeagueOfNews.Core.ViewModels
 {
     [AddINotifyPropertyChangedInterface]
     public abstract class NewsfeedItemCoreViewModel : MvxViewModel<Newsfeed>

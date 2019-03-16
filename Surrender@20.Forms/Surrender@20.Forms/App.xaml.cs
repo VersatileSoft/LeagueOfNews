@@ -2,7 +2,7 @@
 using Xamarin.Forms.Xaml;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
-namespace Surrender_20.Forms
+namespace LeagueOfNews.Forms
 {
     public partial class App : MvxFormsApplication
     {

@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace Surrender_20.Forms.Views.Utils
+namespace LeagueOfNews.Forms.Views.Utils
 {
     public class ExtendedLabel : Label
     {
