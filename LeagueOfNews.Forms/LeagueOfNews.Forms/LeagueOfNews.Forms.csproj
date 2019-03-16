@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Surrender@20.Core\LeagueOfNews.Core.csproj" />
+    <ProjectReference Include="..\..\LeagueOfNews.Core\LeagueOfNews.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>
