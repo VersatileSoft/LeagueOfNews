@@ -33,7 +33,6 @@ namespace LeagueOfNews.Forms.Droid
         {
             List<Assembly> list = new List<Assembly>();
             list.AddRange(base.GetViewModelAssemblies());
-            list.Add(typeof(NewsfeedItemViewModel).Assembly);
             return list.ToArray();
         }
     }

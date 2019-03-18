@@ -1,16 +1,16 @@
 ﻿using Android.App;
 using Android.App.Job;
 using Android.Content;
+using Android.Graphics;
 using Android.OS;
+using Android.Support.CustomTabs;
 using Android.Support.V4.App;
 using Android.Util;
 using Java.Lang;
 using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Forms.Services;
-using LeagueOfNews.Forms.ViewModels;
 using LeagueOfNews.Model;
 using MvvmCross;
-using MvvmCross.ViewModels;
 using System;
 using Application = Android.App.Application;
 
@@ -107,22 +107,13 @@ namespace LeagueOfNews.Forms.Droid.Services
 
         private PendingIntent GetContentIntent(Newsfeed newsfeed)
         {
-            MvxBundle bundle = new MvxBundle();
-            bundle.Write(newsfeed);
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            builder.SetToolbarColor(Color.ParseColor("#002132"));
+            CustomTabsIntent customTabsIntent = builder.Build();
+            customTabsIntent.Intent.SetFlags(ActivityFlags.NewTask);
+            customTabsIntent.LaunchUrl(Application.Context, Android.Net.Uri.Parse(newsfeed.UrlToNewsfeed));
 
-            MvxViewModelRequest<NewsfeedItemViewModel> request = new MvxViewModelRequest<NewsfeedItemViewModel>(bundle, null);
-
-            IMvxNavigationSerializer converter = Mvx.IoCProvider.Resolve<IMvxNavigationSerializer>();
-            string requestText = converter.Serializer.SerializeObject(request);
-
-            Intent intent = new Intent(Application.Context, typeof(MainActivity));
-
-            // We only want one activity started
-            intent.AddFlags(flags: ActivityFlags.SingleTop);
-            intent.PutExtra("Request", requestText);
-
-            // Create Pending intent, with OneShot. We're not going to want to update this.
-            return PendingIntent.GetActivity(Application.Context, (int)(DateTimeOffset.Now.ToUnixTimeMilliseconds() / 1000), intent, PendingIntentFlags.OneShot);
+            return PendingIntent.GetActivity(Application.Context, (int)(DateTimeOffset.Now.ToUnixTimeMilliseconds() / 1000), customTabsIntent.Intent, PendingIntentFlags.OneShot);
         }
     }
 }

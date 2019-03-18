@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace LeagueOfNews.Forms.Interfaces
 {
     public interface IChromeCustomTabService
     {
-        void StartChromCustomTab(string url);
+        Task StartChromCustomTab(string url);
     }
 }
