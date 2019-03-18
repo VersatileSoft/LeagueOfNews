@@ -23,6 +23,7 @@ namespace LeagueOfNews.Forms.Droid
             Mvx.IoCProvider.RegisterSingleton(typeof(INotificationService), new NotificationService());
             Mvx.IoCProvider.RegisterSingleton(typeof(ISettingsService), new AndroidSettingsService());
             Mvx.IoCProvider.RegisterSingleton(typeof(IInternetConnectionService), new InternetConnectionService());
+            Mvx.IoCProvider.RegisterSingleton(typeof(IChromeCustomTabService), new ChromeCustomTabService());
             Mvx.IoCProvider.ConstructAndRegisterSingleton<IMvxAppStart, MvxAppStart<RootPageViewModel>>();
 
             base.InitializeLastChance();
