@@ -7,8 +7,7 @@ namespace LeagueOfNews.Forms.Views.Utils
 {
     public class InfiniteListView : MvxListView
     {
-        public static readonly BindableProperty LoadMoreCommandProperty = BindableProperty.Create<InfiniteListView, ICommand>(bp => bp.LoadMoreCommand, default(ICommand));
-
+        public static readonly BindableProperty LoadMoreCommandProperty = BindableProperty.Create(nameof(LoadMoreCommand), typeof(ICommand), typeof(InfiniteListView), default(ICommand));
         public ICommand LoadMoreCommand
         {
             get => (ICommand)GetValue(LoadMoreCommandProperty);

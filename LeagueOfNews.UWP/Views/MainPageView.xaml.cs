@@ -28,11 +28,11 @@ namespace LeagueOfNews.UWP.View
         private void Initialize()
         {
             //Load images
-            LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-48.png"));
-            LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-48Dark.png"));
+            LogoLight = new BitmapImage(new Uri("ms-appx:///Assets/TitleBarAssets/AppLogoWhite.png"));
+            LogoDark = new BitmapImage(new Uri("ms-appx:///Assets/TitleBarAssets/AppLogoDark.png"));
 
-            ItemLogoLight = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-256.png"));
-            ItemLogoDark = new BitmapImage(new Uri("ms-appx:///Assets/Square44x44Logo.altform-unplated_targetsize-256Dark.png"));
+            ItemLogoLight = new BitmapImage(new Uri("ms-appx:///Assets/TitleBarAssets/PlaceholderWhite.png"));
+            ItemLogoDark = new BitmapImage(new Uri("ms-appx:///Assets/TitleBarAssets/PlaceholderDark.png"));
 
             //Change appearance to proper theme
             ChangeThemeLogo();
