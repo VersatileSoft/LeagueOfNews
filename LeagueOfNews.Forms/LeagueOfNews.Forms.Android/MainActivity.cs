@@ -13,7 +13,7 @@ using Plugin.CrossPlatformTintedImage.Android;
 
 namespace LeagueOfNews.Forms.Droid
 {
-    [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MyTheme.Splash", NoHistory = false, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MyTheme.Splash", NoHistory = false, LaunchMode = LaunchMode.SingleTask, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : MvxFormsAppCompatActivity<Setup, CoreApp, App>
     {
         protected override void OnCreate(Bundle bundle)

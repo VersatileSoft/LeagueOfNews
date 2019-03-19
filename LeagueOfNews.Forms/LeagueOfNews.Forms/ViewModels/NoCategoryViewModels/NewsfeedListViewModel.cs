@@ -5,13 +5,12 @@ using LeagueOfNews.Model;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 using System.Threading.Tasks;
-using Xamarin.Essentials;
 
 namespace LeagueOfNews.Forms.ViewModels
 {
     public class NewsfeedListViewModel : NewsfeedListCoreViewModel, IMvxViewModel<NewsCategory>
     {
-        IChromeCustomTabService _chromeCustomTabService;
+        private readonly IChromeCustomTabService _chromeCustomTabService;
 
         public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService, IChromeCustomTabService chromeCustomTabService)
             : base(newsfeedService, settingsService, navigationService)
