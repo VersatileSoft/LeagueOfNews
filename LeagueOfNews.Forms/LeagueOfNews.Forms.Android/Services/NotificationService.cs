@@ -46,7 +46,7 @@ namespace LeagueOfNews.Forms.Droid.Services
             Notification notification = new NotificationCompat.Builder(Application.Context, CHANNEL_ID)
                 .SetContentTitle(newsfeed.Title)
                 .SetContentText(newsfeed.ShortDescription)
-                .SetSmallIcon(Resource.Drawable.AppIcon)
+                .SetSmallIcon(Resource.Drawable.NotificationIcon)
                 .SetContentIntent(GetContentIntent(newsfeed))
                 .SetShowWhen(true)
                 .SetAutoCancel(true)

@@ -22,8 +22,8 @@
         <Grid>
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
-            <StackLayout>
-                <!--ItemClick="MvxListView_ItemClick"-->
+            <StackLayout Spacing="0">
+                <Frame Style="{StaticResource ShadowFrame}"/>
                 <util:InfiniteListView Style="{StaticResource InfiniteListView}"
                                        IsPullToRefreshEnabled="True"
                                        RefreshCommand="{Binding RefreshItemsCommand}"
@@ -78,7 +78,7 @@
                     <ListView.Footer>
                         <Grid HeightRequest="70">
                             <ActivityIndicator Style="{StaticResource ActivityIndicator}"
-                                           IsRunning="{Binding IsLoadingMore}"/>
+                                               IsRunning="{Binding IsLoadingMore}"/>
                         </Grid>
                     </ListView.Footer>
 

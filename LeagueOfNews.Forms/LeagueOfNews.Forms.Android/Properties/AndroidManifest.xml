@@ -3,5 +3,5 @@
 	<uses-sdk android:targetSdkVersion="28" android:minSdkVersion="22" />
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	<application android:icon="@drawable/AppIcon" android:label="League of News"></application>
+	<application android:icon="@mipmap/icon" android:roundIcon="@mipmap/icon_round" android:label="League of News"></application>
 </manifest>

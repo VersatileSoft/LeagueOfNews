@@ -30,7 +30,7 @@ namespace LeagueOfNews.Forms.ViewModels
         {
             //await Browser.OpenAsync(newsfeed.UrlToNewsfeed, BrowserLaunchMode.SystemPreferred);
             //await _navigationService.Navigate<NewsfeedItemViewModel, Newsfeed>(newsfeed);  
-            _chromeCustomTabService.StartChromCustomTab(newsfeed.UrlToNewsfeed);
+            await _chromeCustomTabService.StartChromCustomTab(newsfeed.UrlToNewsfeed);
         }
     }
 }

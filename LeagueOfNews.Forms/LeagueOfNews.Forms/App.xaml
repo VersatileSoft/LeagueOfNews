@@ -16,6 +16,15 @@
                 <Setter Property="IsRunning" Value="{Binding IsLoading}"/>
             </Style>
 
+            <Style x:Key="ShadowFrame" TargetType="Frame">
+                <Setter Property="CornerRadius" Value="0"/>
+                <Setter Property="Padding" Value="0"/>
+                <Setter Property="HeightRequest" Value="1"/>
+                <Setter Property="BackgroundColor" Value="#002132"/>
+                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+
             <Style x:Key="LightFrame" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
