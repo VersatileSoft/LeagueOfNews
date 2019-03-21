@@ -1,12 +1,12 @@
 ﻿<m:UWPApplication
-    xmlns:m="using:LeagueOfNews.UWP"
     x:Class="LeagueOfNews.UWP.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls">
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:m="using:LeagueOfNews.UWP">
 
     <m:UWPApplication.Resources>
-        <!--NewsfeedListView/NewsfeedItemView-->
+        <!--  NewsfeedListView/NewsfeedItemView  -->
         <Style x:Key="TitleText" TargetType="TextBlock">
             <Setter Property="TextWrapping" Value="Wrap"/>
             <Setter Property="TextAlignment" Value="Left"/>
@@ -34,7 +34,7 @@
             <Setter Property="CanContentRenderOutsideBounds" Value="True"/>
         </Style>
 
-        <!--Loading Screen-->
+        <!--  Loading Screen  -->
         <Style x:Key="LoadingScreen" TargetType="controls:Loading">
             <Setter Property="Canvas.ZIndex" Value="5"/>
             <Setter Property="Background" Value="{ThemeResource SystemControlAccentAcrylicElementAccentMediumHighBrush}"/>

@@ -1,11 +1,12 @@
-﻿<c:NewsfeedItemViewBase x:Class="LeagueOfNews.UWP.View.NewsfeedItemView"
-					    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-					    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-					    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-					    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                        xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
-					    xmlns:c="using:LeagueOfNews.UWP.View"
-					    mc:Ignorable="d">
+﻿<c:NewsfeedItemViewBase
+    x:Class="LeagueOfNews.UWP.View.NewsfeedItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:c="using:LeagueOfNews.UWP.View"
+    xmlns:controls="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
     <c:NewsfeedItemViewBase.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -14,17 +15,18 @@
         </ResourceDictionary>
     </c:NewsfeedItemViewBase.Resources>
 
-    <Grid>
-        <controls:Loading x:Name="LoadingControl" 
-                          Style="{StaticResource LoadingScreen}">
-            <StackPanel>
-                <ProgressRing Style="{StaticResource ProgressRing}"/>
-                <TextBlock Style="{StaticResource LoadingText}"/>
-            </StackPanel>
-        </controls:Loading>
+    <c:NewsfeedItemViewBase.Content>
+        <Grid>
+            <controls:Loading x:Name="LoadingControl" Style="{StaticResource LoadingScreen}">
+                <StackPanel>
+                    <ProgressRing Style="{StaticResource ProgressRing}"/>
+                    <TextBlock Style="{StaticResource LoadingText}"/>
+                </StackPanel>
+            </controls:Loading>
 
-        <WebView x:Name="NewsfeedWebView" 
-                 Source="{Binding URL}" 
-                 ContainsFullScreenElementChanged="NewsfeedWebView_ContainsFullScreenElementChanged"/>
-    </Grid>
+            <WebView x:Name="NewsfeedWebView"
+                ContainsFullScreenElementChanged="NewsfeedWebView_ContainsFullScreenElementChanged"
+                Source="{Binding URL}"/>
+        </Grid>
+    </c:NewsfeedItemViewBase.Content>
 </c:NewsfeedItemViewBase>

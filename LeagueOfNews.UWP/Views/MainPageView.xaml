@@ -1,17 +1,19 @@
-﻿<m:MvxWindowsPage xmlns:m="using:MvvmCross.Platforms.Uap.Views"
-                  xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-                  xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-                  xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-                  xmlns:i="using:Microsoft.Xaml.Interactivity"
-                  xmlns:core="using:Microsoft.Xaml.Interactions.Core"
-                  xmlns:conv="using:LeagueOfNews.UWP.Converters"
-				  xmlns:views="using:LeagueOfNews.UWP.View"
-                  xmlns:ad="using:Microsoft.Advertising.WinRT.UI"
-                  x:Class="LeagueOfNews.UWP.View.MainPageView"
-                  mc:Ignorable="d"                 
-                  GotFocus="MvxWindowsPage_GotFocus" SizeChanged="MvxWindowsPage_SizeChanged"
-                  Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}">
+﻿<m:MvxWindowsPage
+    x:Class="LeagueOfNews.UWP.View.MainPageView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:ad="using:Microsoft.Advertising.WinRT.UI"
+    xmlns:conv="using:LeagueOfNews.UWP.Converters"
+    xmlns:core="using:Microsoft.Xaml.Interactions.Core"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="using:Microsoft.Xaml.Interactivity"
+    xmlns:m="using:MvvmCross.Platforms.Uap.Views"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="using:LeagueOfNews.UWP.View"
+    Background="{ThemeResource SystemControlChromeMediumLowAcrylicWindowMediumBrush}"
+    GotFocus="MvxWindowsPage_GotFocus"
+    SizeChanged="MvxWindowsPage_SizeChanged"
+    mc:Ignorable="d">
     <m:MvxWindowsPage.Resources>
         <ResourceDictionary>
             <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>
@@ -22,147 +24,174 @@
         </ResourceDictionary>
     </m:MvxWindowsPage.Resources>
 
-    <Grid>
-        <Grid Style="{StaticResource DragAreaGrid}"
-              x:Name="DragArea">
+    <m:MvxWindowsPage.Content>
+        <Grid>
+            <Grid x:Name="DragArea" Style="{StaticResource DragAreaGrid}">
 
-            <Image Style="{StaticResource AppLogoImage}" 
-                   x:Name="LogoImage"/>
+                <Image x:Name="LogoImage" Style="{StaticResource AppLogoImage}"/>
 
-            <TextBlock Style="{StaticResource AppTitleText}"/>
-        </Grid>
+                <TextBlock Style="{StaticResource AppTitleText}"/>
+            </Grid>
 
-        <NavigationView Style="{StaticResource NavigationView}"
-                        Loaded="NavigationBar_Loaded"
-                        x:Name="NavigationBar">
+            <NavigationView x:Name="NavigationBar"
+                Loaded="NavigationBar_Loaded"
+                Style="{StaticResource NavigationView}">
 
-            <i:Interaction.Behaviors>
-                <core:EventTriggerBehavior EventName="SelectionChanged">
-                    <core:InvokeCommandAction Command="{Binding SetupItemCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
-                </core:EventTriggerBehavior>
-            </i:Interaction.Behaviors>
+                <i:Interaction.Behaviors>
+                    <core:EventTriggerBehavior EventName="SelectionChanged">
+                        <core:InvokeCommandAction Command="{Binding SetupItemCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
+                    </core:EventTriggerBehavior>
+                </i:Interaction.Behaviors>
 
-            <NavigationView.MenuItems>
-                <NavigationViewItem Icon="Home" Content="Home"/>
+                <NavigationView.MenuItems>
+                    <NavigationViewItem Content="Home" Icon="Home"/>
 
-                <NavigationViewItem Content="PBE" IsEnabled="{Binding HasSurrenderElementsVisible}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#60589;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-
-                <NavigationViewItem Content="Releases" IsEnabled="{Binding HasSurrenderElementsVisible}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#59176;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-
-                <NavigationViewItem Content="Red Posts" IsEnabled="{Binding HasSurrenderElementsVisible}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#xEC7A;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-
-                <NavigationViewItem Icon="People" Content="Rotations" IsEnabled="{Binding HasSurrenderElementsVisible}"/>
-
-                <NavigationViewItem Content="E-Sports" IsEnabled="{Binding HasSurrenderElementsVisible}">
-                    <NavigationViewItem.Icon>
-                        <FontIcon Glyph="&#57602;"/>
-                    </NavigationViewItem.Icon>
-                </NavigationViewItem>
-            </NavigationView.MenuItems>
-
-            <NavigationView.PaneFooter>
-                <StackPanel Orientation="Horizontal" Spacing="10">
-                    <ComboBox x:Name="SiteCombo" VerticalAlignment="Center" Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}" Width="220">
-                        <x:String>Surrender@20</x:String>
-                        <x:String>League of Legends official</x:String>
-                        <!--<x:String>/dev blog</x:String>-->
-
-                        <i:Interaction.Behaviors>
-                            <core:EventTriggerBehavior EventName="SelectionChanged">
-                                <core:InvokeCommandAction Command="{Binding SelectWebsiteCommand}"/>
-                            </core:EventTriggerBehavior>
-                        </i:Interaction.Behaviors>
-                    </ComboBox>
-
-                    <NavigationViewItem Icon="Setting" ToolTipService.ToolTip="Settings" Tapped="Settings_Tapped">
-                        <FlyoutBase.AttachedFlyout>
-                            <Flyout LightDismissOverlayMode="Auto">
-                                <StackPanel>
-                                    <TextBlock Text="Theme - soon" FontSize="14"/>
-                                    <RadioButton Content="Light" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}" GroupName="Theme">
-                                        <i:Interaction.Behaviors>
-                                            <core:EventTriggerBehavior EventName="IsEnabledChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Light"/>
-                                            </core:EventTriggerBehavior>
-                                        </i:Interaction.Behaviors>
-                                    </RadioButton>
-                                    <RadioButton Content="Dark" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}" GroupName="Theme">
-                                        <i:Interaction.Behaviors>
-                                            <core:EventTriggerBehavior EventName="IsCheckedChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Dark"/>
-                                            </core:EventTriggerBehavior>
-                                        </i:Interaction.Behaviors>
-                                    </RadioButton>
-                                    <RadioButton Content="Use system setting" IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}}" GroupName="Theme">
-                                        <i:Interaction.Behaviors>
-                                            <core:EventTriggerBehavior EventName="IsCheckedChanged">
-                                                <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
-                                            </core:EventTriggerBehavior>
-                                        </i:Interaction.Behaviors>
-                                    </RadioButton>
-
-                                    <TextBlock Text="Notifications - soon" FontSize="14"/>
-                                    <RadioButton Content="Enabled" GroupName="Notifi" IsEnabled="False"/>
-                                    <RadioButton Content="Disabled" GroupName="Notifi" IsChecked="True" IsEnabled="False"/>
-
-                                    <HyperlinkButton Content="Visit our facebook" Tapped="Facebook_Tapped"/>
-                                    <HyperlinkButton Content="Try this app on android" Tapped="AndroidApp_Tapped"/>
-                                    <TextBlock Text="Versatile Software - League of News v1.0"/>
-                                </StackPanel>
-                            </Flyout>
-                        </FlyoutBase.AttachedFlyout>
+                    <NavigationViewItem Content="PBE" IsEnabled="{Binding HasSurrenderElementsVisible}">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#60589;"/>
+                        </NavigationViewItem.Icon>
                     </NavigationViewItem>
-                </StackPanel>
-            </NavigationView.PaneFooter>
 
-            <NavigationView.Content>
-                <Grid x:Name="LayoutRoot">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition x:Name="MasterColumn" Width="450"/>
-                        <ColumnDefinition x:Name="DetailColumn" Width="*"/>
-                    </Grid.ColumnDefinitions>
+                    <NavigationViewItem Content="Releases" IsEnabled="{Binding HasSurrenderElementsVisible}">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#59176;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-                    <Grid Grid.Column="0">
-                        <views:NewsfeedListView x:Name="MasterView" Canvas.ZIndex="5"/>
+                    <NavigationViewItem Content="Red Posts" IsEnabled="{Binding HasSurrenderElementsVisible}">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#xEC7A;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
 
-                        <ad:AdControl ApplicationId="9n06tgn05xnk"
- 		                              AdUnitId="1100040279"
- 		                              Width="320"
- 		                              Height="50"
-                                      HorizontalAlignment="Center"
- 		                              VerticalAlignment="Bottom"
-                                      Canvas.ZIndex="6"/>
+                    <NavigationViewItem
+                        Content="Rotations"
+                        Icon="People"
+                        IsEnabled="{Binding HasSurrenderElementsVisible}"/>
+
+                    <NavigationViewItem Content="E-Sports" IsEnabled="{Binding HasSurrenderElementsVisible}">
+                        <NavigationViewItem.Icon>
+                            <FontIcon Glyph="&#57602;"/>
+                        </NavigationViewItem.Icon>
+                    </NavigationViewItem>
+                </NavigationView.MenuItems>
+
+                <NavigationView.PaneFooter>
+                    <StackPanel Orientation="Horizontal" Spacing="10">
+                        <ComboBox x:Name="SiteCombo"
+                            Width="220"
+                            VerticalAlignment="Center"
+                            Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}">
+                            <x:String>Surrender@20</x:String>
+                            <x:String>League of Legends official</x:String>
+                            <!--<x:String>/dev blog</x:String>-->
+
+                            <i:Interaction.Behaviors>
+                                <core:EventTriggerBehavior EventName="SelectionChanged">
+                                    <core:InvokeCommandAction Command="{Binding SelectWebsiteCommand}"/>
+                                </core:EventTriggerBehavior>
+                            </i:Interaction.Behaviors>
+                        </ComboBox>
+
+                        <NavigationViewItem
+                            Icon="Setting"
+                            Tapped="Settings_Tapped"
+                            ToolTipService.ToolTip="Settings">
+                            <FlyoutBase.AttachedFlyout>
+                                <Flyout LightDismissOverlayMode="Auto">
+                                    <StackPanel>
+                                        <TextBlock FontSize="14" Text="Theme - soon"/>
+                                        <RadioButton
+                                            Content="Light"
+                                            GroupName="Theme"
+                                            IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}">
+                                            <i:Interaction.Behaviors>
+                                                <core:EventTriggerBehavior EventName="IsEnabledChanged">
+                                                    <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Light"/>
+                                                </core:EventTriggerBehavior>
+                                            </i:Interaction.Behaviors>
+                                        </RadioButton>
+                                        <RadioButton
+                                            Content="Dark"
+                                            GroupName="Theme"
+                                            IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}">
+                                            <i:Interaction.Behaviors>
+                                                <core:EventTriggerBehavior EventName="IsCheckedChanged">
+                                                    <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Dark"/>
+                                                </core:EventTriggerBehavior>
+                                            </i:Interaction.Behaviors>
+                                        </RadioButton>
+                                        <RadioButton
+                                            Content="Use system setting"
+                                            GroupName="Theme"
+                                            IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}}">
+                                            <i:Interaction.Behaviors>
+                                                <core:EventTriggerBehavior EventName="IsCheckedChanged">
+                                                    <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
+                                                </core:EventTriggerBehavior>
+                                            </i:Interaction.Behaviors>
+                                        </RadioButton>
+
+                                        <TextBlock FontSize="14" Text="Notifications - soon"/>
+                                        <RadioButton
+                                            Content="Enabled"
+                                            GroupName="Notifi"
+                                            IsEnabled="False"/>
+                                        <RadioButton
+                                            Content="Disabled"
+                                            GroupName="Notifi"
+                                            IsChecked="True"
+                                            IsEnabled="False"/>
+
+                                        <HyperlinkButton Content="Visit our facebook" Tapped="Facebook_Tapped"/>
+                                        <HyperlinkButton Content="Try this app on android" Tapped="AndroidApp_Tapped"/>
+                                        <TextBlock Text="Versatile Software - League of News v1.0"/>
+                                    </StackPanel>
+                                </Flyout>
+                            </FlyoutBase.AttachedFlyout>
+                        </NavigationViewItem>
+                    </StackPanel>
+                </NavigationView.PaneFooter>
+
+                <NavigationView.Content>
+                    <Grid x:Name="LayoutRoot">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition x:Name="MasterColumn" Width="450"/>
+                            <ColumnDefinition x:Name="DetailColumn" Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <views:NewsfeedListView x:Name="MasterView" Canvas.ZIndex="5"/>
+
+                            <ad:AdControl
+                                Width="320"
+                                Height="50"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                AdUnitId="1100040279"
+                                ApplicationId="9n06tgn05xnk"
+                                Canvas.ZIndex="6"/>
+                        </Grid>
+
+                        <Grid Grid.Column="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
+                            <views:NewsfeedItemView x:Name="DetailView" Canvas.ZIndex="4"/>
+
+                            <Image x:Name="ItemLogo"
+                                MaxHeight="200"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center"/>
+                            <ad:AdControl
+                                Width="728"
+                                Height="90"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Bottom"
+                                AdUnitId="1100040278"
+                                ApplicationId="9n06tgn05xnk"
+                                Canvas.ZIndex="3"/>
+                        </Grid>
                     </Grid>
-
-                    <Grid Grid.Column="1" Background="{ThemeResource SystemControlAcrylicWindowBrush}">
-                        <views:NewsfeedItemView x:Name="DetailView" Canvas.ZIndex="4"/>
-
-                        <Image HorizontalAlignment="Center"
-                               VerticalAlignment="Center" 
-                               MaxHeight="200"
-                               x:Name="ItemLogo"/>
-                        <ad:AdControl ApplicationId="9n06tgn05xnk"
- 		                              AdUnitId="1100040278"
- 		                              Width="728"
- 		                              Height="90"
-                                      HorizontalAlignment="Center"
- 		                              VerticalAlignment="Bottom"
-                                      Canvas.ZIndex="3"/>
-                    </Grid>
-                </Grid>
-            </NavigationView.Content>
-        </NavigationView>
-    </Grid>
+                </NavigationView.Content>
+            </NavigationView>
+        </Grid>
+    </m:MvxWindowsPage.Content>
 </m:MvxWindowsPage>

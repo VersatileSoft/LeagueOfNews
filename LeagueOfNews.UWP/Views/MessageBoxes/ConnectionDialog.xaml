@@ -4,9 +4,9 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    mc:Ignorable="d"
     Title="No internet connection"
-    Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}">
+    Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}"
+    mc:Ignorable="d">
 
     <ContentDialog.Resources>
         <ResourceDictionary>
@@ -16,16 +16,20 @@
         </ResourceDictionary>
     </ContentDialog.Resources>
 
-    <Grid>
-        <TextBlock Text="This application requires an internet connection.&#x0a;Please check your internet connection and try again." TextWrapping="Wrap"/>
+    <ContentDialog.Content>
+        <Grid>
+            <TextBlock Text="This application requires an internet connection.&#x0a;Please check your internet connection and try again." TextWrapping="Wrap"/>
 
-        <Button Style="{StaticResource CommonButton}" 
-                Content="Try again" 
-                Click="CheckButton_Click"/>
+            <Button
+                Click="CheckButton_Click"
+                Content="Try again"
+                Style="{StaticResource CommonButton}"/>
 
-        <Button Style="{StaticResource CommonButton}"
-                Content="Exit" 
-                HorizontalAlignment="Right" 
-                Click="ExitButton_Click"/>
-    </Grid>
+            <Button
+                HorizontalAlignment="Right"
+                Click="ExitButton_Click"
+                Content="Exit"
+                Style="{StaticResource CommonButton}"/>
+        </Grid>
+    </ContentDialog.Content>
 </ContentDialog>

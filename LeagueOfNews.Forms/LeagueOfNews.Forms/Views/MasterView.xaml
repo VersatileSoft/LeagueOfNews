@@ -1,42 +1,48 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:MvxContentPage x:TypeArguments="viewModels:MasterViewModel"
-                      xmlns="http://xamarin.com/schemas/2014/forms"
-                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                      xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels"
-                      xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
-                      x:Class="LeagueOfNews.Forms.Views.MasterView"
-                      Style="{DynamicResource Page}"
-                      Title="Placeholder">
+<views:MvxContentPage
+    x:Class="LeagueOfNews.Forms.Views.MasterView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
+    xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="Placeholder"
+    x:TypeArguments="viewModels:MasterViewModel"
+    Style="{DynamicResource Page}">
 
     <views:MvxContentPage.Content>
         <StackLayout>
-            <Frame BackgroundColor="#002132" CornerRadius="0" Padding="0">
-                <Image Source="HamburgerPicture.png" Aspect="AspectFill"/>
+            <Frame
+                Padding="0"
+                BackgroundColor="#002132"
+                CornerRadius="0">
+                <Image Aspect="AspectFill" Source="HamburgerPicture.png"/>
             </Frame>
 
             <StackLayout Padding="10">
-                <views:MvxListView Style="{StaticResource ListView}"
-                                   ItemsSource="{Binding MenuElements}"
-                                   ItemTapped="MvxListView_ItemTapped">
+                <views:MvxListView
+                    ItemTapped="MvxListView_ItemTapped"
+                    ItemsSource="{Binding MenuElements}"
+                    Style="{StaticResource ListView}">
 
                     <views:MvxListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame Style="{DynamicResource Frame}" 
-                                       Margin="10,5,10,5">
+                                <Frame Margin="10,5,10,5" Style="{DynamicResource Frame}">
                                     <StackLayout Orientation="Horizontal">
-                                        <controls:TintedImage Source="{Binding MenuImage}"
-                                                              Style="{DynamicResource Image}"
-                                                              HeightRequest="35"
-                                                              Margin="10"
-                                                              IsOpaque="True"/>
+                                        <controls:TintedImage
+                                            Margin="10"
+                                            HeightRequest="35"
+                                            IsOpaque="True"
+                                            Source="{Binding MenuImage}"
+                                            Style="{DynamicResource Image}"/>
 
-                                        <Label Style="{DynamicResource MenuLabel}"
-                                               Text="{Binding Name}"
-                                               FontAttributes="Bold"
-                                               FontSize="Large"
-                                               VerticalOptions="CenterAndExpand"/>
+                                        <Label
+                                            FontAttributes="Bold"
+                                            FontSize="Large"
+                                            Style="{DynamicResource MenuLabel}"
+                                            Text="{Binding Name}"
+                                            VerticalOptions="CenterAndExpand"/>
                                     </StackLayout>
                                 </Frame>
                             </ViewCell>

@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:MvxContentPage x:TypeArguments="viewModels:NewsfeedListViewModel"
-                      xmlns="http://xamarin.com/schemas/2014/forms" 
-                      xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-                      xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-                      xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
-                      xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels;assembly=LeagueOfNews.Forms"
-                      xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
-                      xmlns:conv="clr-namespace:LeagueOfNews.Forms.Converters"
-                      xmlns:LeagueOfNews.Model="clr-namespace:LeagueOfNews.Model;assembly=LeagueOfNews.Core"
-                      x:Class="LeagueOfNews.Forms.Views.NewsfeedListView"
-                      Style="{DynamicResource Page}"
-                      Title="{Binding Title}">
+<views:MvxContentPage
+    x:Class="LeagueOfNews.Forms.Views.NewsfeedListView"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:LeagueOfNews.Model="clr-namespace:LeagueOfNews.Model;assembly=LeagueOfNews.Core"
+    xmlns:conv="clr-namespace:LeagueOfNews.Forms.Converters"
+    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
+    xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels;assembly=LeagueOfNews.Forms"
+    xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+    Title="{Binding Title}"
+    x:TypeArguments="viewModels:NewsfeedListViewModel"
+    Style="{DynamicResource Page}">
     <views:MvxContentPage.Resources>
         <ResourceDictionary>
             <conv:UriToImageSource x:Key="UriToImageSource"/>
@@ -24,15 +25,16 @@
 
             <StackLayout Spacing="0">
                 <Frame Style="{StaticResource ShadowFrame}"/>
-                <util:InfiniteListView Style="{StaticResource InfiniteListView}"
-                                       IsPullToRefreshEnabled="True"
-                                       RefreshCommand="{Binding RefreshItemsCommand}"
-                                       IsRefreshing="{Binding IsRefreshing}"
-                                       ItemsSource="{Binding Newsfeeds}"
-                                       LoadMoreCommand="{Binding LoadMoreCommand}"
-                                       ItemTapped="MvxListView_ItemTapped">
+                <util:InfiniteListView
+                    IsPullToRefreshEnabled="True"
+                    IsRefreshing="{Binding IsRefreshing}"
+                    ItemTapped="MvxListView_ItemTapped"
+                    ItemsSource="{Binding Newsfeeds}"
+                    LoadMoreCommand="{Binding LoadMoreCommand}"
+                    RefreshCommand="{Binding RefreshItemsCommand}"
+                    Style="{StaticResource InfiniteListView}">
 
-                    <!--TODO Change event to Behavior-->
+                    <!--  TODO Change event to Behavior  -->
 
                     <!--<views:MvxListView.Behaviors>
                     <b:EventToCommandBehavior EventName="ItemTapped"
@@ -43,9 +45,10 @@
                     <views:MvxListView.ItemTemplate>
                         <DataTemplate x:DataType="LeagueOfNews.Model:Newsfeed">
                             <ViewCell>
-                                <Frame Style="{DynamicResource Frame}"
-                                       Margin="10,5,10,5"
-                                       Padding="5">
+                                <Frame
+                                    Margin="10,5,10,5"
+                                    Padding="5"
+                                    Style="{DynamicResource Frame}">
 
                                     <Grid>
                                         <Grid.ColumnDefinitions>
@@ -53,21 +56,23 @@
                                             <ColumnDefinition Width="65*"/>
                                         </Grid.ColumnDefinitions>
 
-                                        <Frame Style="{DynamicResource Frame}" Margin="-10,-5,0,-5" Grid.Column="0">
-                                            <Image Source="{x:Binding Path=Image, Converter={StaticResource UriToImageSource}}"
-                                                   IsOpaque="False"
-                                                   Aspect="AspectFill"/>
+                                        <Frame
+                                            Grid.Column="0"
+                                            Margin="-10,-5,0,-5"
+                                            Style="{DynamicResource Frame}">
+                                            <Image
+                                                Aspect="AspectFill"
+                                                IsOpaque="False"
+                                                Source="{x:Binding Path=Image,
+                                                                   Converter={StaticResource UriToImageSource}}"/>
                                         </Frame>
 
                                         <StackLayout Grid.Column="1" Padding="5">
-                                            <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}"
-                                                                Text="{x:Binding Title}"/>
+                                            <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}" Text="{x:Binding Title}"/>
 
-                                            <Label Style="{StaticResource DateLabel}"
-                                                   Text="{x:Binding Date}"/>
+                                            <Label Style="{StaticResource DateLabel}" Text="{x:Binding Date}"/>
 
-                                            <Label Style="{DynamicResource DescriptionLabel}"
-                                                   Text="{x:Binding ShortDescription}"/>
+                                            <Label Style="{DynamicResource DescriptionLabel}" Text="{x:Binding ShortDescription}"/>
                                         </StackLayout>
                                     </Grid>
                                 </Frame>
@@ -77,13 +82,12 @@
 
                     <ListView.Footer>
                         <Grid HeightRequest="70">
-                            <ActivityIndicator Style="{StaticResource ActivityIndicator}"
-                                               IsRunning="{Binding IsLoadingMore}"/>
+                            <ActivityIndicator IsRunning="{Binding IsLoadingMore}" Style="{StaticResource ActivityIndicator}"/>
                         </Grid>
                     </ListView.Footer>
 
                 </util:InfiniteListView>
-                <util:AdControlView HorizontalOptions="FillAndExpand" HeightRequest="70"/>
+                <util:AdControlView HeightRequest="70" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
         </Grid>
     </views:MvxContentPage.Content>
