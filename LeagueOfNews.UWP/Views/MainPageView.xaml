@@ -143,8 +143,8 @@
                                             IsChecked="True"
                                             IsEnabled="False"/>
 
-                                        <HyperlinkButton Content="Visit our facebook" Tapped="Facebook_Tapped"/>
-                                        <HyperlinkButton Content="Try this app on android" Tapped="AndroidApp_Tapped"/>
+                                        <HyperlinkButton Content="Visit our facebook" NavigateUri="https://www.facebook.com/VersatileSoftware"/>
+                                        <HyperlinkButton Content="Try this app on android" NavigateUri="https://play.google.com/store/apps/details?id=com.versatilesofware"/>
                                         <TextBlock Text="Versatile Software - League of News v1.0"/>
                                     </StackPanel>
                                 </Flyout>

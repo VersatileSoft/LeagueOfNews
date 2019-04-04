@@ -3,7 +3,6 @@ using LeagueOfNews.UWP.Views.MessageBoxes;
 using MvvmCross.Platforms.Uap.Views;
 using System;
 using Windows.ApplicationModel.Core;
-using Windows.System;
 using Windows.UI;
 using Windows.UI.ViewManagement;
 using Windows.UI.Xaml;
@@ -37,25 +36,16 @@ namespace LeagueOfNews.UWP.View
             //Change appearance to proper theme
             ChangeThemeLogo();
 
+            //Customize titlebar
             CoreApplicationViewTitleBar CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             CoreTitleBar.ExtendViewIntoTitleBar = true;
-
-            Window.Current.SetTitleBar(DragArea);
-
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
 
             //Run check for internet connection
             //ConnectionDialog.Execute(
-            //    () => (ViewModel as MainPageViewModel).CheckInternetConnection()); // To wypierdala na starcie + ItemView sie nie wyświetla, nie działa zmiana strony s@20/oficialny. KOCHAM CIE MARUŚ <3
-
-
-            /*             LET'S
-             *             MAKE
-                           UWP
-                           GREAT
-                           AGAIN             */
+            //    () => (ViewModel as MainPageViewModel).CheckInternetConnection()); // To wypierdala na starcie + nie działa zmiana strony s@20/oficialny. KOCHAM CIE MARUŚ <3
 
             SiteCombo.SelectedItem = "Surrender@20";
         }
@@ -119,24 +109,9 @@ namespace LeagueOfNews.UWP.View
             ChangeThemeLogo();
         }
 
-        private void Switch_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
-        }
-
         private void Settings_Tapped(object sender, TappedRoutedEventArgs e)
         {
             FlyoutBase.ShowAttachedFlyout((FrameworkElement)sender);
-        }
-
-        private async void AndroidApp_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            _ = await Launcher.LaunchUriAsync(new Uri(@"https://play.google.com/store/apps/details?id=com.versatilesofware"));
-        }
-
-        private async void Facebook_Tapped(object sender, TappedRoutedEventArgs e)
-        {
-            _ = await Launcher.LaunchUriAsync(new Uri(@"https://www.facebook.com/VersatileSoftware"));
         }
 
         private void RadioButton_Checked(object sender, RoutedEventArgs e)

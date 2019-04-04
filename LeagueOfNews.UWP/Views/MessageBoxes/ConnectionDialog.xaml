@@ -6,30 +6,15 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     Title="No internet connection"
     Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}"
+    PrimaryButtonClick="ContentDialog_PrimaryButtonClick"
+    PrimaryButtonStyle="{StaticResource ButtonRevealStyle}"
+    PrimaryButtonText="Try again"
+    SecondaryButtonClick="ContentDialog_SecondaryButtonClick"
+    SecondaryButtonStyle="{StaticResource ButtonRevealStyle}"
+    SecondaryButtonText="Exit"
     mc:Ignorable="d">
 
-    <ContentDialog.Resources>
-        <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="/Styles/MessageBoxesStyles/ConnectionDialogStyles.xaml"/>
-            </ResourceDictionary.MergedDictionaries>
-        </ResourceDictionary>
-    </ContentDialog.Resources>
-
     <ContentDialog.Content>
-        <Grid>
-            <TextBlock Text="This application requires an internet connection.&#x0a;Please check your internet connection and try again." TextWrapping="Wrap"/>
-
-            <Button
-                Click="CheckButton_Click"
-                Content="Try again"
-                Style="{StaticResource CommonButton}"/>
-
-            <Button
-                HorizontalAlignment="Right"
-                Click="ExitButton_Click"
-                Content="Exit"
-                Style="{StaticResource CommonButton}"/>
-        </Grid>
+        <TextBlock Text="This application requires an internet connection.&#x0a;Please check your internet connection and try again." TextWrapping="Wrap"/>
     </ContentDialog.Content>
 </ContentDialog>

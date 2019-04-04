@@ -122,6 +122,9 @@
     <Compile Include="Views\MessageBoxes\ConnectionDialog.xaml.cs">
       <DependentUpon>ConnectionDialog.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MessageBoxes\CustomDialog.xaml.cs">
+      <DependentUpon>CustomDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NewsfeedItemView.xaml.cs">
       <DependentUpon>NewsfeedItemView.xaml</DependentUpon>
     </Compile>
@@ -198,10 +201,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Styles\MessageBoxesStyles\ConnectionDialogStyles.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Styles\NewsfeedItemStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -218,6 +217,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\MessageBoxes\CustomDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NewsfeedItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -229,12 +232,12 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Fody">
-      <Version>4.0.2</Version>
+      <Version>4.2.1</Version>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="HtmlAgilityPack">
-      <Version>1.11.0</Version>
+      <Version>1.11.1</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
       <Version>6.2.8</Version>
@@ -249,7 +252,7 @@
       <Version>6.2.3</Version>
     </PackageReference>
     <PackageReference Include="PropertyChanged.Fody">
-      <Version>2.6.0</Version>
+      <Version>2.6.1</Version>
     </PackageReference>
     <PackageReference Include="System.Threading.Tasks.Extensions">
       <Version>4.5.2</Version>
