@@ -1,6 +1,9 @@
 ﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.Service;
+using System;
 using Windows.Storage;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
 
 namespace LeagueOfNews.UWP.Services
 {
@@ -8,10 +11,12 @@ namespace LeagueOfNews.UWP.Services
     {
         private readonly ApplicationDataContainer _localSettings = ApplicationData.Current.LocalSettings;
 
-        public override ApplicationTheme Theme
+        public override Core.Interface.ApplicationTheme Theme
         {
-            get => (_localSettings.Values.TryGetValue("Theme", out object value)) ? (ApplicationTheme)value : ApplicationTheme.Default;
-            set => _localSettings.Values["Theme"] = value;
+            get => (_localSettings.Values.TryGetValue("Theme", out object value)) 
+                ? (Core.Interface.ApplicationTheme) Enum.Parse(typeof(Core.Interface.ApplicationTheme), value as string)
+                : Core.Interface.ApplicationTheme.Default;
+            set => _localSettings.Values["Theme"] = value.ToString();
         }
 
         public override int NewPostCheckFrequency

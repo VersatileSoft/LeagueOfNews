@@ -5,6 +5,8 @@ using MvvmCross.ViewModels;
 using PropertyChanged;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
 
 namespace LeagueOfNews.UWP.ViewModels
 {
@@ -12,26 +14,33 @@ namespace LeagueOfNews.UWP.ViewModels
     public class MainPageViewModel : MvxViewModel
     {
         private readonly IInternetConnectionService _internetConnectionService;
+        private readonly ISettingsService _settingsService;
 
-        public ICommand SetupItemCommand { get; set; }
+        public ICommand SelectItemCommand { get; set; }
         public ICommand RefreshCommand { get; set; }
         public ICommand CheckInternetConnectionCommand { get; set; }
         public ICommand SelectWebsiteCommand { get; set; }
+        public ICommand SelectThemeCommand { get; set; }
+
+        public Core.Interface.ApplicationTheme DefaultTheme { get; set; }
 
         public bool HasSurrenderElementsVisible { get; set; }
-
         public NewsWebsite SelectedWebsite { get; set; }
-        public NewsCategory SelectedCategory { get; set; }
 
-        public MainPageViewModel(IInternetConnectionService internetConnectionService)
+        public MainPageViewModel(
+            IInternetConnectionService internetConnectionService,
+            ISettingsService settingsService)
         {
             _internetConnectionService = internetConnectionService;
+            _settingsService = settingsService;
 
+            DefaultTheme = settingsService.Theme;
+            SelectedWebsite = NewsWebsite.Surrender;
             HasSurrenderElementsVisible = true;
-
-            SetupItemCommand = new MvxAsyncCommand<string>((Parameter) =>
+            
+            SelectItemCommand = new MvxAsyncCommand<dynamic>((Parameter) =>
             {
-                switch (Parameter)
+                switch (Parameter.SelectedItem.Content)
                 {
                     case "Home":
                         switch (SelectedWebsite)
@@ -49,32 +58,47 @@ namespace LeagueOfNews.UWP.ViewModels
                 }
             });
 
-            SelectWebsiteCommand = new MvxCommand(WebsiteSelected);
+            SelectThemeCommand = new MvxCommand<RoutedEventArgs>((Parameter) => {
+                switch ((Parameter.OriginalSource as RadioButton).Tag)
+                {
+                    case "Dark":
+                        _settingsService.Theme = Core.Interface.ApplicationTheme.Dark;
+                        break;
+                    case "Light":
+                        _settingsService.Theme = Core.Interface.ApplicationTheme.Light;
+                        break;
+                    default:
+                        _settingsService.Theme = Core.Interface.ApplicationTheme.Default;
+                        break;
+                }
+            });
+
+            SelectWebsiteCommand = new MvxCommand<SelectionChangedEventArgs>((Parameter) =>
+            {
+                switch (Parameter.AddedItems[0].ToString())
+                {
+                    case "League of Legends official":
+                        HasSurrenderElementsVisible = false;
+                        SelectedWebsite = NewsWebsite.Surrender;
+                        NavigateTo(NewsCategory.Official);
+                        break;
+                    case "Surrender@20":
+                        HasSurrenderElementsVisible = true;
+                        SelectedWebsite = NewsWebsite.LoL;
+                        NavigateTo(NewsCategory.SurrenderHome);
+                        break;
+                }
+            });
+        }
+
+        public override void ViewCreated()
+        {
+            //SelectItemCommand.Execute(new { SelectedItem = new { Content = "Home" } });
         }
 
         public bool CheckInternetConnection()
         {
             return _internetConnectionService.IsInternetAvailable();
-        }
-
-        private void WebsiteSelected()
-        {
-            switch (SelectedWebsite)
-            {
-                case NewsWebsite.LoL:
-                    HasSurrenderElementsVisible = false;
-                    NavigateTo(NewsCategory.SurrenderHome);
-                    break;
-                case NewsWebsite.Surrender:
-                    HasSurrenderElementsVisible = true;
-                    NavigateTo(NewsCategory.SurrenderHome);
-                    break;
-            }
-        }
-
-        public override void ViewCreated()
-        {
-            base.ViewCreated();
         }
 
         protected Task NavigateTo(NewsCategory setting)

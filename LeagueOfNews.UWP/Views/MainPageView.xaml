@@ -16,8 +16,8 @@
     mc:Ignorable="d">
     <m:MvxWindowsPage.Resources>
         <ResourceDictionary>
-            <conv:SelectedItemToStringConverter x:Key="SelectedItemToString"/>
             <conv:ThemeToBoolConverter x:Key="ThemeToBool"/>
+            <conv:WebsiteToNumberConverter x:Key="WebsiteToNumber"/>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="/Styles/MainPageStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
@@ -39,7 +39,7 @@
 
                 <i:Interaction.Behaviors>
                     <core:EventTriggerBehavior EventName="SelectionChanged">
-                        <core:InvokeCommandAction Command="{Binding SetupItemCommand}" InputConverter="{StaticResource SelectedItemToString}"/>
+                        <core:InvokeCommandAction Command="{Binding SelectItemCommand}"/>
                     </core:EventTriggerBehavior>
                 </i:Interaction.Behaviors>
 
@@ -81,7 +81,9 @@
                         <ComboBox x:Name="SiteCombo"
                             Width="220"
                             VerticalAlignment="Center"
-                            Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}">
+                            Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}"
+                            SelectedIndex="{Binding SelectedWebsite, Converter={StaticResource WebsiteToNumber}}">
+                            
                             <x:String>Surrender@20</x:String>
                             <x:String>League of Legends official</x:String>
                             <!--<x:String>/dev blog</x:String>-->
@@ -103,30 +105,33 @@
                                         <TextBlock FontSize="14" Text="Theme - soon"/>
                                         <RadioButton
                                             Content="Light"
+                                            Tag="Light"
                                             GroupName="Theme"
-                                            IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}">
+                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}">
                                             <i:Interaction.Behaviors>
-                                                <core:EventTriggerBehavior EventName="IsEnabledChanged">
-                                                    <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Light"/>
+                                                <core:EventTriggerBehavior EventName="Checked">
+                                                    <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
                                                 </core:EventTriggerBehavior>
                                             </i:Interaction.Behaviors>
                                         </RadioButton>
                                         <RadioButton
                                             Content="Dark"
+                                            Tag="Dark"
                                             GroupName="Theme"
-                                            IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}">
+                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}">
                                             <i:Interaction.Behaviors>
-                                                <core:EventTriggerBehavior EventName="IsCheckedChanged">
-                                                    <core:InvokeCommandAction Command="{Binding SelectThemeCommand}" CommandParameter="Dark"/>
+                                                <core:EventTriggerBehavior EventName="Checked">
+                                                    <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
                                                 </core:EventTriggerBehavior>
                                             </i:Interaction.Behaviors>
                                         </RadioButton>
                                         <RadioButton
                                             Content="Use system setting"
+                                            Tag="Default"
                                             GroupName="Theme"
-                                            IsChecked="{Binding Theme, Mode=TwoWay, Converter={StaticResource ThemeToBool}}">
+                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Default'}">
                                             <i:Interaction.Behaviors>
-                                                <core:EventTriggerBehavior EventName="IsCheckedChanged">
+                                                <core:EventTriggerBehavior EventName="Checked">
                                                     <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
                                                 </core:EventTriggerBehavior>
                                             </i:Interaction.Behaviors>

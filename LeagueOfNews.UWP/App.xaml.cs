@@ -8,8 +8,12 @@ using MvvmCross.Platforms.Uap.Core;
 using MvvmCross.Platforms.Uap.Views;
 using MvvmCross.Plugin;
 using MvvmCross.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Reflection;
+using Windows.Storage;
+using Windows.UI.ViewManagement;
+using Windows.UI.Xaml;
 
 namespace LeagueOfNews.UWP
 {
@@ -20,6 +24,35 @@ namespace LeagueOfNews.UWP
         public App()
         {
             InitializeComponent();
+
+            var theme = (ApplicationData.Current.LocalSettings.Values.TryGetValue("Theme", out object value))
+                ? (Core.Interface.ApplicationTheme) Enum.Parse(typeof(Core.Interface.ApplicationTheme), value as string) 
+                : Core.Interface.ApplicationTheme.Default;
+
+            switch (theme)
+            {
+                case Core.Interface.ApplicationTheme.Light:
+                    RequestedTheme = Windows.UI.Xaml.ApplicationTheme.Light;
+                    break;
+
+                case Core.Interface.ApplicationTheme.Dark:
+                    RequestedTheme = Windows.UI.Xaml.ApplicationTheme.Dark;
+                    break;
+
+                case Core.Interface.ApplicationTheme.Default:
+                    var uiSettings = new UISettings();
+                    var uiTheme = uiSettings.GetColorValue(UIColorType.Background).ToString();
+
+                    if (uiTheme == "#FF000000")
+                    {
+                        RequestedTheme = Windows.UI.Xaml.ApplicationTheme.Dark;
+                    }
+                    else if (uiTheme == "#FFFFFFFF")
+                    {
+                        RequestedTheme = Windows.UI.Xaml.ApplicationTheme.Light;
+                    }
+                    break;
+            }
         }
     }
 
@@ -41,10 +74,6 @@ namespace LeagueOfNews.UWP
         protected override void InitializeApp(IMvxPluginManager pluginManager, IMvxApplication app)
         {
             base.InitializeApp(pluginManager, app);
-
-            ApplicationTheme theme = Mvx.IoCProvider.Resolve<ISettingsService>().Theme;
-            //(app as UWPApplication).RequestedTheme =
-            //    (Windows.UI.Xaml.ApplicationTheme)((theme == ApplicationTheme.Default) ? ApplicationTheme.Light : theme);
         }
 
         public override IEnumerable<Assembly> GetViewModelAssemblies()

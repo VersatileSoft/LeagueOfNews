@@ -48,16 +48,7 @@ namespace LeagueOfNews.UWP.View
 
             //Run check for internet connection
             //ConnectionDialog.Execute(
-            //    () => (ViewModel as MainPageViewModel).CheckInternetConnection()); // To wypierdala na starcie + ItemView sie nie wyświetla, nie działa zmiana strony s@20/oficialny. KOCHAM CIE MARUŚ <3
-
-
-            /*             LET'S
-             *             MAKE
-                           UWP
-                           GREAT
-                           AGAIN             */
-
-            SiteCombo.SelectedItem = "Surrender@20";
+            //    () => (ViewModel as MainPageViewModel).CheckInternetConnection()); //Też kocham <3
         }
 
         private void ChangeThemeLogo()

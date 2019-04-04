@@ -105,8 +105,8 @@
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\ImageConverter.cs" />
-    <Compile Include="Converters\SelectedItemToStringConverter.cs" />
     <Compile Include="Converters\ThemeToBoolConverter.cs" />
+    <Compile Include="Converters\WebsiteToNumberConverter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\InternetConnectionService.cs" />
     <Compile Include="Services\NotificationService.cs" />
