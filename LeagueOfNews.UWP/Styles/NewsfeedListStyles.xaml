@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:converters="using:LeagueOfNews.UWP.Converters">
 
-    <!--NewsfeedListView-->
+    <!--  NewsfeedListView  -->
     <Style x:Key="DescriptionText" TargetType="TextBlock">
         <Setter Property="TextWrapping" Value="Wrap"/>
         <Setter Property="TextAlignment" Value="Left"/>
@@ -18,5 +18,4 @@
     </Style>
 
     <converters:ImageConverter x:Key="ImageConverter"/>
-
 </ResourceDictionary>

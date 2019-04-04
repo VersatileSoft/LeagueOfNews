@@ -23,12 +23,7 @@ namespace LeagueOfNews.UWP.Views.MessageBoxes
             }
         }
 
-        private void ExitButton_Click(object sender, RoutedEventArgs e)
-        {
-            Application.Current.Exit();
-        }
-
-        private void CheckButton_Click(object sender, RoutedEventArgs e)
+        private void ContentDialog_PrimaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
         {
             Hide();
 
@@ -37,6 +32,11 @@ namespace LeagueOfNews.UWP.Views.MessageBoxes
                 ConnectionDialog Dialog = new ConnectionDialog();
                 Dialog.Execute(HasInternetConnection);
             }
+        }
+
+        private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
+        {
+            Application.Current.Exit();
         }
     }
 }
