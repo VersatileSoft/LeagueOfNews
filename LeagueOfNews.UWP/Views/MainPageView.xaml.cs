@@ -39,14 +39,21 @@ namespace LeagueOfNews.UWP.View
             //Customize titlebar
             CoreApplicationViewTitleBar CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             CoreTitleBar.ExtendViewIntoTitleBar = true;
+
             ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+        }
+
+        protected override void OnViewModelSet()
+        {
+            base.OnViewModelSet();
 
             //Run check for internet connection
-            //ConnectionDialog.Execute(
-            //    () => (ViewModel as MainPageViewModel).CheckInternetConnection()); //Też kocham <3
+            ConnectionDialog.Execute(
+                () => (ViewModel as MainPageViewModel).CheckInternetConnection());
         }
+
 
         private void ChangeThemeLogo()
         {

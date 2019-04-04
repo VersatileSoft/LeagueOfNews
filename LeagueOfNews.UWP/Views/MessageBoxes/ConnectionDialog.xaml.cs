@@ -32,6 +32,7 @@ namespace LeagueOfNews.UWP.Views.MessageBoxes
                 ConnectionDialog Dialog = new ConnectionDialog();
                 Dialog.Execute(HasInternetConnection);
             }
+            //TODO: else - request download menu content if not loaded
         }
 
         private void ContentDialog_SecondaryButtonClick(ContentDialog sender, ContentDialogButtonClickEventArgs args)
