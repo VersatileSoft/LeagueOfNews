@@ -37,7 +37,7 @@ namespace LeagueOfNews.UWP.ViewModels
             DefaultTheme = settingsService.Theme;
             SelectedWebsite = NewsWebsite.Surrender;
             HasSurrenderElementsVisible = true;
-            
+
             SelectItemCommand = new MvxAsyncCommand<dynamic>((Parameter) =>
             {
                 switch (Parameter.SelectedItem.Content)
@@ -58,7 +58,8 @@ namespace LeagueOfNews.UWP.ViewModels
                 }
             });
 
-            SelectThemeCommand = new MvxCommand<RoutedEventArgs>((Parameter) => {
+            SelectThemeCommand = new MvxCommand<RoutedEventArgs>((Parameter) =>
+            {
                 switch ((Parameter.OriginalSource as RadioButton).Tag)
                 {
                     case "Dark":

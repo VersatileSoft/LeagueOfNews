@@ -2,8 +2,6 @@
 using LeagueOfNews.Core.Service;
 using System;
 using Windows.Storage;
-using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
 
 namespace LeagueOfNews.UWP.Services
 {
@@ -13,8 +11,8 @@ namespace LeagueOfNews.UWP.Services
 
         public override Core.Interface.ApplicationTheme Theme
         {
-            get => (_localSettings.Values.TryGetValue("Theme", out object value)) 
-                ? (Core.Interface.ApplicationTheme) Enum.Parse(typeof(Core.Interface.ApplicationTheme), value as string)
+            get => (_localSettings.Values.TryGetValue("Theme", out object value))
+                ? (Core.Interface.ApplicationTheme)Enum.Parse(typeof(Core.Interface.ApplicationTheme), value as string)
                 : Core.Interface.ApplicationTheme.Default;
             set => _localSettings.Values["Theme"] = value.ToString();
         }

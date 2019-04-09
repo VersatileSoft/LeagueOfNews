@@ -15,6 +15,8 @@ namespace LeagueOfNews.UWP.View
     public sealed partial class MainPageView : MvxWindowsPage
     {
         private BitmapImage LogoLight, LogoDark, ItemLogoLight, ItemLogoDark;
+        private readonly ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+
         private readonly ConnectionDialog ConnectionDialog = new ConnectionDialog();
 
         public MainPageView()
@@ -39,8 +41,6 @@ namespace LeagueOfNews.UWP.View
             //Customize titlebar
             CoreApplicationViewTitleBar CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
             CoreTitleBar.ExtendViewIntoTitleBar = true;
-
-            ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
             titleBar.ButtonBackgroundColor = Colors.Transparent;
             titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
         }
@@ -62,11 +62,13 @@ namespace LeagueOfNews.UWP.View
                 case ApplicationTheme.Light:
                     LogoImage.Source = LogoDark;
                     ItemLogo.Source = ItemLogoDark;
+                    titleBar.ButtonForegroundColor = Colors.Black;
                     break;
 
                 case ApplicationTheme.Dark:
                     LogoImage.Source = LogoLight;
                     ItemLogo.Source = ItemLogoLight;
+                    titleBar.ButtonForegroundColor = Colors.White;
                     break;
             }
         }

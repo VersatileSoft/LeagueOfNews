@@ -18,6 +18,8 @@ namespace LeagueOfNews.Forms.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            Xamarin.Forms.Forms.SetFlags("FastRenderers_Experimental");
+
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
             base.SetTheme(Resource.Style.MainTheme);

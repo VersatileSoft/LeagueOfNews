@@ -25,7 +25,6 @@
                             VerticalOptions="CenterAndExpand"/>
                         <Switch
                             HorizontalOptions="EndAndExpand"
-                            IsEnabled="True"
                             IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}"/>
                     </StackLayout>
 
@@ -51,11 +50,10 @@
                         FontAttributes="Bold"
                         FontSize="Large"
                         Style="{DynamicResource Label}"
-                        Text="Dark theme"
+                        Text="Turn off the lights"
                         VerticalOptions="CenterAndExpand"/>
                     <Switch
                         HorizontalOptions="EndAndExpand"
-                        IsEnabled="True"
                         IsToggled="{Binding DarkTheme, Mode=TwoWay}"/>
                 </StackLayout>
             </Frame>

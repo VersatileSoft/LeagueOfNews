@@ -13,7 +13,6 @@ using System.Collections.Generic;
 using System.Reflection;
 using Windows.Storage;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
 
 namespace LeagueOfNews.UWP
 {
@@ -25,8 +24,8 @@ namespace LeagueOfNews.UWP
         {
             InitializeComponent();
 
-            var theme = (ApplicationData.Current.LocalSettings.Values.TryGetValue("Theme", out object value))
-                ? (Core.Interface.ApplicationTheme) Enum.Parse(typeof(Core.Interface.ApplicationTheme), value as string) 
+            Core.Interface.ApplicationTheme theme = (ApplicationData.Current.LocalSettings.Values.TryGetValue("Theme", out object value))
+                ? (Core.Interface.ApplicationTheme)Enum.Parse(typeof(Core.Interface.ApplicationTheme), value as string)
                 : Core.Interface.ApplicationTheme.Default;
 
             switch (theme)
@@ -40,8 +39,8 @@ namespace LeagueOfNews.UWP
                     break;
 
                 case Core.Interface.ApplicationTheme.Default:
-                    var uiSettings = new UISettings();
-                    var uiTheme = uiSettings.GetColorValue(UIColorType.Background).ToString();
+                    UISettings uiSettings = new UISettings();
+                    string uiTheme = uiSettings.GetColorValue(UIColorType.Background).ToString();
 
                     if (uiTheme == "#FF000000")
                     {

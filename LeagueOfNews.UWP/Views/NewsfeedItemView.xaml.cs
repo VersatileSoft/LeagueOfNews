@@ -20,16 +20,16 @@ namespace LeagueOfNews.UWP.View
             ViewModel = MvxIoCProvider.Instance.IoCConstruct<NewsfeedItemViewModel>();
             Mvx.IoCProvider.RegisterSingleton(ViewModel);
 
-            NewsfeedWebView.NavigationCompleted += webview_navigationCompleted;
-            NewsfeedWebView.NavigationStarting += webview_navigationStarting;
+            NewsfeedWebView.NavigationCompleted += Webview_navigationCompleted;
+            NewsfeedWebView.NavigationStarting += Webview_navigationStarting;
         }
 
-        private void webview_navigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
+        private void Webview_navigationCompleted(WebView sender, WebViewNavigationCompletedEventArgs args)
         {
             LoadingControl.IsLoading = false;
         }
 
-        private void webview_navigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
+        private void Webview_navigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
         {
             LoadingControl.IsLoading = true;
         }

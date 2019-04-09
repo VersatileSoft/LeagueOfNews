@@ -17,8 +17,7 @@
         <Setter Property="VerticalAlignment" Value="Center"/>
     </Style>
 
-    <Style
-        x:Key="AppTitleText"
+    <Style x:Key="AppTitleText"
         BasedOn="{StaticResource CaptionTextBlockStyle}"
         TargetType="TextBlock">
         <Setter Property="Text" Value="League of News"/>

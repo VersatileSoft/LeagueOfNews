@@ -83,7 +83,7 @@
                             VerticalAlignment="Center"
                             Background="{ThemeResource SystemControlChromeMediumAcrylicElementMediumBrush}"
                             SelectedIndex="{Binding SelectedWebsite, Converter={StaticResource WebsiteToNumber}}">
-                            
+
                             <x:String>Surrender@20</x:String>
                             <x:String>League of Legends official</x:String>
                             <!--<x:String>/dev blog</x:String>-->
@@ -96,18 +96,24 @@
                         </ComboBox>
 
                         <NavigationViewItem
+                            Width="44"
+                            Margin="0,0,2,0"
                             Icon="Setting"
                             Tapped="Settings_Tapped"
                             ToolTipService.ToolTip="Settings">
                             <FlyoutBase.AttachedFlyout>
                                 <Flyout LightDismissOverlayMode="Auto">
                                     <StackPanel>
-                                        <TextBlock FontSize="14" Text="Theme - soon"/>
+                                        <TextBlock FontSize="14" Text="Theme"/>
+                                        <TextBlock
+                                            FontSize="11"
+                                            Foreground="{ThemeResource SystemChromeDisabledLowColor}"
+                                            Text="You'll see your change the next time you start the app"/>
                                         <RadioButton
                                             Content="Light"
-                                            Tag="Light"
                                             GroupName="Theme"
-                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}">
+                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Light'}"
+                                            Tag="Light">
                                             <i:Interaction.Behaviors>
                                                 <core:EventTriggerBehavior EventName="Checked">
                                                     <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
@@ -116,9 +122,9 @@
                                         </RadioButton>
                                         <RadioButton
                                             Content="Dark"
-                                            Tag="Dark"
                                             GroupName="Theme"
-                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}">
+                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Dark'}"
+                                            Tag="Dark">
                                             <i:Interaction.Behaviors>
                                                 <core:EventTriggerBehavior EventName="Checked">
                                                     <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>
@@ -127,9 +133,9 @@
                                         </RadioButton>
                                         <RadioButton
                                             Content="Use system setting"
-                                            Tag="Default"
                                             GroupName="Theme"
-                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Default'}">
+                                            IsChecked="{Binding DefaultTheme, Converter={StaticResource ThemeToBool}, ConverterParameter='Default'}"
+                                            Tag="Default">
                                             <i:Interaction.Behaviors>
                                                 <core:EventTriggerBehavior EventName="Checked">
                                                     <core:InvokeCommandAction Command="{Binding SelectThemeCommand}"/>

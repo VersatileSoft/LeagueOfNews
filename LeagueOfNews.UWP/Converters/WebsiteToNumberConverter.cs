@@ -1,9 +1,5 @@
 ﻿using LeagueOfNews.Core.Interface;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 
 namespace LeagueOfNews.UWP.Converters
@@ -14,7 +10,7 @@ namespace LeagueOfNews.UWP.Converters
         {
             if (value is NewsWebsite)
             {
-                return (int) value;
+                return (int)value;
             }
 
             throw new ArgumentException("Given object is not NewsWebsite enum");
