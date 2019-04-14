@@ -87,7 +87,14 @@
                     </ListView.Footer>
 
                 </util:InfiniteListView>
-                <util:AdControlView HeightRequest="70" HorizontalOptions="FillAndExpand"/>
+                <Grid MinimumHeightRequest="70">
+                    <util:AdControlView HorizontalOptions="FillAndExpand"/>
+                    <Label
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Advertisement"
+                        TextColor="Gray"
+                        VerticalOptions="CenterAndExpand"/>
+                </Grid>
             </StackLayout>
         </Grid>
     </views:MvxContentPage.Content>
