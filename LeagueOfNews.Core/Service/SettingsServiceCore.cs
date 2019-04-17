@@ -29,7 +29,7 @@ namespace LeagueOfNews.Core.Service
             set => categories.Add(Category, value);
         }
 
-        public WebsiteHistoryData WebsiteHistoryData { get; }
+        public WebsiteHistoryData WebsiteHistoryData { get; set; }
 
         public abstract ApplicationTheme Theme { get; set; }
         public abstract int NewPostCheckFrequency { get; set; }

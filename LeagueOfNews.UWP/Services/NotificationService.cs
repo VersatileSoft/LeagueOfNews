@@ -32,8 +32,8 @@ namespace LeagueOfNews.UWP.Services
             if (!settings.HasNotificationsEnabled || settings.NewPostCheckFrequency == -1)
                 return;
 
-            BackgroundTaskRegistration.AllTasks.Single(i => i.Value.Name.Equals(TASK_NAME))
-                .Value.Unregister(true);
+            //BackgroundTaskRegistration.AllTasks.Single(i => i.Value.Name.Equals(TASK_NAME))
+            //    .Value.Unregister(true);
 
             // If background task is already registered, do nothing
             if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_NAME)))
@@ -70,65 +70,74 @@ namespace LeagueOfNews.UWP.Services
 
         public void ShowNewPostNotification(Newsfeed newsfeed, NewsWebsite page)
         {
-            var description = newsfeed.ShortDescription.Length > 120
-                ? newsfeed.ShortDescription.Substring(0, 120) + "..."
-                : newsfeed.ShortDescription;
+            ToastNotificationManager.CreateToastNotifier()
+                .Show(new ToastNotification(GenerateNotifcationBody(newsfeed).GetXml()));
+        }
 
-            /*
-            var parameters = new QueryString {
-                { "action", "show" },
-                { "title", newsfeed.Title },
-                { "date", newsfeed.Date },
-                { "url", newsfeed.UrlToNewsfeed },
-                { "website", newsfeed.Website.ToString() }
-            }.ToString();
-
-            var browserParameters = new QueryString {
-                { "action", "show" },
-                { "title", newsfeed.Title },
-                { "date", newsfeed.Date },
-                { "url", newsfeed.UrlToNewsfeed },
-                { "website", newsfeed.Website.ToString() }
-            }.ToString();
-            */
+        private ToastContent GenerateNotifcationBody(Newsfeed Newsfeed)
+        {
+            var description = Newsfeed.ShortDescription.Length > 120
+                ? Newsfeed.ShortDescription.Substring(0, 120) + "..."
+                : Newsfeed.ShortDescription;
 
             var parameters = "action=show?"
-                + "title=" + newsfeed.Title + "&"
-                + "date=" + newsfeed.Date + "&"
-                + "url=" + newsfeed.UrlToNewsfeed + "&"
-                + "website=" + newsfeed.Website.ToString();
+                + "title=" + Newsfeed.Title + "&"
+                + "date=" + Newsfeed.Date + "&"
+                + "url=" + Newsfeed.UrlToNewsfeed + "&"
+                + "website=" + Newsfeed.Website.ToString();
 
             var browserParameters = "action=show?"
-                + "title=" + newsfeed.Title + "&"
-                + "date=" + newsfeed.Date + "&"
-                + "url=" + newsfeed.UrlToNewsfeed + "&"
-                + "website=" + newsfeed.Website.ToString();
+                + "title=" + Newsfeed.Title + "&"
+                + "date=" + Newsfeed.Date + "&"
+                + "url=" + Newsfeed.UrlToNewsfeed + "&"
+                + "website=" + Newsfeed.Website.ToString();
 
-            var text = (await FileIO.ReadTextAsync(file))
-                .Replace("{title}", newsfeed.Title)
-                .Replace("{image}", newsfeed.ImageUri)
-                .Replace("{description}", description)
-                .Replace("{parameters}", parameters)
-                .Replace("{browserParameters}", browserParameters);
-
-            Task.Run(async () =>
+            return new ToastContent()
             {
-                var file = await StorageFile.GetFileFromApplicationUriAsync(new Uri("ms-appx:///Views/Misc/ToastNotification.xml"));
-
-
-                XmlDocument document = new XmlDocument();
-                try
+                Visual = new ToastVisual()
                 {
-                    document.LoadXml(text);
-                    ToastNotificationManager.CreateToastNotifier().Show(new ToastNotification(document));
-
-                }
-                catch (Exception e)
+                    BindingGeneric = new ToastBindingGeneric()
+                    {
+                        Children =
+                        {
+                            new AdaptiveText()
+                            {
+                                Text = Newsfeed.Title
+                            },
+                            new AdaptiveText()
+                            {
+                                Text = description
+                            }
+                        },
+                        HeroImage = new ToastGenericHeroImage()
+                        {
+                            Source = Newsfeed.UrlToNewsfeed
+                        },
+                        Attribution = new ToastGenericAttributionText()
+                        {
+                            Text = "League of News • League of Legends official"
+                        }
+                    }
+                },
+                Actions = new ToastActionsCustom()
                 {
-                    Console.Write(e.Message);
-                }
-            });
-
+                    Buttons =
+                    {
+                        new ToastButton("Read in app", parameters)
+                        {
+                            ActivationType = ToastActivationType.Background,
+                            ImageUri = @"C:\Users\qvaris\Desktop\InApp.png"
+                        },
+                        new ToastButton("Open in browser", browserParameters)
+                        {
+                            ActivationType = ToastActivationType.Background,
+                            ImageUri = @"C:\Users\qvaris\Desktop\InBrowser.png"
+                        }
+                    }
+                },
+                Launch = parameters,
+                Duration = ToastDuration.Long
+            };
         }
     }
 }

@@ -32,8 +32,6 @@ namespace LeagueOfNews.UWP.Services
             set => _localSettings.Values["Notifications"] = value;
         }
 
-        public override WebsiteHistoryData WebsiteHistoryData { get; set; }
-
         public SettingsService() : base()
         {
             WebsiteHistoryData = new WindowsWebsiteHistoryData();

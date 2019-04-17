@@ -198,12 +198,6 @@
     <Content Include="FodyWeavers.xml">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Misc\Tile.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Views\Misc\ToastNotification.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="LeagueOfNews.UWP_StoreKey.pfx" />
     <None Include="Package.StoreAssociation.xml" />
     <Content Include="Properties\Default.rd.xml" />
