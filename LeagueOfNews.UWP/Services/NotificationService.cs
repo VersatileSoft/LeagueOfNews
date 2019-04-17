@@ -32,7 +32,7 @@ namespace LeagueOfNews.UWP.Services
             // If we don't support notifications, do nothing
             if (!settings.HasNotificationsEnabled || settings.NewPostCheckFrequency == -1)
                 return;
-            
+            /*
             // If background task is already registered, do nothing
             if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_NAME)))
                 return;
@@ -42,8 +42,8 @@ namespace LeagueOfNews.UWP.Services
             builder.CancelOnConditionLoss = false;
             builder.SetTrigger(new TimeTrigger((uint) settings.NewPostCheckFrequency, false));
             builder.Register();
+            */
             
-            /*
             //BackgroundTaskRegistration.AllTasks.Single(i => i.Value.Name.Equals(TASK_NAME))
             //    .Value.Unregister(true);
 
@@ -62,7 +62,7 @@ namespace LeagueOfNews.UWP.Services
             {
                 await trigger.RequestAsync();
             });
-            */
+            
         }
 
         public void RefreshNotificationJobService()
