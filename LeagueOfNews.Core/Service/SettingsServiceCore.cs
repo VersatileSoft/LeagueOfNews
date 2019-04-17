@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 namespace LeagueOfNews.Core.Service
 {
-    public abstract class AbstractSettingsService : ISettingsService
+    public abstract class AbstractSettingsService<T> : ISettingsService where T : WebsiteHistoryData, new()
     {
         protected readonly Dictionary<NewsCategory, CategoryData> categories;
 
         public AbstractSettingsService()
         {
             categories = new Dictionary<NewsCategory, CategoryData>();
+
+            WebsiteHistoryData = new T();
 
             this[NewsCategory.None] = new CategoryData { Title = "Settings" };
 
