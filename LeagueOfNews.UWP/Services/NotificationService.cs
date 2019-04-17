@@ -18,7 +18,7 @@ namespace LeagueOfNews.UWP.Services
 {
     public class NotificationService : INotificationService
     {
-        public const string TASK_NAME = "Backgrou2ndPostTask1";
+        public const string TASK_NAME = "BackgroundPostTask";
 
         public NotificationService()
         {
@@ -29,9 +29,21 @@ namespace LeagueOfNews.UWP.Services
         {
             var settings = Mvx.IoCProvider.Resolve<ISettingsService>();
 
+            // If we don't support notifications, do nothing
             if (!settings.HasNotificationsEnabled || settings.NewPostCheckFrequency == -1)
                 return;
+            
+            // If background task is already registered, do nothing
+            if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_NAME)))
+                return;
 
+            var builder = new BackgroundTaskBuilder();
+            builder.Name = TASK_NAME;
+            builder.CancelOnConditionLoss = false;
+            builder.SetTrigger(new TimeTrigger((uint) settings.NewPostCheckFrequency, false));
+            builder.Register();
+            
+            /*
             //BackgroundTaskRegistration.AllTasks.Single(i => i.Value.Name.Equals(TASK_NAME))
             //    .Value.Unregister(true);
 
@@ -50,6 +62,7 @@ namespace LeagueOfNews.UWP.Services
             {
                 await trigger.RequestAsync();
             });
+            */
         }
 
         public void RefreshNotificationJobService()
@@ -92,6 +105,10 @@ namespace LeagueOfNews.UWP.Services
                 + "url=" + Newsfeed.UrlToNewsfeed + "&"
                 + "website=" + Newsfeed.Website.ToString();
 
+            var website = Newsfeed.Website == NewsWebsite.Surrender
+                ? "Surrender@20"
+                : "League of Legends official";
+
             return new ToastContent()
             {
                 Visual = new ToastVisual()
@@ -111,11 +128,11 @@ namespace LeagueOfNews.UWP.Services
                         },
                         HeroImage = new ToastGenericHeroImage()
                         {
-                            Source = Newsfeed.UrlToNewsfeed
+                            Source = Newsfeed.ImageUri
                         },
                         Attribution = new ToastGenericAttributionText()
                         {
-                            Text = "League of News • League of Legends official"
+                            Text = "League of News • " + website
                         }
                     }
                 },
@@ -126,17 +143,16 @@ namespace LeagueOfNews.UWP.Services
                         new ToastButton("Read in app", parameters)
                         {
                             ActivationType = ToastActivationType.Background,
-                            ImageUri = @"C:\Users\qvaris\Desktop\InApp.png"
+                            ImageUri = @"ms-appx:///Assets/Notifications/InApp.png"
                         },
                         new ToastButton("Open in browser", browserParameters)
                         {
                             ActivationType = ToastActivationType.Background,
-                            ImageUri = @"C:\Users\qvaris\Desktop\InBrowser.png"
+                            ImageUri = @"ms-appx:///Assets/Notifications/InBrowser.png"
                         }
                     }
                 },
-                Launch = parameters,
-                Duration = ToastDuration.Long
+                Launch = parameters
             };
         }
     }
