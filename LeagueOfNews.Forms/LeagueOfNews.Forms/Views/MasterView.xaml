@@ -3,7 +3,7 @@
     x:Class="LeagueOfNews.Forms.Views.MasterView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
+    xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
     xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="Placeholder"
@@ -30,7 +30,7 @@
                             <ViewCell>
                                 <Frame Margin="10,5,10,5" Style="{DynamicResource Frame}">
                                     <StackLayout Orientation="Horizontal">
-                                        <controls:TintedImage
+                                        <util:TintedImage
                                             Margin="10"
                                             HeightRequest="35"
                                             IsOpaque="True"

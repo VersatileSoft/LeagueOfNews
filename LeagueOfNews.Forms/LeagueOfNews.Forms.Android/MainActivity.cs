@@ -1,5 +1,4 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.Gms.Ads;
 using Android.OS;
@@ -7,9 +6,6 @@ using LeagueOfNews.Core;
 using LeagueOfNews.Core.Interface;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Views;
-using MvvmCross.ViewModels;
-using MvvmCross.Views;
-using Plugin.CrossPlatformTintedImage.Android;
 
 namespace LeagueOfNews.Forms.Droid
 {
@@ -24,7 +20,6 @@ namespace LeagueOfNews.Forms.Droid
             ToolbarResource = Resource.Layout.Toolbar;
             base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(bundle);
-            TintedImageRenderer.Init();
         }
 
         public override void InitializeApplication()
