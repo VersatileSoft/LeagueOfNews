@@ -14,30 +14,9 @@ namespace LeagueOfNews.Forms.Droid.Services
         private const string THEME = "THEME";
         private const string IS_NOTIFICATIONS_ENABLED = "IS_NOTIFICATIONS_ENABLED";
 
-        public AndroidSettingsService() : base() { }
-
-        private void SaveTitle(WebsiteHistoryData.PostTitleArgs args)
+        public AndroidSettingsService() : base()
         {
-            PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-                 .Edit()
-                 .PutString(PageToKey(args.Category), args.Title)
-                 .Apply();
-        }
-
-        public override WebsiteHistoryData WebsiteHistoryData
-        {
-            get
-            {
-                WebsiteHistoryData _websiteHistoryData = new WebsiteHistoryData
-                {
-                    LastOfficialPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(PageToKey(NewsWebsite.LoL), ""),
-                    LastSurrenderPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(PageToKey(NewsWebsite.Surrender), ""),
-                };
-
-                _websiteHistoryData.TitleChanged += SaveTitle;
-
-                return _websiteHistoryData;
-            }
+            WebsiteHistoryData = new AndroidWebsiteHistoryData();
         }
 
         public override ApplicationTheme Theme
@@ -77,6 +56,28 @@ namespace LeagueOfNews.Forms.Droid.Services
                 case NewsWebsite.LoL: return LAST_POST_KEY_OFFICIAL;
             }
             return null;
+        }
+    }
+
+    public class AndroidWebsiteHistoryData : WebsiteHistoryData
+    {
+
+        public override string LastSurrenderPostUrl
+        {
+            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_SURRENDER, "");
+            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+             .Edit()
+             .PutString(LAST_POST_KEY_SURRENDER, value)
+             .Apply();
+        }
+
+        public override string LastOfficialPostUrl
+        {
+            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_OFFICIAL, "");
+            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+             .Edit()
+             .PutString(LAST_POST_KEY_OFFICIAL, value)
+             .Apply();
         }
     }
 }
