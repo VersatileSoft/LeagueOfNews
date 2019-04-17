@@ -25,7 +25,6 @@ namespace LeagueOfNews.Forms.Droid
             base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(bundle);
             TintedImageRenderer.Init();
-            NavigateToRequestIfPresent(Intent);
         }
 
         public override void InitializeApplication()
@@ -35,30 +34,6 @@ namespace LeagueOfNews.Forms.Droid
             INotificationService notificationService = Mvx.IoCProvider.Resolve<INotificationService>();
             notificationService.CreateNotificationChannel();
             notificationService.RefreshNotificationJobService();
-        }
-
-        protected override void OnNewIntent(Intent intent)
-        {
-            base.OnNewIntent(intent);
-            NavigateToRequestIfPresent(intent);
-        }
-
-        protected void NavigateToRequestIfPresent(Intent intent)
-        {
-            // If MvxLaunchData is present, we then know we should navigate to that intent
-            string requestText = intent.GetStringExtra("Request");
-
-            if (requestText == null)
-            {
-                return;
-            }
-
-            IMvxViewDispatcher viewDispatcher = Mvx.IoCProvider.Resolve<IMvxViewDispatcher>();
-
-            IMvxNavigationSerializer converter = Mvx.IoCProvider.Resolve<IMvxNavigationSerializer>();
-            MvxViewModelRequest request = converter.Serializer.DeserializeObject<MvxViewModelRequest>(requestText);
-
-            viewDispatcher.ShowViewModel(request);
         }
     }
 }

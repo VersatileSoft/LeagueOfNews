@@ -14,30 +14,30 @@ namespace LeagueOfNews.Forms.Droid.Services
         private const string THEME = "THEME";
         private const string IS_NOTIFICATIONS_ENABLED = "IS_NOTIFICATIONS_ENABLED";
 
-        public AndroidSettingsService() : base()
+        public AndroidSettingsService() : base() { }
+
+        private void SaveTitle(WebsiteHistoryData.PostTitleArgs args)
         {
-            TitleChanged += SaveTitle;
-
-            WebsiteHistoryData.LastOfficialPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-                .GetString(PageToKey(NewsWebsite.LoL), "");
-
-            WebsiteHistoryData.LastSurrenderPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-                .GetString(PageToKey(NewsWebsite.Surrender), "");
-        }
-
-        private void SaveTitle(PostTitleArgs args)
-        {
-            switch (args.Category)
-            {
-                case NewsWebsite.LoL: WebsiteHistoryData.LastOfficialPostUrl = args.Title; break;
-                case NewsWebsite.Surrender: WebsiteHistoryData.LastSurrenderPostUrl = args.Title; break;
-                default: break;
-            }
-
             PreferenceManager.GetDefaultSharedPreferences(Application.Context)
                  .Edit()
                  .PutString(PageToKey(args.Category), args.Title)
                  .Apply();
+        }
+
+        public override WebsiteHistoryData WebsiteHistoryData
+        {
+            get
+            {
+                WebsiteHistoryData _websiteHistoryData = new WebsiteHistoryData
+                {
+                    LastOfficialPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(PageToKey(NewsWebsite.LoL), ""),
+                    LastSurrenderPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(PageToKey(NewsWebsite.Surrender), ""),
+                };
+
+                _websiteHistoryData.TitleChanged += SaveTitle;
+
+                return _websiteHistoryData;
+            }
         }
 
         public override ApplicationTheme Theme
