@@ -48,36 +48,26 @@ namespace LeagueOfNews.Forms.Droid.Services
                     .Apply();
         }
 
-        private string PageToKey(NewsWebsite page)
+        public class AndroidWebsiteHistoryData : WebsiteHistoryData
         {
-            switch (page)
+
+            public override string LastSurrenderPostUrl
             {
-                case NewsWebsite.Surrender: return LAST_POST_KEY_SURRENDER;
-                case NewsWebsite.LoL: return LAST_POST_KEY_OFFICIAL;
+                get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_SURRENDER, "");
+                set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+                 .Edit()
+                 .PutString(LAST_POST_KEY_SURRENDER, value)
+                 .Apply();
             }
-            return null;
-        }
-    }
 
-    public class AndroidWebsiteHistoryData : WebsiteHistoryData
-    {
-
-        public override string LastSurrenderPostUrl
-        {
-            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_SURRENDER, "");
-            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-             .Edit()
-             .PutString(LAST_POST_KEY_SURRENDER, value)
-             .Apply();
-        }
-
-        public override string LastOfficialPostUrl
-        {
-            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_OFFICIAL, "");
-            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-             .Edit()
-             .PutString(LAST_POST_KEY_OFFICIAL, value)
-             .Apply();
+            public override string LastOfficialPostUrl
+            {
+                get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_OFFICIAL, "");
+                set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+                 .Edit()
+                 .PutString(LAST_POST_KEY_OFFICIAL, value)
+                 .Apply();
+            }
         }
     }
 }
