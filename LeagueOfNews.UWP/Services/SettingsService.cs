@@ -9,11 +9,11 @@ namespace LeagueOfNews.UWP.Services
     {
         private readonly ApplicationDataContainer _localSettings = ApplicationData.Current.LocalSettings;
 
-        public override Core.Interface.ApplicationTheme Theme
+        public override ApplicationTheme Theme
         {
             get => (_localSettings.Values.TryGetValue("Theme", out object value))
-                ? (Core.Interface.ApplicationTheme)Enum.Parse(typeof(Core.Interface.ApplicationTheme), value as string)
-                : Core.Interface.ApplicationTheme.Default;
+                ? (ApplicationTheme)Enum.Parse(typeof(ApplicationTheme), value as string)
+                : ApplicationTheme.Default;
             set => _localSettings.Values["Theme"] = value.ToString();
         }
 
@@ -29,29 +29,33 @@ namespace LeagueOfNews.UWP.Services
             set => _localSettings.Values["Notifications"] = value;
         }
 
+        public override WebsiteHistoryData WebsiteHistoryData => throw new NotImplementedException();
+
         public SettingsService() : base()
         {
-            TitleChanged += OnTitleChanged;
+            //TODO Change to work with new core code :D
 
-            //TODO use consts like in Android project
-            WebsiteHistoryData.LastOfficialPostUrl = _localSettings.Values
-                .TryGetValue("LastOfficialPostUrl", out object official) ? official as string : "";
+            //TitleChanged += OnTitleChanged;
 
-            WebsiteHistoryData.LastSurrenderPostUrl = _localSettings.Values
-                .TryGetValue("LastSurrenderPostUrl", out object surrender) ? surrender as string : "";
+            ////TODO use consts like in Android project
+            //WebsiteHistoryData.LastOfficialPostUrl = _localSettings.Values
+            //    .TryGetValue("LastOfficialPostUrl", out object official) ? official as string : "";
+
+            //WebsiteHistoryData.LastSurrenderPostUrl = _localSettings.Values
+            //    .TryGetValue("LastSurrenderPostUrl", out object surrender) ? surrender as string : "";
         }
 
-        private void OnTitleChanged(PostTitleArgs args)
-        {
-            switch (args.Category)
-            {
-                case NewsWebsite.LoL:
-                    _localSettings.Values["LastOfficialPostUrl"] = args.Title;
-                    break;
-                case NewsWebsite.Surrender:
-                    _localSettings.Values["LastSurrenderPostUrl"] = args.Title;
-                    break;
-            }
-        }
+        //private void OnTitleChanged(PostTitleArgs args)
+        //{
+        //    switch (args.Category)
+        //    {
+        //        case NewsWebsite.LoL:
+        //            _localSettings.Values["LastOfficialPostUrl"] = args.Title;
+        //            break;
+        //        case NewsWebsite.Surrender:
+        //            _localSettings.Values["LastSurrenderPostUrl"] = args.Title;
+        //            break;
+        //    }
+        //}
     }
 }

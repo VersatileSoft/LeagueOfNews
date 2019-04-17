@@ -9,16 +9,14 @@ namespace LeagueOfNews.Core.ViewModels
     [AddINotifyPropertyChangedInterface]
     public abstract class NewsfeedItemCoreViewModel : MvxViewModel<Newsfeed>
     {
-        private readonly IWebClientService _cookieWebClientService;
         private readonly ISettingsService _settingsService;
 
         public bool IsLoading { get; set; }
         public string Title { get; set; }
         public string Date { get; set; }
 
-        public NewsfeedItemCoreViewModel(IWebClientService cookieWebClientService, ISettingsService settingsService)
+        public NewsfeedItemCoreViewModel(ISettingsService settingsService)
         {
-            _cookieWebClientService = cookieWebClientService;
             _settingsService = settingsService;
         }
 

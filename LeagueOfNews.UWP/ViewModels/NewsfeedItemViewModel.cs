@@ -16,8 +16,8 @@ namespace LeagueOfNews.UWP.ViewModels
             set => SetProperty(ref _url, value);
         }
 
-        public NewsfeedItemViewModel(IWebClientService webClientService, ISettingsService settingsService)
-            : base(webClientService, settingsService)
+        public NewsfeedItemViewModel(ISettingsService settingsService)
+            : base(settingsService)
         {
         }
 
