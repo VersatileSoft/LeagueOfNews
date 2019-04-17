@@ -3,8 +3,8 @@
     x:Class="LeagueOfNews.Forms.App"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:controls="clr-namespace:Plugin.CrossPlatformTintedImage.Abstractions;assembly=Plugin.CrossPlatformTintedImage.Abstractions"
     xmlns:m="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+    xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms">
     <m:MvxFormsApplication.Resources>
         <ResourceDictionary>
@@ -64,11 +64,11 @@
                 <Setter Property="TextColor" Value="#ce9f3d"/>
             </Style>
 
-            <Style x:Key="DarkImage" TargetType="controls:TintedImage">
-                <Setter Property="TintColor" Value="White"/>
+            <Style x:Key="DarkImage" TargetType="util:TintedImage">
+                <Setter Property="TintColor" Value="Transparent"/>
             </Style>
 
-            <Style x:Key="LightImage" TargetType="controls:TintedImage">
+            <Style x:Key="LightImage" TargetType="util:TintedImage">
                 <Setter Property="TintColor" Value="#ce9f3d"/>
             </Style>
 

@@ -23,9 +23,7 @@
                             Style="{DynamicResource Label}"
                             Text="Notifications"
                             VerticalOptions="CenterAndExpand"/>
-                        <Switch
-                            HorizontalOptions="EndAndExpand"
-                            IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}"/>
+                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}"/>
                     </StackLayout>
 
                     <Label
@@ -52,9 +50,7 @@
                         Style="{DynamicResource Label}"
                         Text="Turn off the lights"
                         VerticalOptions="CenterAndExpand"/>
-                    <Switch
-                        HorizontalOptions="EndAndExpand"
-                        IsToggled="{Binding DarkTheme, Mode=TwoWay}"/>
+                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding DarkTheme, Mode=TwoWay}"/>
                 </StackLayout>
             </Frame>
 

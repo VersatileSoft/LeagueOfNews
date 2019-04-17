@@ -1,4 +1,6 @@
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 
 namespace LeagueOfNews.Core.Interface
 {
@@ -8,7 +10,7 @@ namespace LeagueOfNews.Core.Interface
         ApplicationTheme Theme { get; set; }
         int NewPostCheckFrequency { get; set; }
         bool HasNotificationsEnabled { get; set; }
-        WebsiteHistoryData WebsiteHistoryData { get; set; }
+        WebsiteHistoryData WebsiteHistoryData { get; }
     }
 
     public class CategoryData

@@ -18,7 +18,7 @@ namespace LeagueOfNews.Forms.Views
 
         private void WindowsAppButton_Clicked(object sender, EventArgs e)
         {
-            Device.OpenUri(new Uri("https://www.google.com"));
+            Device.OpenUri(new Uri("https://www.microsoft.com/store/apps/9N06TGN05XNK"));
         }
     }
 }

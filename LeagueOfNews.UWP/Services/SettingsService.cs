@@ -12,11 +12,11 @@ namespace LeagueOfNews.UWP.Services
     {
         private readonly ApplicationDataContainer _localSettings = ApplicationData.Current.LocalSettings;
 
-        public override Core.Interface.ApplicationTheme Theme
+        public override ApplicationTheme Theme
         {
             get => (_localSettings.Values.TryGetValue("Theme", out object value))
-                ? (Core.Interface.ApplicationTheme)Enum.Parse(typeof(Core.Interface.ApplicationTheme), value as string)
-                : Core.Interface.ApplicationTheme.Default;
+                ? (ApplicationTheme)Enum.Parse(typeof(ApplicationTheme), value as string)
+                : ApplicationTheme.Default;
             set => _localSettings.Values["Theme"] = value.ToString();
         }
 
@@ -31,6 +31,8 @@ namespace LeagueOfNews.UWP.Services
             get => (_localSettings.Values.TryGetValue("Notifications", out object value)) ? (bool)value : true;
             set => _localSettings.Values["Notifications"] = value;
         }
+
+        public override WebsiteHistoryData WebsiteHistoryData { get; set; }
 
         public SettingsService() : base()
         {
