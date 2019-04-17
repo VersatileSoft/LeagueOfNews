@@ -20,9 +20,9 @@ namespace LeagueOfNews.Core.Interface
 
     public class WebsiteHistoryData
     {
-        public string LastSurrenderPostUrl { get; set; }
-        public string LastOfficialPostUrl { get; set; }
-        public List<string> VisitedPosts { get; set; } = new List<string>();
+        public virtual string LastSurrenderPostUrl { get; set; }
+        public virtual string LastOfficialPostUrl { get; set; }
+        public virtual List<string> VisitedPosts { get; set; }
     }
 
     public enum NewsCategory

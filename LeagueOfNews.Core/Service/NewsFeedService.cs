@@ -86,6 +86,7 @@ namespace LeagueOfNews.Core.Service
                     newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText);
                     newsfeed.UrlToNewsfeed = _officialBaseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value;
                     newsfeed.Image = await _cookieWebClientService.GetImage(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
+                    newsfeed.ImageUri = _officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString(); //FIXME strinh.ToString()?
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText)
                         .RemoveSpaceFromString();
                     newsfeed.Page = page;
@@ -124,6 +125,7 @@ namespace LeagueOfNews.Core.Service
                     {
                         newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
                         newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
+                        newsfeed.ImageUri = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
                     }
 
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)

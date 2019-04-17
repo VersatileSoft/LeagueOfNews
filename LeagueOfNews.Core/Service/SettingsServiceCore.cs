@@ -7,14 +7,9 @@ namespace LeagueOfNews.Core.Service
     {
         protected readonly Dictionary<NewsCategory, CategoryData> categories;
 
-        protected delegate void OnTitleChange(PostTitleArgs args);
-        protected event OnTitleChange TitleChanged;
-
         public AbstractSettingsService()
         {
             categories = new Dictionary<NewsCategory, CategoryData>();
-
-            WebsiteHistoryData = new WebsiteHistoryData();
 
             this[NewsCategory.None] = new CategoryData { Title = "Settings" };
 
@@ -38,11 +33,5 @@ namespace LeagueOfNews.Core.Service
         public abstract int NewPostCheckFrequency { get; set; }
         public abstract bool HasNotificationsEnabled { get; set; }
         public WebsiteHistoryData WebsiteHistoryData { get; set; }
-
-        protected class PostTitleArgs
-        {
-            public NewsWebsite Category { get; set; }
-            public string Title { get; set; }
-        }
     }
 }

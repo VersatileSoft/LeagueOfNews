@@ -52,12 +52,13 @@ namespace LeagueOfNews.Core.ViewModels
         //TODO make 1 f instead of 3, maybe enum with sth like LoadingAction (load?, loadMore, refresh)
         protected void LoadNewsfeeds()
         {
-            new Thread(async () =>
+            Task.Run(async () =>
             {
                 IsLoading = true;
-                Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory));
+                var data = await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory);
+                Newsfeeds = new ObservableCollection<Newsfeed>(data); //Sometimes prints error :/
                 IsLoading = false;
-            }).Start();
+            });
         }
 
         protected void LoadMoreNewsfeeds()

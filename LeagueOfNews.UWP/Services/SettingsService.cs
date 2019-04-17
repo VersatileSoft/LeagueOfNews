@@ -1,6 +1,9 @@
 ﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.Service;
+using Microsoft.QueryStringDotNET;
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Windows.Storage;
 
 namespace LeagueOfNews.UWP.Services
@@ -19,7 +22,7 @@ namespace LeagueOfNews.UWP.Services
 
         public override int NewPostCheckFrequency
         {
-            get => (_localSettings.Values.TryGetValue("Frequency", out object value)) ? (int)value : -1;
+            get => (_localSettings.Values.TryGetValue("Frequency", out object value)) ? (int)value : 15;
             set => _localSettings.Values["Frequency"] = value;
         }
 
@@ -31,26 +34,29 @@ namespace LeagueOfNews.UWP.Services
 
         public SettingsService() : base()
         {
-            TitleChanged += OnTitleChanged;
-
-            //TODO use consts like in Android project
-            WebsiteHistoryData.LastOfficialPostUrl = _localSettings.Values
-                .TryGetValue("LastOfficialPostUrl", out object official) ? official as string : "";
-
-            WebsiteHistoryData.LastSurrenderPostUrl = _localSettings.Values
-                .TryGetValue("LastSurrenderPostUrl", out object surrender) ? surrender as string : "";
+            WebsiteHistoryData = new WindowsWebsiteHistoryData();
         }
 
-        private void OnTitleChanged(PostTitleArgs args)
+        public class WindowsWebsiteHistoryData : WebsiteHistoryData
         {
-            switch (args.Category)
-            {
-                case NewsWebsite.LoL:
-                    _localSettings.Values["LastOfficialPostUrl"] = args.Title;
-                    break;
-                case NewsWebsite.Surrender:
-                    _localSettings.Values["LastSurrenderPostUrl"] = args.Title;
-                    break;
+            private readonly ApplicationDataContainer _settings = ApplicationData.Current.LocalSettings;
+
+            public override string LastSurrenderPostUrl {
+                get => (_settings.Values.TryGetValue("LastSurrenderPostUrl", out object value)) ? value as string : "";
+                set => _settings.Values["LastSurrenderPostUrl"] = value;
+            }
+
+            public override string LastOfficialPostUrl {
+                get => (_settings.Values.TryGetValue("LastOfficialPostUrl", out object value)) ? value as string : "";
+                set => _settings.Values["LastOfficialPostUrl"] = value;
+            }
+
+            public override List<string> VisitedPosts {
+                get => (_settings.Values.TryGetValue("VisitedPosts", out object value)) ? new List<string>((value as string).Split("|")) : new List<string>();
+                set {
+                    var output = value.Aggregate((sum, x) => sum += x + "|");
+                    _settings.Values["VisitedPosts"] = output.Substring(0, output.Length - 1);
+                }
             }
         }
     }
