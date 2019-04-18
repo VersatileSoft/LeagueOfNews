@@ -68,7 +68,6 @@ namespace LeagueOfNews.Core.Service
                 default: break;
             }
 
-            _notificationService.ShowNewPostNotification(list[0], page); //TODO delete
             if (newPosts.Count > 0)
             {
                 _notificationService.ShowNewPostNotification(newPosts[0], page); //TODO Show all new post not only one

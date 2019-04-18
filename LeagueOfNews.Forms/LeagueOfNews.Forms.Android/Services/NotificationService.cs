@@ -4,6 +4,7 @@ using Android.Content;
 using Android.Graphics;
 using Android.OS;
 using Android.Support.CustomTabs;
+using Android.Support.CustomTabs.Chromium.SharedUtilities;
 using Android.Support.V4.App;
 using Android.Util;
 using Java.Lang;
@@ -107,12 +108,12 @@ namespace LeagueOfNews.Forms.Droid.Services
 
         private PendingIntent GetContentIntent(Newsfeed newsfeed)
         {
-            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
+            CustomTabActivityHelper customTabActivityHelper = new CustomTabActivityHelper();
+            customTabActivityHelper.MayLaunchUrl(Android.Net.Uri.Parse(newsfeed.UrlToNewsfeed), null, null);
+            CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder(customTabActivityHelper.Session);
             builder.SetToolbarColor(Color.ParseColor("#002132"));
             CustomTabsIntent customTabsIntent = builder.Build();
             customTabsIntent.Intent.SetFlags(ActivityFlags.NewTask);
-            customTabsIntent.LaunchUrl(Application.Context, Android.Net.Uri.Parse(newsfeed.UrlToNewsfeed));
-
             return PendingIntent.GetActivity(Application.Context, (int)(DateTimeOffset.Now.ToUnixTimeMilliseconds() / 1000), customTabsIntent.Intent, PendingIntentFlags.OneShot);
         }
     }
