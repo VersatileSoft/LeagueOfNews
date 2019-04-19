@@ -87,13 +87,13 @@
                     </ListView.Footer>
 
                 </util:InfiniteListView>
-                <Grid MinimumHeightRequest="70">
-                    <util:AdControlView HorizontalOptions="FillAndExpand"/>
+                <Grid HeightRequest="110" HorizontalOptions="FillAndExpand">
                     <Label
                         HorizontalOptions="CenterAndExpand"
                         Text="Advertisement"
                         TextColor="Gray"
                         VerticalOptions="CenterAndExpand"/>
+                    <util:AdControlView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
                 </Grid>
             </StackLayout>
         </Grid>

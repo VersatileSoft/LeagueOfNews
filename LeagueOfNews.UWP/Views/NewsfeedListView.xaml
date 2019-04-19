@@ -30,6 +30,7 @@
                     ItemsSource="{Binding Newsfeeds}"
                     Style="{StaticResource GridView}"
                     Tapped="GridView_Tapped">
+
                     <GridView.ItemTemplate>
                         <DataTemplate x:DataType="LeagueOfNews.Model:Newsfeed">
                             <Grid>
@@ -58,6 +59,18 @@
                                         Style="{StaticResource DescriptionText}"
                                         Text="{x:Bind ShortDescription}"/>
                                 </StackPanel>
+                                <Grid.ContextFlyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem x:Name="SharePost"
+                                            Click="SharePost_Click"
+                                            Icon="Share"
+                                            Text="Share"/>
+                                        <MenuFlyoutItem x:Name="CopyLink"
+                                            Click="CopyLink_Click"
+                                            Icon="Copy"
+                                            Text="Copy link"/>
+                                    </MenuFlyout>
+                                </Grid.ContextFlyout>
                             </Grid>
                         </DataTemplate>
                     </GridView.ItemTemplate>
