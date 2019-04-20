@@ -43,6 +43,13 @@
         </uap:DefaultTile>
         <uap:SplashScreen uap5:Optional="true" Image="Assets\SplashScreen.png"/>
       </uap:VisualElements>
+      <Extensions>
+        <Extension Category="windows.backgroundTasks" EntryPoint="BackgroundTasks.BackgroundPostToastTask">
+          <BackgroundTasks>
+            <Task Type="systemEvent"/>
+          </BackgroundTasks>
+        </Extension>
+      </Extensions>
     </Application>
   </Applications>
   
