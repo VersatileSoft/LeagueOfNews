@@ -65,10 +65,16 @@
                                             Click="SharePost_Click"
                                             Icon="Share"
                                             Text="Share"/>
+
                                         <MenuFlyoutItem x:Name="CopyLink"
                                             Click="CopyLink_Click"
                                             Icon="Copy"
                                             Text="Copy link"/>
+
+                                        <MenuFlyoutItem x:Name="OpenInBrowser"
+                                            Click="OpenInBrowser_Click"
+                                            Icon="Globe"
+                                            Text="Open in default browser"/>
                                     </MenuFlyout>
                                 </Grid.ContextFlyout>
                             </Grid>

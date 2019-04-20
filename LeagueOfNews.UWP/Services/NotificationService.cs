@@ -1,17 +1,9 @@
 ﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Model;
-using Microsoft.QueryStringDotNET;
 using Microsoft.Toolkit.Uwp.Notifications;
 using MvvmCross;
-using System;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Windows.ApplicationModel;
 using Windows.ApplicationModel.Background;
-using Windows.Data.Xml.Dom;
-using Windows.Storage;
 using Windows.UI.Notifications;
 
 namespace LeagueOfNews.UWP.Services
@@ -27,23 +19,27 @@ namespace LeagueOfNews.UWP.Services
 
         public void CreateNotificationChannel()
         {
-            var settings = Mvx.IoCProvider.Resolve<ISettingsService>();
-            
+            ISettingsService settings = Mvx.IoCProvider.Resolve<ISettingsService>();
+
             // If background task is already registered, do nothing
             if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_CHECK_POSTS_NAME)))
+            {
                 return;
+            }
 
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = TASK_CHECK_POSTS_NAME;
-            builder.CancelOnConditionLoss = false; //TODO check
-            builder.SetTrigger(new TimeTrigger((uint) settings.NewPostCheckFrequency, false));
+            BackgroundTaskBuilder builder = new BackgroundTaskBuilder
+            {
+                Name = TASK_CHECK_POSTS_NAME,
+                CancelOnConditionLoss = false //TODO check
+            };
+            builder.SetTrigger(new TimeTrigger((uint)settings.NewPostCheckFrequency, false));
             builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
             builder.Register();
         }
 
         public void RefreshNotificationJobService()
         {
-            var settings = Mvx.IoCProvider.Resolve<ISettingsService>();
+            ISettingsService settings = Mvx.IoCProvider.Resolve<ISettingsService>();
             if (settings.HasNotificationsEnabled && settings.NewPostCheckFrequency != -1)
             {
                 CreateNotificationChannel();
@@ -56,24 +52,24 @@ namespace LeagueOfNews.UWP.Services
         }
 
         public void ShowNewPostNotification(Newsfeed newsfeed, NewsWebsite page)
-        { 
+        {
             ToastNotificationManager.CreateToastNotifier()
                 .Show(new ToastNotification(GenerateNotifcationBody(newsfeed).GetXml()));
         }
 
         private ToastContent GenerateNotifcationBody(Newsfeed Newsfeed)
         {
-            var description = Newsfeed.ShortDescription.Length > 120
+            string description = Newsfeed.ShortDescription.Length > 120
                 ? Newsfeed.ShortDescription.Substring(0, 120) + "..."
                 : Newsfeed.ShortDescription;
 
-            var parameters = "action=show&"
+            string parameters = "action=show&"
                 + "title=" + Newsfeed.Title + "&"
                 + "date=" + Newsfeed.Date + "&"
                 + "url=" + Newsfeed.UrlToNewsfeed + "&"
                 + "website=" + Newsfeed.Website.ToString();
 
-            var website = Newsfeed.Website == NewsWebsite.Surrender
+            string website = Newsfeed.Website == NewsWebsite.Surrender
                 ? "Surrender@20"
                 : "League of Legends official";
 
@@ -111,7 +107,7 @@ namespace LeagueOfNews.UWP.Services
                         new ToastButton("Read in app", parameters)
                         {
                             ActivationType = ToastActivationType.Foreground,
-                            
+
                             ImageUri = @"ms-appx:///Assets/Notifications/InApp.png"
                         },
                         new ToastButton("Open in browser", Newsfeed.UrlToNewsfeed)
