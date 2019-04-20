@@ -19,15 +19,19 @@ namespace LeagueOfNews.UWP.Services
 
         public void CreateNotificationChannel()
         {
-            var settings = Mvx.IoCProvider.Resolve<ISettingsService>();
+            ISettingsService settings = Mvx.IoCProvider.Resolve<ISettingsService>();
 
             // If background task is already registered, do nothing
             if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_CHECK_POSTS_NAME)))
+            {
                 return;
+            }
 
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = TASK_CHECK_POSTS_NAME;
-            builder.CancelOnConditionLoss = false; //TODO check
+            BackgroundTaskBuilder builder = new BackgroundTaskBuilder
+            {
+                Name = TASK_CHECK_POSTS_NAME,
+                CancelOnConditionLoss = false //TODO check
+            };
             builder.SetTrigger(new TimeTrigger((uint)settings.NewPostCheckFrequency, false));
             builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
             builder.Register();
@@ -35,7 +39,7 @@ namespace LeagueOfNews.UWP.Services
 
         public void RefreshNotificationJobService()
         {
-            var settings = Mvx.IoCProvider.Resolve<ISettingsService>();
+            ISettingsService settings = Mvx.IoCProvider.Resolve<ISettingsService>();
             if (settings.HasNotificationsEnabled && settings.NewPostCheckFrequency != -1)
             {
                 CreateNotificationChannel();
@@ -58,17 +62,18 @@ namespace LeagueOfNews.UWP.Services
 
         private ToastContent GenerateNotifcationBody(Newsfeed newsfeed)
         {
-            var description = newsfeed.ShortDescription.Length > 120
+
+            string description = newsfeed.ShortDescription.Length > 120
                 ? newsfeed.ShortDescription.Substring(0, 120) + "..."
                 : newsfeed.ShortDescription;
 
-            var parameters = "action=show&"
+            string parameters = "action=show&"
                 + "title=" + newsfeed.Title + "&"
                 + "date=" + newsfeed.Date + "&"
                 + "url=" + newsfeed.UrlToNewsfeed + "&"
                 + "website=" + newsfeed.Website.ToString();
 
-            var website = newsfeed.Website == NewsWebsite.Surrender
+            string website = newsfeed.Website == NewsWebsite.Surrender
                 ? "Surrender@20"
                 : "League of Legends official";
 

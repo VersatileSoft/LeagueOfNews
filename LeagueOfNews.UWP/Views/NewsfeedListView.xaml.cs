@@ -7,6 +7,7 @@ using System;
 using System.IO;
 using Windows.ApplicationModel.DataTransfer;
 using Windows.Storage.Streams;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
@@ -47,11 +48,17 @@ namespace LeagueOfNews.UWP.View
             ViewModel.ItemSelectedCommand.Execute((sender as GridView).SelectedItem);
         }
 
+        private async void OpenInBrowser_Click(object sender, RoutedEventArgs e)
+        {
+            newsfeed = (Newsfeed)(sender as MenuFlyoutItem).DataContext;
+            await Launcher.LaunchUriAsync(new Uri(newsfeed.UrlToNewsfeed.Replace("?m=1", "")));
+        }
+
         private void CopyLink_Click(object sender, RoutedEventArgs e)
         {
             newsfeed = (Newsfeed)(sender as MenuFlyoutItem).DataContext;
             DataPackage dataPackage = new DataPackage();
-            dataPackage.SetText(newsfeed.UrlToNewsfeed);
+            dataPackage.SetText(newsfeed.UrlToNewsfeed.Replace("?m=1", ""));
             Clipboard.SetContent(dataPackage);
         }
 

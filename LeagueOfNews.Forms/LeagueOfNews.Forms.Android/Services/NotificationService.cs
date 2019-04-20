@@ -2,10 +2,8 @@
 using Android.App.Job;
 using Android.Content;
 using Android.Graphics;
-using Android.Net;
 using Android.OS;
 using Android.Support.CustomTabs;
-using Android.Support.CustomTabs.Chromium.SharedUtilities;
 using Android.Support.V4.App;
 using Android.Util;
 using Java.Lang;

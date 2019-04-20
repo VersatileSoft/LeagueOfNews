@@ -5,8 +5,7 @@ using Xamarin.Forms;
 namespace LeagueOfNews.Forms.Services
 {
     public abstract class FormsSettingsService<T> : AbstractSettingsService<T> where T : WebsiteHistoryData, new()
-    { 
-
+    {
         public FormsSettingsService() : base()
         {
             SetAppTheme();

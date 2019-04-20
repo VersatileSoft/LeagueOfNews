@@ -104,6 +104,7 @@
                             <FlyoutBase.AttachedFlyout>
                                 <Flyout LightDismissOverlayMode="Auto">
                                     <StackPanel>
+                                        <!--  Theme  -->
                                         <TextBlock FontSize="14" Text="Theme"/>
                                         <TextBlock
                                             FontSize="11"
@@ -143,20 +144,28 @@
                                             </i:Interaction.Behaviors>
                                         </RadioButton>
 
-                                        <TextBlock FontSize="14" Text="Notifications - soon"/>
-                                        <RadioButton
-                                            Content="Enabled"
-                                            GroupName="Notifi"
-                                            IsEnabled="False"/>
-                                        <RadioButton
-                                            Content="Disabled"
-                                            GroupName="Notifi"
-                                            IsChecked="True"
-                                            IsEnabled="False"/>
+                                        <!--  Notifications  -->
+                                        <ToggleSwitch Header="Notifications" IsOn="True">
+                                            <!--<i:Interaction.Behaviors>
+                                                <core:EventTriggerBehavior EventName="Toggled">
+                                                    <core:InvokeCommandAction Command="{Binding xxx}"/>
+                                                </core:EventTriggerBehavior>
+                                            </i:Interaction.Behaviors>-->
+                                        </ToggleSwitch>
+
+                                        <!--  Others  -->
+                                        <TextBlock FontSize="14" Text="Others settings"/>
+                                        <CheckBox Content="Use mobile version of Surrender@20">
+                                            <!--<i:Interaction.Behaviors>
+                                                <core:EventTriggerBehavior EventName="Checked">
+                                                    <core:InvokeCommandAction Command="{Binding yyy}"/>
+                                                </core:EventTriggerBehavior>
+                                            </i:Interaction.Behaviors>-->
+                                        </CheckBox>
 
                                         <HyperlinkButton Content="Visit our facebook" NavigateUri="https://www.facebook.com/VersatileSoftware"/>
                                         <HyperlinkButton Content="Try this app on android" NavigateUri="https://play.google.com/store/apps/details?id=com.versatilesofware"/>
-                                        <TextBlock Text="Versatile Software - League of News v1.0"/>
+                                        <TextBlock Text="Versatile Software - League of News v1.1"/>
                                     </StackPanel>
                                 </Flyout>
                             </FlyoutBase.AttachedFlyout>
