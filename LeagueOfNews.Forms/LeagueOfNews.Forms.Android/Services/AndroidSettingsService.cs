@@ -5,40 +5,13 @@ using LeagueOfNews.Forms.Services;
 
 namespace LeagueOfNews.Forms.Droid.Services
 {
-    public class AndroidSettingsService : FormsSettingsService
+    public class AndroidSettingsService : FormsSettingsService<AndroidWebsiteHistoryData>
     {
-
-        private const string LAST_POST_KEY_SURRENDER = "LAST_POST_KEY_SURRENDER";
-        private const string LAST_POST_KEY_OFFICIAL = "LAST_POST_KEY_OFFICIAL";
         private const string CHECK_NEW_POSTS_FREQUENCY = "CHECK_NEW_POSTS_FREQUENCY";
         private const string THEME = "THEME";
         private const string IS_NOTIFICATIONS_ENABLED = "IS_NOTIFICATIONS_ENABLED";
 
         public AndroidSettingsService() : base() { }
-
-        private void SaveTitle(WebsiteHistoryData.PostTitleArgs args)
-        {
-            PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-                 .Edit()
-                 .PutString(PageToKey(args.Category), args.Title)
-                 .Apply();
-        }
-
-        public override WebsiteHistoryData WebsiteHistoryData
-        {
-            get
-            {
-                WebsiteHistoryData _websiteHistoryData = new WebsiteHistoryData
-                {
-                    LastOfficialPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(PageToKey(NewsWebsite.LoL), ""),
-                    LastSurrenderPostUrl = PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(PageToKey(NewsWebsite.Surrender), ""),
-                };
-
-                _websiteHistoryData.TitleChanged += SaveTitle;
-
-                return _websiteHistoryData;
-            }
-        }
 
         public override ApplicationTheme Theme
         {
@@ -68,15 +41,29 @@ namespace LeagueOfNews.Forms.Droid.Services
                     .PutBoolean(IS_NOTIFICATIONS_ENABLED, value)
                     .Apply();
         }
+    }
 
-        private string PageToKey(NewsWebsite page)
+    public class AndroidWebsiteHistoryData : WebsiteHistoryData
+    {
+        private const string LAST_POST_KEY_SURRENDER = "LAST_POST_KEY_SURRENDER";
+        private const string LAST_POST_KEY_OFFICIAL = "LAST_POST_KEY_OFFICIAL";
+
+        public override string LastSurrenderPostUrl
         {
-            switch (page)
-            {
-                case NewsWebsite.Surrender: return LAST_POST_KEY_SURRENDER;
-                case NewsWebsite.LoL: return LAST_POST_KEY_OFFICIAL;
-            }
-            return null;
+            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_SURRENDER, "");
+            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+             .Edit()
+             .PutString(LAST_POST_KEY_SURRENDER, value)
+             .Apply();
+        }
+
+        public override string LastOfficialPostUrl
+        {
+            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_OFFICIAL, "");
+            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
+             .Edit()
+             .PutString(LAST_POST_KEY_OFFICIAL, value)
+             .Apply();
         }
     }
 }

@@ -64,13 +64,15 @@ namespace LeagueOfNews.UWP.View
         private void DataTransferManager_DataRequested(DataTransferManager sender, DataRequestedEventArgs args)
         {
             DataRequest request = args.Request;
+            MemoryStream stream = new MemoryStream(newsfeed.Image);
+
+            request.Data.SetText(newsfeed.ShortDescription);
+            request.Data.SetWebLink(new Uri(newsfeed.UrlToNewsfeed));
+            request.Data.SetBitmap(RandomAccessStreamReference.CreateFromStream(stream.AsRandomAccessStream()));
 
             request.Data.Properties.Title = newsfeed.Title;
             request.Data.Properties.Description = newsfeed.ShortDescription;
-
-            MemoryStream stream = new MemoryStream(newsfeed.Image);
             request.Data.Properties.Thumbnail = RandomAccessStreamReference.CreateFromStream(stream.AsRandomAccessStream());
-
             request.Data.Properties.ContentSourceWebLink = new Uri(newsfeed.UrlToNewsfeed);
         }
     }

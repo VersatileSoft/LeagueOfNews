@@ -5,10 +5,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Windows.Storage;
+using static LeagueOfNews.UWP.Services.SettingsService;
 
 namespace LeagueOfNews.UWP.Services
 {
-    public class SettingsService : AbstractSettingsService
+    public class SettingsService : AbstractSettingsService<WindowsWebsiteHistoryData>
     {
         private readonly ApplicationDataContainer _localSettings = ApplicationData.Current.LocalSettings;
 
@@ -30,11 +31,6 @@ namespace LeagueOfNews.UWP.Services
         {
             get => (_localSettings.Values.TryGetValue("Notifications", out object value)) ? (bool)value : true;
             set => _localSettings.Values["Notifications"] = value;
-        }
-
-        public SettingsService() : base()
-        {
-            WebsiteHistoryData = new WindowsWebsiteHistoryData();
         }
 
         public class WindowsWebsiteHistoryData : WebsiteHistoryData
