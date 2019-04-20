@@ -22,36 +22,9 @@ namespace LeagueOfNews.Core.Interface
 
     public class WebsiteHistoryData
     {
-        public delegate void OnTitleChange(PostTitleArgs args);
-        public event OnTitleChange TitleChanged;
-
-        private string _lastSurrenderPostUrl;
-        private string _lastOfficialPostUrl;
-
-        public string LastSurrenderPostUrl
-        {
-            get => _lastSurrenderPostUrl;
-            set
-            {
-                _lastSurrenderPostUrl = value;
-                TitleChanged?.Invoke(new PostTitleArgs { Category = NewsWebsite.Surrender, Title = value });
-            }        
-        }
-        public string LastOfficialPostUrl
-        {
-            get => _lastOfficialPostUrl;
-            set
-            {
-                _lastSurrenderPostUrl = value;
-                TitleChanged?.Invoke(new PostTitleArgs { Category = NewsWebsite.LoL, Title = value });
-            }            
-        }
-
-        public class PostTitleArgs
-        {
-            public NewsWebsite Category { get; set; }
-            public string Title { get; set; }
-        }
+        public virtual string LastSurrenderPostUrl { get; set; }
+        public virtual string LastOfficialPostUrl { get; set; }
+        public virtual List<string> VisitedPosts { get; set; }
     }
 
     public enum NewsCategory

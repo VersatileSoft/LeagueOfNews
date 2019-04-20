@@ -3,13 +3,15 @@ using System.Collections.Generic;
 
 namespace LeagueOfNews.Core.Service
 {
-    public abstract class AbstractSettingsService : ISettingsService
+    public abstract class AbstractSettingsService<T> : ISettingsService where T : WebsiteHistoryData, new()
     {
         protected readonly Dictionary<NewsCategory, CategoryData> categories;
 
         public AbstractSettingsService()
         {
             categories = new Dictionary<NewsCategory, CategoryData>();
+
+            WebsiteHistoryData = new T();
 
             this[NewsCategory.None] = new CategoryData { Title = "Settings" };
 
@@ -29,9 +31,10 @@ namespace LeagueOfNews.Core.Service
             set => categories.Add(Category, value);
         }
 
+        public WebsiteHistoryData WebsiteHistoryData { get; set; }
+
         public abstract ApplicationTheme Theme { get; set; }
         public abstract int NewPostCheckFrequency { get; set; }
         public abstract bool HasNotificationsEnabled { get; set; }
-        public abstract WebsiteHistoryData WebsiteHistoryData { get; }
     }
 }

@@ -14,9 +14,7 @@ namespace LeagueOfNews.Forms.Droid.Services
         {
             return Task.Run(() =>
             {
-                CustomTabsIntent.Builder builder = new CustomTabsIntent.Builder();
-                builder.SetToolbarColor(Color.ParseColor("#002132"));
-                CustomTabsIntent customTabsIntent = builder.Build();
+                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().SetToolbarColor(Color.ParseColor("#002132")).Build();
                 customTabsIntent.Intent.AddFlags(ActivityFlags.NoHistory | ActivityFlags.SingleTop | ActivityFlags.NewTask);
                 customTabsIntent.LaunchUrl(Application.Context, Uri.Parse(url));
             });
