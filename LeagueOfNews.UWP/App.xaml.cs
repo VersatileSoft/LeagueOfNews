@@ -69,56 +69,39 @@ namespace LeagueOfNews.UWP
         {
             base.OnActivated(e);
 
-            // Handle toast activation
             if (e is ToastNotificationActivatedEventArgs)
             {
                 var toastActivationArgs = e as ToastNotificationActivatedEventArgs;
 
-                // If empty args, no specific action (just launch the app)
                 if (toastActivationArgs.Argument.Length == 0)
                 {
-                    throw new NotImplementedException();
+                    throw new ArgumentException("No argument value has been provided");
                 }
-
-                // Otherwise an action is provided
                 else
                 {
-                    // Parse the query string
-                    QueryString args = QueryString.Parse(toastActivationArgs.Argument);
+                    var arguments = toastActivationArgs.Argument
+                        .Split("&")
+                        .Select(query => new {
+                            name = query.Split('=')[0],
+                            value = query.Split('=')[1]
+                        }
+                     );
 
-                    // See what action is being requested 
-                    switch (args["action"])
+                    switch (arguments.Single(match => match.name == "action").value)
                     {
-                        // Open the image
                         case "show":
-
                             Frame rootFrame = InitializeFrame(e);
 
-                            var url = args["website"] == "Surrender"
-                                ? Mvx.IoCProvider.Resolve<ISettingsService>().WebsiteHistoryData.LastOfficialPostUrl
-                                : Mvx.IoCProvider.Resolve<ISettingsService>().WebsiteHistoryData.LastOfficialPostUrl;
-
-
                             NewsfeedItemViewModel itemVM = MvxIoCProvider.Instance.Resolve<NewsfeedItemViewModel>();
-                            itemVM.Prepare(new Newsfeed { Title = args["title"], Date = args["date"], UrlToNewsfeed = args["url"] });
-
-                            // Otherwise navigate to view it
-                            //rootFrame.Navigate(typeof(NewsfeedItemView), imageUrl);
-                            break;
-
-
-                        // Open the conversation
-                        case "browser":
-
-                            Task.Run(async () =>
-                            {
-                                var uri = new Uri(args["url"]);
-                                var success = await Windows.System.Launcher.LaunchUriAsync(uri);
+                            itemVM.Prepare(new Newsfeed {
+                                Title = arguments.Single(match => match.name == "title").value,
+                                Date = arguments.Single(match => match.name == "date").value,
+                                UrlToNewsfeed = arguments.Single(match => match.name == "url").value
                             });
                             break;
 
                         default:
-                            throw new NotImplementedException();
+                            throw new ArgumentException("No valid argument category has been provided");
                     }
                 }
             }
@@ -128,21 +111,18 @@ namespace LeagueOfNews.UWP
         {
             switch (args.TaskInstance.Task.Name)
             {
-                case NotificationService.TASK_NAME:
+                case NotificationService.TASK_CHECK_POSTS_NAME:
                     var deferral = args.TaskInstance.GetDeferral();
-                    MvxWindowsSetupSingleton.EnsureSingletonAvailable(RootFrame);
 
+                    MvxWindowsSetupSingleton.EnsureSingletonAvailable(RootFrame);
                     Task.Run(async () =>
                     {
-
                         await Mvx.IoCProvider.Resolve<INewPostsService>().CheckNewPosts();
                         deferral.Complete();
                     });
                     
                     break;
             }
-
-            //deferral.Complete();
         }
     }
 
@@ -164,6 +144,7 @@ namespace LeagueOfNews.UWP
         protected override void InitializeApp(IMvxPluginManager pluginManager, IMvxApplication app)
         {
             base.InitializeApp(pluginManager, app);
+            Mvx.IoCProvider.Resolve<INotificationService>().RefreshNotificationJobService();
         }
 
         public override IEnumerable<Assembly> GetViewModelAssemblies()

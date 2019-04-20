@@ -18,7 +18,7 @@ namespace LeagueOfNews.UWP.Services
 {
     public class NotificationService : INotificationService
     {
-        public const string TASK_NAME = "BackgroundPostTask";
+        public const string TASK_CHECK_POSTS_NAME = "BackgroundCheckPostsTask";
 
         public NotificationService()
         {
@@ -28,61 +28,35 @@ namespace LeagueOfNews.UWP.Services
         public void CreateNotificationChannel()
         {
             var settings = Mvx.IoCProvider.Resolve<ISettingsService>();
-
-            // If we don't support notifications, do nothing
-            if (!settings.HasNotificationsEnabled || settings.NewPostCheckFrequency == -1)
-                return;
-            /*
+            
             // If background task is already registered, do nothing
-            if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_NAME)))
+            if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_CHECK_POSTS_NAME)))
                 return;
 
             var builder = new BackgroundTaskBuilder();
-            builder.Name = TASK_NAME;
-            builder.CancelOnConditionLoss = false;
+            builder.Name = TASK_CHECK_POSTS_NAME;
+            builder.CancelOnConditionLoss = false; //TODO check
             builder.SetTrigger(new TimeTrigger((uint) settings.NewPostCheckFrequency, false));
+            builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
             builder.Register();
-            */
-            
-            //BackgroundTaskRegistration.AllTasks.Single(i => i.Value.Name.Equals(TASK_NAME))
-            //    .Value.Unregister(true);
-
-            // If background task is already registered, do nothing
-            if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_NAME)))
-                return;
-
-            var trigger = new ApplicationTrigger();
-            var builder = new BackgroundTaskBuilder();
-            builder.Name = TASK_NAME;
-            builder.CancelOnConditionLoss = false;
-            builder.SetTrigger(trigger);
-            //builder.SetTrigger(new TimeTrigger((uint) settings.NewPostCheckFrequency, false));
-            builder.Register();
-            Task.Run(async () =>
-            {
-                await trigger.RequestAsync();
-            });
-            
         }
 
         public void RefreshNotificationJobService()
         {
-            if (Mvx.IoCProvider.Resolve<ISettingsService>().HasNotificationsEnabled)
+            var settings = Mvx.IoCProvider.Resolve<ISettingsService>();
+            if (settings.HasNotificationsEnabled && settings.NewPostCheckFrequency != -1)
             {
-                if (!BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_NAME)))
-                {
-                    CreateNotificationChannel();
-                }
+                CreateNotificationChannel();
             }
             else
             {
-                BackgroundTaskRegistration.AllTasks.Single(i => i.Value.Name.Equals(TASK_NAME))
+                BackgroundTaskRegistration.AllTasks.Single(i => i.Value.Name.Equals(TASK_CHECK_POSTS_NAME))
                     .Value.Unregister(true);
             }
         }
 
         public void ShowNewPostNotification(Newsfeed newsfeed, NewsWebsite page)
-        {
+        { 
             ToastNotificationManager.CreateToastNotifier()
                 .Show(new ToastNotification(GenerateNotifcationBody(newsfeed).GetXml()));
         }
@@ -93,13 +67,7 @@ namespace LeagueOfNews.UWP.Services
                 ? Newsfeed.ShortDescription.Substring(0, 120) + "..."
                 : Newsfeed.ShortDescription;
 
-            var parameters = "action=show?"
-                + "title=" + Newsfeed.Title + "&"
-                + "date=" + Newsfeed.Date + "&"
-                + "url=" + Newsfeed.UrlToNewsfeed + "&"
-                + "website=" + Newsfeed.Website.ToString();
-
-            var browserParameters = "action=show?"
+            var parameters = "action=show&"
                 + "title=" + Newsfeed.Title + "&"
                 + "date=" + Newsfeed.Date + "&"
                 + "url=" + Newsfeed.UrlToNewsfeed + "&"
@@ -142,17 +110,19 @@ namespace LeagueOfNews.UWP.Services
                     {
                         new ToastButton("Read in app", parameters)
                         {
-                            ActivationType = ToastActivationType.Background,
+                            ActivationType = ToastActivationType.Foreground,
+                            
                             ImageUri = @"ms-appx:///Assets/Notifications/InApp.png"
                         },
-                        new ToastButton("Open in browser", browserParameters)
+                        new ToastButton("Open in browser", Newsfeed.UrlToNewsfeed)
                         {
-                            ActivationType = ToastActivationType.Background,
+                            ActivationType = ToastActivationType.Protocol,
                             ImageUri = @"ms-appx:///Assets/Notifications/InBrowser.png"
                         }
                     }
                 },
-                Launch = parameters
+                Launch = parameters,
+                ActivationType = ToastActivationType.Foreground
             };
         }
     }
