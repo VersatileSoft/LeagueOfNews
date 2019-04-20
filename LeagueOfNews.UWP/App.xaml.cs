@@ -63,6 +63,8 @@ namespace LeagueOfNews.UWP
                     }
                     break;
             }
+
+            TileUpdateManager.CreateTileUpdaterForApplication().Clear();
         }
 
         protected override void OnActivated(IActivatedEventArgs e)

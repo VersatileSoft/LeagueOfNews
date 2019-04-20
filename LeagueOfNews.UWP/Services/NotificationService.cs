@@ -1,17 +1,9 @@
 ﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Model;
-using Microsoft.QueryStringDotNET;
 using Microsoft.Toolkit.Uwp.Notifications;
 using MvvmCross;
-using System;
-using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Windows.ApplicationModel;
 using Windows.ApplicationModel.Background;
-using Windows.Data.Xml.Dom;
-using Windows.Storage;
 using Windows.UI.Notifications;
 
 namespace LeagueOfNews.UWP.Services
@@ -28,7 +20,7 @@ namespace LeagueOfNews.UWP.Services
         public void CreateNotificationChannel()
         {
             var settings = Mvx.IoCProvider.Resolve<ISettingsService>();
-            
+
             // If background task is already registered, do nothing
             if (BackgroundTaskRegistration.AllTasks.Any(i => i.Value.Name.Equals(TASK_CHECK_POSTS_NAME)))
                 return;
@@ -36,7 +28,7 @@ namespace LeagueOfNews.UWP.Services
             var builder = new BackgroundTaskBuilder();
             builder.Name = TASK_CHECK_POSTS_NAME;
             builder.CancelOnConditionLoss = false; //TODO check
-            builder.SetTrigger(new TimeTrigger((uint) settings.NewPostCheckFrequency, false));
+            builder.SetTrigger(new TimeTrigger((uint)settings.NewPostCheckFrequency, false));
             builder.AddCondition(new SystemCondition(SystemConditionType.InternetAvailable));
             builder.Register();
         }
@@ -56,24 +48,27 @@ namespace LeagueOfNews.UWP.Services
         }
 
         public void ShowNewPostNotification(Newsfeed newsfeed, NewsWebsite page)
-        { 
+        {
             ToastNotificationManager.CreateToastNotifier()
                 .Show(new ToastNotification(GenerateNotifcationBody(newsfeed).GetXml()));
+
+            TileUpdateManager.CreateTileUpdaterForApplication()
+                .Update(new TileNotification(GenerateTileBody(newsfeed).GetXml()));
         }
 
-        private ToastContent GenerateNotifcationBody(Newsfeed Newsfeed)
+        private ToastContent GenerateNotifcationBody(Newsfeed newsfeed)
         {
-            var description = Newsfeed.ShortDescription.Length > 120
-                ? Newsfeed.ShortDescription.Substring(0, 120) + "..."
-                : Newsfeed.ShortDescription;
+            var description = newsfeed.ShortDescription.Length > 120
+                ? newsfeed.ShortDescription.Substring(0, 120) + "..."
+                : newsfeed.ShortDescription;
 
             var parameters = "action=show&"
-                + "title=" + Newsfeed.Title + "&"
-                + "date=" + Newsfeed.Date + "&"
-                + "url=" + Newsfeed.UrlToNewsfeed + "&"
-                + "website=" + Newsfeed.Website.ToString();
+                + "title=" + newsfeed.Title + "&"
+                + "date=" + newsfeed.Date + "&"
+                + "url=" + newsfeed.UrlToNewsfeed + "&"
+                + "website=" + newsfeed.Website.ToString();
 
-            var website = Newsfeed.Website == NewsWebsite.Surrender
+            var website = newsfeed.Website == NewsWebsite.Surrender
                 ? "Surrender@20"
                 : "League of Legends official";
 
@@ -87,7 +82,7 @@ namespace LeagueOfNews.UWP.Services
                         {
                             new AdaptiveText()
                             {
-                                Text = Newsfeed.Title
+                                Text = newsfeed.Title
                             },
                             new AdaptiveText()
                             {
@@ -96,7 +91,7 @@ namespace LeagueOfNews.UWP.Services
                         },
                         HeroImage = new ToastGenericHeroImage()
                         {
-                            Source = Newsfeed.ImageUri
+                            Source = newsfeed.ImageUri
                         },
                         Attribution = new ToastGenericAttributionText()
                         {
@@ -111,10 +106,10 @@ namespace LeagueOfNews.UWP.Services
                         new ToastButton("Read in app", parameters)
                         {
                             ActivationType = ToastActivationType.Foreground,
-                            
+
                             ImageUri = @"ms-appx:///Assets/Notifications/InApp.png"
                         },
-                        new ToastButton("Open in browser", Newsfeed.UrlToNewsfeed)
+                        new ToastButton("Open in browser", newsfeed.UrlToNewsfeed)
                         {
                             ActivationType = ToastActivationType.Protocol,
                             ImageUri = @"ms-appx:///Assets/Notifications/InBrowser.png"
@@ -123,6 +118,88 @@ namespace LeagueOfNews.UWP.Services
                 },
                 Launch = parameters,
                 ActivationType = ToastActivationType.Foreground
+            };
+        }
+
+        private TileContent GenerateTileBody(Newsfeed newsfeed)
+        {
+            return new TileContent()
+            {
+                Visual = new TileVisual()
+                {
+                    Branding = TileBranding.Name,
+                    TileMedium = new TileBinding()
+                    {
+                        DisplayName = "LoN",
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new AdaptiveText()
+                                {
+                                    Text = newsfeed.Title,
+                                    HintStyle = AdaptiveTextStyle.Caption,
+                                    HintWrap = true
+                                }
+                            },
+                            BackgroundImage = new TileBackgroundImage()
+                            {
+                                Source = newsfeed.ImageUri
+                            }
+                        }
+                    },
+                    TileWide = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new AdaptiveText()
+                                {
+                                    Text = newsfeed.Title,
+                                    HintStyle = AdaptiveTextStyle.Base,
+                                    HintWrap = true
+                                },
+                                new AdaptiveText()
+                                {
+                                    Text = newsfeed.ShortDescription,
+                                    HintStyle = AdaptiveTextStyle.Caption,
+                                    HintWrap = true,
+                                    HintMaxLines = 3
+                                }
+                            },
+                            BackgroundImage = new TileBackgroundImage()
+                            {
+                                Source = newsfeed.ImageUri
+                            }
+                        }
+                    },
+                    TileLarge = new TileBinding()
+                    {
+                        Content = new TileBindingContentAdaptive()
+                        {
+                            Children =
+                            {
+                                new AdaptiveText()
+                                {
+                                    Text = newsfeed.Title,
+                                    HintStyle = AdaptiveTextStyle.Base
+                                },
+                                new AdaptiveText()
+                                {
+                                    Text = newsfeed.ShortDescription,
+                                    HintStyle = AdaptiveTextStyle.Caption,
+                                    HintWrap = true,
+                                    HintMaxLines = 3
+                                }
+                            },
+                            BackgroundImage = new TileBackgroundImage()
+                            {
+                                Source = newsfeed.ImageUri
+                            }
+                        }
+                    }
+                }
             };
         }
     }
