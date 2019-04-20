@@ -55,7 +55,7 @@ namespace LeagueOfNews.Core.ViewModels
             Task.Run(async () => //FIXME switch back to Thread
             {
                 IsLoading = true;
-                var data = await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory);
+                System.Collections.Generic.IList<Newsfeed> data = await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory);
                 Newsfeeds = new ObservableCollection<Newsfeed>(data); //Sometimes prints error :/
                 IsLoading = false;
             });
