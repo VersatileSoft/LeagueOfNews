@@ -145,23 +145,25 @@
                                         </RadioButton>
 
                                         <!--  Notifications  -->
-                                        <ToggleSwitch Header="Notifications" IsOn="True">
-                                            <!--<i:Interaction.Behaviors>
+                                        <!--<ToggleSwitch Header="Notifications" IsOn="True">
+                                            <i:Interaction.Behaviors>
                                                 <core:EventTriggerBehavior EventName="Toggled">
                                                     <core:InvokeCommandAction Command="{Binding xxx}"/>
                                                 </core:EventTriggerBehavior>
-                                            </i:Interaction.Behaviors>-->
-                                        </ToggleSwitch>
+                                            </i:Interaction.Behaviors>
+                                        </ToggleSwitch>-->
 
                                         <!--  Others  -->
-                                        <TextBlock FontSize="14" Text="Others settings"/>
+                                        <!--<TextBlock FontSize="14" Text="Others settings"/>
                                         <CheckBox Content="Use mobile version of Surrender@20">
-                                            <!--<i:Interaction.Behaviors>
+                                        -->
+                                        <!--<i:Interaction.Behaviors>
                                                 <core:EventTriggerBehavior EventName="Checked">
                                                     <core:InvokeCommandAction Command="{Binding yyy}"/>
                                                 </core:EventTriggerBehavior>
                                             </i:Interaction.Behaviors>-->
-                                        </CheckBox>
+                                        <!--
+                                        </CheckBox>-->
 
                                         <HyperlinkButton Content="Visit our facebook" NavigateUri="https://www.facebook.com/VersatileSoftware"/>
                                         <HyperlinkButton Content="Try this app on android" NavigateUri="https://play.google.com/store/apps/details?id=com.versatilesofware"/>

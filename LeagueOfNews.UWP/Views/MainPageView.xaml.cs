@@ -38,11 +38,15 @@ namespace LeagueOfNews.UWP.View
             //Change appearance to proper theme
             ChangeThemeLogo();
 
-            //Customize titlebar
-            CoreApplicationViewTitleBar CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
-            CoreTitleBar.ExtendViewIntoTitleBar = true;
-            titleBar.ButtonBackgroundColor = Colors.Transparent;
-            titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            if (App.RunningOnDesktop)
+            {
+                //Customize titlebar
+                CoreApplicationViewTitleBar CoreTitleBar = CoreApplication.GetCurrentView().TitleBar;
+                CoreTitleBar.ExtendViewIntoTitleBar = true;
+                ApplicationViewTitleBar titleBar = ApplicationView.GetForCurrentView().TitleBar;
+                titleBar.ButtonBackgroundColor = Colors.Transparent;
+                titleBar.ButtonInactiveBackgroundColor = Colors.Transparent;
+            }
         }
 
         protected override void OnViewModelSet()

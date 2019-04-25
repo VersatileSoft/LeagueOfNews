@@ -2,10 +2,7 @@
 using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Model;
 using LeagueOfNews.UWP.Services;
-using LeagueOfNews.UWP.View;
 using LeagueOfNews.UWP.ViewModels;
-using Microsoft.QueryStringDotNET;
-using Microsoft.Toolkit.Uwp.Notifications;
 using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.Platforms.Uap.Core;
@@ -19,10 +16,12 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.ApplicationModel.Background;
+using Windows.ApplicationModel.Core;
 using Windows.Storage;
+using Windows.System.Profile;
+using Windows.UI;
 using Windows.UI.Notifications;
 using Windows.UI.ViewManagement;
-using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 
 namespace LeagueOfNews.UWP
@@ -31,6 +30,10 @@ namespace LeagueOfNews.UWP
 
     public sealed partial class App : UWPApplication
     {
+        public static bool RunningOnDesktop => AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Desktop";
+        public static bool RunningOnXbox => AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Xbox";
+        public static bool RunningOnMobile => AnalyticsInfo.VersionInfo.DeviceFamily == "Windows.Mobile";
+
         public App()
         {
             InitializeComponent();
@@ -64,7 +67,10 @@ namespace LeagueOfNews.UWP
                     break;
             }
 
-            TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            if (RunningOnDesktop)
+            {
+                TileUpdateManager.CreateTileUpdaterForApplication().Clear();
+            }
         }
 
         protected override void OnActivated(IActivatedEventArgs e)
@@ -73,7 +79,7 @@ namespace LeagueOfNews.UWP
 
             if (e is ToastNotificationActivatedEventArgs)
             {
-                var toastActivationArgs = e as ToastNotificationActivatedEventArgs;
+                ToastNotificationActivatedEventArgs toastActivationArgs = e as ToastNotificationActivatedEventArgs;
 
                 if (toastActivationArgs.Argument.Length == 0)
                 {
@@ -83,7 +89,8 @@ namespace LeagueOfNews.UWP
                 {
                     var arguments = toastActivationArgs.Argument
                         .Split("&")
-                        .Select(query => new {
+                        .Select(query => new
+                        {
                             name = query.Split('=')[0],
                             value = query.Split('=')[1]
                         }
@@ -95,7 +102,8 @@ namespace LeagueOfNews.UWP
                             Frame rootFrame = InitializeFrame(e);
 
                             NewsfeedItemViewModel itemVM = MvxIoCProvider.Instance.Resolve<NewsfeedItemViewModel>();
-                            itemVM.Prepare(new Newsfeed {
+                            itemVM.Prepare(new Newsfeed
+                            {
                                 Title = arguments.Single(match => match.name == "title").value,
                                 Date = arguments.Single(match => match.name == "date").value,
                                 UrlToNewsfeed = arguments.Single(match => match.name == "url").value
@@ -114,7 +122,7 @@ namespace LeagueOfNews.UWP
             switch (args.TaskInstance.Task.Name)
             {
                 case NotificationService.TASK_CHECK_POSTS_NAME:
-                    var deferral = args.TaskInstance.GetDeferral();
+                    BackgroundTaskDeferral deferral = args.TaskInstance.GetDeferral();
 
                     MvxWindowsSetupSingleton.EnsureSingletonAvailable(RootFrame);
                     Task.Run(async () =>
@@ -122,7 +130,7 @@ namespace LeagueOfNews.UWP
                         await Mvx.IoCProvider.Resolve<INewPostsService>().CheckNewPosts();
                         deferral.Complete();
                     });
-                    
+
                     break;
             }
         }
