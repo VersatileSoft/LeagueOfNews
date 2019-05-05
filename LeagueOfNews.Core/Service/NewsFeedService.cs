@@ -82,13 +82,12 @@ namespace LeagueOfNews.Core.Service
                 Newsfeed newsfeed = new Newsfeed();
                 try
                 {
-                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText);
+                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText).RemoveSpaceFromString();
                     newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText);
                     newsfeed.UrlToNewsfeed = _officialBaseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value;
-                    newsfeed.Image = await _cookieWebClientService.GetImage(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
-                    newsfeed.ImageUri = _officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value.ToString(); //FIXME strinh.ToString()?
-                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText)
-                        .RemoveSpaceFromString();
+                    newsfeed.Image = await _cookieWebClientService.GetImage(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value);
+                    newsfeed.ImageUri = _officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value;
+                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText).RemoveSpaceFromString();
                     newsfeed.Page = page;
                     //TODO newsfeed.Website
                 }
@@ -124,8 +123,8 @@ namespace LeagueOfNews.Core.Service
                     else if (_operatingSystemService.GetSystemType() == SystemType.UWP)
                     {
                         newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
-                        newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value.ToString());
-                        newsfeed.ImageUri = node.SelectSingleNode(".//img").Attributes["src"].Value.ToString();
+                        newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value);
+                        newsfeed.ImageUri = node.SelectSingleNode(".//img").Attributes["src"].Value;
                     }
 
                     newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
@@ -156,6 +155,8 @@ namespace ExtensionMethods
         public static string RemoveSpaceFromString(this string s)
         {
             return s.Replace("\n", " ")
+                    .Replace("\n\n", " ")
+                    .Replace(Environment.NewLine, " ")
                     .Replace("          ", " ")
                     .Replace("   ", " ")
                     .Replace("  ", " ")
