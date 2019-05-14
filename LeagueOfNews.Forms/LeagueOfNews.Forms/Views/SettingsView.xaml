@@ -23,7 +23,10 @@
                             Style="{DynamicResource Label}"
                             Text="Notifications"
                             VerticalOptions="CenterAndExpand"/>
-                        <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}"/>
+                        <Switch
+                            HorizontalOptions="EndAndExpand"
+                            IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}"
+                            OnColor="#ce9f3d"/>
                     </StackLayout>
 
                     <Label
@@ -33,6 +36,7 @@
                         Text="Delay"/>
                     <Picker
                         Title="Select delay"
+                        BackgroundColor="Transparent"
                         ItemsSource="{Binding DelayList}"
                         SelectedItem="{Binding Delay, Mode=TwoWay}"
                         Style="{DynamicResource Label}"/>
@@ -50,7 +54,10 @@
                         Style="{DynamicResource Label}"
                         Text="Turn off the lights"
                         VerticalOptions="CenterAndExpand"/>
-                    <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding DarkTheme, Mode=TwoWay}"/>
+                    <Switch
+                        HorizontalOptions="EndAndExpand"
+                        IsToggled="{Binding DarkTheme, Mode=TwoWay}"
+                        OnColor="#ce9f3d"/>
                 </StackLayout>
             </Frame>
 
@@ -75,7 +82,7 @@
                         BackgroundColor="#ce9f3d"
                         Clicked="WindowsAppButton_Clicked"
                         HorizontalOptions="EndAndExpand"
-                        Text="Try this app on Windows 10"
+                        Text="Windows 10 app"
                         TextColor="White"/>
                 </Grid>
             </Frame>

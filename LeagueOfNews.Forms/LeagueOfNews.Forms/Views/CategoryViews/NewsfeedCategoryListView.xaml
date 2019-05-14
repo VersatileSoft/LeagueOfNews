@@ -70,7 +70,7 @@
                                                 TextColor="{DynamicResource Label}"/>
 
                                             <Label
-                                                MaxLines="10"
+                                                MaxLines="4"
                                                 Style="{DynamicResource DescriptionLabel}"
                                                 Text="{x:Binding ShortDescription}"/>
                                         </StackLayout>

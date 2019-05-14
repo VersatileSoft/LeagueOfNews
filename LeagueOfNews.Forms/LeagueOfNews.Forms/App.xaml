@@ -13,6 +13,7 @@
 
             <Style x:Key="ActivityIndicator" TargetType="ActivityIndicator">
                 <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Color" Value="#ce9f3d"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="IsRunning" Value="{Binding IsLoading}"/>
             </Style>
@@ -42,10 +43,12 @@
 
             <Style x:Key="LightPage" TargetType="views:MvxContentPage">
                 <Setter Property="BackgroundColor" Value="#F0F0F0"/>
+                <Setter Property="Visual" Value="Material"/>
             </Style>
 
             <Style x:Key="DarkPage" TargetType="views:MvxContentPage">
                 <Setter Property="BackgroundColor" Value="#001119"/>
+                <Setter Property="Visual" Value="Material"/>
             </Style>
 
             <Style x:Key="DarkLabel" TargetType="Label">

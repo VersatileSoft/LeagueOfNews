@@ -37,7 +37,9 @@ namespace LeagueOfNews.Forms.Droid.Renderers
 
             adView.LoadAd(new AdRequest
                             .Builder()
+#if DEBUG
                             .AddTestDevice("CAFB33A5D42F4D16D9004932F5314862") // TODO Kacpur dodaj tu swój tel do testów
+#endif
                             .Build());
             return adView;
         }
