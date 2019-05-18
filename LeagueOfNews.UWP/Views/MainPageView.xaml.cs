@@ -10,7 +10,7 @@ using Windows.UI.Xaml.Controls.Primitives;
 using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media.Imaging;
 
-namespace LeagueOfNews.UWP.View
+namespace LeagueOfNews.UWP.Views
 {
     public sealed partial class MainPageView : MvxWindowsPage
     {

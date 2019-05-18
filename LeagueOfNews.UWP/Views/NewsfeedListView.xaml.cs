@@ -12,7 +12,7 @@ using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Input;
 
-namespace LeagueOfNews.UWP.View
+namespace LeagueOfNews.UWP.Views
 {
     //Workaround: Generic classes are not supported as a base in UWP XAML
     public abstract class NewsfeedListViewBase : MvxUserControl<NewsfeedListViewModel> { }

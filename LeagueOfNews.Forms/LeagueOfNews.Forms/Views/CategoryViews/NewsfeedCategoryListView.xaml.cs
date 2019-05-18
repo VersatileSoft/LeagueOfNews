@@ -5,7 +5,7 @@ using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace LeagueOfNews.Forms.Views
+namespace LeagueOfNews.Forms.Views.CategoryViews
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxTabbedPagePresentation(TabbedPosition.Tab, NoHistory = true)]
