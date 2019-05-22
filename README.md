@@ -3,4 +3,4 @@
 ![alt text](https://lh3.googleusercontent.com/DnV5sofBHws4SQBv-LRd4bkh5K6udYbQbPTQcWN8NfcZSmW0Bmw9fl6p7MtAEsCJ-jE=w1920-h914-rw)
 
 # Build
-UWP requires Microsoft Advertising SDK and Windows 10 11903 SDK
+UWP requires Microsoft Advertising SDK and Windows 10 1903 SDK
