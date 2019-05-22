@@ -7,7 +7,7 @@
   
   <Identity Name="4792MohairApp.LeagueofNews" 
             Publisher="CN=91FC2611-0BE1-4BF6-BF67-9AC292856A90" 
-            Version="1.1.0.0" />
+            Version="1.1.1.0" />
   
   <mp:PhoneIdentity PhoneProductId="4e504db9-a9f9-44ae-b313-438aee4fb23c" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
   

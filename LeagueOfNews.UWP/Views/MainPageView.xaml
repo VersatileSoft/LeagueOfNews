@@ -167,7 +167,7 @@
 
                                         <HyperlinkButton Content="Visit our facebook" NavigateUri="https://www.facebook.com/VersatileSoftware"/>
                                         <HyperlinkButton Content="Try this app on android" NavigateUri="https://play.google.com/store/apps/details?id=com.versatilesofware"/>
-                                        <TextBlock Text="Versatile Software - League of News v1.1"/>
+                                        <TextBlock Text="Versatile Software - League of News v1.1.1"/>
                                     </StackPanel>
                                 </Flyout>
                             </FlyoutBase.AttachedFlyout>
