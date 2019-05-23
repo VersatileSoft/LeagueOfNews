@@ -15,9 +15,10 @@ namespace LeagueOfNews.Forms.Views
             InitializeComponent();
         }
 
-        private void MvxListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ViewModel.NavigateCommand.Execute((MenuListElement)e.Item);
+            CollectionView CollView = (CollectionView)sender;
+            ViewModel.NavigateCommand.Execute((MenuListElement)CollView.SelectedItem);
         }
     }
 }

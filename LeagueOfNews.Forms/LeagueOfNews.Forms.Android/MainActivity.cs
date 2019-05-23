@@ -14,6 +14,7 @@ namespace LeagueOfNews.Forms.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
+            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
             Xamarin.Forms.FormsMaterial.Init(this, bundle);
 
             TabLayoutResource = Resource.Layout.Tabbar;

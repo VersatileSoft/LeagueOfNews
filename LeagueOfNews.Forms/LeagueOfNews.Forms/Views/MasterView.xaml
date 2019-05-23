@@ -1,5 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:MvxContentPage
+﻿<views:MvxContentPage
     x:Class="LeagueOfNews.Forms.Views.MasterView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
@@ -20,35 +19,33 @@
             </Frame>
 
             <StackLayout Padding="10">
-                <views:MvxListView
-                    ItemTapped="MvxListView_ItemTapped"
+                <CollectionView
+                    ItemSizingStrategy="MeasureFirstItem"
+                    ItemsLayout="{x:Static ListItemsLayout.VerticalList}"
                     ItemsSource="{Binding MenuElements}"
-                    Style="{StaticResource ListView}">
+                    SelectionChanged="CollectionView_SelectionChanged"
+                    SelectionMode="Single">
 
-                    <views:MvxListView.ItemTemplate>
+                    <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
-                                <Frame Margin="10,5,10,5" Style="{DynamicResource Frame}">
-                                    <StackLayout Orientation="Horizontal">
-                                        <util:TintedImage
-                                            Margin="10"
-                                            HeightRequest="35"
-                                            IsOpaque="True"
-                                            Source="{Binding MenuImage}"
-                                            Style="{DynamicResource Image}"/>
+                            <StackLayout Margin="15" Orientation="Horizontal">
+                                <util:TintedImage
+                                    Margin="10"
+                                    HeightRequest="35"
+                                    IsOpaque="True"
+                                    Source="{Binding MenuImage}"
+                                    Style="{DynamicResource Image}"/>
 
-                                        <Label
-                                            FontAttributes="Bold"
-                                            FontSize="Large"
-                                            Style="{DynamicResource MenuLabel}"
-                                            Text="{Binding Name}"
-                                            VerticalOptions="CenterAndExpand"/>
-                                    </StackLayout>
-                                </Frame>
-                            </ViewCell>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Large"
+                                    Style="{DynamicResource MenuLabel}"
+                                    Text="{Binding Name}"
+                                    VerticalOptions="CenterAndExpand"/>
+                            </StackLayout>
                         </DataTemplate>
-                    </views:MvxListView.ItemTemplate>
-                </views:MvxListView>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
             </StackLayout>
         </StackLayout>
     </views:MvxContentPage.Content>
