@@ -3,5 +3,8 @@
 	<uses-sdk android:targetSdkVersion="28" android:minSdkVersion="22" />
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-	<application android:roundIcon="@mipmap/icon_round" android:label="League of News"></application>
+  
+	<application android:roundIcon="@mipmap/icon_round" android:label="League of News">
+    <uses-library android:name="org.apache.http.legacy" android:required="false" />
+  </application>
 </manifest>
