@@ -1,9 +1,8 @@
-﻿<views:MvxMasterDetailPage
-    x:Class="LeagueOfNews.Forms.Views.RootPageView"
+﻿<views:MvxMasterDetailPage x:Class="LeagueOfNews.Forms.Views.RootPageView" Style="{DynamicResource Page}"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="{Binding Title}"
     x:TypeArguments="viewModels:RootPageViewModel"
-    Style="{DynamicResource Page}"/>
+    Visual="Material"/>

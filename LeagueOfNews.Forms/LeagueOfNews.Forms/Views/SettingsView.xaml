@@ -1,5 +1,4 @@
-﻿<views:MvxContentPage
-    x:Class="LeagueOfNews.Forms.Views.SettingsView"
+﻿<views:MvxContentPage x:Class="LeagueOfNews.Forms.Views.SettingsView" Style="{DynamicResource Page}"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
@@ -7,70 +6,58 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="Settings"
     x:TypeArguments="viewModels:SettingsViewModel"
-    Style="{DynamicResource Page}">
+    Visual="Material">
 
     <views:MvxContentPage.Content>
         <StackLayout Padding="15" Spacing="15">
-            <Frame
+            <Frame Style="{DynamicResource Frame}"
                 Padding="10"
-                HorizontalOptions="FillAndExpand"
-                Style="{DynamicResource Frame}">
+                HorizontalOptions="FillAndExpand">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label
+                        <Label Style="{DynamicResource Label}"
                             FontAttributes="Bold"
                             FontSize="Large"
-                            Style="{DynamicResource Label}"
                             Text="Notifications"
                             VerticalOptions="CenterAndExpand"/>
                         <Switch
                             HorizontalOptions="EndAndExpand"
                             IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}"
-                            OnColor="#ce9f3d"/>
+                            ThumbColor="#ce9f3d"/>
                     </StackLayout>
 
-                    <Label
-                        Margin="0,10,0,0"
-                        FontSize="Large"
-                        Style="{DynamicResource Label}"
-                        Text="Delay"/>
-                    <Picker
+                    <Picker Style="{DynamicResource Label}"
                         Title="Select delay"
                         BackgroundColor="Transparent"
                         ItemsSource="{Binding DelayList}"
-                        SelectedItem="{Binding Delay, Mode=TwoWay}"
-                        Style="{DynamicResource Label}"/>
+                        SelectedItem="{Binding Delay, Mode=TwoWay}"/>
                 </StackLayout>
             </Frame>
 
-            <Frame
+            <Frame Style="{DynamicResource Frame}"
                 Padding="10"
-                HorizontalOptions="FillAndExpand"
-                Style="{DynamicResource Frame}">
+                HorizontalOptions="FillAndExpand">
                 <StackLayout Orientation="Horizontal">
-                    <Label
+                    <Label Style="{DynamicResource Label}"
                         FontAttributes="Bold"
                         FontSize="Large"
-                        Style="{DynamicResource Label}"
                         Text="Turn off the lights"
                         VerticalOptions="CenterAndExpand"/>
                     <Switch
                         HorizontalOptions="EndAndExpand"
                         IsToggled="{Binding DarkTheme, Mode=TwoWay}"
-                        OnColor="#ce9f3d"/>
+                        ThumbColor="#ce9f3d"/>
                 </StackLayout>
             </Frame>
 
-            <Frame
+            <Frame Style="{DynamicResource Frame}"
                 Padding="10"
-                HorizontalOptions="FillAndExpand"
-                Style="{DynamicResource Frame}">
+                HorizontalOptions="FillAndExpand">
                 <Grid>
                     <StackLayout>
-                        <Label
+                        <Label Style="{DynamicResource Label}"
                             FontAttributes="Bold"
                             FontSize="Large"
-                            Style="{DynamicResource Label}"
                             Text="League of News v1.1"/>
                         <Label
                             FontSize="Medium"

@@ -9,7 +9,7 @@ using MvvmCross.Forms.Platforms.Android.Views;
 
 namespace LeagueOfNews.Forms.Droid
 {
-    [Activity(Label = "League of News", MainLauncher = true, Theme = "@style/MyTheme.Splash", NoHistory = false, LaunchMode = LaunchMode.SingleTask, ScreenOrientation = ScreenOrientation.Portrait)]
+    [Activity(MainLauncher = true, NoHistory = false, LaunchMode = LaunchMode.SingleTask, ScreenOrientation = ScreenOrientation.Portrait)]
     public class MainActivity : MvxFormsAppCompatActivity<Setup, CoreApp, App>
     {
         protected override void OnCreate(Bundle bundle)
@@ -19,6 +19,7 @@ namespace LeagueOfNews.Forms.Droid
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
+
             base.SetTheme(Resource.Style.MainTheme);
             base.OnCreate(bundle);
         }

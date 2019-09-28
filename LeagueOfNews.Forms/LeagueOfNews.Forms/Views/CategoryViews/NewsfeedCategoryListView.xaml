@@ -1,80 +1,33 @@
-﻿<views:MvxContentPage
-    x:Class="LeagueOfNews.Forms.Views.CategoryViews.NewsfeedCategoryListView"
+﻿<views:MvxContentPage x:Class="LeagueOfNews.Forms.Views.CategoryViews.NewsfeedCategoryListView" Style="{DynamicResource Page}"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:conv="clr-namespace:LeagueOfNews.Forms.Converters"
-    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
+    xmlns:controls="clr-namespace:LeagueOfNews.Forms.Controls"
     xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
     xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels;assembly=LeagueOfNews.Forms"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="{Binding Title}"
     x:TypeArguments="viewModels:NewsfeedCategoryListViewModel"
-    Style="{DynamicResource Page}">
-    <!--<views:MvxContentPage.Resources>
-        <ResourceDictionary>
-            <conv:UriToImageSource x:Key="UriToImageSource"/>
-    -->
-    <!--<conv:NegateBoolConverter x:Key="NegateBoolConverter"/>-->
-    <!--
-        </ResourceDictionary>
-    </views:MvxContentPage.Resources>-->
+    Visual="Material">
 
     <views:MvxContentPage.Content>
         <Grid>
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
             <StackLayout Spacing="0">
-                <Frame Style="{StaticResource ShadowFrame}"/>
-                <util:InfiniteListView
+                <util:InfiniteListView Style="{StaticResource InfiniteListView}"
                     IsPullToRefreshEnabled="True"
                     IsRefreshing="{Binding IsRefreshing}"
                     ItemTapped="MvxListView_ItemTapped"
                     ItemsSource="{Binding Newsfeeds}"
                     LoadMoreCommand="{Binding LoadMoreCommand}"
                     RefreshCommand="{Binding RefreshItemsCommand}"
-                    Style="{StaticResource InfiniteListView}">
-
+                    VerticalOptions="FillAndExpand">
                     <!--  TODO Change event to Behavior  -->
-
-                    <!--<views:MvxListView.Behaviors>
-                    <b:EventToCommandBehavior EventName="ItemTapped"
-                                          Command="{Binding ItemTappedCommand}"
-                                          EventArgsParameterPath="Item" />
-                </views:MvxListView.Behaviors>-->
 
                     <views:MvxListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Frame
-                                    Margin="10,5,10,5"
-                                    Padding="10"
-                                    Style="{DynamicResource Frame}">
-                                    <Grid>
-                                        <!--<Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="35*"/>
-                                        <ColumnDefinition Width="65*"/>
-                                    </Grid.ColumnDefinitions>
-
-                                    <Frame Style="{StaticResource Frame}" Margin="-10,-5,0,-5" Grid.Column="0">
-                                        <Image Source="{x:Binding Path=Image, Converter={StaticResource UriToImageSource}}"
-                                               Aspect="AspectFill"/>
-                                    </Frame>-->
-
-                                        <StackLayout>
-                                            <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}" Text="{x:Binding Title}"/>
-
-                                            <Label
-                                                Style="{StaticResource DateLabel}"
-                                                Text="{x:Binding Date}"
-                                                TextColor="{DynamicResource Label}"/>
-
-                                            <Label
-                                                MaxLines="4"
-                                                Style="{DynamicResource DescriptionLabel}"
-                                                Text="{x:Binding ShortDescription}"/>
-                                        </StackLayout>
-                                    </Grid>
-                                </Frame>
+                                <controls:NewsfeedItemCell/>
                             </ViewCell>
                         </DataTemplate>
                     </views:MvxListView.ItemTemplate>
@@ -84,9 +37,9 @@
                             <ActivityIndicator IsRunning="{Binding IsLoadingMore}" Style="{StaticResource ActivityIndicator}"/>
                         </Grid>
                     </ListView.Footer>
-
                 </util:InfiniteListView>
-                <Grid HeightRequest="110" HorizontalOptions="FillAndExpand">
+
+                <Grid HeightRequest="80" HorizontalOptions="FillAndExpand">
                     <Label
                         HorizontalOptions="CenterAndExpand"
                         Text="Advertisement"

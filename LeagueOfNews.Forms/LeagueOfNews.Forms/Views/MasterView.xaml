@@ -1,5 +1,4 @@
-﻿<views:MvxContentPage
-    x:Class="LeagueOfNews.Forms.Views.MasterView"
+﻿<views:MvxContentPage x:Class="LeagueOfNews.Forms.Views.MasterView" Style="{DynamicResource Page}"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
@@ -7,7 +6,7 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="Placeholder"
     x:TypeArguments="viewModels:MasterViewModel"
-    Style="{DynamicResource Page}">
+    Visual="Material">
 
     <views:MvxContentPage.Content>
         <StackLayout>
@@ -21,7 +20,7 @@
             <StackLayout Padding="10">
                 <CollectionView
                     ItemSizingStrategy="MeasureFirstItem"
-                    ItemsLayout="{x:Static ListItemsLayout.VerticalList}"
+                    ItemsLayout="VerticalList"
                     ItemsSource="{Binding MenuElements}"
                     SelectionChanged="CollectionView_SelectionChanged"
                     SelectionMode="Single">
@@ -29,17 +28,15 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate>
                             <StackLayout Margin="15" Orientation="Horizontal">
-                                <util:TintedImage
+                                <util:TintedImage Style="{DynamicResource Image}"
                                     Margin="10"
                                     HeightRequest="35"
                                     IsOpaque="True"
-                                    Source="{Binding MenuImage}"
-                                    Style="{DynamicResource Image}"/>
+                                    Source="{Binding MenuImage}"/>
 
-                                <Label
+                                <Label Style="{DynamicResource MenuLabel}"
                                     FontAttributes="Bold"
                                     FontSize="Large"
-                                    Style="{DynamicResource MenuLabel}"
                                     Text="{Binding Name}"
                                     VerticalOptions="CenterAndExpand"/>
                             </StackLayout>
