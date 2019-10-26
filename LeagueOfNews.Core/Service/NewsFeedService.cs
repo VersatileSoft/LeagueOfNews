@@ -119,6 +119,8 @@ namespace LeagueOfNews.Core.Service
                     if (_operatingSystemService.GetSystemType() == SystemType.Android)
                     {
                         newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
+                        newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value);
+                        newsfeed.ImageUri = node.SelectSingleNode(".//img").Attributes["src"].Value;
                     }
                     else if (_operatingSystemService.GetSystemType() == SystemType.UWP)
                     {

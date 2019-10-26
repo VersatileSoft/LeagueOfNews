@@ -6,9 +6,6 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms">
     <m:MvxFormsApplication.Resources>
         <ResourceDictionary>
-
-            <!--  TODO: Optimize styles  -->
-
             <Style x:Key="ActivityIndicator" TargetType="ActivityIndicator">
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Color" Value="#ce9f3d"/>
@@ -85,18 +82,6 @@
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
                 <Setter Property="MaxLines" Value="2"/>
                 <Setter Property="TextColor" Value="White"/>
-            </Style>
-
-            <Style x:Key="ListView" TargetType="ListView">
-                <Setter Property="HasUnevenRows" Value="True"/>
-                <Setter Property="SeparatorVisibility" Value="None"/>
-                <Setter Property="SelectionMode" Value="None"/>
-            </Style>
-
-            <Style x:Key="InfiniteListView" TargetType="ListView">
-                <Setter Property="HasUnevenRows" Value="True"/>
-                <Setter Property="SeparatorVisibility" Value="None"/>
-                <Setter Property="SelectionMode" Value="None"/>
             </Style>
 
             <Style x:Key="TitleExtendedLabel" TargetType="Label">

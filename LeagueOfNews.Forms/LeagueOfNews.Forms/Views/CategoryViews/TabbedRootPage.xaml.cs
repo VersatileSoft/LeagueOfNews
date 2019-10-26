@@ -1,11 +1,9 @@
 ﻿using LeagueOfNews.Forms.ViewModels;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using Xamarin.Forms.Xaml;
 
 namespace LeagueOfNews.Forms.Views.CategoryViews
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, WrapInNavigationPage = true, NoHistory = true)]
     public partial class TabbedRootPage : MvxTabbedPage<TabbedRootViewModel>
     {

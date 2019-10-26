@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace LeagueOfNews.Forms.Converters
 {
-    public class UriToImageSource : IValueConverter
+    public class UriToImageSourceConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

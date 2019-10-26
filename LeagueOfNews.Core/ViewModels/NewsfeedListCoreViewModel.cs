@@ -38,9 +38,9 @@ namespace LeagueOfNews.Core.ViewModels
             _settingsService = settingsService;
             _navigationService = navigationService;
 
-            ItemSelectedCommand = new MvxAsyncCommand<Newsfeed>(async (Newsfeed) =>
+            ItemSelectedCommand = new MvxAsyncCommand<Newsfeed>(async (newsfeed) =>
             {
-                await NavigateToAsync(Newsfeed);
+                await NavigateToAsync(newsfeed);
             });
 
             RefreshItemsCommand = new MvxCommand(RefreshNewsfeeds);
@@ -52,31 +52,34 @@ namespace LeagueOfNews.Core.ViewModels
         //TODO make 1 f instead of 3, maybe enum with sth like LoadingAction (load?, loadMore, refresh)
         protected void LoadNewsfeeds()
         {
-            Task.Run(async () => //FIXME switch back to Thread
-            {
-                IsLoading = true;
-                System.Collections.Generic.IList<Newsfeed> data = await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory);
-                Newsfeeds = new ObservableCollection<Newsfeed>(data); //Sometimes prints error :/
-                IsLoading = false;
-            });
-        }
-
-        protected void LoadMoreNewsfeeds()
-        {
             new Thread(async () =>
             {
-                IsLoadingMore = true;
-                foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds(SelectedCategory))
-                {
-                    Newsfeeds.Add(item);
-                }
-                IsLoadingMore = false;
+                IsLoading = true;
+                Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory)); //Sometimes prints error :/
+                IsLoading = false;
             }).Start();
+        }
+
+        protected async void LoadMoreNewsfeeds()
+        {
+            if (IsLoading || IsLoadingMore || IsRefreshing)
+            {
+                return;
+            }
+
+            IsLoadingMore = true;
+
+            foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds(SelectedCategory))
+            {
+                Newsfeeds.Add(item);
+            }
+
+            IsLoadingMore = false;
         }
 
         protected void RefreshNewsfeeds()
         {
-            Newsfeeds.Clear();
+
             new Thread(async () =>
             {
                 IsRefreshing = true;

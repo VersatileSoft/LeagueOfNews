@@ -2,12 +2,11 @@
 using LeagueOfNews.Model;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
+using System;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace LeagueOfNews.Forms.Views.CategoryViews
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxTabbedPagePresentation(TabbedPosition.Tab, NoHistory = true)]
     public partial class NewsfeedCategoryListView : MvxContentPage<NewsfeedCategoryListViewModel>
     {
@@ -16,9 +15,14 @@ namespace LeagueOfNews.Forms.Views.CategoryViews
             InitializeComponent();
         }
 
-        private void MvxListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void InfiniteCollectionView_ItemTapped(object sender, EventArgs e)
         {
-            ViewModel.ItemSelectedCommand.Execute((Newsfeed)e.Item);
+            //Execute command
+            CollectionView CollView = (CollectionView)sender;
+            ViewModel.ItemSelectedCommand.Execute((Newsfeed)CollView.SelectedItem);
+
+            //Reset selection
+            CollView.SelectedItem = null;
         }
     }
 }

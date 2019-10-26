@@ -1,11 +1,9 @@
 ﻿using LeagueOfNews.Forms.ViewModels;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using Xamarin.Forms.Xaml;
 
 namespace LeagueOfNews.Forms.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Root, WrapInNavigationPage = false, NoHistory = true)]
     public partial class RootPageView : MvxMasterDetailPage<RootPageViewModel>
     {

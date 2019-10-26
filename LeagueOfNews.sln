@@ -11,6 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.Forms.Android"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.Forms", "LeagueOfNews.Forms\LeagueOfNews.Forms\LeagueOfNews.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Config", "Solution Config", "{0130BC9D-9367-4247-95ED-9A9FB6DC0CC7}"
+	ProjectSection(SolutionItems) = preProject
+		Settings.XamlStyler = Settings.XamlStyler
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

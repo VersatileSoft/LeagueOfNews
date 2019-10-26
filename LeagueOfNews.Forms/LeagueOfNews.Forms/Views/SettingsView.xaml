@@ -1,74 +1,83 @@
-﻿<views:MvxContentPage x:Class="LeagueOfNews.Forms.Views.SettingsView" Style="{DynamicResource Page}"
+﻿<views:MvxContentPage x:Class="LeagueOfNews.Forms.Views.SettingsView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:mvx="clr-namespace:MvvmCross.Forms.Bindings;assembly=MvvmCross.Forms"
     xmlns:viewModels="clr-namespace:LeagueOfNews.Core.ViewModels;assembly=LeagueOfNews.Core"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="Settings"
+    x:DataType="viewModels:SettingsViewModel"
     x:TypeArguments="viewModels:SettingsViewModel"
-    Visual="Material">
+    Style="{DynamicResource Page}">
 
     <views:MvxContentPage.Content>
         <StackLayout Padding="15" Spacing="15">
-            <Frame Style="{DynamicResource Frame}"
+            <Frame
                 Padding="10"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                Style="{DynamicResource Frame}">
                 <StackLayout>
                     <StackLayout Orientation="Horizontal">
-                        <Label Style="{DynamicResource Label}"
+                        <Label
+                            VerticalOptions="CenterAndExpand"
                             FontAttributes="Bold"
                             FontSize="Large"
-                            Text="Notifications"
-                            VerticalOptions="CenterAndExpand"/>
+                            Style="{DynamicResource Label}"
+                            Text="Notifications"/>
                         <Switch
                             HorizontalOptions="EndAndExpand"
                             IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}"
+                            OnColor="#997105"
                             ThumbColor="#ce9f3d"/>
                     </StackLayout>
 
-                    <Picker Style="{DynamicResource Label}"
+                    <Picker
                         Title="Select delay"
                         BackgroundColor="Transparent"
                         ItemsSource="{Binding DelayList}"
-                        SelectedItem="{Binding Delay, Mode=TwoWay}"/>
+                        SelectedItem="{Binding Delay, Mode=TwoWay}"
+                        Style="{DynamicResource Label}"/>
                 </StackLayout>
             </Frame>
 
-            <Frame Style="{DynamicResource Frame}"
+            <Frame
                 Padding="10"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                Style="{DynamicResource Frame}">
                 <StackLayout Orientation="Horizontal">
-                    <Label Style="{DynamicResource Label}"
+                    <Label
+                        VerticalOptions="CenterAndExpand"
                         FontAttributes="Bold"
                         FontSize="Large"
-                        Text="Turn off the lights"
-                        VerticalOptions="CenterAndExpand"/>
+                        Style="{DynamicResource Label}"
+                        Text="Turn off the lights"/>
                     <Switch
                         HorizontalOptions="EndAndExpand"
                         IsToggled="{Binding DarkTheme, Mode=TwoWay}"
+                        OnColor="#997105"
                         ThumbColor="#ce9f3d"/>
                 </StackLayout>
             </Frame>
 
-            <Frame Style="{DynamicResource Frame}"
+            <Frame
                 Padding="10"
-                HorizontalOptions="FillAndExpand">
+                HorizontalOptions="FillAndExpand"
+                Style="{DynamicResource Frame}">
                 <Grid>
                     <StackLayout>
-                        <Label Style="{DynamicResource Label}"
+                        <Label
                             FontAttributes="Bold"
                             FontSize="Large"
-                            Text="League of News v1.1"/>
+                            Style="{DynamicResource Label}"
+                            Text="League of News v1.2"/>
                         <Label
                             FontSize="Medium"
-                            Text="Versatile Software 2019"
+                            Text="Versatile Software 2020"
                             TextColor="Gray"/>
                     </StackLayout>
 
                     <Button
+                        HorizontalOptions="EndAndExpand"
                         BackgroundColor="#ce9f3d"
                         Clicked="WindowsAppButton_Clicked"
-                        HorizontalOptions="EndAndExpand"
                         Text="Windows 10 app"
                         TextColor="White"/>
                 </Grid>

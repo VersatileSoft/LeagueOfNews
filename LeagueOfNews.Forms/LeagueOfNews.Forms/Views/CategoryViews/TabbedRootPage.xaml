@@ -1,5 +1,4 @@
-﻿<views:MvxTabbedPage
-    x:Class="LeagueOfNews.Forms.Views.CategoryViews.TabbedRootPage"
+﻿<views:MvxTabbedPage x:Class="LeagueOfNews.Forms.Views.CategoryViews.TabbedRootPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels;assembly=LeagueOfNews.Forms"

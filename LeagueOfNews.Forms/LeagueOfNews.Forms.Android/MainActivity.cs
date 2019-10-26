@@ -1,11 +1,12 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Gms.Ads;
 using Android.OS;
+using FFImageLoading.Forms.Platform;
 using LeagueOfNews.Core;
 using LeagueOfNews.Core.Interface;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Views;
+using Xamarin.Forms;
 
 namespace LeagueOfNews.Forms.Droid
 {
@@ -14,8 +15,8 @@ namespace LeagueOfNews.Forms.Droid
     {
         protected override void OnCreate(Bundle bundle)
         {
-            Xamarin.Forms.Forms.SetFlags("CollectionView_Experimental");
-            Xamarin.Forms.FormsMaterial.Init(this, bundle);
+            CachedImageRenderer.Init(enableFastRenderer: true);
+            FormsMaterial.Init(this, bundle);
 
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
@@ -27,7 +28,6 @@ namespace LeagueOfNews.Forms.Droid
         public override void InitializeApplication()
         {
             base.InitializeApplication();
-            MobileAds.Initialize(ApplicationContext, Resources.GetString(Resource.String.app_unit_id));
             INotificationService notificationService = Mvx.IoCProvider.Resolve<INotificationService>();
             notificationService.CreateNotificationChannel();
             notificationService.RefreshNotificationJobService();

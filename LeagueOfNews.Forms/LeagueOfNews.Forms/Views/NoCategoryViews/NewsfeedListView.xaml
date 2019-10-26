@@ -1,52 +1,53 @@
-﻿<views:MvxContentPage x:Class="LeagueOfNews.Forms.Views.NoCategoryViews.NewsfeedListView" Style="{DynamicResource Page}"
+﻿<views:MvxContentPage x:Class="LeagueOfNews.Forms.Views.NoCategoryViews.NewsfeedListView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:controls="clr-namespace:LeagueOfNews.Forms.Controls"
-    xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
+    xmlns:conv="clr-namespace:LeagueOfNews.Forms.Converters"
     xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels;assembly=LeagueOfNews.Forms"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="{Binding Title}"
+    x:DataType="viewModels:NewsfeedListViewModel"
     x:TypeArguments="viewModels:NewsfeedListViewModel"
-    Visual="Material">
+    Style="{DynamicResource Page}">
+    <views:MvxContentPage.Resources>
+        <ResourceDictionary>
+            <conv:NegateBoolConverter x:Key="NegateBoolConverter"/>
+        </ResourceDictionary>
+    </views:MvxContentPage.Resources>
 
     <views:MvxContentPage.Content>
         <Grid>
             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
 
-            <StackLayout Spacing="0">
-                <util:InfiniteListView Style="{StaticResource InfiniteListView}"
-                    IsPullToRefreshEnabled="True"
-                    IsRefreshing="{Binding IsRefreshing}"
-                    ItemTapped="MvxListView_ItemTapped"
+            <RefreshView Command="{Binding RefreshItemsCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView
                     ItemsSource="{Binding Newsfeeds}"
-                    LoadMoreCommand="{Binding LoadMoreCommand}"
-                    RefreshCommand="{Binding RefreshItemsCommand}">
-                    <!--  TODO Change event to Behavior  -->
-
-                    <views:MvxListView.ItemTemplate>
+                    SelectionChanged="InfiniteCollectionView_ItemTapped"
+                    SelectionMode="Single">
+                    <CollectionView.ItemTemplate>
                         <DataTemplate>
-                            <ViewCell>
+                            <ContentView>
                                 <controls:NewsfeedImageItemCell/>
-                            </ViewCell>
+                            </ContentView>
                         </DataTemplate>
-                    </views:MvxListView.ItemTemplate>
+                    </CollectionView.ItemTemplate>
 
-                    <ListView.Footer>
+                    <CollectionView.Footer>
                         <Grid HeightRequest="70">
+                            <Button
+                                Margin="12,12,12,18"
+                                HorizontalOptions="Fill"
+                                VerticalOptions="Fill"
+                                BackgroundColor="#ce9f3d"
+                                Command="{Binding LoadMoreCommand}"
+                                IsVisible="{Binding IsLoadingMore, Converter={StaticResource NegateBoolConverter}}"
+                                Text="LOAD MORE"
+                                TextColor="White"/>
                             <ActivityIndicator IsRunning="{Binding IsLoadingMore}" Style="{StaticResource ActivityIndicator}"/>
                         </Grid>
-                    </ListView.Footer>
-                </util:InfiniteListView>
-
-                <Grid HeightRequest="80" HorizontalOptions="FillAndExpand">
-                    <Label
-                        HorizontalOptions="CenterAndExpand"
-                        Text="Advertisement"
-                        TextColor="Gray"
-                        VerticalOptions="CenterAndExpand"/>
-                    <util:AdControlView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"/>
-                </Grid>
-            </StackLayout>
+                    </CollectionView.Footer>
+                </CollectionView>
+            </RefreshView>
         </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>
