@@ -10,7 +10,10 @@ namespace LeagueOfNews.Forms.Services
 
         public void MasterPageSelect(NewsWebsite Page)
         {
-            OnMasterPageSelect?.Invoke(this, new MasterPageSelectArgs { Page = Page });
+            OnMasterPageSelect?.Invoke(this, new MasterPageSelectArgs
+            {
+                Page = Page
+            });
         }
     }
 }

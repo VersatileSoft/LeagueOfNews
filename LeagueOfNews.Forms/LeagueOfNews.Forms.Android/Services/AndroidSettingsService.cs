@@ -1,7 +1,6 @@
-﻿using Android.App;
-using Android.Preferences;
-using LeagueOfNews.Core.Interface;
+﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Forms.Services;
+using Xamarin.Essentials;
 
 namespace LeagueOfNews.Forms.Droid.Services
 {
@@ -15,31 +14,22 @@ namespace LeagueOfNews.Forms.Droid.Services
 
         public override ApplicationTheme Theme
         {
-            get => (ApplicationTheme)PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetInt(THEME, (int)ApplicationTheme.Dark);
+            get => (ApplicationTheme)Preferences.Get(THEME, (int)ApplicationTheme.Dark);
             set
             {
-                PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-                    .Edit()
-                    .PutInt(THEME, (int)value)
-                    .Apply();
+                Preferences.Set(THEME, (int)value);
                 SetAppTheme();
             }
         }
         public override int NewPostCheckFrequency
         {
-            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetInt(CHECK_NEW_POSTS_FREQUENCY, 2);
-            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-                .Edit()
-                .PutInt(CHECK_NEW_POSTS_FREQUENCY, value)
-                .Apply();
+            get => Preferences.Get(CHECK_NEW_POSTS_FREQUENCY, 2);
+            set => Preferences.Set(CHECK_NEW_POSTS_FREQUENCY, value);
         }
         public override bool HasNotificationsEnabled
         {
-            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetBoolean(IS_NOTIFICATIONS_ENABLED, true);
-            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-                    .Edit()
-                    .PutBoolean(IS_NOTIFICATIONS_ENABLED, value)
-                    .Apply();
+            get => Preferences.Get(IS_NOTIFICATIONS_ENABLED, true);
+            set => Preferences.Set(IS_NOTIFICATIONS_ENABLED, value);
         }
     }
 
@@ -50,20 +40,14 @@ namespace LeagueOfNews.Forms.Droid.Services
 
         public override string LastSurrenderPostUrl
         {
-            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_SURRENDER, "");
-            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-             .Edit()
-             .PutString(LAST_POST_KEY_SURRENDER, value)
-             .Apply();
+            get => Preferences.Get(LAST_POST_KEY_SURRENDER, "");
+            set => Preferences.Set(LAST_POST_KEY_SURRENDER, value);
         }
 
         public override string LastOfficialPostUrl
         {
-            get => PreferenceManager.GetDefaultSharedPreferences(Application.Context).GetString(LAST_POST_KEY_OFFICIAL, "");
-            set => PreferenceManager.GetDefaultSharedPreferences(Application.Context)
-             .Edit()
-             .PutString(LAST_POST_KEY_OFFICIAL, value)
-             .Apply();
+            get => Preferences.Get(LAST_POST_KEY_OFFICIAL, "");
+            set => Preferences.Set(LAST_POST_KEY_OFFICIAL, value);
         }
     }
 }

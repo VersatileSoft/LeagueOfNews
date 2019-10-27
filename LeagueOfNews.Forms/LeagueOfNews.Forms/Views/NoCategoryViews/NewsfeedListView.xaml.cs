@@ -24,5 +24,10 @@ namespace LeagueOfNews.Forms.Views.NoCategoryViews
             //Reset selection
             CollView.SelectedItem = null;
         }
+
+        //private void Button_Clicked(object sender, EventArgs e)
+        //{
+        //    ViewModel.LoadMoreCommand.Execute(sender);
+        //}
     }
 }

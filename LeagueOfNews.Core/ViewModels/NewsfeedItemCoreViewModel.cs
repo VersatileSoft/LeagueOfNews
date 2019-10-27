@@ -32,10 +32,11 @@ namespace LeagueOfNews.Core.ViewModels
 
         public override async void Prepare(Newsfeed newsfeed)
         {
-            if (newsfeed != null)
+            if (newsfeed == null)
             {
-                await LoadPage(newsfeed);
+                return;
             }
+            await LoadPage(newsfeed);
         }
 
         private Task LoadPage(Newsfeed newsfeed)

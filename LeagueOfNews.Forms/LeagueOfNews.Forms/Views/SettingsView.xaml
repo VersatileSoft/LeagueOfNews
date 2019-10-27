@@ -14,7 +14,7 @@
                 Padding="10"
                 HorizontalOptions="FillAndExpand"
                 Style="{DynamicResource Frame}">
-                <StackLayout>
+                <StackLayout Spacing="0">
                     <StackLayout Orientation="Horizontal">
                         <Label
                             VerticalOptions="CenterAndExpand"
@@ -30,7 +30,6 @@
                     </StackLayout>
 
                     <Picker
-                        Title="Select delay"
                         BackgroundColor="Transparent"
                         ItemsSource="{Binding DelayList}"
                         SelectedItem="{Binding Delay, Mode=TwoWay}"
@@ -61,26 +60,33 @@
                 Padding="10"
                 HorizontalOptions="FillAndExpand"
                 Style="{DynamicResource Frame}">
-                <Grid>
-                    <StackLayout>
-                        <Label
-                            FontAttributes="Bold"
-                            FontSize="Large"
-                            Style="{DynamicResource Label}"
-                            Text="League of News v1.2"/>
-                        <Label
-                            FontSize="Medium"
-                            Text="Versatile Software 2020"
-                            TextColor="Gray"/>
-                    </StackLayout>
+                <StackLayout Orientation="Horizontal">
+                    <Label Style="{DynamicResource Label}">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        Text="League of News v1.2 &#x0a;"/>
+
+                                    <Span
+                                        FontSize="Medium"
+                                        Text="Versatile Software 2020"
+                                        TextColor="Gray"/>
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
 
                     <Button
                         HorizontalOptions="EndAndExpand"
                         BackgroundColor="#ce9f3d"
                         Clicked="WindowsAppButton_Clicked"
+                        CornerRadius="0"
                         Text="Windows 10 app"
                         TextColor="White"/>
-                </Grid>
+                </StackLayout>
             </Frame>
         </StackLayout>
     </views:MvxContentPage.Content>

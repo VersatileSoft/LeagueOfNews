@@ -13,15 +13,6 @@
                 <Setter Property="IsRunning" Value="{Binding IsLoading}"/>
             </Style>
 
-            <Style x:Key="ShadowFrame" TargetType="Frame">
-                <Setter Property="CornerRadius" Value="0"/>
-                <Setter Property="Padding" Value="0"/>
-                <Setter Property="HeightRequest" Value="1"/>
-                <Setter Property="BackgroundColor" Value="#002132"/>
-                <Setter Property="VerticalOptions" Value="StartAndExpand"/>
-                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-            </Style>
-
             <Style x:Key="LightFrame" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
@@ -54,20 +45,11 @@
                 <Setter Property="TextColor" Value="Black"/>
             </Style>
 
-            <Style x:Key="DarkMenuLabel" TargetType="Label">
+            <Style x:Key="MenuLabel" TargetType="Label">
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="FontAttributes" Value="Bold"/>
+                <Setter Property="FontSize" Value="Large"/>
                 <Setter Property="TextColor" Value="White"/>
-            </Style>
-
-            <Style x:Key="LightMenuLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="#ce9f3d"/>
-            </Style>
-
-            <Style x:Key="DarkImage" TargetType="util:TintedImage">
-                <Setter Property="TintColor" Value="Transparent"/>
-            </Style>
-
-            <Style x:Key="LightImage" TargetType="util:TintedImage">
-                <Setter Property="TintColor" Value="#ce9f3d"/>
             </Style>
 
             <Style x:Key="LightDescriptionLabel" TargetType="Label">

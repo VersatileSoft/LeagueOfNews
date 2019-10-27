@@ -5,7 +5,7 @@
     xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:models="clr-namespace:LeagueOfNews.Model;assembly=LeagueOfNews.Core"
     xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
-    Margin="10,5,10,5"
+    Margin="12,12,12,0"
     Style="{DynamicResource Frame}"
     Visual="Material">
     <Frame.Resources>

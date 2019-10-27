@@ -33,17 +33,18 @@
                     </CollectionView.ItemTemplate>
 
                     <CollectionView.Footer>
-                        <Grid HeightRequest="70" IsVisible="{Binding IsLoadingMore}">
-                            <Button
-                                Margin="12,12,12,18"
+                        <Grid HeightRequest="12">
+                            <!--<Button
+                                Margin="12"
                                 HorizontalOptions="Fill"
                                 VerticalOptions="Fill"
                                 BackgroundColor="#ce9f3d"
                                 Command="{Binding LoadMoreCommand}"
+                                CornerRadius="0"
                                 IsVisible="{Binding IsLoadingMore, Converter={StaticResource NegateBoolConverter}}"
                                 Text="LOAD MORE"
                                 TextColor="White"/>
-                            <ActivityIndicator IsRunning="{Binding IsLoadingMore}" Style="{StaticResource ActivityIndicator}"/>
+                            <ActivityIndicator IsRunning="{Binding IsLoadingMore}" Style="{StaticResource ActivityIndicator}"/>-->
                         </Grid>
                     </CollectionView.Footer>
                 </CollectionView>

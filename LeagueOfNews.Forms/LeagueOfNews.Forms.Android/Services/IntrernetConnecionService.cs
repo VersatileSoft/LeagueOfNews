@@ -1,9 +1,8 @@
 ﻿using Android.App;
-using Android.Content;
-using Android.Net;
 using Android.OS;
 using Android.Widget;
 using LeagueOfNews.Core.Interface;
+using Xamarin.Essentials;
 
 namespace LeagueOfNews.Forms.Droid.Services
 {
@@ -11,8 +10,8 @@ namespace LeagueOfNews.Forms.Droid.Services
     {
         public bool IsInternetAvailable()
         {
-            ConnectivityManager cm = (ConnectivityManager)Application.Context.GetSystemService(Context.ConnectivityService);
-            bool isConnected = cm.ActiveNetworkInfo == null ? false : cm.ActiveNetworkInfo.IsConnected;
+            NetworkAccess currentAccess = Connectivity.NetworkAccess;
+            bool isConnected = currentAccess == NetworkAccess.Internet ? true : false;
             if (!isConnected)
             {
                 try

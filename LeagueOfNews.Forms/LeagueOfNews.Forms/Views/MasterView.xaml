@@ -1,51 +1,37 @@
 ﻿<views:MvxContentPage x:Class="LeagueOfNews.Forms.Views.MasterView"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
     xmlns:viewModels="clr-namespace:LeagueOfNews.Forms.ViewModels"
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
     Title="Placeholder"
     x:DataType="viewModels:MasterViewModel"
     x:TypeArguments="viewModels:MasterViewModel"
-    Style="{DynamicResource Page}">
+    BackgroundColor="Transparent">
 
     <views:MvxContentPage.Content>
-        <StackLayout>
-            <Frame
-                Padding="0"
-                BackgroundColor="#002132"
-                CornerRadius="0">
-                <Image Aspect="AspectFill" Source="HamburgerPicture.png"/>
-            </Frame>
+        <CollectionView
+            HeightRequest="300"
+            Margin="16,8,8,8"
+            VerticalOptions="EndAndExpand"
+            ItemSizingStrategy="MeasureFirstItem"
+            ItemsSource="{Binding MenuElements}"
+            SelectionChanged="CollectionView_SelectionChanged"
+            SelectionMode="Single">
 
-            <StackLayout Padding="10">
-                <CollectionView
-                    ItemSizingStrategy="MeasureFirstItem"
-                    ItemsSource="{Binding MenuElements}"
-                    SelectionChanged="CollectionView_SelectionChanged"
-                    SelectionMode="Single">
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="viewModels:MenuListElement">
+                    <StackLayout Margin="15" Orientation="Horizontal">
+                        <ffimageloading:CachedImage
+                            HeightRequest="35"
+                            Margin="10"
+                            IsOpaque="True"
+                            Source="{Binding MenuImage}"/>
 
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="viewModels:MenuListElement">
-                            <StackLayout Margin="15" Orientation="Horizontal">
-                                <util:TintedImage
-                                    HeightRequest="35"
-                                    Margin="10"
-                                    IsOpaque="True"
-                                    Source="{Binding MenuImage}"
-                                    Style="{DynamicResource Image}"/>
-
-                                <Label
-                                    VerticalOptions="CenterAndExpand"
-                                    FontAttributes="Bold"
-                                    FontSize="Large"
-                                    Style="{DynamicResource MenuLabel}"
-                                    Text="{Binding Name}"/>
-                            </StackLayout>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-            </StackLayout>
-        </StackLayout>
+                        <Label Style="{DynamicResource MenuLabel}" Text="{Binding Name}"/>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

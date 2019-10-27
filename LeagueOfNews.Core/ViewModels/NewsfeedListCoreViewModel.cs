@@ -60,26 +60,26 @@ namespace LeagueOfNews.Core.ViewModels
             }).Start();
         }
 
-        protected async void LoadMoreNewsfeeds()
+        protected void LoadMoreNewsfeeds()
         {
             if (IsLoading || IsLoadingMore || IsRefreshing)
             {
                 return;
             }
 
-            IsLoadingMore = true;
-
-            foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds(SelectedCategory))
+            new Thread(async () =>
             {
-                Newsfeeds.Add(item);
-            }
-
-            IsLoadingMore = false;
+                IsLoadingMore = true;
+                foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds(SelectedCategory))
+                {
+                    Newsfeeds.Add(item);
+                }
+                IsLoadingMore = false;
+            }).Start();
         }
 
         protected void RefreshNewsfeeds()
         {
-
             new Thread(async () =>
             {
                 IsRefreshing = true;

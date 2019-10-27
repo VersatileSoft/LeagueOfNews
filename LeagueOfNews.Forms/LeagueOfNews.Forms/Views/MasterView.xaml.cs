@@ -15,6 +15,7 @@ namespace LeagueOfNews.Forms.Views
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //Execute command
             CollectionView CollView = (CollectionView)sender;
             ViewModel.NavigateCommand.Execute((MenuListElement)CollView.SelectedItem);
         }
