@@ -22,8 +22,8 @@ namespace LeagueOfNews.Forms.ViewModels
             MenuElements = new ObservableCollection<MenuListElement>
             {
                 new MenuListElement { Name = "League of Legends Official", MenuImage = "LolOfficialIcon.png", Page = NewsWebsite.LoL },
-                //new MenuListElement { Name = "/dev blog", MenuImage = "DevBlogIcon.png", Page = Pages.Dev }, //TODO add page in future 
                 new MenuListElement { Name = "Surrender@20", MenuImage = "SurrenderAt20Icon.png", Page = NewsWebsite.Surrender },
+                new MenuListElement { Name = "Dev Corner", MenuImage = "DevBlogIcon.png", Page = NewsWebsite.DevCorner },
                 new MenuListElement { Name = "Settings", MenuImage = "SettingsIcon.png", Page = NewsWebsite.None }
             };
 

@@ -2,9 +2,9 @@
 
 namespace LeagueOfNews.Forms.Controls
 {
-    public partial class NewsfeedImageItemCell : Frame
+    public partial class NewsfeedLeftImageItemCell : ContentView
     {
-        public NewsfeedImageItemCell()
+        public NewsfeedLeftImageItemCell()
         {
             InitializeComponent();
         }

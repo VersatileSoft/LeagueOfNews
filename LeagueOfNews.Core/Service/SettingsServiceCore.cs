@@ -21,8 +21,10 @@ namespace LeagueOfNews.Core.Service
             this[NewsCategory.RedPosts] = new CategoryData { Title = "Red Posts", CategoryUrl = "https://www.surrenderat20.net/search/label/Red%20Posts", Website = NewsWebsite.Surrender };
             this[NewsCategory.Rotations] = new CategoryData { Title = "Rotations", CategoryUrl = "https://www.surrenderat20.net/search/label/Rotations", Website = NewsWebsite.Surrender };
             this[NewsCategory.ESports] = new CategoryData { Title = "E-Sports", CategoryUrl = "https://www.surrenderat20.net/search/label/Esports", Website = NewsWebsite.Surrender };
+
             this[NewsCategory.Official] = new CategoryData { Title = "League of Legends Official", CategoryUrl = "https://eune.leagueoflegends.com/en/news", Website = NewsWebsite.LoL };
-            this[NewsCategory.Dev] = new CategoryData { Title = "Dev", CategoryUrl = "https://eune.leagueoflegends.com/en/news", Website = NewsWebsite.LoL };
+
+            this[NewsCategory.DevCorner] = new CategoryData { Title = "Dev Corner", CategoryUrl = "https://boards.na.leagueoflegends.com/en/c/developer-corner", Website = NewsWebsite.DevCorner };
         }
 
         public CategoryData this[NewsCategory Category]

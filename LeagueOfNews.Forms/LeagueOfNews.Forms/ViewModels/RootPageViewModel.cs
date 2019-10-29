@@ -41,10 +41,18 @@ namespace LeagueOfNews.Forms.ViewModels
             {
                 switch (e.Page)
                 {
-                    case NewsWebsite.Surrender: await _navigationService.Navigate<TabbedRootViewModel>(); break;
-                    // case Pages.Dev:
-                    case NewsWebsite.LoL: await _navigationService.Navigate<NewsfeedListViewModel, NewsCategory>(NewsCategory.Official); break;
-                    case NewsWebsite.None: await _navigationService.Navigate<SettingsViewModel>(); break;
+                    case NewsWebsite.LoL:
+                        await _navigationService.Navigate<NewsfeedListViewModel, NewsCategory>(NewsCategory.Official);
+                        break;
+                    case NewsWebsite.DevCorner:
+                        await _navigationService.Navigate<NewsfeedListViewModel, NewsCategory>(NewsCategory.DevCorner);
+                        break;
+                    case NewsWebsite.Surrender:
+                        await _navigationService.Navigate<TabbedRootViewModel>();
+                        break;
+                    case NewsWebsite.None:
+                        await _navigationService.Navigate<SettingsViewModel>();
+                        break;
                 }
             });
         }

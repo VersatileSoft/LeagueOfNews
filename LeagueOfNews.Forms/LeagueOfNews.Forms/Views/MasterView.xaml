@@ -11,7 +11,7 @@
 
     <views:MvxContentPage.Content>
         <CollectionView
-            HeightRequest="300"
+            HeightRequest="380"
             Margin="16,8,8,8"
             VerticalOptions="EndAndExpand"
             ItemSizingStrategy="MeasureFirstItem"

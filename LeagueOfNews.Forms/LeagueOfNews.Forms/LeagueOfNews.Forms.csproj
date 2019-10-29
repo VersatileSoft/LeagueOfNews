@@ -3,6 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <RootNamespace>LeagueOfNews.Forms</RootNamespace>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -30,6 +31,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Controls\NewsfeedTopImageItemCell.xaml.cs">
+      <DependentUpon>NewsfeedTopImageItemCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Controls\NewsfeedLeftImageItemCell.xaml.cs">
+      <DependentUpon>NewsfeedLeftImageItemCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\NoCategoryViews\NewsfeedListView.xaml.cs">
       <DependentUpon>NewsfeedListView.xaml</DependentUpon>
     </Compile>
@@ -42,10 +49,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="Controls\NewsfeedImageItemCell.xaml">
+    <EmbeddedResource Update="Controls\NewsfeedLeftImageItemCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Controls\NewsfeedItemCell.xaml">
+    <EmbeddedResource Update="Controls\NewsfeedTopImageItemCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Views\MasterView.xaml">

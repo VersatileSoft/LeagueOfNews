@@ -17,20 +17,20 @@
 
     <views:MvxContentPage.Content>
         <Grid>
-            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
-
             <RefreshView Command="{Binding RefreshItemsCommand}" IsRefreshing="{Binding IsRefreshing}">
                 <CollectionView
+                    ItemTemplate="{DataTemplate controls:NewsfeedLeftImageItemCell}"
                     ItemsSource="{Binding Newsfeeds}"
                     SelectionChanged="InfiniteCollectionView_ItemTapped"
                     SelectionMode="Single">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate>
-                            <ContentView>
-                                <controls:NewsfeedImageItemCell/>
-                            </ContentView>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
+                    <CollectionView.Triggers>
+                        <DataTrigger
+                            Binding="{Binding Website}"
+                            TargetType="CollectionView"
+                            Value="2">
+                            <Setter Property="ItemTemplate" Value="{DataTemplate controls:NewsfeedLeftImageItemCell}"/>
+                        </DataTrigger>
+                    </CollectionView.Triggers>
 
                     <CollectionView.Footer>
                         <Grid HeightRequest="12">
@@ -51,6 +51,8 @@
                     </CollectionView.Footer>
                 </CollectionView>
             </RefreshView>
+
+            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
         </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

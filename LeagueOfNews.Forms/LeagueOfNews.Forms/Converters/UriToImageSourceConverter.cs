@@ -16,7 +16,7 @@ namespace LeagueOfNews.Forms.Converters
 
             if (value is byte[])
             {
-                return ImageSource.FromStream(() => new MemoryStream((byte[])value)); ;
+                return ImageSource.FromStream(() => new MemoryStream((byte[])value));
             }
             else if (!(value is Uri))
             {

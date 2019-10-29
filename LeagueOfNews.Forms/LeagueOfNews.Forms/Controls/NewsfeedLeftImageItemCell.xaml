@@ -1,0 +1,39 @@
+﻿<ContentView x:Class="LeagueOfNews.Forms.Controls.NewsfeedLeftImageItemCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:conv="clr-namespace:LeagueOfNews.Forms.Converters"
+    xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+    xmlns:models="clr-namespace:LeagueOfNews.Model;assembly=LeagueOfNews.Core"
+    xmlns:util="clr-namespace:LeagueOfNews.Forms.Views.Utils"
+    x:DataType="models:Newsfeed">
+    <ContentView.Resources>
+        <ResourceDictionary>
+            <conv:UriToImageSourceConverter x:Key="UriToImageSourceConverter"/>
+        </ResourceDictionary>
+    </ContentView.Resources>
+
+    <Frame
+        Margin="12,12,12,0"
+        Style="{DynamicResource Frame}"
+        Visual="Material">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="35*"/>
+                <ColumnDefinition Width="65*"/>
+            </Grid.ColumnDefinitions>
+            <ffimageloading:CachedImage
+                Aspect="AspectFill"
+                BitmapOptimizations="True"
+                DownsampleToViewSize="True"
+                FadeAnimationForCachedImages="True"
+                IsOpaque="False"
+                Source="{Binding Path=Image, Converter={StaticResource UriToImageSourceConverter}}"/>
+
+            <StackLayout Grid.Column="1" Padding="8">
+                <util:ExtendedLabel Style="{StaticResource TitleExtendedLabel}" Text="{Binding Title}"/>
+                <Label Style="{StaticResource DateLabel}" Text="{Binding Date}"/>
+                <Label Style="{DynamicResource DescriptionLabel}" Text="{Binding ShortDescription}"/>
+            </StackLayout>
+        </Grid>
+    </Frame>
+</ContentView>

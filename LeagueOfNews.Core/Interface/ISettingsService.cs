@@ -22,6 +22,7 @@ namespace LeagueOfNews.Core.Interface
     {
         public virtual string LastSurrenderPostUrl { get; set; }
         public virtual string LastOfficialPostUrl { get; set; }
+        public virtual string LastDevCornerPostUrl { get; set; }
         public virtual List<string> VisitedPosts { get; set; }
     }
 
@@ -36,8 +37,9 @@ namespace LeagueOfNews.Core.Interface
         Rotations,     //
         ESports,       //
 
-        Official,      //League of Legends (official website & forum)
-        Dev            //
+        Official,      //League of Legends (official website)
+
+        DevCorner      //League of Legends (official forum)
     }
 
     public enum NewsWebsite
@@ -45,7 +47,8 @@ namespace LeagueOfNews.Core.Interface
         None = -1,
 
         Surrender,    //Surrender@20
-        LoL           //League of Legends (official website & forum)
+        LoL,          //League of Legends (official website)
+        DevCorner     //League of Legends (official forum)
     }
 
     public enum ApplicationTheme

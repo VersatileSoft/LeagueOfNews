@@ -26,8 +26,12 @@ namespace LeagueOfNews.Core.Model
 
             switch (_settingsService[page].Website)
             {
-                case NewsWebsite.Surrender: return await GetPageByWebClient(url);
-                case NewsWebsite.LoL: return await GetPageByRequest(url);
+                case NewsWebsite.Surrender:
+                    return await GetPageByWebClient(url);
+                case NewsWebsite.LoL:
+                    return await GetPageByRequest(url);
+                case NewsWebsite.DevCorner:
+                    return await GetPageByRequest(url);
             }
             return null;
         }
@@ -55,9 +59,8 @@ namespace LeagueOfNews.Core.Model
             return await new HtmlWeb().LoadFromWebAsync(url);
         }
 
-        public async Task<byte[]> GetImage(string url)
+        public async Task<byte[]> GetImageAsync(string url)
         {
-
             if (!_intrernetConnecionService.IsInternetAvailable())
             {
                 return null;

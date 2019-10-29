@@ -43,8 +43,15 @@ namespace LeagueOfNews.Core.Service
 
             switch (newsWebsite)
             {
-                case NewsWebsite.Surrender: _newsfeeds = await LoadSurrender(doc, page); break;
-                case NewsWebsite.LoL: _newsfeeds = await LoadOfficial(doc, page); break;
+                case NewsWebsite.LoL:
+                    _newsfeeds = await LoadOfficial(doc, page);
+                    break;
+                case NewsWebsite.DevCorner:
+                    _newsfeeds = LoadDevCorner(doc, page);
+                    break;
+                case NewsWebsite.Surrender:
+                    _newsfeeds = await LoadSurrender(doc, page);
+                    break;
             }
 
             return _newsfeeds;
@@ -65,8 +72,15 @@ namespace LeagueOfNews.Core.Service
 
             switch (_settingsService[page].Website)
             {
-                case NewsWebsite.Surrender: newsfeeds = await LoadSurrender(doc, page); break;
-                case NewsWebsite.LoL: newsfeeds = await LoadOfficial(doc, page); break;
+                case NewsWebsite.LoL:
+                    newsfeeds = await LoadOfficial(doc, page);
+                    break;
+                case NewsWebsite.DevCorner:
+                    newsfeeds = LoadDevCorner(doc, page);
+                    break;
+                case NewsWebsite.Surrender:
+                    newsfeeds = await LoadSurrender(doc, page);
+                    break;
             }
             return newsfeeds;
         }
@@ -79,25 +93,52 @@ namespace LeagueOfNews.Core.Service
 
             foreach (HtmlNode node in nodes)
             {
-                Newsfeed newsfeed = new Newsfeed();
                 try
                 {
-                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText).RemoveSpaceFromString();
-                    newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText);
-                    newsfeed.UrlToNewsfeed = _officialBaseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value;
-                    newsfeed.Image = await _cookieWebClientService.GetImage(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value);
-                    newsfeed.ImageUri = _officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value;
-                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText).RemoveSpaceFromString();
-                    newsfeed.Page = page;
-                    //TODO newsfeed.Website
+                    Newsfeed newsfeed = new Newsfeed
+                    {
+                        Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText).RemoveSpaceFromString(),
+                        Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText),
+                        UrlToNewsfeed = _officialBaseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value,
+                        Image = await _cookieWebClientService.GetImageAsync(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value),
+                        ImageUri = _officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value,
+                        ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText).RemoveSpaceFromString(),
+                        Page = page
+                        //TODO newsfeed.Website
+                    };
+
+                    newsfeeds.Add(newsfeed);
                 }
-                catch { continue; }
-
-                newsfeeds.Add(newsfeed);
-
-                if (newsfeed.Title == null || newsfeed.UrlToNewsfeed == null || newsfeed.Image == null || newsfeed.ShortDescription == null)
+                catch
                 {
-                    throw new Exception();
+                    continue;
+                }
+            }
+            return newsfeeds;
+        }
+
+        public List<Newsfeed> LoadDevCorner(HtmlDocument Document, NewsCategory page)
+        {
+            List<Newsfeed> newsfeeds = new List<Newsfeed>();
+            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//body/div[@class='content']/div/div/div/div/table/tbody[@id='discussion-list']/tr");
+
+            foreach (HtmlNode node in nodes)
+            {
+                try
+                {
+                    Newsfeed newsfeed = new Newsfeed
+                    {
+                        Title = HttpUtility.HtmlDecode(node?.SelectSingleNode("//td[@class='title']/div/a/span").InnerText),
+                        Date = HttpUtility.HtmlDecode(node.SelectSingleNode("//td[@class='title']/div[@class='discussion-footer byline opaque']").InnerText).RemoveSpaceFromString(),
+                        Page = page
+                        //TODO newsfeed.Website
+                    };
+
+                    newsfeeds.Add(newsfeed);
+                }
+                catch
+                {
+                    continue;
                 }
             }
             return newsfeeds;
@@ -111,38 +152,26 @@ namespace LeagueOfNews.Core.Service
 
             foreach (HtmlNode node in nodes)
             {
-                Newsfeed newsfeed = new Newsfeed();
                 try
                 {
-                    newsfeed.Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString();
-                    newsfeed.Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString();
-                    if (_operatingSystemService.GetSystemType() == SystemType.Android)
+                    Newsfeed newsfeed = new Newsfeed
                     {
-                        newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
-                        newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value);
-                        newsfeed.ImageUri = node.SelectSingleNode(".//img").Attributes["src"].Value;
-                    }
-                    else if (_operatingSystemService.GetSystemType() == SystemType.UWP)
-                    {
-                        newsfeed.UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1";
-                        newsfeed.Image = await _cookieWebClientService.GetImage(node.SelectSingleNode(".//img").Attributes["src"].Value);
-                        newsfeed.ImageUri = node.SelectSingleNode(".//img").Attributes["src"].Value;
-                    }
+                        Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString(),
+                        Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString(),
+                        UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1",
+                        Image = await _cookieWebClientService.GetImageAsync(node.SelectSingleNode(".//img").Attributes["src"].Value),
+                        ImageUri = node.SelectSingleNode(".//img").Attributes["src"].Value,
+                        ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText).RemoveSpaceFromString().RemoveContinueReadingString(),
+                        Page = page
+                        //TODO newsfeed.Website
+                    };
 
-                    newsfeed.ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText)
-                        .RemoveSpaceFromString()
-                        .RemoveContinueReadingString();
-                    newsfeed.Page = page;
-                    //TODO newsfeed.Website
+                    newsfeeds.Add(newsfeed);
                 }
-                catch { continue; }
-
-                newsfeeds.Add(newsfeed);
-
-                //if (newsfeed.Title == null || newsfeed.UrlToNewsfeed == null || newsfeed.Image == null || newsfeed.ShortDescription == null)
-                //{
-                //    throw new Exception();
-                //}
+                catch
+                {
+                    continue;
+                }
             }
             return newsfeeds;
         }
@@ -152,7 +181,6 @@ namespace LeagueOfNews.Core.Service
 namespace ExtensionMethods
 {
     public static class StringExtensions
-
     {
         public static string RemoveSpaceFromString(this string s)
         {
