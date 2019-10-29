@@ -4,6 +4,6 @@ namespace LeagueOfNews.Core.Interface
 {
     public interface INewPostsService
     {
-        Task CheckNewPosts();
+        Task CheckNewPostsAsync();
     }
 }

@@ -34,7 +34,7 @@ namespace LeagueOfNews.Forms.Services
                 MvxAndroidSetupSingleton setupSingleton = MvxAndroidSetupSingleton.EnsureSingletonAvailable(Application.Context);
                 setupSingleton.EnsureInitialized();
 
-                await Mvx.IoCProvider.Resolve<INewPostsService>().CheckNewPosts();
+                await Mvx.IoCProvider.Resolve<INewPostsService>().CheckNewPostsAsync();
 
                 JobFinished(args, true);
 

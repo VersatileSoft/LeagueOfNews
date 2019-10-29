@@ -18,7 +18,7 @@ namespace LeagueOfNews.Core.Service
             _settingsService = settingsService;
         }
 
-        public async Task CheckNewPosts()
+        public async Task CheckNewPostsAsync()
         {
             await CheckNewPosts(NewsWebsite.Surrender);
             await CheckNewPosts(NewsWebsite.LoL);

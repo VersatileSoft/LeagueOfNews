@@ -18,13 +18,14 @@
             ItemsSource="{Binding MenuElements}"
             SelectionChanged="CollectionView_SelectionChanged"
             SelectionMode="Single">
-
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="viewModels:MenuListElement">
                     <StackLayout Margin="15" Orientation="Horizontal">
                         <ffimageloading:CachedImage
                             HeightRequest="35"
                             Margin="10"
+                            BitmapOptimizations="True"
+                            DownsampleToViewSize="True"
                             IsOpaque="True"
                             Source="{Binding MenuImage}"/>
 

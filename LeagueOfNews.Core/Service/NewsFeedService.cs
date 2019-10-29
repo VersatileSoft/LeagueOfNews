@@ -11,7 +11,7 @@ namespace LeagueOfNews.Core.Service
 {
     public class NewsfeedService : INewsfeedService
     {
-        private string _officialBaseURL;
+        private string _baseURL;
 
         private IList<Newsfeed> _newsfeeds { get; set; }
         private readonly Dictionary<NewsCategory, string> _nextPageUrls;
@@ -32,7 +32,7 @@ namespace LeagueOfNews.Core.Service
         {
             string URL = _settingsService[page].CategoryUrl;
             NewsWebsite newsWebsite = _settingsService[page].Website;
-            _officialBaseURL = "https://" + new Uri(URL).Host;
+            _baseURL = "https://" + new Uri(URL).Host;
 
             HtmlDocument doc = await _cookieWebClientService.GetPage(URL, page);
 
@@ -88,7 +88,7 @@ namespace LeagueOfNews.Core.Service
         public async Task<List<Newsfeed>> LoadOfficial(HtmlDocument Document, NewsCategory page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
-            _nextPageUrls[page] = _officialBaseURL + Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
+            _nextPageUrls[page] = _baseURL + Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
             HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='gs-container']");
 
             foreach (HtmlNode node in nodes)
@@ -99,9 +99,9 @@ namespace LeagueOfNews.Core.Service
                     {
                         Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText).RemoveSpaceFromString(),
                         Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText),
-                        UrlToNewsfeed = _officialBaseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value,
-                        Image = await _cookieWebClientService.GetImageAsync(_officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value),
-                        ImageUri = _officialBaseURL + node.SelectSingleNode(".//img").Attributes["src"].Value,
+                        UrlToNewsfeed = _baseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value,
+                        Image = await _cookieWebClientService.GetImageAsync(_baseURL + node.SelectSingleNode(".//img").Attributes["src"].Value),
+                        ImageUri = _baseURL + node.SelectSingleNode(".//img").Attributes["src"].Value,
                         ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText).RemoveSpaceFromString(),
                         Page = page
                         //TODO newsfeed.Website
@@ -128,8 +128,11 @@ namespace LeagueOfNews.Core.Service
                 {
                     Newsfeed newsfeed = new Newsfeed
                     {
-                        Title = HttpUtility.HtmlDecode(node?.SelectSingleNode("//td[@class='title']/div/a/span").InnerText),
-                        Date = HttpUtility.HtmlDecode(node.SelectSingleNode("//td[@class='title']/div[@class='discussion-footer byline opaque']").InnerText).RemoveSpaceFromString(),
+                        Title = HttpUtility.HtmlDecode(node?.SelectSingleNode(".//td[@class='title']/div/a/span").InnerText),
+                        Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//td[@class='title']/div[@class='discussion-footer byline opaque']").InnerText).RemoveSpaceFromString() + " " +
+                        HttpUtility.HtmlDecode(node.SelectSingleNode(".//td[@class='title']/div[@class='discussion-footer byline opaque']/span").InnerText),
+                        UrlToNewsfeed = _baseURL + node.SelectSingleNode(".//td[@class='title']/div/a").Attributes["href"].Value,
+                        ShortDescription = HttpUtility.HtmlDecode(node?.SelectSingleNode(".//td[@class='title']/div/a/span").Attributes["title"].Value.RemoveSpaceFromString()),
                         Page = page
                         //TODO newsfeed.Website
                     };
@@ -190,6 +193,7 @@ namespace ExtensionMethods
                     .Replace("          ", " ")
                     .Replace("   ", " ")
                     .Replace("  ", " ")
+                    .Replace(" ------------------------------------------------------------------------------- **Usual Disclaimers**", " ")
                     .Trim();
         }
 

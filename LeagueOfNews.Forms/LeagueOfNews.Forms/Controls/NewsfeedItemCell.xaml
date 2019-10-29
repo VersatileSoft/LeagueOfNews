@@ -1,0 +1,22 @@
+﻿<ContentView x:Class="LeagueOfNews.Forms.Controls.NewsfeedItemCell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:models="clr-namespace:LeagueOfNews.Model;assembly=LeagueOfNews.Core"
+    x:DataType="models:Newsfeed">
+
+    <Frame
+        Margin="12,12,12,0"
+        Style="{DynamicResource Frame}"
+        Visual="Material">
+        <StackLayout>
+            <StackLayout Padding="8">
+                <Label Style="{StaticResource TitleExtendedLabel}" Text="{Binding Title}"/>
+                <Label Style="{StaticResource DateLabel}" Text="{Binding Date}"/>
+                <Label
+                    MaxLines="4"
+                    Style="{DynamicResource DescriptionLabel}"
+                    Text="{Binding ShortDescription}"/>
+            </StackLayout>
+        </StackLayout>
+    </Frame>
+</ContentView>

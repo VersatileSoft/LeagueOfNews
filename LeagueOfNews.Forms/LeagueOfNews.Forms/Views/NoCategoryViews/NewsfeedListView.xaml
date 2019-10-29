@@ -25,10 +25,10 @@
                     SelectionMode="Single">
                     <CollectionView.Triggers>
                         <DataTrigger
-                            Binding="{Binding Website}"
+                            Binding="{Binding IsOfficial}"
                             TargetType="CollectionView"
-                            Value="2">
-                            <Setter Property="ItemTemplate" Value="{DataTemplate controls:NewsfeedLeftImageItemCell}"/>
+                            Value="false">
+                            <Setter Property="ItemTemplate" Value="{DataTemplate controls:NewsfeedItemCell}"/>
                         </DataTrigger>
                     </CollectionView.Triggers>
 

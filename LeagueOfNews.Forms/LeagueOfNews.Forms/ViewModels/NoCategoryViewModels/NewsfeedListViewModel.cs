@@ -12,6 +12,8 @@ namespace LeagueOfNews.Forms.ViewModels
     {
         private readonly IChromeCustomTabService _chromeCustomTabService;
 
+        public bool IsOfficial { get; set; }
+
         public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService, IChromeCustomTabService chromeCustomTabService)
             : base(newsfeedService, settingsService, navigationService)
         {
@@ -22,6 +24,8 @@ namespace LeagueOfNews.Forms.ViewModels
         {
             Title = _settingsService[parameter].Title;
             SelectedCategory = parameter;
+            IsOfficial = parameter == NewsCategory.Official ? true : false;
+
             LoadNewsfeeds();
         }
 
