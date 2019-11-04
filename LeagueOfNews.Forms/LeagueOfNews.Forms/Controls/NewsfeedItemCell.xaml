@@ -13,9 +13,9 @@
                 <Label Style="{StaticResource TitleExtendedLabel}" Text="{Binding Title}"/>
                 <Label Style="{StaticResource DateLabel}" Text="{Binding Date}"/>
                 <Label
-                    MaxLines="4"
                     Style="{DynamicResource DescriptionLabel}"
-                    Text="{Binding ShortDescription}"/>
+                    Text="{Binding ShortDescription}"
+                    TextType="Html"/>
             </StackLayout>
         </StackLayout>
     </Frame>

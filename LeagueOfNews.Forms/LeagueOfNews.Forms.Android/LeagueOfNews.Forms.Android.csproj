@@ -88,13 +88,13 @@
     <PackageReference Include="Xamarin.FFImageLoading.Forms">
       <Version>2.4.11.982</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.5.0.1305-nightly" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.1325-nightly" />
     <PackageReference Include="Xamarin.AndroidX.Migration" Version="1.0.0-preview05" />
     <PackageReference Include="Xamarin.AndroidX.Browser" Version="1.0.0-preview02" />
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.0.0-preview02" />
     <PackageReference Include="Xamarin.AndroidX.Legacy.Support.V4" Version="1.0.0-preview02" />
     <PackageReference Include="Xamarin.AndroidX.MediaRouter" Version="1.0.0-preview02" />
-    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.5.0.1305-nightly" />
+    <PackageReference Include="Xamarin.Forms.Visual.Material" Version="4.5.0.1325-nightly" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
@@ -104,7 +104,6 @@
     <Compile Include="Services\IntrernetConnecionService.cs" />
     <Compile Include="Services\NotificationJobService.cs" />
     <Compile Include="Services\NotificationService.cs" />
-    <Compile Include="Services\AndroidSettingsService.cs" />
     <Compile Include="Setup.cs" />
   </ItemGroup>
   <ItemGroup>

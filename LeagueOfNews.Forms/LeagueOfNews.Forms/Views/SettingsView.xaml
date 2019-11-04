@@ -9,9 +9,9 @@
     Style="{DynamicResource Page}">
 
     <views:MvxContentPage.Content>
-        <StackLayout Padding="15" Spacing="15">
+        <StackLayout Padding="16" Spacing="16">
             <Frame
-                Padding="10"
+                Padding="8"
                 HorizontalOptions="FillAndExpand"
                 Style="{DynamicResource Frame}">
                 <StackLayout Spacing="0">
@@ -38,7 +38,7 @@
             </Frame>
 
             <Frame
-                Padding="10"
+                Padding="8"
                 HorizontalOptions="FillAndExpand"
                 Style="{DynamicResource Frame}">
                 <StackLayout Orientation="Horizontal">
@@ -57,7 +57,7 @@
             </Frame>
 
             <Frame
-                Padding="10"
+                Padding="8"
                 HorizontalOptions="FillAndExpand"
                 Style="{DynamicResource Frame}">
                 <StackLayout Orientation="Horizontal">

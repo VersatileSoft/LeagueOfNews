@@ -20,15 +20,16 @@ namespace LeagueOfNews.Core.Service
 
         public async Task CheckNewPostsAsync()
         {
-            await CheckNewPosts(NewsWebsite.Surrender);
             await CheckNewPosts(NewsWebsite.LoL);
+            await CheckNewPosts(NewsWebsite.Surrender);
+            await CheckNewPosts(NewsWebsite.DevCorner);
         }
 
         private async Task CheckNewPosts(NewsWebsite page)
         {
             List<Newsfeed> list = null;
             List<Newsfeed> newPosts = new List<Newsfeed>();
-            string lastPostUrl = "";
+            string lastPostUrl = string.Empty;
             switch (page)
             {
                 case NewsWebsite.LoL:
@@ -39,7 +40,12 @@ namespace LeagueOfNews.Core.Service
                     lastPostUrl = _settingsService.WebsiteHistoryData.LastSurrenderPostUrl;
                     list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(NewsCategory.SurrenderHome));
                     break;
-                default: break;
+                case NewsWebsite.DevCorner:
+                    lastPostUrl = _settingsService.WebsiteHistoryData.LastSurrenderPostUrl;
+                    list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(NewsCategory.DevCorner));
+                    break;
+                default:
+                    break;
             }
 
             if (!string.IsNullOrWhiteSpace(lastPostUrl))
@@ -65,7 +71,11 @@ namespace LeagueOfNews.Core.Service
                 case NewsWebsite.Surrender:
                     _settingsService.WebsiteHistoryData.LastSurrenderPostUrl = list[0].UrlToNewsfeed;
                     break;
-                default: break;
+                case NewsWebsite.DevCorner:
+                    _settingsService.WebsiteHistoryData.LastDevCornerPostUrl = list[0].UrlToNewsfeed;
+                    break;
+                default:
+                    break;
             }
 
             if (newPosts.Count > 0)
