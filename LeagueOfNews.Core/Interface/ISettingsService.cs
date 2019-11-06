@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-
 namespace LeagueOfNews.Core.Interface
 {
     public interface ISettingsService
