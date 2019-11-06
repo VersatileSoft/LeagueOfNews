@@ -41,7 +41,7 @@ namespace LeagueOfNews.Core.Service
                     list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(NewsCategory.SurrenderHome));
                     break;
                 case NewsWebsite.DevCorner:
-                    lastPostUrl = _settingsService.WebsiteHistoryData.LastSurrenderPostUrl;
+                    lastPostUrl = _settingsService.WebsiteHistoryData.LastDevCornerPostUrl;
                     list = new List<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(NewsCategory.DevCorner));
                     break;
                 default:
@@ -80,7 +80,7 @@ namespace LeagueOfNews.Core.Service
 
             if (newPosts.Count > 0)
             {
-                _notificationService.ShowNewPostNotification(newPosts[0], page); //TODO Show all new post not only one
+                _notificationService.ShowNewPostNotification(newPosts[0], page); //TODO Show all new posts not only one
             }
         }
     }

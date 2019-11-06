@@ -55,21 +55,28 @@ namespace LeagueOfNews.Forms.Droid.Services
 
             NotificationManagerCompat notificationManager = NotificationManagerCompat.From(Application.Context);
 
-            if (page == NewsWebsite.LoL)
+            switch (page)
             {
-                notificationManager.Notify(1000, notification);
-            }
-            else
-            {
-                notificationManager.Notify(1001, notification);
+                case NewsWebsite.LoL:
+                    notificationManager.Notify(1000, notification);
+                    break;
+
+                case NewsWebsite.DevCorner:
+                    notificationManager.Notify(1001, notification);
+                    break;
+
+                case NewsWebsite.Surrender:
+                    notificationManager.Notify(1002, notification);
+                    break;
             }
         }
 
         public void RefreshNotificationJobService()
         {
-            if (Mvx.IoCProvider.Resolve<ISettingsService>().HasNotificationsEnabled)
+            ISettingsService _settings = Mvx.IoCProvider.Resolve<ISettingsService>();
+            if (_settings.HasNotificationsEnabled)
             {
-                StartNotificationJobService(Mvx.IoCProvider.Resolve<ISettingsService>().NewPostCheckFrequency);
+                StartNotificationJobService(_settings.NewPostCheckFrequency);
             }
             else
             {

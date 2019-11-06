@@ -23,7 +23,6 @@ namespace LeagueOfNews.Core.Interface
         public virtual string LastSurrenderPostUrl { get; set; }
         public virtual string LastOfficialPostUrl { get; set; }
         public virtual string LastDevCornerPostUrl { get; set; }
-        public virtual List<string> VisitedPosts { get; set; }
     }
 
     public enum NewsCategory
