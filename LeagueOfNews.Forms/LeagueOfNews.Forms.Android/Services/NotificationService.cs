@@ -115,7 +115,7 @@ namespace LeagueOfNews.Forms.Droid.Services
 
         private PendingIntent GetContentIntent(Newsfeed newsfeed)
         {
-            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().SetToolbarColor(Color.ParseColor("#002132")).Build();
+            CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().SetToolbarColor(Color.ParseColor("#202429")).Build();
             customTabsIntent.Intent.AddFlags(ActivityFlags.NoHistory | ActivityFlags.SingleTop | ActivityFlags.NewTask);
             customTabsIntent.Intent.SetData(Uri.Parse(newsfeed.UrlToNewsfeed));
             return PendingIntent.GetActivity(Application.Context, (int)(DateTimeOffset.Now.ToUnixTimeMilliseconds() / 1000), customTabsIntent.Intent, PendingIntentFlags.OneShot);

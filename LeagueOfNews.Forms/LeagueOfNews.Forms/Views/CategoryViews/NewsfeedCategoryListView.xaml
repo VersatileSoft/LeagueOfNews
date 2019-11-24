@@ -17,7 +17,12 @@
 
     <views:MvxContentPage.Content>
         <Grid>
-            <RefreshView Command="{Binding RefreshItemsCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <RefreshView
+                BackgroundColor="{StaticResource BackgroundColorLight}"
+                Command="{Binding RefreshItemsCommand}"
+                IsEnabled="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}"
+                IsRefreshing="{Binding IsRefreshing}"
+                RefreshColor="{StaticResource PrimaryColor}">
                 <CollectionView x:Name="collectionView"
                     ItemTemplate="{DataTemplate controls:NewsfeedTopImageItemCell}"
                     ItemsSource="{Binding Newsfeeds}"

@@ -4,5 +4,5 @@
 	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
 	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-	<application android:roundIcon="@mipmap/icon_round" android:label="League of News" android:theme="@style/MyTheme.Splash" android:icon="@mipmap/Icon"/>
+	<application android:roundIcon="@mipmap/icon_round" android:label="League of News" android:theme="@style/MyTheme.Splash" android:icon="@mipmap/Icon" android:largeHeap="true"/>
 </manifest>

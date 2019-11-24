@@ -25,8 +25,8 @@
                         <Switch
                             HorizontalOptions="EndAndExpand"
                             IsToggled="{Binding IsNotificationsEnabled, Mode=TwoWay}"
-                            OnColor="#997105"
-                            ThumbColor="#ce9f3d"/>
+                            OnColor="#99782f"
+                            ThumbColor="{StaticResource PrimaryColor}"/>
                     </StackLayout>
 
                     <Picker
@@ -51,8 +51,8 @@
                     <Switch
                         HorizontalOptions="EndAndExpand"
                         IsToggled="{Binding DarkTheme, Mode=TwoWay}"
-                        OnColor="#997105"
-                        ThumbColor="#ce9f3d"/>
+                        OnColor="#99782f"
+                        ThumbColor="{StaticResource PrimaryColor}"/>
                 </StackLayout>
             </Frame>
 
@@ -81,11 +81,11 @@
 
                     <Button
                         HorizontalOptions="EndAndExpand"
-                        BackgroundColor="#ce9f3d"
+                        BackgroundColor="{StaticResource PrimaryColor}"
                         Clicked="WindowsAppButton_Clicked"
                         CornerRadius="0"
                         Text="Windows 10 app"
-                        TextColor="White"/>
+                        TextColor="Black"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

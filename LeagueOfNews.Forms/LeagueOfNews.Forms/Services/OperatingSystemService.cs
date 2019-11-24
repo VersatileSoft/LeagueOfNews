@@ -7,14 +7,14 @@ namespace LeagueOfNews.Forms.Services
     {
         public SystemType GetSystemType()
         {
-            switch (Device.RuntimePlatform)
+            return Device.RuntimePlatform switch
             {
-                case Device.UWP: return SystemType.UWP;
-                case Device.Android: return SystemType.Android;
-                case Device.iOS: return SystemType.iOS;
-                case Device.macOS: return SystemType.iOS;
-                default: return SystemType.Unsupported;
-            }
+                Device.UWP => SystemType.UWP,
+                Device.Android => SystemType.Android,
+                Device.iOS => SystemType.iOS,
+                Device.macOS => SystemType.iOS,
+                _ => SystemType.Unsupported,
+            };
         }
     }
 }

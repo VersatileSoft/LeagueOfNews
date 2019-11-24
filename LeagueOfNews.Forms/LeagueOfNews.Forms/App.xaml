@@ -5,9 +5,14 @@
     xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms">
     <m:MvxFormsApplication.Resources>
         <ResourceDictionary>
+            <Color x:Key="BackgroundColor">#1a1d21</Color>
+            <Color x:Key="BackgroundColorLight">#202429</Color>
+
+            <Color x:Key="PrimaryColor">#cca75c</Color>
+
             <Style x:Key="ActivityIndicator" TargetType="ActivityIndicator">
                 <Setter Property="VerticalOptions" Value="Center"/>
-                <Setter Property="Color" Value="#ce9f3d"/>
+                <Setter Property="Color" Value="{StaticResource PrimaryColor}"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="IsRunning" Value="{Binding IsLoading}"/>
             </Style>
@@ -23,7 +28,7 @@
                 <Setter Property="CornerRadius" Value="0"/>
                 <Setter Property="Padding" Value="0"/>
                 <Setter Property="Margin" Value="-5,-5,-5,2"/>
-                <Setter Property="BackgroundColor" Value="#002132"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColor}"/>
             </Style>
 
             <Style x:Key="LightPage" TargetType="views:MvxContentPage">
@@ -32,7 +37,7 @@
             </Style>
 
             <Style x:Key="DarkPage" TargetType="views:MvxContentPage">
-                <Setter Property="BackgroundColor" Value="#001119"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource BackgroundColorLight}"/>
                 <Setter Property="Visual" Value="Material"/>
             </Style>
 
@@ -68,7 +73,7 @@
             <Style x:Key="TitleExtendedLabel" TargetType="Label">
                 <Setter Property="LineBreakMode" Value="TailTruncation"/>
                 <Setter Property="MaxLines" Value="2"/>
-                <Setter Property="TextColor" Value="#ce9f3d"/>
+                <Setter Property="TextColor" Value="{StaticResource PrimaryColor}"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="FontSize" Value="Large"/>
             </Style>

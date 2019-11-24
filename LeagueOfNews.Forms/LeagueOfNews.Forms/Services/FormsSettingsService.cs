@@ -77,6 +77,7 @@ namespace LeagueOfNews.Forms.Services
     {
         private const string LAST_POST_KEY_SURRENDER = "LAST_POST_KEY_SURRENDER";
         private const string LAST_POST_KEY_OFFICIAL = "LAST_POST_KEY_OFFICIAL";
+        private const string LAST_POST_KEY_DEVCORNER = "LAST_POST_KEY_DEVCORNER";
 
         public override string LastSurrenderPostUrl
         {
@@ -88,6 +89,12 @@ namespace LeagueOfNews.Forms.Services
         {
             get => Preferences.Get(LAST_POST_KEY_OFFICIAL, "");
             set => Preferences.Set(LAST_POST_KEY_OFFICIAL, value);
+        }
+
+        public override string LastDevCornerPostUrl
+        {
+            get => Preferences.Get(LAST_POST_KEY_DEVCORNER, "");
+            set => Preferences.Set(LAST_POST_KEY_DEVCORNER, value);
         }
     }
 }

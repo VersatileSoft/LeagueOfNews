@@ -11,7 +11,7 @@ namespace LeagueOfNews.Forms.Droid.Services
         public bool IsInternetAvailable()
         {
             NetworkAccess currentAccess = Connectivity.NetworkAccess;
-            bool isConnected = currentAccess == NetworkAccess.Internet ? true : false;
+            bool isConnected = currentAccess is NetworkAccess.Internet;
             if (!isConnected)
             {
                 try

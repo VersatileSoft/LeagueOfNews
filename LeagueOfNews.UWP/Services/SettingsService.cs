@@ -1,8 +1,6 @@
 ﻿using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.Service;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using Windows.Storage;
 using static LeagueOfNews.UWP.Services.SettingsService;
 
@@ -46,16 +44,6 @@ namespace LeagueOfNews.UWP.Services
             {
                 get => (_settings.Values.TryGetValue("LastOfficialPostUrl", out object value)) ? value as string : "";
                 set => _settings.Values["LastOfficialPostUrl"] = value;
-            }
-
-            public override List<string> VisitedPosts
-            {
-                get => (_settings.Values.TryGetValue("VisitedPosts", out object value)) ? new List<string>((value as string).Split("|")) : new List<string>();
-                set
-                {
-                    string output = value.Aggregate((sum, x) => sum += x + "|");
-                    _settings.Values["VisitedPosts"] = output.Substring(0, output.Length - 1);
-                }
             }
         }
     }
