@@ -26,7 +26,7 @@ namespace LeagueOfNews.Forms.ViewModels
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)
         {
-            await _chromeCustomTabService.StartChromCustomTab(newsfeed.UrlToNewsfeed);
+            await _chromeCustomTabService.StartChromeCustomTab(newsfeed.UrlToNewsfeed);
         }
 
         public void Prepare(NewsCategory parameter)

@@ -4,7 +4,9 @@ using LeagueOfNews.Forms.Interfaces;
 using LeagueOfNews.Model;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using System;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 
 namespace LeagueOfNews.Forms.ViewModels
 {
@@ -24,14 +26,22 @@ namespace LeagueOfNews.Forms.ViewModels
         {
             Title = _settingsService[parameter].Title;
             SelectedCategory = parameter;
-            IsOfficial = parameter == NewsCategory.Official ? true : false;
+            IsOfficial = parameter == NewsCategory.Official;
 
             LoadNewsfeeds();
         }
 
         protected override async Task NavigateToAsync(Newsfeed newsfeed)
         {
-            await _chromeCustomTabService.StartChromCustomTab(newsfeed.UrlToNewsfeed);
+            if (newsfeed.UrlToNewsfeed?.Contains("youtube") ?? false)
+            {
+                Uri urlFromRedirect = new Uri(newsfeed.UrlToNewsfeed);
+                await Launcher.OpenAsync($"vnd.youtube:/{urlFromRedirect.PathAndQuery}");
+            }
+            else
+            {
+                await _chromeCustomTabService.StartChromeCustomTab(newsfeed.UrlToNewsfeed);
+            }
         }
     }
 }

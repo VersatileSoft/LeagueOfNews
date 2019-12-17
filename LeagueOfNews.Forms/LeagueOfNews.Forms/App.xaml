@@ -12,9 +12,9 @@
 
             <Style x:Key="ActivityIndicator" TargetType="ActivityIndicator">
                 <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="IsRunning" Value="True"/>
                 <Setter Property="Color" Value="{StaticResource PrimaryColor}"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="IsRunning" Value="{Binding IsLoading}"/>
             </Style>
 
             <Style x:Key="LightFrame" TargetType="Frame">

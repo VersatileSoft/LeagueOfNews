@@ -23,41 +23,43 @@
                 IsEnabled="{Binding IsLoading, Converter={StaticResource NegateBoolConverter}}"
                 IsRefreshing="{Binding IsRefreshing}"
                 RefreshColor="{StaticResource PrimaryColor}">
+
                 <CollectionView
                     ItemTemplate="{DataTemplate controls:NewsfeedLeftImageItemCell}"
                     ItemsSource="{Binding Newsfeeds}"
+                    RemainingItemsThreshold="0"
+                    RemainingItemsThresholdReachedCommand="{Binding LoadMoreCommand}"
                     SelectionChanged="InfiniteCollectionView_ItemTapped"
                     SelectionMode="Single">
                     <CollectionView.Triggers>
                         <DataTrigger
                             Binding="{Binding IsOfficial}"
                             TargetType="CollectionView"
-                            Value="false">
+                            Value="False">
                             <Setter Property="ItemTemplate" Value="{DataTemplate controls:NewsfeedItemCell}"/>
                         </DataTrigger>
                     </CollectionView.Triggers>
 
                     <CollectionView.Footer>
-                        <Grid HeightRequest="12">
-                            <!--<Button
-                                Margin="12"
-                                HorizontalOptions="Fill"
-                                VerticalOptions="Fill"
-                                BackgroundColor="#ce9f3d"
-                                Clicked="Button_Clicked"
-                                Command="{Binding LoadMoreCommand}"
-                                CornerRadius="0"
-                                IsVisible="False"
-                                Text="LOAD MORE"
-                                TextColor="White"/>-->
-                            <!--  IsVisible="{Binding IsLoadingMore, Converter={StaticResource NegateBoolConverter}}"  -->
-                            <!--<ActivityIndicator IsRunning="{Binding IsLoadingMore}" Style="{StaticResource ActivityIndicator}"/>-->
+                        <Grid Padding="8" IsVisible="{Binding IsLoadingMore}">
+                            <Grid.Triggers>
+                                <DataTrigger
+                                    Binding="{Binding IsOfficial}"
+                                    TargetType="Grid"
+                                    Value="False">
+                                    <Setter Property="IsVisible" Value="False"/>
+                                </DataTrigger>
+                            </Grid.Triggers>
+                            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
                         </Grid>
                     </CollectionView.Footer>
+                    <CollectionView.EmptyView>
+                        <Grid>
+                            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
+                        </Grid>
+                    </CollectionView.EmptyView>
                 </CollectionView>
             </RefreshView>
-
-            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
         </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

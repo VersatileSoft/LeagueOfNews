@@ -6,7 +6,7 @@ using Xamarin.Essentials;
 
 namespace LeagueOfNews.Forms.Views
 {
-    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = true)]
+    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = false)]
     public partial class SettingsView : MvxContentPage<SettingsViewModel>
     {
         public SettingsView()

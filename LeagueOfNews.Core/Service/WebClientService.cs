@@ -24,34 +24,32 @@ namespace LeagueOfNews.Core.Model
                 return null;
             }
 
-            switch (_settingsService[page].Website)
+            return _settingsService[page].Website switch
             {
-                case NewsWebsite.Surrender:
-                    return await GetPageByWebClient(url);
-                case NewsWebsite.LoL:
-                    return await GetPageByRequest(url);
-                case NewsWebsite.DevCorner:
-                    return await GetPageByRequest(url);
-            }
-            return null;
+                NewsWebsite.Surrender => await GetPageByWebClient(url),
+                NewsWebsite.LoL => await GetPageByRequest(url),
+                NewsWebsite.DevCorner => await GetPageByRequest(url),
+                _ => null,
+            };
         }
 
         private async Task<HtmlDocument> GetPageByRequest(string url)
         {
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
             request.Method = "GET";
-            request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5";
+            request.UserAgent = "Mozilla/5.0 (Linux; Android 10;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Mobile Safari/537.36";
 
             HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync();
             Stream stream = response.GetResponseStream();
 
-            using (StreamReader reader = new StreamReader(stream))
-            {
-                string html = reader.ReadToEnd();
-                HtmlDocument doc = new HtmlDocument();
-                doc.LoadHtml(html);
-                return doc;
-            }
+            using StreamReader reader = new StreamReader(stream);
+            string html = reader.ReadToEnd();
+
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(html);
+
+            response.Close();
+            return doc;
         }
 
         private async Task<HtmlDocument> GetPageByWebClient(string url)
@@ -70,20 +68,39 @@ namespace LeagueOfNews.Core.Model
             {
                 HttpWebRequest request = (HttpWebRequest)WebRequest.Create(url);
                 request.Method = "GET";
-                request.UserAgent = "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.1.5) Gecko/20091102 Firefox/3.5.5";
-                // request.AllowWriteStreamBuffering = true;
-                request.Timeout = 30000;
+                request.UserAgent = "Mozilla/5.0 (Linux; Android 10;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Mobile Safari/537.36";
+                request.KeepAlive = false;
+                request.Timeout = 10000;
 
                 HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync();
                 Stream stream = response.GetResponseStream();
 
-                using (MemoryStream ms = new MemoryStream())
-                {
-                    stream.CopyTo(ms);
-                    return ms.ToArray();
-                }
+                using MemoryStream ms = new MemoryStream();
+                stream.CopyTo(ms);
+
+                response.Close();
+                return ms.ToArray();
             }
-            catch { return null; }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public async Task<string> GetNewsUrlFromRedirect(string originalNewsUrl)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(originalNewsUrl);
+            request.Method = "HEAD";
+            request.UserAgent = "Mozilla/5.0 (Linux; Android 10;) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.79 Mobile Safari/537.36";
+            request.AllowAutoRedirect = true;
+            request.ContentType = "application/x-www-form-urlencoded";
+            request.Timeout = 10000;
+
+            HttpWebResponse response = (HttpWebResponse)await request.GetResponseAsync();
+            string urlFromRedirect = response.ResponseUri.AbsoluteUri;
+            response.Close();
+
+            return urlFromRedirect;
         }
     }
 }

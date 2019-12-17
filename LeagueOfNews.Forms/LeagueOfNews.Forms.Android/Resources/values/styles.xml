@@ -8,7 +8,7 @@
   </style>
 
   <style name="MainTheme" parent="MainTheme.Base">
-    <item name="android:windowBackground">@drawable/icon_background</item>
+    <item name="android:windowBackground">@color/colorPrimary</item>
     <item name="android:windowNoTitle">true</item>
     <item name="android:windowIsTranslucent">false</item>
     <item name="android:windowIsFloating">false</item>
@@ -16,7 +16,8 @@
   </style>
 
   <!-- Base theme applied no matter what API -->
-  <style name="MainTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+  <style name="MainTheme.Base" parent="Theme.AppCompat.DayNight">
+    <item name="android:colorBackground">@color/colorPrimary</item>
     <!--If you are using revision 22.1 please use just windowNoTitle. Without android:-->
     <item name="windowNoTitle">true</item>
     <!--We will be using the toolbar so no need to show ActionBar-->

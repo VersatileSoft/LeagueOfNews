@@ -13,15 +13,15 @@ namespace LeagueOfNews.Core.Service
     {
         private string _baseURL;
 
-        private IList<Newsfeed> _newsfeeds { get; set; }
+        private IList<Newsfeed> Newsfeeds { get; set; }
         private readonly Dictionary<NewsCategory, string> _nextPageUrls;
 
-        private readonly IWebClientService _cookieWebClientService;
+        private readonly IWebClientService _webClientService;
         private readonly ISettingsService _settingsService;
 
-        public NewsfeedService(IWebClientService cookieWebClientService, ISettingsService settingsService, IOperatingSystemService operatingSystemService)
+        public NewsfeedService(IWebClientService cookieWebClientService, ISettingsService settingsService)
         {
-            _cookieWebClientService = cookieWebClientService;
+            _webClientService = cookieWebClientService;
             _settingsService = settingsService;
             _nextPageUrls = new Dictionary<NewsCategory, string>();
         }
@@ -32,7 +32,7 @@ namespace LeagueOfNews.Core.Service
             NewsWebsite newsWebsite = _settingsService[page].Website;
             _baseURL = "https://" + new Uri(URL).Host;
 
-            HtmlDocument doc = await _cookieWebClientService.GetPage(URL, page);
+            HtmlDocument doc = await _webClientService.GetPage(URL, page);
 
             if (doc == null)
             {
@@ -42,17 +42,17 @@ namespace LeagueOfNews.Core.Service
             switch (newsWebsite)
             {
                 case NewsWebsite.LoL:
-                    _newsfeeds = await LoadOfficial(doc, page);
+                    Newsfeeds = await LoadOfficial(doc, page);
                     break;
                 case NewsWebsite.DevCorner:
-                    _newsfeeds = LoadDevCorner(doc, page);
+                    Newsfeeds = LoadDevCorner(doc, page);
                     break;
                 case NewsWebsite.Surrender:
-                    _newsfeeds = await LoadSurrender(doc, page);
+                    Newsfeeds = await LoadSurrender(doc, page);
                     break;
             }
 
-            return _newsfeeds;
+            return Newsfeeds;
         }
 
         public async Task<IList<Newsfeed>> LoadMoreNewsfeeds(NewsCategory page)
@@ -61,11 +61,11 @@ namespace LeagueOfNews.Core.Service
             HtmlDocument doc;
             if (_nextPageUrls.TryGetValue(page, out string url))
             {
-                doc = await _cookieWebClientService.GetPage(url, page);
+                doc = await _webClientService.GetPage(url, page);
             }
             else
             {
-                throw new Exception("Filed to load next page url");
+                throw new Exception("Failed to load next page url");
             }
 
             switch (_settingsService[page].Website)
@@ -97,14 +97,13 @@ namespace LeagueOfNews.Core.Service
                     {
                         Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").InnerText).RemoveSpaceFromString(),
                         Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='horizontal-group']").InnerText),
-                        UrlToNewsfeed = _baseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value,
-                        Image = await _cookieWebClientService.GetImageAsync(_baseURL + node.SelectSingleNode(".//img").Attributes["src"].Value),
+                        UrlToNewsfeed = await _webClientService.GetNewsUrlFromRedirect(_baseURL + node.SelectSingleNode(".//div[@class='default-2-3']").SelectSingleNode(".//a").Attributes["href"].Value),
+                        Image = await _webClientService.GetImageAsync(_baseURL + node.SelectSingleNode(".//img").Attributes["src"].Value),
                         ImageUri = _baseURL + node.SelectSingleNode(".//img").Attributes["src"].Value,
                         ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='teaser-content']").InnerText).RemoveSpaceFromString(),
                         Page = page
                         //TODO newsfeed.Website
                     };
-
                     newsfeeds.Add(newsfeed);
                 }
                 catch
@@ -130,13 +129,12 @@ namespace LeagueOfNews.Core.Service
                         Title = HttpUtility.HtmlDecode(node.SelectSingleNode(".//h1[@class='news-title']").InnerText).RemoveSpaceFromString(),
                         Date = HttpUtility.HtmlDecode(node.SelectSingleNode(".//span[@class='news-date']").InnerText).RemoveSpaceFromString(),
                         UrlToNewsfeed = node.SelectSingleNode(".//h1[@class='news-title']").SelectSingleNode(".//a").Attributes["href"].Value + "?m=1",
-                        Image = await _cookieWebClientService.GetImageAsync(node.SelectSingleNode(".//img").Attributes["src"].Value),
+                        //Image = await _webClientService.GetImageAsync(node.SelectSingleNode(".//img").Attributes["src"].Value),
                         ImageUri = node.SelectSingleNode(".//img").Attributes["src"].Value,
                         ShortDescription = HttpUtility.HtmlDecode(node.SelectSingleNode(".//div[@class='news-content']").InnerText).RemoveSpaceFromString().RemoveContinueReadingString(),
                         Page = page
                         //TODO newsfeed.Website
                     };
-
                     newsfeeds.Add(newsfeed);
                 }
                 catch
@@ -147,6 +145,7 @@ namespace LeagueOfNews.Core.Service
             return newsfeeds;
         }
 
+        // TODO infinite scroll
         public List<Newsfeed> LoadDevCorner(HtmlDocument Document, NewsCategory page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
@@ -191,23 +190,23 @@ namespace ExtensionMethods
                     .Replace("          ", " ")
                     .Replace("   ", " ")
                     .Replace("  ", " ")
-                    .Replace("Hi folks,\r -------------------------------------------------------------------------------\r **Usual Disclaimers**", "")
-                    .Replace("Hi folks, ------------------------------------------------------------------------------- **Usual Disclaimers**", "")
+                    .Replace("Hi folks,\r -------------------------------------------------------------------------------\r **Usual Disclaimers**", string.Empty)
+                    .Replace("Hi folks, ------------------------------------------------------------------------------- **Usual Disclaimers**", string.Empty)
                     .Trim();
         }
 
         public static string RemoveContinueReadingString(this string s)
         {
-            return s.Replace(" Bundle up and continue reading for more information!", "")
-                    .Replace(" Continue for more information and previews!", "")
-                    .Replace(" Continue reading for more information!", "")
-                    .Replace(" Continue reading for these champions' regular store prices.", "")
-                    .Replace(" Continue reading for a better look at this sale's discounted skins!", "")
-                    .Replace(" Continue reading for more details!", "")
-                    .Replace(" Continue reading for a spoiler free look at this week's games, including team info, schedules, and VODs!", "")
-                    .Replace(" Continue reading for a full preview of the skin!", "")
-                    .Replace(" Continue reading for a look at the article and new Universe content!", "")
-                    .Replace(" Continue reading for more info on the video!", "");
+            return s.Replace(" Bundle up and continue reading for more information!", string.Empty)
+                    .Replace(" Continue for more information and previews!", string.Empty)
+                    .Replace(" Continue reading for more information!", string.Empty)
+                    .Replace(" Continue reading for these champions' regular store prices.", string.Empty)
+                    .Replace(" Continue reading for a better look at this sale's discounted skins!", string.Empty)
+                    .Replace(" Continue reading for more details!", string.Empty)
+                    .Replace(" Continue reading for a spoiler free look at this week's games, including team info, schedules, and VODs!", string.Empty)
+                    .Replace(" Continue reading for a full preview of the skin!", string.Empty)
+                    .Replace(" Continue reading for a look at the article and new Universe content!", string.Empty)
+                    .Replace(" Continue reading for more info on the video!", string.Empty);
         }
     }
 }

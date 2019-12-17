@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace LeagueOfNews.Forms.Views.NoCategoryViews
 {
-    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = true)]
+    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = false)]
     public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
     {
         public NewsfeedListView()
@@ -22,12 +22,7 @@ namespace LeagueOfNews.Forms.Views.NoCategoryViews
             ViewModel.ItemSelectedCommand.Execute((Newsfeed)CollView.SelectedItem);
 
             //Reset selection
-            CollView.SelectedItem = null;
+            //CollView.SelectedItem = null; //TODO Move tap event to cell
         }
-
-        //private void Button_Clicked(object sender, EventArgs e)
-        //{
-        //    ViewModel.LoadMoreCommand.Execute(sender);
-        //}
     }
 }

@@ -24,6 +24,7 @@
                 Aspect="AspectFill"
                 BitmapOptimizations="True"
                 DownsampleToViewSize="True"
+                DownsampleUseDipUnits="True"
                 IsOpaque="False"
                 Source="{Binding Path=Image, Converter={StaticResource UriToImageSourceConverter}}"/>
 

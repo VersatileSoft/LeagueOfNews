@@ -4,6 +4,6 @@ namespace LeagueOfNews.Forms.Interfaces
 {
     public interface IChromeCustomTabService
     {
-        Task StartChromCustomTab(string url);
+        Task StartChromeCustomTab(string url);
     }
 }

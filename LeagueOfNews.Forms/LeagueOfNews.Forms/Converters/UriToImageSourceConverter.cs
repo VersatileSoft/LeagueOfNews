@@ -11,7 +11,7 @@ namespace LeagueOfNews.Forms.Converters
         {
             if (value == null)
             {
-                throw new ArgumentException("Converted value is null");
+                return value;
             }
 
             if (value is byte[])

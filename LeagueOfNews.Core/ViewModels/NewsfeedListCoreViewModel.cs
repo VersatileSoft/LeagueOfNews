@@ -22,9 +22,9 @@ namespace LeagueOfNews.Core.ViewModels
 
         public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
         public string Title { get; set; }
-        public bool IsLoading { get; set; }
-        public bool IsRefreshing { get; set; }
-        public bool IsLoadingMore { get; set; }
+        public bool IsLoading { get; set; } = false;
+        public bool IsRefreshing { get; set; } = false;
+        public bool IsLoadingMore { get; set; } = false;
         public ICommand ItemSelectedCommand { get; set; }
         public ICommand LoadMoreCommand { get; set; }
         public ICommand RefreshItemsCommand { get; set; }
@@ -62,12 +62,12 @@ namespace LeagueOfNews.Core.ViewModels
 
         protected void LoadMoreNewsfeeds()
         {
-            if (IsLoading || IsLoadingMore || IsRefreshing)
+            if (IsLoading || IsLoadingMore || IsRefreshing || SelectedCategory == NewsCategory.DevCorner)
             {
                 return;
             }
 
-            new Thread(async () =>
+            InvokeOnMainThread(async () =>
             {
                 IsLoadingMore = true;
                 foreach (Newsfeed item in await _newsfeedService.LoadMoreNewsfeeds(SelectedCategory))
@@ -75,17 +75,17 @@ namespace LeagueOfNews.Core.ViewModels
                     Newsfeeds.Add(item);
                 }
                 IsLoadingMore = false;
-            }).Start();
+            });
         }
 
         protected void RefreshNewsfeeds()
         {
-            new Thread(async () =>
+            InvokeOnMainThread(async () =>
             {
                 IsRefreshing = true;
                 Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.LoadNewsfeedsAsync(SelectedCategory));
                 IsRefreshing = false;
-            }).Start();
+            });
         }
     }
 }

@@ -22,15 +22,12 @@
                 Aspect="AspectFill"
                 BitmapOptimizations="True"
                 DownsampleToViewSize="True"
+                DownsampleUseDipUnits="True"
                 IsOpaque="False"
-                MinimumHeightRequest="80"
-                Source="{Binding Path=Image, Converter={StaticResource UriToImageSourceConverter}}"/>
+                Source="{Binding Path=ImageUri, Converter={StaticResource UriToImageSourceConverter}}"/>
 
             <Label Style="{StaticResource TitleExtendedLabel}" Text="{Binding Title}"/>
-            <Label
-                Style="{StaticResource DateLabel}"
-                Text="{Binding Date}"
-                TextColor="{DynamicResource Label}"/>
+            <Label Style="{StaticResource DateLabel}" Text="{Binding Date}"/>
             <Label
                 MaxLines="4"
                 Style="{DynamicResource DescriptionLabel}"
