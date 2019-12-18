@@ -48,7 +48,7 @@ namespace LeagueOfNews.Core.Service
                     Newsfeeds = LoadDevCorner(doc, page);
                     break;
                 case NewsWebsite.Surrender:
-                    Newsfeeds = await LoadSurrender(doc, page);
+                    Newsfeeds = LoadSurrender(doc, page);
                     break;
             }
 
@@ -77,7 +77,7 @@ namespace LeagueOfNews.Core.Service
                     newsfeeds = LoadDevCorner(doc, page);
                     break;
                 case NewsWebsite.Surrender:
-                    newsfeeds = await LoadSurrender(doc, page);
+                    newsfeeds = LoadSurrender(doc, page);
                     break;
             }
             return newsfeeds;
@@ -114,7 +114,7 @@ namespace LeagueOfNews.Core.Service
             return newsfeeds;
         }
 
-        public async Task<List<Newsfeed>> LoadSurrender(HtmlDocument Document, NewsCategory page)
+        public List<Newsfeed> LoadSurrender(HtmlDocument Document, NewsCategory page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             _nextPageUrls[page] = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;
