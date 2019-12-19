@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.UWP", "LeagueO
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.Core", "LeagueOfNews.Core\LeagueOfNews.Core.csproj", "{8D65A64C-9C6F-4F13-A159-D76631CFE8F7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.Forms.Android", "LeagueOfNews.Forms\LeagueOfNews.Forms.Android\LeagueOfNews.Forms.Android.csproj", "{47BAF33B-374E-4379-B9B0-FAE6230ADED0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.Forms.Android", "LeagueOfNews.Forms.Android\LeagueOfNews.Forms.Android.csproj", "{47BAF33B-374E-4379-B9B0-FAE6230ADED0}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.Forms", "LeagueOfNews.Forms\LeagueOfNews.Forms\LeagueOfNews.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.Forms", "LeagueOfNews.Forms\LeagueOfNews.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.WebApi", "LeagueOfNews.WebApi\LeagueOfNews.WebApi.csproj", "{1FFE6D83-2687-4CAD-9254-9D665E222C44}"
 EndProject

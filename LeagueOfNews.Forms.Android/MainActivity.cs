@@ -29,9 +29,8 @@ namespace LeagueOfNews.Forms.Droid
         public override void InitializeApplication()
         {
             base.InitializeApplication();
-            INotificationService notificationService = Mvx.IoCProvider.Resolve<INotificationService>();
-            notificationService.CreateNotificationChannel();
-            notificationService.RefreshNotificationJobService();
+            Mvx.IoCProvider.Resolve<INotificationService>().CreateNotificationChannel();
+            Mvx.IoCProvider.Resolve<INotificationService>().RefreshNotificationJobService();
         }
     }
 }

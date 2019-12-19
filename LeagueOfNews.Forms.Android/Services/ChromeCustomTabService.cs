@@ -3,7 +3,7 @@ using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Net;
-using Android.Support.CustomTabs;
+using AndroidX.Browser.CustomTabs;
 using LeagueOfNews.Forms.Interfaces;
 
 namespace LeagueOfNews.Forms.Droid.Services

@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\LeagueOfNews.Core\LeagueOfNews.Core.csproj" />
+    <ProjectReference Include="..\LeagueOfNews.Core\LeagueOfNews.Core.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -147,12 +147,7 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Resources\drawable-hdpi\" />
-    <Folder Include="Resources\drawable-xhdpi\" />
-    <Folder Include="Resources\drawable-xxhdpi\" />
-    <Folder Include="Resources\drawable-xxxhdpi\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\SurrenderAt20Icon.png" />
   </ItemGroup>
@@ -160,9 +155,6 @@
     <AndroidResource Include="Resources\values\Strings.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\drawable\HamburgerPicture.png" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\SettingsIcon.png" />
@@ -174,7 +166,7 @@
     <AndroidResource Include="Resources\drawable\DevBlogIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LeagueOfNews.Core\LeagueOfNews.Core.csproj">
+    <ProjectReference Include="..\LeagueOfNews.Core\LeagueOfNews.Core.csproj">
       <Project>{8d65a64c-9c6f-4f13-a159-d76631cfe8f7}</Project>
       <Name>LeagueOfNews.Core</Name>
     </ProjectReference>
