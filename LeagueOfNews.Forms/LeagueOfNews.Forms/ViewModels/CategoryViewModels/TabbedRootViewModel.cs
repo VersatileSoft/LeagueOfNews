@@ -1,9 +1,9 @@
-﻿using LeagueOfNews.Core.Interface;
+﻿using System;
+using System.Threading.Tasks;
+using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Forms.Interfaces;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using System;
-using System.Threading.Tasks;
 
 namespace LeagueOfNews.Forms.ViewModels
 {

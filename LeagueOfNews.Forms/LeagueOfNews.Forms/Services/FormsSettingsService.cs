@@ -7,10 +7,7 @@ namespace LeagueOfNews.Forms.Services
 {
     public abstract class FormsSettingsService<T> : AbstractSettingsService<T> where T : WebsiteHistoryData, new()
     {
-        public FormsSettingsService() : base()
-        {
-            SetAppTheme();
-        }
+        public FormsSettingsService() : base() => SetAppTheme();
 
         protected void SetAppTheme()
         {

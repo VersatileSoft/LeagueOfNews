@@ -1,22 +1,19 @@
-﻿using HtmlAgilityPack;
-using LeagueOfNews.Model;
-using LeagueOfNews.WebApi.Services.Interfaces;
-using Microsoft.Extensions.Options;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
+using HtmlAgilityPack;
+using LeagueOfNews.Model;
+using LeagueOfNews.WebApi.Services.Interfaces;
+using Microsoft.Extensions.Options;
 
 namespace LeagueOfNews.WebApi.Services
 {
     public class NewsfeedService : INewsfeedService
     {
         private readonly AppConfig _appConfig;
-        public NewsfeedService(IOptions<AppConfig> appConfig)
-        {
-            _appConfig = appConfig.Value;
-        }
+        public NewsfeedService(IOptions<AppConfig> appConfig) => _appConfig = appConfig.Value;
 
         public async Task<IEnumerable<Newsfeed>> GetNewsfeeds(int websiteId, int page)
         {

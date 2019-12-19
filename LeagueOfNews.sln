@@ -11,14 +11,21 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.Forms.Android"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.Forms", "LeagueOfNews.Forms\LeagueOfNews.Forms\LeagueOfNews.Forms.csproj", "{D2F5605C-8569-4A30-B614-982DC34EDC92}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Config", "Solution Config", "{0130BC9D-9367-4247-95ED-9A9FB6DC0CC7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.WebApi", "LeagueOfNews.WebApi\LeagueOfNews.WebApi.csproj", "{1FFE6D83-2687-4CAD-9254-9D665E222C44}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LeagueOfNews.Model", "LeagueOfNews.Model\LeagueOfNews.Model.csproj", "{20032F51-71E0-424E-B3EE-FD619CAA9420}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{B29A5941-0BC4-47ED-A875-DA415F307939}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Mobile", "Mobile", "{FC5D6FF6-B0FC-4AC4-A50F-B0BDA5833EBC}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Desktop", "Desktop", "{8DEE9C65-FD6A-4F07-B56C-E90BAFA544D9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6AA5394-634E-4A73-811F-B85A0A4950DD}"
 	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
 		Settings.XamlStyler = Settings.XamlStyler
 	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.WebApi", "LeagueOfNews.WebApi\LeagueOfNews.WebApi.csproj", "{1FFE6D83-2687-4CAD-9254-9D665E222C44}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LeagueOfNews.Model", "LeagueOfNews.Model\LeagueOfNews.Model.csproj", "{20032F51-71E0-424E-B3EE-FD619CAA9420}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -175,6 +182,14 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{96378F75-EE82-4E75-9189-EE9D60868CA7} = {8DEE9C65-FD6A-4F07-B56C-E90BAFA544D9}
+		{8D65A64C-9C6F-4F13-A159-D76631CFE8F7} = {FC5D6FF6-B0FC-4AC4-A50F-B0BDA5833EBC}
+		{47BAF33B-374E-4379-B9B0-FAE6230ADED0} = {FC5D6FF6-B0FC-4AC4-A50F-B0BDA5833EBC}
+		{D2F5605C-8569-4A30-B614-982DC34EDC92} = {FC5D6FF6-B0FC-4AC4-A50F-B0BDA5833EBC}
+		{1FFE6D83-2687-4CAD-9254-9D665E222C44} = {B29A5941-0BC4-47ED-A875-DA415F307939}
+		{20032F51-71E0-424E-B3EE-FD619CAA9420} = {B29A5941-0BC4-47ED-A875-DA415F307939}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3342EA97-3D5A-45FB-BD97-AB84FB137799}

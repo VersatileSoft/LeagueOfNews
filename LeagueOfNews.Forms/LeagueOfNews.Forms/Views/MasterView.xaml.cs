@@ -8,10 +8,7 @@ namespace LeagueOfNews.Forms.Views
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Master, NoHistory = true, WrapInNavigationPage = false)]
     public partial class MasterView : MvxContentPage<MasterViewModel>
     {
-        public MasterView()
-        {
-            InitializeComponent();
-        }
+        public MasterView() => InitializeComponent();
 
         private void CollectionView_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

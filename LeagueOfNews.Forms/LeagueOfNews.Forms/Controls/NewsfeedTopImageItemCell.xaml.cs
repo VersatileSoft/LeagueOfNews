@@ -4,9 +4,6 @@ namespace LeagueOfNews.Forms.Controls
 {
     public partial class NewsfeedTopImageItemCell : ContentView
     {
-        public NewsfeedTopImageItemCell()
-        {
-            InitializeComponent();
-        }
+        public NewsfeedTopImageItemCell() => InitializeComponent();
     }
 }

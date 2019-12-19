@@ -1,10 +1,10 @@
-﻿using Android.App;
+﻿using System.Threading;
+using Android.App;
 using Android.App.Job;
 using Android.Util;
 using LeagueOfNews.Core.Interface;
 using MvvmCross;
 using MvvmCross.Platforms.Android.Core;
-using System.Threading;
 
 namespace LeagueOfNews.Forms.Services
 {
@@ -16,16 +16,11 @@ namespace LeagueOfNews.Forms.Services
         public override bool OnStartJob(JobParameters args)
         {
             Log.Info(TAG, "on start job: " + args.JobId);
-
             DoBackgroundWork(args);
-
             return true;
         }
 
-        public override bool OnStopJob(JobParameters args)
-        {
-            return true;
-        }
+        public override bool OnStopJob(JobParameters args) => true;
 
         private void DoBackgroundWork(JobParameters args)
         {
@@ -37,7 +32,6 @@ namespace LeagueOfNews.Forms.Services
                 await Mvx.IoCProvider.Resolve<INewPostsService>().CheckNewPostsAsync();
 
                 JobFinished(args, true);
-
             }).Start();
         }
     }

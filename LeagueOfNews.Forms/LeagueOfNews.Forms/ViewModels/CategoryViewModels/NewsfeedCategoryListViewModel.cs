@@ -1,10 +1,10 @@
-﻿using LeagueOfNews.Core.Interface;
+﻿using System.Threading.Tasks;
+using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.ViewModels;
 using LeagueOfNews.Forms.Interfaces;
 using LeagueOfNews.Model;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using System.Threading.Tasks;
 
 namespace LeagueOfNews.Forms.ViewModels
 {
@@ -19,15 +19,9 @@ namespace LeagueOfNews.Forms.ViewModels
             _chromeCustomTabService = chromeCustomTabService;
         }
 
-        private void InitTabs()
-        {
-            LoadNewsfeeds();
-        }
+        private void InitTabs() => LoadNewsfeeds();
 
-        protected override async Task NavigateToAsync(Newsfeed newsfeed)
-        {
-            await _chromeCustomTabService.StartChromeCustomTab(newsfeed.UrlToNewsfeed);
-        }
+        protected override async Task NavigateToAsync(Newsfeed newsfeed) => await _chromeCustomTabService.StartChromeCustomTab(newsfeed.UrlToNewsfeed);
 
         public void Prepare(NewsCategory parameter)
         {

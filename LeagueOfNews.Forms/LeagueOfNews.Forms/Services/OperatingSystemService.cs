@@ -13,7 +13,7 @@ namespace LeagueOfNews.Forms.Services
                 Device.Android => SystemType.Android,
                 Device.iOS => SystemType.iOS,
                 Device.macOS => SystemType.iOS,
-                _ => SystemType.Unsupported,
+                _ => SystemType.Unsupported
             };
         }
     }

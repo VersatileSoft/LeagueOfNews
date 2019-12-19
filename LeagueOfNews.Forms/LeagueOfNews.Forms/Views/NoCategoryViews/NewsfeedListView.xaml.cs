@@ -1,8 +1,8 @@
-﻿using LeagueOfNews.Forms.ViewModels;
+﻿using System;
+using LeagueOfNews.Forms.ViewModels;
 using LeagueOfNews.Model;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using System;
 using Xamarin.Forms;
 
 namespace LeagueOfNews.Forms.Views.NoCategoryViews
@@ -10,10 +10,7 @@ namespace LeagueOfNews.Forms.Views.NoCategoryViews
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = false)]
     public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
     {
-        public NewsfeedListView()
-        {
-            InitializeComponent();
-        }
+        public NewsfeedListView() => InitializeComponent();
 
         private void InfiniteCollectionView_ItemTapped(object sender, EventArgs e)
         {

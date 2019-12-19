@@ -1,10 +1,10 @@
-﻿using Android.App;
+﻿using System.Threading.Tasks;
+using Android.App;
 using Android.Content;
 using Android.Graphics;
 using Android.Net;
 using Android.Support.CustomTabs;
 using LeagueOfNews.Forms.Interfaces;
-using System.Threading.Tasks;
 
 namespace LeagueOfNews.Forms.Droid.Services
 {
@@ -14,7 +14,7 @@ namespace LeagueOfNews.Forms.Droid.Services
         {
             return Task.Run(() =>
             {
-                CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().SetToolbarColor(Color.ParseColor("#202429")).Build();
+                using CustomTabsIntent customTabsIntent = new CustomTabsIntent.Builder().SetToolbarColor(Color.ParseColor("#202429")).Build();
                 customTabsIntent.Intent.AddFlags(ActivityFlags.NoHistory | ActivityFlags.SingleTop | ActivityFlags.NewTask);
                 customTabsIntent.LaunchUrl(Application.Context, Uri.Parse(url));
             });

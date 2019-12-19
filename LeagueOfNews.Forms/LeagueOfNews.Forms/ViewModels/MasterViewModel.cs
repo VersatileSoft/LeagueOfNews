@@ -1,10 +1,10 @@
-﻿using LeagueOfNews.Core.Interface;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
+using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Forms.Interfaces;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using System.Collections.ObjectModel;
-using System.Windows.Input;
 
 namespace LeagueOfNews.Forms.ViewModels
 {

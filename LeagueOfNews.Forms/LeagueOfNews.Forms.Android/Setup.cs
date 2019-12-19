@@ -1,4 +1,6 @@
-﻿using LeagueOfNews.Core;
+﻿using System.Collections.Generic;
+using System.Reflection;
+using LeagueOfNews.Core;
 using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Forms.Droid.Services;
 using LeagueOfNews.Forms.Interfaces;
@@ -8,8 +10,6 @@ using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Core;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
-using System.Collections.Generic;
-using System.Reflection;
 
 namespace LeagueOfNews.Forms.Droid
 {

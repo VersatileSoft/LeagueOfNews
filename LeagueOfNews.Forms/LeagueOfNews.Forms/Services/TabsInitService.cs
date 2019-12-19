@@ -1,5 +1,5 @@
-﻿using LeagueOfNews.Forms.Interfaces;
-using System;
+﻿using System;
+using LeagueOfNews.Forms.Interfaces;
 
 namespace LeagueOfNews.Forms.Services
 {

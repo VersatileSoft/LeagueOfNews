@@ -1,4 +1,5 @@
-﻿using Android.App;
+﻿using System;
+using Android.App;
 using Android.App.Job;
 using Android.Content;
 using Android.Graphics;
@@ -11,7 +12,6 @@ using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Forms.Services;
 using LeagueOfNews.Model;
 using MvvmCross;
-using System;
 using Application = Android.App.Application;
 using Uri = Android.Net.Uri;
 
@@ -60,11 +60,9 @@ namespace LeagueOfNews.Forms.Droid.Services
                 case NewsWebsite.LoL:
                     notificationManager.Notify(1000, notification);
                     break;
-
                 case NewsWebsite.DevCorner:
                     notificationManager.Notify(1001, notification);
                     break;
-
                 case NewsWebsite.Surrender:
                     notificationManager.Notify(1002, notification);
                     break;

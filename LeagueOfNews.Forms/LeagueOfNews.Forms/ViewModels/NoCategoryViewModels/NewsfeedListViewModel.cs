@@ -1,11 +1,11 @@
-﻿using LeagueOfNews.Core.Interface;
+﻿using System;
+using System.Threading.Tasks;
+using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Core.ViewModels;
 using LeagueOfNews.Forms.Interfaces;
 using LeagueOfNews.Model;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using System;
-using System.Threading.Tasks;
 using Xamarin.Essentials;
 
 namespace LeagueOfNews.Forms.ViewModels
@@ -17,10 +17,7 @@ namespace LeagueOfNews.Forms.ViewModels
         public bool IsOfficial { get; set; }
 
         public NewsfeedListViewModel(INewsfeedService newsfeedService, ISettingsService settingsService, IMvxNavigationService navigationService, IChromeCustomTabService chromeCustomTabService)
-            : base(newsfeedService, settingsService, navigationService)
-        {
-            _chromeCustomTabService = chromeCustomTabService;
-        }
+            : base(newsfeedService, settingsService, navigationService) => _chromeCustomTabService = chromeCustomTabService;
 
         public void Prepare(NewsCategory parameter)
         {

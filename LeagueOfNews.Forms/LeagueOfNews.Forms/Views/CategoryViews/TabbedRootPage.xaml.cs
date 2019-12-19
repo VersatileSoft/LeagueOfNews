@@ -7,9 +7,6 @@ namespace LeagueOfNews.Forms.Views.CategoryViews
     [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, WrapInNavigationPage = true, NoHistory = false)]
     public partial class TabbedRootPage : MvxTabbedPage<TabbedRootViewModel>
     {
-        public TabbedRootPage()
-        {
-            InitializeComponent();
-        }
+        public TabbedRootPage() => InitializeComponent();
     }
 }
