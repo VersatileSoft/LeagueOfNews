@@ -1,8 +1,6 @@
-﻿using LeagueOfNews.Model;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using LeagueOfNews.Model;
 
 namespace LeagueOfNews.WebApi.Services.Interfaces
 {

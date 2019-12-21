@@ -1,7 +1,7 @@
-﻿using LeagueOfNews.Core.Interface;
+﻿using System.Text.RegularExpressions;
+using LeagueOfNews.Core.Interface;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using System.Text.RegularExpressions;
 
 namespace LeagueOfNews.Core.ViewModels
 {

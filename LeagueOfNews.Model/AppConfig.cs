@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using System.Collections.Generic;
 
 namespace LeagueOfNews.Model
 {
     public class AppConfig
     {
-        public IEnumerable<Website> Websites { get; set; } 
+        public IEnumerable<Website> Websites { get; set; }
     }
 }

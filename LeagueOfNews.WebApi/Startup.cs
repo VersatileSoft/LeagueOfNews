@@ -1,28 +1,18 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Autofac;
 using LeagueOfNews.Model;
 using LeagueOfNews.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 
 namespace LeagueOfNews.WebApi
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
+        public Startup(IConfiguration configuration) => Configuration = configuration;
 
         public IConfiguration Configuration { get; }
 
@@ -41,10 +31,7 @@ namespace LeagueOfNews.WebApi
             services.Configure<AppConfig>(Configuration.GetSection("AppConfig"));
         }
 
-        public void ConfigureContainer(ContainerBuilder builder)
-        {
-            builder.RegisterModule<ServiceModule>();
-        }
+        public void ConfigureContainer(ContainerBuilder builder) => builder.RegisterModule<ServiceModule>();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

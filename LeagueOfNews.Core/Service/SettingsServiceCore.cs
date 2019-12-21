@@ -1,5 +1,5 @@
-﻿using LeagueOfNews.Core.Interface;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using LeagueOfNews.Core.Interface;
 
 namespace LeagueOfNews.Core.Service
 {

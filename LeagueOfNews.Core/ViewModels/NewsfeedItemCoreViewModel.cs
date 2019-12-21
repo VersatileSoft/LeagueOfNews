@@ -1,8 +1,8 @@
-﻿using LeagueOfNews.Core.Interface;
+﻿using System.Threading.Tasks;
+using LeagueOfNews.Core.Interface;
 using LeagueOfNews.Model;
 using MvvmCross.ViewModels;
 using PropertyChanged;
-using System.Threading.Tasks;
 
 namespace LeagueOfNews.Core.ViewModels
 {
@@ -15,10 +15,7 @@ namespace LeagueOfNews.Core.ViewModels
         public string Title { get; set; }
         public string Date { get; set; }
 
-        public NewsfeedItemCoreViewModel(ISettingsService settingsService)
-        {
-            _settingsService = settingsService;
-        }
+        public NewsfeedItemCoreViewModel(ISettingsService settingsService) => _settingsService = settingsService;
 
         protected override void InitFromBundle(IMvxBundle parameters)
         {

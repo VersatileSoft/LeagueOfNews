@@ -1,11 +1,11 @@
-﻿using ExtensionMethods;
-using HtmlAgilityPack;
-using LeagueOfNews.Core.Interface;
-using LeagueOfNews.Model;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web;
+using ExtensionMethods;
+using HtmlAgilityPack;
+using LeagueOfNews.Core.Interface;
+using LeagueOfNews.Model;
 
 namespace LeagueOfNews.Core.Service
 {
@@ -29,16 +29,15 @@ namespace LeagueOfNews.Core.Service
         public async Task<IList<Newsfeed>> LoadNewsfeedsAsync(NewsCategory page)
         {
             string URL = _settingsService[page].CategoryUrl;
-            NewsWebsite newsWebsite = _settingsService[page].Website;
             _baseURL = "https://" + new Uri(URL).Host;
 
             HtmlDocument doc = await _webClientService.GetPage(URL, page);
-
             if (doc == null)
             {
                 return new List<Newsfeed>();
             }
 
+            NewsWebsite newsWebsite = _settingsService[page].Website;
             switch (newsWebsite)
             {
                 case NewsWebsite.LoL:
@@ -51,13 +50,11 @@ namespace LeagueOfNews.Core.Service
                     Newsfeeds = LoadSurrender(doc, page);
                     break;
             }
-
             return Newsfeeds;
         }
 
         public async Task<IList<Newsfeed>> LoadMoreNewsfeeds(NewsCategory page)
         {
-            List<Newsfeed> newsfeeds = new List<Newsfeed>();
             HtmlDocument doc;
             if (_nextPageUrls.TryGetValue(page, out string url))
             {
@@ -68,27 +65,22 @@ namespace LeagueOfNews.Core.Service
                 throw new Exception("Failed to load next page url");
             }
 
-            switch (_settingsService[page].Website)
+            return _settingsService[page].Website switch
             {
-                case NewsWebsite.LoL:
-                    newsfeeds = await LoadOfficial(doc, page);
-                    break;
-                case NewsWebsite.DevCorner:
-                    newsfeeds = LoadDevCorner(doc, page);
-                    break;
-                case NewsWebsite.Surrender:
-                    newsfeeds = LoadSurrender(doc, page);
-                    break;
-            }
-            return newsfeeds;
+                NewsWebsite.LoL => await LoadOfficial(doc, page),
+                NewsWebsite.DevCorner => LoadDevCorner(doc, page),
+                NewsWebsite.Surrender => LoadSurrender(doc, page),
+                NewsWebsite.None => null,
+                _ => null,
+            };
         }
 
         public async Task<List<Newsfeed>> LoadOfficial(HtmlDocument Document, NewsCategory page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             _nextPageUrls[page] = _baseURL + Document.DocumentNode.SelectSingleNode("//a[@class='next']").Attributes["href"].Value;
-            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='gs-container']");
 
+            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='gs-container']");
             foreach (HtmlNode node in nodes)
             {
                 try
@@ -118,8 +110,8 @@ namespace LeagueOfNews.Core.Service
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
             _nextPageUrls[page] = Document.DocumentNode.SelectSingleNode("//a[@class='nav-btm-right']").Attributes["href"].Value;
-            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='post-outer']");
 
+            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//div[@class='post-outer']");
             foreach (HtmlNode node in nodes)
             {
                 try
@@ -149,8 +141,8 @@ namespace LeagueOfNews.Core.Service
         public List<Newsfeed> LoadDevCorner(HtmlDocument Document, NewsCategory page)
         {
             List<Newsfeed> newsfeeds = new List<Newsfeed>();
-            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//body/div[@class='content']/div/div/div/div/table/tbody[@id='discussion-list']/tr");
 
+            HtmlNodeCollection nodes = Document.DocumentNode.SelectNodes("//body/div[@class='content']/div/div/div/div/table/tbody[@id='discussion-list']/tr");
             foreach (HtmlNode node in nodes)
             {
                 try
@@ -182,31 +174,27 @@ namespace ExtensionMethods
 {
     public static class StringExtensions
     {
-        public static string RemoveSpaceFromString(this string s)
-        {
-            return s.Replace("\n", " ")
-                    .Replace("\n\n", " ")
-                    .Replace(Environment.NewLine, " ")
-                    .Replace("          ", " ")
-                    .Replace("   ", " ")
-                    .Replace("  ", " ")
-                    .Replace("Hi folks,\r -------------------------------------------------------------------------------\r **Usual Disclaimers**", string.Empty)
-                    .Replace("Hi folks, ------------------------------------------------------------------------------- **Usual Disclaimers**", string.Empty)
-                    .Trim();
-        }
+        public static string RemoveSpaceFromString(this string s) =>
+            s.Replace("\n", " ")
+            .Replace("\n\n", " ")
+            .Replace(Environment.NewLine, " ")
+            .Replace("          ", " ")
+            .Replace("   ", " ")
+            .Replace("  ", " ")
+            .Replace("Hi folks,\r -------------------------------------------------------------------------------\r **Usual Disclaimers**", string.Empty)
+            .Replace("Hi folks, ------------------------------------------------------------------------------- **Usual Disclaimers**", string.Empty)
+            .Trim();
 
-        public static string RemoveContinueReadingString(this string s)
-        {
-            return s.Replace(" Bundle up and continue reading for more information!", string.Empty)
-                    .Replace(" Continue for more information and previews!", string.Empty)
-                    .Replace(" Continue reading for more information!", string.Empty)
-                    .Replace(" Continue reading for these champions' regular store prices.", string.Empty)
-                    .Replace(" Continue reading for a better look at this sale's discounted skins!", string.Empty)
-                    .Replace(" Continue reading for more details!", string.Empty)
-                    .Replace(" Continue reading for a spoiler free look at this week's games, including team info, schedules, and VODs!", string.Empty)
-                    .Replace(" Continue reading for a full preview of the skin!", string.Empty)
-                    .Replace(" Continue reading for a look at the article and new Universe content!", string.Empty)
-                    .Replace(" Continue reading for more info on the video!", string.Empty);
-        }
+        public static string RemoveContinueReadingString(this string s) =>
+            s.Replace(" Bundle up and continue reading for more information!", string.Empty)
+            .Replace(" Continue for more information and previews!", string.Empty)
+            .Replace(" Continue reading for more information!", string.Empty)
+            .Replace(" Continue reading for these champions' regular store prices.", string.Empty)
+            .Replace(" Continue reading for a better look at this sale's discounted skins!", string.Empty)
+            .Replace(" Continue reading for more details!", string.Empty)
+            .Replace(" Continue reading for a spoiler free look at this week's games, including team info, schedules, and VODs!", string.Empty)
+            .Replace(" Continue reading for a full preview of the skin!", string.Empty)
+            .Replace(" Continue reading for a look at the article and new Universe content!", string.Empty)
+            .Replace(" Continue reading for more info on the video!", string.Empty);
     }
 }

@@ -8,16 +8,10 @@ namespace LeagueOfNews.WebApi.Controllers
     [ApiController]
     public class AppConfigController : ControllerBase
     {
-        private IAppConfigService _appConfigService;
-        public AppConfigController(IAppConfigService appConfigService)
-        {
-            _appConfigService = appConfigService;
-        }
+        private readonly IAppConfigService _appConfigService;
+        public AppConfigController(IAppConfigService appConfigService) => _appConfigService = appConfigService;
 
         [HttpGet]
-        public AppConfig Get()
-        {
-            return _appConfigService.AppConfig;
-        }
+        public AppConfig Get() => _appConfigService.AppConfig;
     }
 }

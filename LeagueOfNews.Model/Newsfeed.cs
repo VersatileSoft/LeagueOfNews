@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace LeagueOfNews.Model
+﻿namespace LeagueOfNews.Model
 {
     public class Newsfeed
     {
