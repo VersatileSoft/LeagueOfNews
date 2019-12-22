@@ -26,7 +26,7 @@ class NewsfeedsBloc extends Bloc<NewsfeedsEvent, NewsfeedsState> {
     if (event is GetMoreData) {
       int page = 1;
       List<Newsfeed> list = List();
-      if (state is Loaded) {
+      if (state is Loaded && !event.clearList) {
         page = (state as Loaded).page;
         list = (state as Loaded).newsfeeds;
       }
@@ -34,7 +34,7 @@ class NewsfeedsBloc extends Bloc<NewsfeedsEvent, NewsfeedsState> {
       if (list.isEmpty) yield Loading();
 
       final i = await getNewsfeeds(
-        Params(websiteId: event.websiteId),
+        Params(websiteId: event.websiteId, page: page),
       );
 
       yield* i.fold((failure) async* {

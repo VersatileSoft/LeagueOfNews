@@ -6,9 +6,10 @@ abstract class NewsfeedsEvent extends Equatable {}
 
 class GetMoreData extends NewsfeedsEvent {
   final int websiteId;
+  final bool clearList;
 
-  GetMoreData(this.websiteId);
+  GetMoreData(this.websiteId, {this.clearList = false});
 
   @override
-  List<Object> get props => [websiteId];
+  List<Object> get props => [websiteId, clearList];
 }

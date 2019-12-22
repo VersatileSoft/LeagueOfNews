@@ -8,5 +8,6 @@ namespace LeagueOfNews.Model
         public string Name { get; set; }
         public IEnumerable<Website> Subpages { get; set; }
         public string Url { get; set; }
+        public string ParserName { get; set; }
     }
 }

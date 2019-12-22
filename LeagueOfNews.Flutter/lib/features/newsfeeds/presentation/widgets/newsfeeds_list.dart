@@ -35,7 +35,7 @@ class _TopRatedListState extends State<NewsfeedsList>
   void didUpdateWidget(NewsfeedsList oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.websiteId != widget.websiteId)
-      bloc.add(GetMoreData(widget.websiteId));
+      bloc.add(GetMoreData(widget.websiteId, clearList: true));
   }
 
   @override

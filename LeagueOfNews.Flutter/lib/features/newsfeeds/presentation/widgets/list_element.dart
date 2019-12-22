@@ -9,47 +9,66 @@ class ListElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: <Widget>[
-          model.imageUrl != null
-              ? Expanded(
-                  flex: 2,
-                  child: CachedNetworkImage(
-                    imageUrl: model.imageUrl,
-                    placeholder: (context, url) =>
-                        Center(child: CircularProgressIndicator()),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
-                  ),
-                )
-              : SizedBox.shrink(),
-          Expanded(
-            child: buildText(context),
-            flex: 5,
-          ),
-        ],
+    return Container(
+      height: 130,
+      child: Card(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            model.imageUrl != null
+                ? Expanded(
+                    flex: 3,
+                    child: CachedNetworkImage(
+                      fit: BoxFit.fitHeight,
+                      height: 120,
+                      imageUrl: model.imageUrl,
+                      placeholder: (context, url) =>
+                          Center(child: CircularProgressIndicator()),
+                      errorWidget: (context, url, error) => Icon(Icons.error),
+                    ),
+                  )
+                : SizedBox.shrink(),
+            Expanded(
+              flex: 5,
+              child: Padding(
+                padding: const EdgeInsets.only(left: 10),
+                child: buildText(context),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
 
-  Column buildText(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[
-        Text(
-          this.model.title,
-          style: TextStyle(color: Theme.of(context).accentColor),
-        ),
-        Text(
-          this.model.date,
-        ),
-        Text(
-          this.model.shortDescription,
-        ),
-      ],
+  Widget buildText(BuildContext context) {
+    return Container(
+      height: 130,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          Text(
+            this.model.title,
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(
+                color: Theme.of(context).accentColor,
+                fontSize: 20,
+                fontWeight: FontWeight.bold),
+          ),
+          Text(
+            this.model.date,
+          ),
+          Text(
+            this.model.shortDescription,
+            maxLines: 3,
+            overflow: TextOverflow.ellipsis,
+            style: TextStyle(fontSize: 15),
+          ),
+        ],
+      ),
     );
   }
 }
