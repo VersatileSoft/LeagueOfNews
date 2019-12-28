@@ -1,4 +1,7 @@
+using System;
 using Autofac;
+using FirebaseAdmin;
+using Google.Apis.Auth.OAuth2;
 using LeagueOfNews.Model;
 using LeagueOfNews.WebApi.Services;
 using Microsoft.AspNetCore.Builder;
@@ -7,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using ServiceIterator;
 
 namespace LeagueOfNews.WebApi
 {
@@ -25,16 +29,25 @@ namespace LeagueOfNews.WebApi
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "League of news web api", Version = "v1" });
             });
 
+            FirebaseApp.Create(new AppOptions()
+            {
+                Credential = GoogleCredential.FromFile("wwwroot/credential.json"),
+            });
+
             services.AddControllers();
 
             services.AddOptions();
             services.Configure<AppConfig>(Configuration.GetSection("AppConfig"));
+
+            services.AddSingleton<NewPostsService>();
         }
 
         public void ConfigureContainer(ContainerBuilder builder) => builder.RegisterModule<ServiceModule>();
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            app.UseServicesIterator();
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

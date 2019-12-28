@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:league_of_news/custom_tabs_plugin/flutter_custom_tabs.dart';
-import 'package:league_of_news/features/newsfeeds/domain/entities/newsfeed.dart';
 import 'package:league_of_news/features/newsfeeds/presentation/bloc/newsfeeds/bloc.dart';
+import 'package:league_of_news/features/newsfeeds/presentation/utils/custom_tab_launcher.dart';
 
 import '../../../../injection_container.dart';
 import 'error_view.dart';
@@ -80,7 +79,7 @@ class _TopRatedListState extends State<NewsfeedsList>
       hasReachedEndOfResults: false,
       items: state.newsfeeds,
       getMoreDataEvent: () => bloc.add(GetMoreData(widget.websiteId)),
-      onElementTap: (model, context) => _launchURL(model, context),
+      onElementTap: (model, context) => launchURL(model.urlToNewsfeed, context),
     );
   }
 
@@ -89,25 +88,5 @@ class _TopRatedListState extends State<NewsfeedsList>
       message: state.message,
       reload: () => bloc.add(GetMoreData(widget.websiteId)),
     );
-  }
-
-  _launchURL(Newsfeed model, BuildContext context) async {
-    try {
-      await launch(
-        model.urlToNewsfeed,
-        option: new CustomTabsOption(
-          toolbarColor: Theme.of(context).primaryColor,
-          enableDefaultShare: true,
-          enableUrlBarHiding: true,
-          showPageTitle: true,
-          enableInstantApps: true,
-          animation: new CustomTabsAnimation.slideIn()
-        ),
-      );
-    } catch (e) {
-      Scaffold.of(context).showSnackBar(
-        SnackBar(content: Text('Browser is required to open news')),
-      );
-    }
   }
 }

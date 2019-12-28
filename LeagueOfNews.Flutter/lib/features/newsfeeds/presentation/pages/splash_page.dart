@@ -17,8 +17,8 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   void initState() {
-    _init();
     super.initState();
+    _init();
   }
 
   _init() {

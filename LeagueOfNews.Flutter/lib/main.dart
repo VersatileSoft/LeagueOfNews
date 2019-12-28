@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'features/newsfeeds/presentation/pages/splash_page.dart';
+import 'features/newsfeeds/presentation/utils/theme_data.dart';
 import 'injection_container.dart';
 
 void main() async {
@@ -8,19 +9,22 @@ void main() async {
   runApp(App());
 }
 
-class App extends StatelessWidget {
+class App extends StatefulWidget {
+  @override
+  _AppState createState() => _AppState();
+}
+
+class _AppState extends State<App> {
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'League of News',
-      theme: ThemeData(
-        brightness: Brightness.dark,
-        primaryColor: Color(0xff202429),
-        backgroundColor: Color(0xff202429),
-        cardColor: Color(0xff202429),
-        accentColor: Color(0xffcca75c),
-        primaryColorDark: Color(0xff1a1d21),
-        fontFamily: 'Montserrat',
-      ),
+      theme: themeData,
       home: SplashPage(),
     );
   }
