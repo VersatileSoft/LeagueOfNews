@@ -8,7 +8,7 @@ namespace LeagueOfNews.WebApi.Parsers
 {
     public abstract class ParserBase
     {
-        private string _baseUrl;
+        private readonly string _baseUrl;
         protected Website _website;
         protected ParserBase(Website website)
         {
