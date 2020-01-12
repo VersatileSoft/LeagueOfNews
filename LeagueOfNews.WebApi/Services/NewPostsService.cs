@@ -8,8 +8,8 @@ using ServiceIterator;
 
 namespace LeagueOfNews.WebApi.Services
 {
-    [CallDuration(Milliseconds = 1000 * 60 * 30)]
-    public class NewPostsService : IIterable
+    [ExecuteDelay(Milliseconds = 1000 * 60 * 30)]
+    public class NewPostsService : IExecutable
     {
         private readonly IPushNotificationService _pushNotificationService;
         private readonly INewsfeedService _newsfeedService;
@@ -24,7 +24,7 @@ namespace LeagueOfNews.WebApi.Services
             _appConfig = options.Value;
         }
 
-        public async void Call(object source, ElapsedEventArgs e)
+        public async void Execute(object source, ElapsedEventArgs e)
         {
             foreach (Website website in _appConfig.Websites)
             {

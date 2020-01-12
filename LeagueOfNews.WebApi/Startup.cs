@@ -1,4 +1,3 @@
-using System;
 using Autofac;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
@@ -47,6 +46,13 @@ namespace LeagueOfNews.WebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseServicesIterator();
+
+            app.UseCors(builder =>
+            {
+                builder.AllowAnyOrigin();
+                builder.AllowAnyHeader();
+                builder.AllowAnyMethod();
+            });
 
             if (env.IsDevelopment())
             {

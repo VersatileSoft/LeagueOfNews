@@ -10,22 +10,22 @@ namespace ServiceIterator
     {
         public static void UseServicesIterator(this IApplicationBuilder applicationBuilder)
         {
-            IEnumerable<IIterable> iterables = applicationBuilder.ApplicationServices.GetServices<IIterable>();
-            foreach (IIterable iterable in iterables)
+            IEnumerable<IExecutable> iterables = applicationBuilder.ApplicationServices.GetServices<IExecutable>();
+            foreach (IExecutable iterable in iterables)
             {
-                int time = 1000;
+                long time = 1000;
                 Attribute[] attributes = Attribute.GetCustomAttributes(iterable.GetType());
 
                 foreach (Attribute attribute in attributes)
                 {
-                    if (attribute is CallDurationAttribute)
+                    if (attribute is ExecuteDelayAttribute)
                     {
-                        time = ((CallDurationAttribute)attribute).Milliseconds;
+                        time = ((ExecuteDelayAttribute)attribute).Milliseconds;
                     }
                 }
 
-                Timer _timer = new Timer(time); //one hour in milliseconds
-                _timer.Elapsed += new ElapsedEventHandler(iterable.Call);
+                Timer _timer = new Timer(time);
+                _timer.Elapsed += new ElapsedEventHandler(iterable.Execute);
                 _timer.Start();
             }
         }
