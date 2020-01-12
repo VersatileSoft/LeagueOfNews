@@ -1,0 +1,21 @@
+﻿<ContentPage x:Class="LeagueOfNewsNew.XF.Pages.NewsfeedListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Placeholder"
+    BackgroundColor="{StaticResource BackgroundColorLight}"
+    Visual="Material"
+    mc:Ignorable="d">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem IconImageSource="SettingsIcon.png" Text="Settings"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Text="Welcome to NewsfeedListPage!"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

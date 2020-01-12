@@ -1,0 +1,18 @@
+﻿<ContentPage x:Class="LeagueOfNewsNew.XF.Pages.SettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Settings"
+    BackgroundColor="{StaticResource BackgroundColor}"
+    Visual="Material"
+    mc:Ignorable="d">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                VerticalOptions="CenterAndExpand"
+                Text="Welcome to SettingsPage!"/>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

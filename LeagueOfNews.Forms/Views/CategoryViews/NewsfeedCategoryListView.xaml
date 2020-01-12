@@ -36,13 +36,9 @@
                             <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
                         </Grid>
                     </CollectionView.Footer>
-                    <CollectionView.EmptyView>
-                        <Grid>
-                            <ActivityIndicator Style="{StaticResource ActivityIndicator}"/>
-                        </Grid>
-                    </CollectionView.EmptyView>
                 </CollectionView>
             </RefreshView>
+            <ActivityIndicator IsVisible="{Binding IsLoading}" Style="{StaticResource ActivityIndicator}"/>
         </Grid>
     </views:MvxContentPage.Content>
 </views:MvxContentPage>

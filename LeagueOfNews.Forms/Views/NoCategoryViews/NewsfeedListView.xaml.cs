@@ -7,7 +7,7 @@ using Xamarin.Forms;
 
 namespace LeagueOfNews.Forms.Views.NoCategoryViews
 {
-    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = false)]
+    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, NoHistory = true)]
     public partial class NewsfeedListView : MvxContentPage<NewsfeedListViewModel>
     {
         public NewsfeedListView() => InitializeComponent();
