@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="4" android:versionName="1.2.0" package="com.versatilesoftware.leagueofnews" android:installLocation="auto">
+	<uses-sdk android:targetSdkVersion="29" android:minSdkVersion="23" />
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+	<application android:roundIcon="@mipmap/icon_round" android:label="League of News" android:theme="@style/MyTheme.Splash" android:icon="@mipmap/Icon" android:largeHeap="true" />
+</manifest>

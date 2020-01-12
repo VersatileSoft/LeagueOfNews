@@ -1,6 +1,6 @@
-﻿using LeagueOfNews.Model;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using LeagueOfNews.Model;
 
 namespace LeagueOfNews.Core.Interface
 {

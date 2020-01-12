@@ -1,5 +1,5 @@
-﻿using HtmlAgilityPack;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
+using HtmlAgilityPack;
 
 namespace LeagueOfNews.Core.Interface
 {

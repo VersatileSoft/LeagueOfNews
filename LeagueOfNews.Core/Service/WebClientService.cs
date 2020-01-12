@@ -1,8 +1,8 @@
-﻿using HtmlAgilityPack;
-using LeagueOfNews.Core.Interface;
-using System.IO;
+﻿using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using HtmlAgilityPack;
+using LeagueOfNews.Core.Interface;
 
 namespace LeagueOfNews.Core.Model
 {
@@ -52,10 +52,7 @@ namespace LeagueOfNews.Core.Model
             return doc;
         }
 
-        private async Task<HtmlDocument> GetPageByWebClient(string url)
-        {
-            return await new HtmlWeb().LoadFromWebAsync(url);
-        }
+        private async Task<HtmlDocument> GetPageByWebClient(string url) => await new HtmlWeb().LoadFromWebAsync(url);
 
         public async Task<byte[]> GetImageAsync(string url)
         {
