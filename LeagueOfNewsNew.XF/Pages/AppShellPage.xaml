@@ -1,4 +1,4 @@
-﻿<Shell x:Class="LeagueOfNewsNew.XF.Pages.AppShell"
+﻿<Shell x:Class="LeagueOfNewsNew.XF.Pages.AppShellPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:LeagueOfNewsNew.XF.Pages"
@@ -10,7 +10,7 @@
     Shell.TabBarUnselectedColor="White"
     Visual="Material">
     <TabBar>
-        <Tab Title="Official site" Icon="LolOfficialIcon.png">
+        <Tab Title="{Binding Title}" Icon="LolOfficialIcon.png">
             <ShellContent>
                 <pages:NewsfeedListPage/>
             </ShellContent>

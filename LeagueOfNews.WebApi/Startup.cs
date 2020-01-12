@@ -25,6 +25,7 @@ namespace LeagueOfNews.WebApi
         {
             services.AddSwaggerGen(c =>
             {
+                c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["controller"]}_{e.HttpMethod}");
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "League of news web api", Version = "v1" });
             });
 

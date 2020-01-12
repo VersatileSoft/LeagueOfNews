@@ -7,9 +7,9 @@ namespace LeagueOfNewsNew.XF
     {
         public App()
         {
+            IoC.Initialize();
             InitializeComponent();
-
-            MainPage = new AppShell();
+            MainPage = new AppShellPage();
         }
 
         protected override void OnStart()
