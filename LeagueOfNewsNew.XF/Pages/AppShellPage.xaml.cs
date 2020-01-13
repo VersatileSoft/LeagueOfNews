@@ -1,4 +1,5 @@
-﻿using LeagueOfNewsNew.XF.PageModels;
+﻿using System.Runtime.CompilerServices;
+using LeagueOfNewsNew.XF.PageModels;
 using Xamarin.Forms;
 
 namespace LeagueOfNewsNew.XF.Pages
@@ -10,11 +11,13 @@ namespace LeagueOfNewsNew.XF.Pages
             InitializeComponent();
             this.SetPageModel();
         }
-
-        protected override void OnAppearing()
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
-            base.OnAppearing();
-            ((AppShellPageModel)BindingContext).LoadApp.Execute(null);
+            base.OnPropertyChanged(propertyName);
+            if (propertyName == "Websites")
+            {
+
+            }
         }
     }
 }

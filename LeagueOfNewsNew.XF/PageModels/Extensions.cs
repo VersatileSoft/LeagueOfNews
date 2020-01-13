@@ -12,7 +12,12 @@ namespace LeagueOfNewsNew.XF.PageModels
         {
             string name = page.GetType().Name + "Model";
             Type type = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsClass && t.Name == name).FirstOrDefault();
-            page.BindingContext = IoC.container.Resolve(type);
+            PageModelBase pageModel = (PageModelBase)IoC.container.Resolve(type);
+
+            //TODO Appearing ins not working but should be used here
+            //page.Appearing += delegate { pageModel.OnLoad(); };
+            page.BindingContextChanged += delegate { pageModel.OnLoad(); };
+            page.BindingContext = pageModel;
         }
     }
 }
