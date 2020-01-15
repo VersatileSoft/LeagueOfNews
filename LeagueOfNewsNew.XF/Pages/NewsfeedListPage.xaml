@@ -15,7 +15,7 @@
             <Label
                 HorizontalOptions="CenterAndExpand"
                 VerticalOptions="CenterAndExpand"
-                Text="Welcome to NewsfeedListPage!"/>
+                Text="{Binding Title}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

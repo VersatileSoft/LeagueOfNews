@@ -1,7 +1,6 @@
 ﻿<Shell x:Class="LeagueOfNewsNew.XF.Pages.AppShellPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:pages="clr-namespace:LeagueOfNewsNew.XF.Pages"
     Shell.BackgroundColor="{StaticResource BackgroundColor}"
     Shell.TabBarBackgroundColor="{StaticResource BackgroundColor}"
     Shell.TabBarDisabledColor="White"
@@ -9,36 +8,5 @@
     Shell.TabBarTitleColor="{StaticResource PrimaryColor}"
     Shell.TabBarUnselectedColor="White"
     Visual="Material">
-    <TabBar>
-        <Tab Title="{Binding Title}" Icon="LolOfficialIcon.png">
-            <ShellContent>
-                <pages:NewsfeedListPage/>
-            </ShellContent>
-        </Tab>
-        <Tab Title="Surrender@20" Icon="SurrenderAt20Icon.png">
-            <ShellContent Title="Home">
-                <pages:NewsfeedListPage/>
-            </ShellContent>
-            <ShellContent Title="PBE">
-                <pages:NewsfeedListPage/>
-            </ShellContent>
-            <ShellContent Title="Releases">
-                <pages:NewsfeedListPage/>
-            </ShellContent>
-            <ShellContent Title="Red Posts">
-                <pages:NewsfeedListPage/>
-            </ShellContent>
-            <ShellContent Title="Rotations">
-                <pages:NewsfeedListPage/>
-            </ShellContent>
-            <ShellContent Title="E-Sports">
-                <pages:NewsfeedListPage/>
-            </ShellContent>
-        </Tab>
-        <Tab Title="Dev Corner" Icon="DevBlogIcon.png">
-            <ShellContent>
-                <pages:NewsfeedListPage/>
-            </ShellContent>
-        </Tab>
-    </TabBar>
+    <TabBar x:Name="TabBar"/>
 </Shell>

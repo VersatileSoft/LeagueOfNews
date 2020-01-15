@@ -1,9 +1,8 @@
 ﻿using System.Threading.Tasks;
-using MvvmHelpers;
 
 namespace LeagueOfNewsNew.XF.PageModels
 {
-    public abstract class PageModelBase : ObservableObject
+    public abstract class PageModelBase //: ObservableObject
     {
         /// <summary>
         /// Task called when page is appearing

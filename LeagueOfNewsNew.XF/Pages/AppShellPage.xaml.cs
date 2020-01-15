@@ -1,4 +1,4 @@
-﻿using System.Runtime.CompilerServices;
+﻿using LeagueOfNews.Model;
 using LeagueOfNewsNew.XF.PageModels;
 using Xamarin.Forms;
 
@@ -11,12 +11,34 @@ namespace LeagueOfNewsNew.XF.Pages
             InitializeComponent();
             this.SetPageModel();
         }
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            base.OnPropertyChanged(propertyName);
-            if (propertyName == "Websites")
-            {
 
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+            AppShellPageModel pageModel = (AppShellPageModel)BindingContext;
+            foreach (Website website in pageModel.Websites)
+            {
+                Tab tab = new Tab { Title = website.Name };
+
+                if (website.Subpages != null)
+                {
+                    foreach (Website subPage in website.Subpages)
+                    {
+                        tab.Items.Add(new ShellContent
+                        {
+                            Title = subPage.Name,
+                            Content = new NewsfeedListPage(subPage.Id)
+                        });
+                    }
+                }
+                else
+                {
+                    tab.Items.Add(new ShellContent
+                    {
+                        Content = new NewsfeedListPage(website.Id)
+                    });
+                }
+                TabBar.Items.Add(tab);
             }
         }
     }

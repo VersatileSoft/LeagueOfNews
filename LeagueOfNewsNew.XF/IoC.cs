@@ -7,14 +7,14 @@ namespace LeagueOfNewsNew.XF
     public class IoC
     {
 
-        public static IContainer container;
+        public static IContainer Container;
         private static readonly ContainerBuilder builder = new ContainerBuilder();
 
         public static void Initialize()
         {
             builder.RegisterModule<ServiceModule>();
             builder.RegisterModule<PageModelModule>();
-            container = builder.Build();
+            Container = builder.Build();
         }
     }
 }

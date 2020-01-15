@@ -7,7 +7,7 @@ namespace LeagueOfNewsNew.XF.Services
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            builder.RegisterAssemblyTypes(typeof(ServiceModule).Assembly).AsImplementedInterfaces();
+            builder.RegisterAssemblyTypes(typeof(ServiceModule).Assembly).AsImplementedInterfaces().SingleInstance();
         }
     }
 }
