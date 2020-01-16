@@ -7,7 +7,7 @@ namespace LeagueOfNewsNew.XF.PageModels
         protected override void Load(ContainerBuilder builder)
         {
             base.Load(builder);
-            builder.RegisterAssemblyTypes(typeof(PageModelModule).Assembly).SingleInstance();
+            builder.RegisterAssemblyTypes(typeof(PageModelModule).Assembly);
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿<ContentPage x:Class="LeagueOfNewsNew.XF.Pages.NewsfeedListPage"
+﻿<views:ContentPage x:Class="LeagueOfNewsNew.XF.Pages.NewsfeedListPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:d="http://xamarin.com/schemas/2014/forms/design"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:views="clr-namespace:LeagueOfNewsNew.XF.Pages;assembly=LeagueOfNewsNew.XF"
+    xmlns:viewModels="clr-namespace:LeagueOfNewsNew.XF.PageModels"
+    x:TypeArguments="viewModels:NewsfeedListPageModel,x:Int32"
     Title="Placeholder"
     BackgroundColor="{StaticResource BackgroundColorLight}"
     Visual="Material"
@@ -12,10 +15,19 @@
     </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout>
-            <Label
-                HorizontalOptions="CenterAndExpand"
-                VerticalOptions="CenterAndExpand"
-                Text="{Binding Title}"/>
+            <ListView ItemsSource="{Binding Newsfeeds}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Grid.Column="1" Padding="8">
+                                <Label Text="{Binding Title}"/>
+                                <Label Text="{Binding Date}"/>
+                                <Label Text="{Binding ShortDescription}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:ContentPage>

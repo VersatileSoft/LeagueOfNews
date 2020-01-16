@@ -20,5 +20,21 @@
     <ProjectReference Include="..\LeagueOfNews.Model\LeagueOfNews.Model.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\icons\ios\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="wwwroot\icons\android\dev.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\android\official.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\icons\android\surrender.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
 
 </Project>

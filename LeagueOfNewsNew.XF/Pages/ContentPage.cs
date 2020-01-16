@@ -7,20 +7,28 @@ using Xamarin.Forms;
 
 namespace LeagueOfNewsNew.XF.Pages
 {
-    public class ContentPage<T> : ContentPage where T : PageModelBase
+    public abstract class ContentPage<TPageModel> : ContentPage where TPageModel : PageModelBase
     {
-        protected T PageModel;
+        protected TPageModel PageModel;
 
-        protected ContentPage()
+        protected ContentPage() => InitPage();
+
+        protected void InitPage()
         {
             string name = GetType().Name + "Model";
             Type type = Assembly.GetExecutingAssembly().GetTypes().Where(t => t.IsClass && t.Name == name).FirstOrDefault();
-            PageModel = (T)IoC.Container.Resolve(type);
-
-            //TODO Appearing ins not working but should be used here
+            PageModel = (TPageModel)IoC.Container.Resolve(type);
             Appearing += delegate { PageModel.OnLoad(); };
-            // page.BindingContextChanged += delegate { pageModel.OnLoad(); };
             BindingContext = PageModel;
+        }
+    }
+
+    public abstract class ContentPage<TPageModel, TParam> : ContentPage<TPageModel> where TPageModel : PageModelBase<TParam>
+    {
+        public ContentPage(TParam param)
+        {
+            InitPage();
+            PageModel.Param = param;
         }
     }
 }

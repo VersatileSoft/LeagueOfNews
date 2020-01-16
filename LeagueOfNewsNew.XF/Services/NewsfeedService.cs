@@ -6,7 +6,7 @@ using RestSharp;
 
 namespace LeagueOfNewsNew.XF.Services
 {
-    public class RemoteDataService : IRemoteDataService
+    public class NewsfeedService : INewsfeedService
     {
         public async Task<IEnumerable<Newsfeed>> GetNewsfeeds(int websiteId, int page = 1)
         {

@@ -1,35 +1,24 @@
-﻿using System;
-using System.ComponentModel;
-using Xamarin.Forms;
+﻿using System.Collections.ObjectModel;
+using System.Threading.Tasks;
+using LeagueOfNews.Model;
+using LeagueOfNewsNew.XF.Services.Interfaces;
+using PropertyChanged;
 
 namespace LeagueOfNewsNew.XF.PageModels
 {
-    public class NewsfeedListPageModel : INotifyPropertyChanged
+    [AddINotifyPropertyChangedInterface]
+    public class NewsfeedListPageModel : PageModelBase<int>
     {
-        public event PropertyChangedEventHandler PropertyChanged;
+        private readonly INewsfeedService _newsfeedService;
+        public ObservableCollection<Newsfeed> Newsfeeds { get; set; }
+        public bool IsLoading { get; set; }
+        public NewsfeedListPageModel(INewsfeedService newsfeedService) => _newsfeedService = newsfeedService;
 
-        private string title = "Siema";
-        public string Title
+        public override async Task OnLoad()
         {
-            get => title;
-            set
-            {
-                if (title != value)
-                {
-                    title = value;
-
-                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Title)));
-                }
-            }
-        }
-
-        public NewsfeedListPageModel()
-        {
-            Device.StartTimer(TimeSpan.FromSeconds(10), () =>
-            {
-                Title = "Elo";
-                return true;
-            });
+            IsLoading = true;
+            Newsfeeds = new ObservableCollection<Newsfeed>(await _newsfeedService.GetNewsfeeds(Param));
+            IsLoading = false;
         }
     }
 }

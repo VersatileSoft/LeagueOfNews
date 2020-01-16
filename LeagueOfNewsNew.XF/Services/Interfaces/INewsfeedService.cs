@@ -4,7 +4,7 @@ using LeagueOfNews.Model;
 
 namespace LeagueOfNewsNew.XF.Services.Interfaces
 {
-    public interface IRemoteDataService
+    public interface INewsfeedService
     {
         Task<IEnumerable<Newsfeed>> GetNewsfeeds(int pageId, int page = 1);
     }

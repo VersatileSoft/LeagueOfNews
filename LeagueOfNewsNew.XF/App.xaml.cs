@@ -6,8 +6,8 @@ namespace LeagueOfNewsNew.XF
 {
     public partial class App : Application
     {
-
         public const string API_URL = "https://myseriallist.ml/api";
+        public const string ICONS_URL = "https://myseriallist.ml/icons";
         public App()
         {
             ServicePointManager.ServerCertificateValidationCallback +=

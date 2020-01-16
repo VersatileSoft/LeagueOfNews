@@ -1,4 +1,5 @@
-﻿using LeagueOfNews.Model;
+﻿using System;
+using LeagueOfNews.Model;
 using LeagueOfNewsNew.XF.PageModels;
 using Xamarin.Forms;
 
@@ -18,7 +19,11 @@ namespace LeagueOfNewsNew.XF.Pages
             AppShellPageModel pageModel = (AppShellPageModel)BindingContext;
             foreach (Website website in pageModel.Websites)
             {
-                Tab tab = new Tab { Title = website.Name };
+                Tab tab = new Tab
+                {
+                    Title = website.Name,
+                    Icon = ImageSource.FromUri(new Uri($"{App.ICONS_URL}/android/{website.Icon}.png"))
+                };
 
                 if (website.Subpages != null)
                 {

@@ -10,4 +10,12 @@ namespace LeagueOfNewsNew.XF.PageModels
         /// <returns></returns>
         public virtual Task OnLoad() => Task.CompletedTask;
     }
+
+    public abstract class PageModelBase<T> : PageModelBase
+    {
+        /// <summary>
+        /// Returns parameter of given type
+        /// </summary>
+        public T Param { get; set; }
+    }
 }

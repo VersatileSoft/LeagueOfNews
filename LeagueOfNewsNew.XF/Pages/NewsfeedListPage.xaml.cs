@@ -1,13 +1,9 @@
 ﻿using LeagueOfNewsNew.XF.PageModels;
-using Xamarin.Forms;
 
 namespace LeagueOfNewsNew.XF.Pages
 {
-    public partial class NewsfeedListPage : ContentPage
+    public partial class NewsfeedListPage : ContentPage<NewsfeedListPageModel, int>
     {
-        public NewsfeedListPage(int websiteId)
-        {
-            InitializeComponent();
-        }
+        public NewsfeedListPage(int websiteId) : base(websiteId) => InitializeComponent();
     }
 }
