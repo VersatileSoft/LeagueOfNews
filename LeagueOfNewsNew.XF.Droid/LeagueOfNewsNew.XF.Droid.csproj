@@ -88,11 +88,13 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Services\AndroidFirebaseMessagingService.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <GoogleServicesJson Include="google-services.json" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -140,10 +142,23 @@
     <AndroidResource Include="Resources\drawable\SurrenderAt20Icon.png" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\LeagueOfNews.Model\LeagueOfNews.Model.csproj">
+      <Project>{20032F51-71E0-424E-B3EE-FD619CAA9420}</Project>
+      <Name>LeagueOfNews.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LeagueOfNews.Utils\LeagueOfNews.Utils.csproj">
+      <Project>{6046a69e-3ced-4d1a-9135-5c92b115c17a}</Project>
+      <Name>LeagueOfNews.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LeagueOfNewsNew.XF\LeagueOfNewsNew.XF.csproj">
       <Project>{ff902bff-8786-438a-ad40-5538a8c10f32}</Project>
       <Name>LeagueOfNewsNew.XF</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\values\strings.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

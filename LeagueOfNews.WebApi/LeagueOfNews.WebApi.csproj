@@ -18,6 +18,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\LeagueOfNews.Model\LeagueOfNews.Model.csproj" />
+    <ProjectReference Include="..\LeagueOfNews.Utils\LeagueOfNews.Utils.csproj" />
   </ItemGroup>
 
   <ItemGroup>

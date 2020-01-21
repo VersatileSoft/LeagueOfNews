@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+  <string name="channel_name">League of News Notifications</string>
+  <string name="channel_description">League of News Notifications about new posts.</string>
+</resources>
