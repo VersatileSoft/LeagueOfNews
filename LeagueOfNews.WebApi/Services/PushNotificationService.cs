@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using FirebaseAdmin.Messaging;
 using LeagueOfNews.Model;
+using LeagueOfNews.Utils;
 using LeagueOfNews.WebApi.Services.Interfaces;
 
 namespace LeagueOfNews.WebApi.Services
@@ -13,13 +13,7 @@ namespace LeagueOfNews.WebApi.Services
         {
             Message message = new Message()
             {
-                Data = new Dictionary<string, string>()
-                {
-                    { "title", newsfeed.Title },
-                    { "body", newsfeed.ShortDescription },
-                    { "icon", newsfeed.ImageUrl },
-                    { "url", newsfeed.UrlToNewsfeed },
-                },
+                Data = newsfeed.ToDictionary(),
                 Topic = "News"
             };
 

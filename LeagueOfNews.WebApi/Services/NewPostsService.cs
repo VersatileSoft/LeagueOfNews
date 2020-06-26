@@ -26,6 +26,11 @@ namespace LeagueOfNews.WebApi.Services
 
         public async void Execute(object source, ElapsedEventArgs e)
         {
+
+            /*  Newsfeed lastPost = (await _newsfeedService.GetNewsfeeds(0, 1)).First();
+              lastPost.WebsiteName = _appConfig.Websites.First().Name;
+              await _pushNotificationService.PushNotification(lastPost);*/
+
             foreach (Website website in _appConfig.Websites)
             {
                 Newsfeed lastPost = (await _newsfeedService.GetNewsfeeds(website.Id, 1)).First();
@@ -34,6 +39,7 @@ namespace LeagueOfNews.WebApi.Services
                     if (lastPost.UrlToNewsfeed != lastUrl)
                     {
                         _lastPosts[website.Id] = lastPost.UrlToNewsfeed;
+                        lastPost.WebsiteName = website.Name;
                         await _pushNotificationService.PushNotification(lastPost);
                     }
                 }

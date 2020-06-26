@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"      
+             xmlns:views="clr-namespace:LeagueOfNewsNew.XF.Pages;assembly=LeagueOfNewsNew.XF"
+             mc:Ignorable="d"
+             xmlns:viewModels="clr-namespace:LeagueOfNewsNew.XF.PageModels"
+             x:TypeArguments="viewModels:SplashPageModel"
+             x:Class="LeagueOfNewsNew.XF.Pages.SplashPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <ActivityIndicator
+                VerticalOptions="CenterAndExpand" 
+                HorizontalOptions="CenterAndExpand" />
+        </StackLayout>
+    </ContentPage.Content>
+</views:ContentPage>

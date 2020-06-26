@@ -1,3 +1,4 @@
+using System.IO;
 using Autofac;
 using FirebaseAdmin;
 using Google.Apis.Auth.OAuth2;
@@ -7,6 +8,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using ServiceIterator;
@@ -25,6 +27,7 @@ namespace LeagueOfNews.WebApi
         {
             services.AddSwaggerGen(c =>
             {
+                c.CustomOperationIds(e => $"{e.ActionDescriptor.RouteValues["controller"]}_{e.HttpMethod}");
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "League of news web api", Version = "v1" });
             });
 
@@ -46,6 +49,14 @@ namespace LeagueOfNews.WebApi
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseServicesIterator();
+
+            app.UseFileServer(new FileServerOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "icons")),
+                RequestPath = "/icons",
+                EnableDirectoryBrowsing = true
+            });
 
             app.UseCors(builder =>
             {

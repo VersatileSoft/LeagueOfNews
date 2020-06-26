@@ -1,0 +1,12 @@
+﻿<Shell x:Class="LeagueOfNewsNew.XF.Pages.AppShellPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Shell.BackgroundColor="{StaticResource BackgroundColor}"
+    Shell.TabBarBackgroundColor="{StaticResource BackgroundColor}"
+    Shell.TabBarDisabledColor="White"
+    Shell.TabBarForegroundColor="White"
+    Shell.TabBarTitleColor="{StaticResource PrimaryColor}"
+    Shell.TabBarUnselectedColor="White"
+    Visual="Material">
+    <TabBar x:Name="TabBar"/>
+</Shell>

@@ -4,7 +4,7 @@ using MvvmCross.Forms.Views;
 
 namespace LeagueOfNews.Forms.Views.CategoryViews
 {
-    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, WrapInNavigationPage = true, NoHistory = false)]
+    [MvxMasterDetailPagePresentation(MasterDetailPosition.Detail, WrapInNavigationPage = true, NoHistory = true)]
     public partial class TabbedRootPage : MvxTabbedPage<TabbedRootViewModel>
     {
         public TabbedRootPage() => InitializeComponent();
